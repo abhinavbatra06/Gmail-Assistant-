@@ -64,4 +64,4 @@ if __name__ == "__main__":
     with open("metadata.json", "w", encoding="utf-8") as f:
         json.dump(metadata, f, ensure_ascii=False, indent=2)
 
-    print(f"✅ Wrote FAISS index ({index.ntotal} vectors) and metadata.json")
+    print(f"Wrote FAISS index ({index.ntotal} vectors) and metadata.json")

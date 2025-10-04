@@ -102,4 +102,4 @@ if __name__ == "__main__":
 
     with open("emails.json", "w", encoding="utf-8") as f:
         json.dump(emails, f, ensure_ascii=False, indent=2)
-    print(f"✅ Saved {len(emails)} emails to emails.json")
+    print(f"Saved {len(emails)} emails to emails.json")
