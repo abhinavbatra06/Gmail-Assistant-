@@ -1,0 +1,61 @@
+
+gmail:
+  senders:
+    - "all"                           # e.g. ["nyu536@nyu.edu", "cds-masters@nyu.edu"]
+
+  # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
+  start_date: ""                      # e.g. "2025-01-01"
+  end_date: ""                        # e.g. "2025-12-31"
+
+  # Gmail label to target: "INBOX", "UNREAD", "STARRED", etc.
+  label: "INBOX"
+
+  # Control fetch size
+  target_total: 100                   # Max total emails to fetch
+  per_sender_cap: 10                  # Max per sender (ignored if senders="all")
+
+  # Include attachments when downloading emails
+  include_attachments: true
+
+  # Gmail API pagination (for later scaling)
+  page_size: 50
+
+# storage paths 
+paths:
+  base_dir: data
+  raw_emails: data/raw_emails
+  attachments: data/attachments
+  metadata: data/metadata
+  docling: data/docling
+  db_path: db/emails.db
+  logs: logs
+
+
+creds:
+  gmail_client: creds/gmail_creds.json    # Google OAuth client credentials
+  gmail_token: creds/token.json           # Auto-generated refresh token
+
+
+docling:
+  convert_eml: true
+  include_layout: true
+  output_dir: data/docling
+
+
+vectorstore:
+  enable: false
+  type: "chroma"                         # or "faiss"
+  index_path: data/vector_index
+  embedding_model: "text-embedding-3-small"
+
+rag:
+  enable: false
+  top_k: 5
+  context_window: 2000
+  response_model: "gpt-4o-mini"
+
+summarizer:
+  enable: false
+  model: "gpt-3.5-turbo"
+  max_length: 500
+
