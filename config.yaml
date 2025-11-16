@@ -1,18 +1,22 @@
 
 gmail:
   senders:
-    - "all"                           # e.g. ["nyu536@nyu.edu", "cds-masters@nyu.edu"]
+    - "nyu536@nyu.edu"
+    - "cds-masters@nyu.edu"
+    - "zl2068@nyu.edu"
+    - "imp2104@nyu.edu"
+    - "noreply@mail.brightspace.nyu.edu"                           # e.g. ["nyu536@nyu.edu", "cds-masters@nyu.edu"]
 
   # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
-  start_date: ""                      # e.g. "2025-01-01"
-  end_date: ""                        # e.g. "2025-12-31"
+  start_date: "2025-10-03"                      # e.g. "2025-01-01"
+  end_date: 2025-11-08"                        # e.g. "2025-12-31"
 
   # Gmail label to target: "INBOX", "UNREAD", "STARRED", etc.
   label: "INBOX"
 
   # Control fetch size
   target_total: 100                   # Max total emails to fetch
-  per_sender_cap: 10                  # Max per sender (ignored if senders="all")
+  per_sender_cap: 100                  # Max per sender (ignored if senders="all")
 
   # Include attachments when downloading emails
   include_attachments: true
