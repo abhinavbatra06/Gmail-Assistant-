@@ -1,0 +1,13 @@
+creds/
+.DS_Store
+__pycache__/
+.env
+.vscode/
+.idea/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.log
+*.db
+data/

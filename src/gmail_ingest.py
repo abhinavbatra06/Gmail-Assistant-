@@ -163,3 +163,8 @@ class GmailIngestor:
 
         print(f"\n🎯 Done. Total emails saved: {total_saved}")
         self.db.close()
+
+if __name__ == "__main__":
+    print("Starting GmailIngestor...")  # simple debug
+    ingestor = GmailIngestor(config_path="config.yaml")
+    ingestor.run()
