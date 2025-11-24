@@ -48,6 +48,19 @@ class DBHelper:
         cur = self.conn.cursor()
         cur.execute("UPDATE emails SET status=? WHERE id=?", (status, msg_id))
         self.conn.commit()
+    
+    def insert_attachment(self, message_id, filename, path):
+        cur = self.conn.cursor()
+        cur.execute("""
+            INSERT INTO attachments (message_id, filename, path)
+            VALUES (?, ?, ?)""",
+            (message_id, filename, path))
+        self.conn.commit()
+    
+    def get_attachments_for_email(self, msg_id):
+        cur = self.conn.cursor()
+        cur.execute("SELECT filename, path FROM attachments WHERE message_id=?", (msg_id,))
+        return cur.fetchall()
 
     def close(self):
         self.conn.close()
