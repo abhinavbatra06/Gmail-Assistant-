@@ -34,3 +34,8 @@ class StorageManager:
     def path_for_attachment(self, msg_id, filename):
         clean = filename.replace("/", "_")
         return os.path.join(self.paths["attachments"], f"{msg_id}_{clean}")
+    
+    # get path for processed attachment JSON file
+    def path_for_processed_attachment(self, msg_id, filename):
+        clean = filename.replace("/", "_").replace(".", "_")
+        return os.path.join(self.paths["docling"], f"{msg_id}_att_{clean}.json")
