@@ -10,6 +10,7 @@ import json
 import yaml
 from pathlib import Path
 from typing import List, Dict, Optional
+from bs4 import BeautifulSoup
 from docling.document_converter import DocumentConverter
 try:
     from docling.datamodel.pipeline_options import PdfPipelineOptions
@@ -84,8 +85,24 @@ class DoclingProcessor:
             result = self.converter.convert(eml_path)
             docling_doc = result.document
 
+        # Extract text from Docling document
+        extracted_text = docling_doc.text_content if hasattr(docling_doc, 'text_content') else ""
+        
+        # Fallback: If Docling didn't extract text, try extracting from HTML/plain text
+        if not extracted_text or not extracted_text.strip():
+            if html_content and html_content.strip():
+                # Extract text from HTML using BeautifulSoup
+                soup = BeautifulSoup(html_content, 'html.parser')
+                # Remove script and style elements
+                for script in soup(["script", "style"]):
+                    script.decompose()
+                extracted_text = soup.get_text(separator=' ', strip=True)
+            elif text_content and text_content.strip():
+                # Use plain text as fallback
+                extracted_text = text_content
+        
         structured_content = {
-            "text": docling_doc.text_content if hasattr(docling_doc, 'text_content') else "",
+            "text": extracted_text,
             "tables": [],
             "metadata": {}
         }
@@ -399,8 +416,29 @@ class DoclingProcessor:
         text_parts.append("--- EMAIL BODY ---")
         text_parts.append("")
         
-        if doc.get("text"):
-            text_parts.append(doc["text"])
+        # Get text from docling output
+        email_text = doc.get("text", "")
+        
+        # Fallback: If text is empty, try to get from metadata
+        if not email_text or not email_text.strip():
+            # Try to load original metadata for fallback
+            meta_path = self.paths.path_for_metadata(msg_id)
+            if os.path.exists(meta_path):
+                with open(meta_path, 'r', encoding='utf-8') as f:
+                    original_meta = json.load(f)
+                
+                # Try body_text first
+                if original_meta.get("body_text") and original_meta["body_text"].strip():
+                    email_text = original_meta["body_text"]
+                # Then try extracting from HTML
+                elif original_meta.get("body_html") and original_meta["body_html"].strip():
+                    soup = BeautifulSoup(original_meta["body_html"], 'html.parser')
+                    for script in soup(["script", "style"]):
+                        script.decompose()
+                    email_text = soup.get_text(separator=' ', strip=True)
+        
+        if email_text:
+            text_parts.append(email_text)
 
         for table in doc.get("tables", []):
             text_parts.append(f"\n[Table]\n{table.get('content', '')}")
