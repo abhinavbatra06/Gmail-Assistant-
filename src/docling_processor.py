@@ -85,20 +85,15 @@ class DoclingProcessor:
             result = self.converter.convert(eml_path)
             docling_doc = result.document
 
-        # Extract text from Docling document
         extracted_text = docling_doc.text_content if hasattr(docling_doc, 'text_content') else ""
         
-        # Fallback: If Docling didn't extract text, try extracting from HTML/plain text
         if not extracted_text or not extracted_text.strip():
             if html_content and html_content.strip():
-                # Extract text from HTML using BeautifulSoup
                 soup = BeautifulSoup(html_content, 'html.parser')
-                # Remove script and style elements
                 for script in soup(["script", "style"]):
                     script.decompose()
                 extracted_text = soup.get_text(separator=' ', strip=True)
             elif text_content and text_content.strip():
-                # Use plain text as fallback
                 extracted_text = text_content
         
         structured_content = {
@@ -337,15 +332,12 @@ class DoclingProcessor:
                     att_doc["metadata"]["content_type"] = "text"
                     
                 elif ext in ['.jpg', '.jpeg', '.png', '.gif', '.bmp', '.tiff', '.tif', '.webp', '.svg']:
-                    # Process images with Docling (OCR + vision model for text extraction)
                     try:
                         result = self.converter.convert(att_path)
                         docling_doc = result.document
-                        
-                        # Extract text from image (OCR)
+
                         att_doc["text"] = docling_doc.text_content if hasattr(docling_doc, 'text_content') else ""
                         
-                        # Extract image descriptions if available (vision model)
                         if hasattr(docling_doc, 'pictures') and docling_doc.pictures:
                             descriptions = []
                             for pic in docling_doc.pictures:
@@ -358,7 +350,6 @@ class DoclingProcessor:
                         att_doc["metadata"]["image_format"] = ext
                         
                     except Exception as img_error:
-                        # If Docling fails, at least record that it's an image
                         att_doc["text"] = f"[Image file: {filename} - could not extract text: {str(img_error)}]"
                         att_doc["metadata"]["content_type"] = "image"
                         att_doc["metadata"]["image_format"] = ext
@@ -416,21 +407,17 @@ class DoclingProcessor:
         text_parts.append("--- EMAIL BODY ---")
         text_parts.append("")
         
-        # Get text from docling output
         email_text = doc.get("text", "")
         
-        # Fallback: If text is empty, try to get from metadata
         if not email_text or not email_text.strip():
-            # Try to load original metadata for fallback
             meta_path = self.paths.path_for_metadata(msg_id)
             if os.path.exists(meta_path):
                 with open(meta_path, 'r', encoding='utf-8') as f:
                     original_meta = json.load(f)
                 
-                # Try body_text first
                 if original_meta.get("body_text") and original_meta["body_text"].strip():
                     email_text = original_meta["body_text"]
-                # Then try extracting from HTML
+                # try extracting from HTML
                 elif original_meta.get("body_html") and original_meta["body_html"].strip():
                     soup = BeautifulSoup(original_meta["body_html"], 'html.parser')
                     for script in soup(["script", "style"]):
