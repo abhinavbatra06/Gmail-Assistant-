@@ -518,16 +518,21 @@ class DoclingProcessor:
         text_parts.append("--- EMAIL BODY ---")
         text_parts.append("")
         
+        # Get text from docling output
         email_text = doc.get("text", "")
         
+        # Fallback: If text is empty, try to get from metadata
         if not email_text or not email_text.strip():
+            # Try to load original metadata for fallback
             meta_path = self.paths.path_for_metadata(msg_id)
             if os.path.exists(meta_path):
                 with open(meta_path, 'r', encoding='utf-8') as f:
                     original_meta = json.load(f)
                 
+                # Try body_text first
                 if original_meta.get("body_text") and original_meta["body_text"].strip():
                     email_text = original_meta["body_text"]
+                # Then try extracting from HTML
                 elif original_meta.get("body_html") and original_meta["body_html"].strip():
                     soup = BeautifulSoup(original_meta["body_html"], 'html.parser')
                     for script in soup(["script", "style"]):
@@ -537,8 +542,40 @@ class DoclingProcessor:
         if email_text:
             text_parts.append(email_text)
 
-        for table in doc.get("tables", []):
-            text_parts.append(f"\n[Table]\n{table.get('content', '')}")
+        # Process email tables (if enabled)
+        # extract meaningful table data while filtering out layout-only tables
+        include_email_tables = self.docling_cfg.get("include_email_tables", False)
+        
+        if include_email_tables:
+            for table in doc.get("tables", []):
+                table_text = ""
+                content = table.get("content", "")
+                
+                # extract meaningful text from table structure
+                # look for actual cell text in the content string
+                if content and content.strip():
+                    content_str = str(content)
+                    
+                    import re
+                    text_matches = re.findall(r"text='([^']*)'", content_str)
+                    meaningful_texts = [t for t in text_matches if t.strip() and len(t.strip()) > 3]
+                    
+                    if meaningful_texts:
+                        table_text = " | ".join(meaningful_texts)
+                    else:
+                        if len(content_str) > 100 and not content_str.startswith("self_ref"):
+                            cleaned = re.sub(r"self_ref='[^']*'", "", content_str)
+                            cleaned = re.sub(r"parent=[^)]*\)", "", cleaned)
+                            cleaned = re.sub(r"children=\[[^\]]*\]", "", cleaned)
+                            cleaned = re.sub(r"content_layer=[^,]*", "", cleaned)
+                            if cleaned.strip() and len(cleaned.strip()) > 50:
+                                table_text = cleaned.strip()[:500]
+                
+                # only include tables with meaningful content
+                # filter out: empty tables, single cell tables, very short tables
+                if table_text and len(table_text.strip()) > 20:
+                    text_parts.append(f"\n[Table]\n{table_text}")
+
 
         for section in doc.get("sections", []):
             if section.get("title"):

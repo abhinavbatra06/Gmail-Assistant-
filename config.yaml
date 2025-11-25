@@ -50,6 +50,7 @@ docling:
   include_layout: true
   output_dir: data/docling
   process_attachments: true
+  include_email_tables: false  # set to true to include email HTML tables
 
 chunking:
   chunk_size: 500          # target tokens per chunk
