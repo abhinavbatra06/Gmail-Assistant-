@@ -5,3 +5,9 @@ google-auth-httplib2
 beautifulsoup4
 pyyaml
 docling
+openai
+tiktoken
+numpy
+faiss-cpu
+xlrd
+openpyxl

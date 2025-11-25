@@ -310,13 +310,79 @@ class DoclingProcessor:
                     att_doc["text"] = self._process_ics_file(att_path)
                     att_doc["metadata"]["content_type"] = "calendar"
                     
-                elif ext in ['.pdf', '.docx', '.doc', '.pptx', '.xlsx', '.xls']:
+                elif ext == '.xls':
+                    # legacy Excel format; no docling support, use xlrd or openpyxl
+                    try:
+                        # Try using xlrd for .xls files
+                        try:
+                            import xlrd
+                            workbook = xlrd.open_workbook(att_path)
+                            sheet_texts = []
+                            for sheet in workbook.sheets():
+                                sheet_texts.append(f"\n[Sheet: {sheet.name}]")
+                                for row_idx in range(sheet.nrows):
+                                    row_values = []
+                                    for col_idx in range(sheet.ncols):
+                                        cell_value = sheet.cell_value(row_idx, col_idx)
+                                        if cell_value:
+                                            row_values.append(str(cell_value))
+                                    if row_values:
+                                        sheet_texts.append(" | ".join(row_values))
+                            extracted_text = "\n".join(sheet_texts)
+                            att_doc["text"] = extracted_text
+                            att_doc["metadata"]["content_type"] = "spreadsheet"
+                            att_doc["metadata"]["file_format"] = "xls"
+                        except ImportError:
+                            # xlrd not available, try openpyxl (may not work for .xls)
+                            try:
+                                from openpyxl import load_workbook
+                                workbook = load_workbook(att_path, read_only=True)
+                                sheet_texts = []
+                                for sheet_name in workbook.sheetnames:
+                                    sheet = workbook[sheet_name]
+                                    sheet_texts.append(f"\n[Sheet: {sheet_name}]")
+                                    for row in sheet.iter_rows(values_only=True):
+                                        row_values = [str(v) for v in row if v is not None]
+                                        if row_values:
+                                            sheet_texts.append(" | ".join(row_values))
+                                extracted_text = "\n".join(sheet_texts)
+                                att_doc["text"] = extracted_text
+                                att_doc["metadata"]["content_type"] = "spreadsheet"
+                                att_doc["metadata"]["file_format"] = "xls"
+                            except Exception as e:
+                                att_doc["text"] = f"[Excel file (.xls) - could not extract: {str(e)}. Install xlrd: pip install xlrd]"
+                                att_doc["metadata"]["content_type"] = "spreadsheet"
+                                att_doc["metadata"]["file_format"] = "xls"
+                                att_doc["metadata"]["processing_error"] = str(e)
+                    except Exception as e:
+                        att_doc["text"] = f"[Excel file (.xls) - could not extract: {str(e)}]"
+                        att_doc["metadata"]["content_type"] = "spreadsheet"
+                        att_doc["metadata"]["file_format"] = "xls"
+                        att_doc["metadata"]["processing_error"] = str(e)
+                    
+                elif ext in ['.pdf', '.docx', '.doc', '.pptx', '.xlsx']:
                     result = self.converter.convert(att_path)
                     docling_doc = result.document
                     
                     extracted_text = ""
+
+                    if ext == '.xlsx':
+                        # extract from tables first
+                        if hasattr(docling_doc, 'tables') and docling_doc.tables:
+                            table_texts = []
+                            for table in docling_doc.tables:
+                                if hasattr(table, 'data') and hasattr(table.data, 'table_cells'):
+                                    # extract text from table cells
+                                    cell_texts = []
+                                    for cell in table.data.table_cells:
+                                        if hasattr(cell, 'text') and cell.text:
+                                            cell_texts.append(str(cell.text).strip())
+                                    if cell_texts:
+                                        table_texts.append(" | ".join(cell_texts))
+                            if table_texts:
+                                extracted_text = "\n".join(table_texts)
                     
-                    if hasattr(docling_doc, 'text_content'):
+                    if not extracted_text and hasattr(docling_doc, 'text_content'):
                         text_val = docling_doc.text_content
                         if text_val:
                             if callable(text_val):
@@ -367,7 +433,7 @@ class DoclingProcessor:
                                 cell_texts = []
                                 for cell in table.data.table_cells:
                                     if hasattr(cell, 'text') and cell.text:
-                                        cell_texts.append(cell.text)
+                                        cell_texts.append(str(cell.text).strip())
                                 if cell_texts:
                                     table_text = " | ".join(cell_texts)
                             else:
@@ -379,10 +445,13 @@ class DoclingProcessor:
                             }
                             att_doc["tables"].append(table_data)
                     
-                    att_doc["metadata"]["content_type"] = "document"
+                    att_doc["metadata"]["content_type"] = "document" if ext != '.xlsx' else "spreadsheet"
+                    if ext == '.xlsx':
+                        att_doc["metadata"]["file_format"] = "xlsx"
                     
                     if not extracted_text:
-                        print(f"  ⚠️  Warning: No text extracted from {filename} (may be image-only PDF)")
+                        file_type = "Excel spreadsheet" if ext == '.xlsx' else "document"
+                        print(f"  ⚠️  Warning: No text extracted from {filename} (empty {file_type} or extraction failed)")
                     
                 elif ext in ['.txt', '.csv', '.json', '.xml']:
                     with open(att_path, 'r', encoding='utf-8', errors='ignore') as f:
