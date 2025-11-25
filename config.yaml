@@ -49,7 +49,11 @@ docling:
   convert_eml: true
   include_layout: true
   output_dir: data/docling
+  process_attachments: true
 
+chunking:
+  chunk_size: 500          # target tokens per chunk
+  chunk_overlap: 50         # overlap tokens between chunks
 
 vectorstore:
   enable: false
