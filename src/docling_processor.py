@@ -101,7 +101,7 @@ class DoclingProcessor:
             "tables": [],
             "metadata": {}
         }
-
+        
         if hasattr(docling_doc, 'tables') and docling_doc.tables:
             for table in docling_doc.tables:
                 table_data = {
