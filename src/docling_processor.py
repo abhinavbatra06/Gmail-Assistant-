@@ -313,7 +313,7 @@ class DoclingProcessor:
                 elif ext == '.xls':
                     # legacy Excel format; no docling support, use xlrd or openpyxl
                     try:
-                        # Try using xlrd for .xls files
+                        # try using xlrd for .xls files
                         try:
                             import xlrd
                             workbook = xlrd.open_workbook(att_path)
@@ -333,7 +333,6 @@ class DoclingProcessor:
                             att_doc["metadata"]["content_type"] = "spreadsheet"
                             att_doc["metadata"]["file_format"] = "xls"
                         except ImportError:
-                            # xlrd not available, try openpyxl (may not work for .xls)
                             try:
                                 from openpyxl import load_workbook
                                 workbook = load_workbook(att_path, read_only=True)
