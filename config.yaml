@@ -9,11 +9,12 @@ gmail:
     - "courant-academicaffairs@nyu.edu"
     - "opportunities@cs.nyu.edu"
     - "ab12615@nyu.edu"
+    - "ankitatripathi95@gmail.com"
     - "at6651@nyu.edu"
 
   # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
   start_date: "2025-10-30"
-  end_date: "2025-11-23"
+  end_date: "2025-11-25"
 
   # Gmail label to target: "INBOX", "UNREAD", "STARRED", etc.
   label: "INBOX"

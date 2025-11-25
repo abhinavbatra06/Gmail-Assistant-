@@ -314,17 +314,75 @@ class DoclingProcessor:
                     result = self.converter.convert(att_path)
                     docling_doc = result.document
                     
-                    att_doc["text"] = docling_doc.text_content if hasattr(docling_doc, 'text_content') else ""
+                    extracted_text = ""
+                    
+                    if hasattr(docling_doc, 'text_content'):
+                        text_val = docling_doc.text_content
+                        if text_val:
+                            if callable(text_val):
+                                try:
+                                    extracted_text = text_val()
+                                except:
+                                    pass
+                            else:
+                                extracted_text = str(text_val) if text_val else ""
+                    
+                    if not extracted_text and hasattr(result, 'export_text'):
+                        try:
+                            extracted_text = result.export_text()
+                        except Exception:
+                            pass
+                    
+                    if not extracted_text and hasattr(docling_doc, 'texts'):
+                        text_parts = []
+                        try:
+                            texts = docling_doc.texts
+                            if texts:
+                                for text_item in texts:
+                                    if hasattr(text_item, 'text'):
+                                        text_parts.append(str(text_item.text))
+                                    elif isinstance(text_item, str):
+                                        text_parts.append(text_item)
+                                    else:
+                                        text_parts.append(str(text_item))
+                                extracted_text = "\n".join(filter(None, text_parts))
+                        except Exception:
+                            pass
+                    
+                    if not extracted_text:
+                        try:
+                            if hasattr(docling_doc, 'get_text'):
+                                extracted_text = docling_doc.get_text()
+                            elif hasattr(docling_doc, 'to_text'):
+                                extracted_text = docling_doc.to_text()
+                        except Exception:
+                            pass
+                    
+                    att_doc["text"] = extracted_text
                     
                     if hasattr(docling_doc, 'tables') and docling_doc.tables:
                         for table in docling_doc.tables:
+                            table_text = ""
+                            if hasattr(table, 'data') and hasattr(table.data, 'table_cells'):
+                                cell_texts = []
+                                for cell in table.data.table_cells:
+                                    if hasattr(cell, 'text') and cell.text:
+                                        cell_texts.append(cell.text)
+                                if cell_texts:
+                                    table_text = " | ".join(cell_texts)
+                            else:
+                                table_text = str(table)
+                            
                             table_data = {
                                 "rows": len(table) if hasattr(table, '__len__') else 0,
-                                "content": str(table) if hasattr(table, '__str__') else ""
+                                "content": table_text
                             }
                             att_doc["tables"].append(table_data)
                     
                     att_doc["metadata"]["content_type"] = "document"
+                    
+                    if not extracted_text:
+                        print(f"  ⚠️  Warning: No text extracted from {filename} (may be image-only PDF)")
                     
                 elif ext in ['.txt', '.csv', '.json', '.xml']:
                     with open(att_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -335,16 +393,69 @@ class DoclingProcessor:
                     try:
                         result = self.converter.convert(att_path)
                         docling_doc = result.document
-
-                        att_doc["text"] = docling_doc.text_content if hasattr(docling_doc, 'text_content') else ""
                         
+                        extracted_text = ""
+                        
+                        if hasattr(docling_doc, 'text_content'):
+                            text_val = docling_doc.text_content
+                            if text_val:
+                                if callable(text_val):
+                                    try:
+                                        extracted_text = text_val()
+                                    except:
+                                        pass
+                                else:
+                                    extracted_text = str(text_val) if text_val else ""
+                        
+                        if not extracted_text and hasattr(result, 'export_text'):
+                            try:
+                                extracted_text = result.export_text()
+                            except Exception:
+                                pass
+                        
+                        if not extracted_text and hasattr(docling_doc, 'texts'):
+                            text_parts = []
+                            try:
+                                texts = docling_doc.texts
+                                if texts:
+                                    for text_item in texts:
+                                        if hasattr(text_item, 'text'):
+                                            text_parts.append(str(text_item.text))
+                                        elif isinstance(text_item, str):
+                                            text_parts.append(text_item)
+                                        else:
+                                            text_parts.append(str(text_item))
+                                    extracted_text = "\n".join(filter(None, text_parts))
+                            except Exception:
+                                pass
+                        
+                        if not extracted_text:
+                            try:
+                                if hasattr(docling_doc, 'get_text'):
+                                    extracted_text = docling_doc.get_text()
+                                elif hasattr(docling_doc, 'to_text'):
+                                    extracted_text = docling_doc.to_text()
+                            except Exception:
+                                pass
+                        
+                        descriptions = []
                         if hasattr(docling_doc, 'pictures') and docling_doc.pictures:
-                            descriptions = []
                             for pic in docling_doc.pictures:
                                 if hasattr(pic, 'description') and pic.description:
                                     descriptions.append(pic.description)
-                            if descriptions:
-                                att_doc["text"] += "\n\n[Image Descriptions]\n" + "\n".join(descriptions)
+                        
+                        if extracted_text:
+                            att_doc["text"] = extracted_text
+                        if descriptions:
+                            if att_doc["text"]:
+                                att_doc["text"] += "\n\n[Image Descriptions]\n"
+                            else:
+                                att_doc["text"] = "[Image Descriptions]\n"
+                            att_doc["text"] += "\n".join(descriptions)
+                        
+                        if not att_doc["text"]:
+                            att_doc["text"] = f"[Image file: {filename} - OCR did not extract text (may be image without text)]"
+                            print(f"  ⚠️  Warning: No text extracted from image {filename}")
                         
                         att_doc["metadata"]["content_type"] = "image"
                         att_doc["metadata"]["image_format"] = ext
@@ -417,7 +528,6 @@ class DoclingProcessor:
                 
                 if original_meta.get("body_text") and original_meta["body_text"].strip():
                     email_text = original_meta["body_text"]
-                # try extracting from HTML
                 elif original_meta.get("body_html") and original_meta["body_html"].strip():
                     soup = BeautifulSoup(original_meta["body_html"], 'html.parser')
                     for script in soup(["script", "style"]):
