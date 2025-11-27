@@ -1,15 +1,20 @@
 
 gmail:
   senders:
-    - "nyu536@nyu.edu"
-    - "cds-masters@nyu.edu"
-    - "zl2068@nyu.edu"
-    - "imp2104@nyu.edu"
+  # - "all"                                # Use "all" to fetch from all senders
     - "noreply@mail.brightspace.nyu.edu"                           # e.g. ["nyu536@nyu.edu", "cds-masters@nyu.edu"]
+    - "alerts@mail.libcal.com"
+    - "handshake@notifications.joinhandshake.com"
+    - "gsas.profdev@nyu.edu"
+    - "courant-academicaffairs@nyu.edu"
+    - "opportunities@cs.nyu.edu"
+    - "ab12615@nyu.edu"
+    - "ankitatripathi95@gmail.com"
+    - "at6651@nyu.edu"
 
   # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
-  start_date: "2025-10-03"                      # e.g. "2025-01-01"
-  end_date: 2025-11-08"                        # e.g. "2025-12-31"
+  start_date: "2025-10-30"
+  end_date: "2025-11-26"
 
   # Gmail label to target: "INBOX", "UNREAD", "STARRED", etc.
   label: "INBOX"
@@ -44,7 +49,12 @@ docling:
   convert_eml: true
   include_layout: true
   output_dir: data/docling
+  process_attachments: true
+  include_email_tables: false  # set to true to include email HTML tables
 
+chunking:
+  chunk_size: 500          # target tokens per chunk
+  chunk_overlap: 50         # overlap tokens between chunks
 
 vectorstore:
   enable: false
