@@ -14,7 +14,7 @@ gmail:
 
   # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
   start_date: "2025-10-30"
-  end_date: "2025-11-26"
+  end_date: "2025-12-1"
 
   # Gmail label to target: "INBOX", "UNREAD", "STARRED", etc.
   label: "INBOX"
@@ -50,11 +50,14 @@ docling:
   include_layout: true
   output_dir: data/docling
   process_attachments: true
-  include_email_tables: false  # set to true to include email HTML tables
+  include_email_tables: true  # set to true to include email HTML tables
 
 chunking:
   chunk_size: 500          # target tokens per chunk
   chunk_overlap: 50         # overlap tokens between chunks
+  # respect_boundaries: true  # set to true to maintain semantic boundaries (metadata, body, attachments)
+  # include_metadata_in_first: true  # set to true to always include metadata (subject, from, date) in first chunk
+  # chunk_attachments_separately: true  # set to true so each attachment gets separate chunks (better for retrieval)
 
 vectorstore:
   enable: false
