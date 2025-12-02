@@ -1,13 +1,49 @@
+# Gmail API dependencies
 google-api-python-client
 google-auth
 google-auth-oauthlib
 google-auth-httplib2
+
+# HTML/Email parsing
 beautifulsoup4
+
+# Configuration
 pyyaml
+
+# Document processing
 docling
 xlrd
 openpyxl
+python-docx
+python-pptx
+
+# OpenAI for embeddings and Q&A
 openai
 tiktoken
+
+# Vector database and embeddings
 numpy
 faiss-cpu
+
+# OCR
+rapidocr-onnxruntime
+
+# Database/Storage
+chromadb
+
+# Additional utilities
+pandas
+tqdm
+coloredlogs
+python-dotenv
+rank-bm25
+
+# Optional: sentence-transformers for cross-encoder reranking
+sentence-transformers
+
+# SSL Certificate Fix for HuggingFace/Docling (Windows)
+certifi>=2024.0.0
+python-certifi-win32>=1.6.0
+pyopenssl>=24.0.0
+cryptography>=42.0.0
+huggingface-hub==0.36.0
