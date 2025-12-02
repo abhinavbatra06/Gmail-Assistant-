@@ -14,7 +14,7 @@ gmail:
 
   # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
   start_date: "2025-10-30"
-  end_date: "2025-11-26"
+  end_date: "2025-12-1"
 
   # Gmail label to target: "INBOX", "UNREAD", "STARRED", etc.
   label: "INBOX"

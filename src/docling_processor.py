@@ -162,10 +162,58 @@ class DoclingProcessor:
             docling_path = self.paths.path_for_docling(msg_id)
 
             if os.path.exists(docling_path):
-                print(f"⏭️  Already processed: {msg_id}")
                 with open(docling_path, 'r', encoding='utf-8') as f:
-                    return json.load(f)
+                    structured_doc = json.load(f)
+                
+                # check if attachments need to be processed
+                should_process_attachments = self.docling_cfg.get("process_attachments", True)
+                # check if attachments_processed key exists (indicates whether attachments were ever processed)
+                attachments_processed_key_exists = "attachments_processed" in structured_doc
+                existing_attachments = structured_doc.get("attachments_processed", [])
+                
+                # use database as source of truth for what attachments exist
+                # more reliable than metadata JSON which might be missing/out of sync
+                db_attachments = self.db.get_attachments_for_email(msg_id)
+                db_attachment_count = len(db_attachments) if db_attachments else 0
+                
+                # check processed attachment files on disk
+                processed_attachment_files = []
+                if db_attachment_count > 0:
+                    for filename, _ in db_attachments:
+                        processed_path = self.paths.path_for_processed_attachment(msg_id, filename)
+                        if os.path.exists(processed_path):
+                            processed_attachment_files.append(filename)
 
+                # determine if attachments need processing
+                has_unprocessed_attachments = False
+                if should_process_attachments and db_attachment_count > 0:
+                    # if attachments_processed key doesn't exist, attachments were never processed
+                    if not attachments_processed_key_exists:
+                        has_unprocessed_attachments = True
+                    # if database has more attachments than processed files on disk, need to process
+                    elif db_attachment_count > len(processed_attachment_files):
+                        has_unprocessed_attachments = True
+                    # if attachments_processed exists but count doesn't match database, need to process
+                    elif attachments_processed_key_exists and len(existing_attachments) < db_attachment_count:
+                        has_unprocessed_attachments = True
+                
+                if has_unprocessed_attachments:
+                    print(f"📎 Processing attachments for already-processed email: {msg_id} (DB has {db_attachment_count} attachments, {len(processed_attachment_files)} processed)")
+                    attachments = self.process_attachments(msg_id, save=True)
+                    structured_doc["attachments_processed"] = attachments
+                    structured_doc["metadata"]["attachment_count"] = len(attachments)
+                    
+                    # update the docling file with processed attachments
+                    with open(docling_path, 'w', encoding='utf-8') as f:
+                        json.dump(structured_doc, f, ensure_ascii=False, indent=2)
+                    
+                    print(f"✅ Updated with attachments: {msg_id} | {structured_doc['metadata'].get('subject', '')[:60]}")
+                else:
+                    print(f"⏭️  Already processed: {msg_id}")
+                
+                return structured_doc
+
+            # email body hasn't been processed yet; process everything
             metadata = None
             if os.path.exists(meta_path):
                 with open(meta_path, 'r', encoding='utf-8') as f:
@@ -191,18 +239,27 @@ class DoclingProcessor:
             self.db.update_status(msg_id, f"error: {str(e)}")
             return None
 
-    def process_all_emails(self, limit: Optional[int] = None) -> List[Dict]:
+    def process_all_emails(self, limit: Optional[int] = None, reprocess: bool = False) -> List[Dict]:
         """
         Process all emails that haven't been processed yet.
         
         Args:
             limit: Optional limit on number of emails to process
+            reprocess: If True, also process emails that are already marked as 'processed'
+                      (useful for processing attachments when config changes)
             
         Returns:
             List of processed document dicts
         """
         cur = self.db.conn.cursor()
-        query = "SELECT id FROM emails WHERE status = 'downloaded' OR status LIKE 'error:%'"
+        # always include processed emails if process_attachments is enabled
+        should_process_attachments = self.docling_cfg.get("process_attachments", True)
+        
+        if reprocess or should_process_attachments:
+            # include already processed emails to check for missing attachments
+            query = "SELECT id FROM emails WHERE status = 'downloaded' OR status LIKE 'error:%' OR status = 'processed'"
+        else:
+            query = "SELECT id FROM emails WHERE status = 'downloaded' OR status LIKE 'error:%'"
         if limit:
             query += f" LIMIT {limit}"
         cur.execute(query)
@@ -262,8 +319,8 @@ class DoclingProcessor:
         Process attachments for an email (PDFs, Word docs, ICS files, etc.).
         
         This method uses attachments that were already downloaded and saved by
-        gmail_ingest.py. It reads attachment paths from the metadata JSON file
-        and processes the files from disk.
+        gmail_ingest.py. It reads attachment paths from the database (primary source)
+        or metadata JSON file (fallback) and processes the files from disk.
         
         Args:
             msg_id: Gmail message ID
@@ -272,15 +329,22 @@ class DoclingProcessor:
         Returns:
             List of processed attachment documents
         """
-        meta_path = self.paths.path_for_metadata(msg_id)
-        if not os.path.exists(meta_path):
-            print(f"  ⚠️  No metadata found for {msg_id} - attachments may not have been downloaded")
-            return []
-
-        with open(meta_path, 'r', encoding='utf-8') as f:
-            metadata = json.load(f)
-
-        attachments_meta = metadata.get("attachments", [])
+        # get attachments from database (most reliable source)
+        db_attachments = self.db.get_attachments_for_email(msg_id)
+        
+        # build attachments list from database
+        attachments_meta = []
+        if db_attachments:
+            for filename, path in db_attachments:
+                attachments_meta.append({"filename": filename, "path": path})
+        
+        # fallback to metadata JSON if database has no attachments
+        if not attachments_meta:
+            meta_path = self.paths.path_for_metadata(msg_id)
+            if os.path.exists(meta_path):
+                with open(meta_path, 'r', encoding='utf-8') as f:
+                    metadata = json.load(f)
+                attachments_meta = metadata.get("attachments", [])
         if not attachments_meta:
             return []
 
@@ -595,21 +659,16 @@ class DoclingProcessor:
         text_parts.append("--- EMAIL BODY ---")
         text_parts.append("")
         
-        # Get text from docling output
         email_text = doc.get("text", "")
         
-        # Fallback: If text is empty, try to get from metadata
         if not email_text or not email_text.strip():
-            # Try to load original metadata for fallback
             meta_path = self.paths.path_for_metadata(msg_id)
             if os.path.exists(meta_path):
                 with open(meta_path, 'r', encoding='utf-8') as f:
                     original_meta = json.load(f)
                 
-                # Try body_text first
                 if original_meta.get("body_text") and original_meta["body_text"].strip():
                     email_text = original_meta["body_text"]
-                # Then try extracting from HTML
                 elif original_meta.get("body_html") and original_meta["body_html"].strip():
                     soup = BeautifulSoup(original_meta["body_html"], 'html.parser')
                     for script in soup(["script", "style"]):
@@ -619,7 +678,7 @@ class DoclingProcessor:
         if email_text:
             text_parts.append(email_text)
 
-        # Process email tables (if enabled)
+        # process email tables (if enabled)
         # extract meaningful table data while filtering out layout-only tables
         include_email_tables = self.docling_cfg.get("include_email_tables", False)
         
@@ -628,8 +687,6 @@ class DoclingProcessor:
                 table_text = ""
                 content = table.get("content", "")
                 
-                # extract meaningful text from table structure
-                # look for actual cell text in the content string
                 if content and content.strip():
                     content_str = str(content)
                     
