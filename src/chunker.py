@@ -12,14 +12,14 @@ Each chunk includes:
 import os
 import json
 from datetime import datetime
-
+from typing import Optional # added
 
 class EmailChunker:
     """
     Handles chunking of emails and attachments into manageable pieces.
     """
     
-    def __init__(self, db_helper, chunk_size=600, overlap=100):
+    def __init__(self, db_helper, chunk_size=600, overlap=100, predict_db_path: Optional[str] = None): # modified
         """
         Initialize the chunker.
         
@@ -27,11 +27,23 @@ class EmailChunker:
             db_helper: Instance of DBHelper for tracking
             chunk_size: Target size for each chunk (rough word/token count)
             overlap: How many words to overlap between chunks
+            predict_db_path: Optional path to Predict event database (for ICS parsing) # added
         """
         self.db = db_helper
         self.chunk_size = chunk_size  # Target ~600 words per chunk
         self.overlap = overlap  # ~100 words overlap
         self.chunk_dir = "data/chunks"
+
+        # added
+        # initialize Predict module if path provided
+        self.predict = None
+        if predict_db_path:
+            try:
+                from src.predict import Predict
+                self.predict = Predict(predict_db_path)
+                print(f"Predict module initialized: {predict_db_path}")
+            except Exception as e:
+                print(f"Warning: Could not initialize Predict module: {str(e)}")
         
         # Create chunks directory if it doesn't exist
         os.makedirs(self.chunk_dir, exist_ok=True)
@@ -77,6 +89,21 @@ class EmailChunker:
         body_chunks = self._chunk_email_body(email_data)
         all_chunks.extend(body_chunks)
         print(f"   → Created {len(body_chunks)} chunks from body")
+
+        # added:
+        # extract events from email body text if Predict module is available
+        if self.predict and body_chunks:
+            email_metadata = email_data.get("metadata", {})
+            email_date = email_metadata.get("date", "")
+            email_subject = email_metadata.get("subject", "")
+            # get full email text for event extraction
+            email_text = email_data.get("text", "")
+            if email_text and len(email_text.strip()) > 50:
+                event_count = self.predict.extract_events_from_text(
+                    message_id, email_text, email_date, email_subject
+                )
+                if event_count > 0:
+                    print(f"     Extracted {event_count} events from email body text")
         
         # Chunk attachments
         attachments = email_data.get("attachments_processed", [])
@@ -84,7 +111,44 @@ class EmailChunker:
             print(f" Found {len(attachments)} attachments...")
             for i, attachment in enumerate(attachments, 1):
                 att_name = attachment.get('filename', 'unknown')
+                att_metadata = attachment.get("metadata", {}) # added
                 print(f"   → Chunking attachment {i}: {att_name}")
+
+                # added: special handling for .ics files
+                # extract events to Predict database if this is a calendar file
+                if self.predict and att_metadata.get("is_calendar"):
+                    att_path = attachment.get("path", "")
+                    if att_path and os.path.exists(att_path):
+                        # get email date for deduplication
+                        email_metadata = email_data.get("metadata", {})
+                        email_date = email_metadata.get("date", "")
+                        event_count = self.predict.extract_events_from_email(
+                            message_id, att_path, att_name, email_date
+                        )
+                        if event_count > 0:
+                            print(f"     Extracted {event_count} events to Predict database (with deduplication)")
+
+                # added 
+                # extract events from attachment text (for images, pdfs, etc processed by docling)
+                if self.predict:
+                    att_text = attachment.get("text", "")
+                    if att_text and len(att_text.strip()) > 50:
+                        # check if this looks like event-related content
+                        event_keywords = ["event", "meeting", "workshop", "session", "date", "time", "location", 
+                                         "venue", "register", "rsvp", "calendar", "schedule"]
+                        att_text_lower = att_text.lower()
+                        if any(keyword in att_text_lower for keyword in event_keywords):
+                            email_metadata = email_data.get("metadata", {})
+                            email_date = email_metadata.get("date", "")
+                            email_subject = email_metadata.get("subject", "")
+                            # use attachment filename as context
+                            event_context = f"Attachment: {att_name}\n\n{att_text}"
+                            event_count = self.predict.extract_events_from_text(
+                                message_id, event_context, email_date, email_subject
+                            )
+                            if event_count > 0:
+                                print(f"     Extracted {event_count} events from attachment text")
+
                 att_chunks = self._chunk_attachment(email_data, attachment)
                 all_chunks.extend(att_chunks)
                 print(f"     Created {len(att_chunks)} chunks")
@@ -181,7 +245,8 @@ class EmailChunker:
     def _chunk_attachment(self, email_data, attachment):
         """
         Chunk a single attachment.
-        
+        Uses event-aware chunking for calendar files (keeps events as atomic units). # added 
+
         Args:
             email_data: The email's Docling JSON data
             attachment: The attachment data from attachments_processed
@@ -190,6 +255,18 @@ class EmailChunker:
             List of chunks
         """
         chunks = []
+
+        # added:
+        metadata = email_data.get("metadata", {})
+        att_filename = attachment.get("filename", "unknown")
+        att_metadata = attachment.get("metadata", {})
+        
+        # check if this is a calendar attachment with structured events
+        if att_metadata.get("is_calendar") and attachment.get("events"):
+            # event-aware chunking: keep each event as an atomic unit
+            return self._chunk_calendar_events(email_data, attachment, metadata)
+        
+        # standard chunking for other attachments follows:
         
         # Get attachment text
         att_text = attachment.get("text", "")
@@ -197,9 +274,9 @@ class EmailChunker:
         if not att_text or len(att_text.strip()) == 0:
             return chunks
         
-        # Get metadata
-        metadata = email_data.get("metadata", {})
-        att_filename = attachment.get("filename", "unknown")
+        # # Get metadata
+        # metadata = email_data.get("metadata", {})
+        # att_filename = attachment.get("filename", "unknown")
         
         # Simple chunking by paragraphs (same logic as email body)
         paragraphs = att_text.split("\n\n")
@@ -254,19 +331,55 @@ class EmailChunker:
         
         return chunks
     
-    
+    # added
+    def _chunk_calendar_events(self, email_data, attachment, metadata):
+        """
+        Event-aware chunking: keep each calendar event as an atomic unit.
+        
+        Args:
+            email_data: The email's Docling JSON data
+            attachment: The attachment data with events
+            metadata: Email metadata
+            
+        Returns:
+            List of chunks (one per event)
+        """
+        chunks = []
+        events = attachment.get("events", [])
+        att_filename = attachment.get("filename", "unknown")
+        
+        for event_idx, event in enumerate(events):
+            # each event becomes one chunk (atomic unit)
+            event_text = event.get("text", "")
+            
+            # add event metadata to chunk
+            chunk = self._create_chunk(
+                text=event_text,
+                chunk_index=event_idx,
+                source_type="calendar",
+                email_data=email_data,
+                metadata=metadata,
+                attachment_name=att_filename,
+                event_data=event  # pass structured event data
+            )
+            chunks.append(chunk)
+        
+        return chunks
+
+
     def _create_chunk(self, text, chunk_index, source_type, email_data, 
-                     metadata, attachment_name=None):
+                     metadata, attachment_name=None, event_data=None): # modified
         """
         Create a chunk dictionary with text and metadata.
         
         Args:
             text: The chunk text
             chunk_index: Index of this chunk
-            source_type: "email_body" or "attachment"
+            source_type: "email_body", "attachment", or "calendar" # modified
             email_data: Full email data
             metadata: Email metadata
             attachment_name: Name of attachment (if applicable)
+            event_data: Structured event data (for calendar events) # added
             
         Returns:
             Chunk dictionary
@@ -276,6 +389,17 @@ class EmailChunker:
         # Build unique chunk ID
         if source_type == "email_body":
             chunk_id = f"{message_id}_email_{chunk_index}"
+
+        # added
+        elif source_type == "calendar":
+            # for calendar events, use event uid if available
+            event_uid = event_data.get("uid", "") if event_data else ""
+            if event_uid:
+                chunk_id = f"{message_id}_event_{event_uid}_{chunk_index}"
+            else:
+                clean_name = attachment_name.replace(".", "_").replace("/", "_").replace("\\", "_") if attachment_name else "calendar"
+                chunk_id = f"{message_id}_event_{clean_name}_{chunk_index}"
+
         else:
             # Clean attachment name for ID (replace special chars)
             clean_name = attachment_name.replace(".", "_").replace("/", "_").replace("\\", "_")
@@ -305,6 +429,46 @@ class EmailChunker:
             ext = attachment_name.split(".")[-1] if "." in attachment_name else ""
             chunk["metadata"]["attachment_type"] = ext
         
+        # added
+        # add event-specific metadata for calendar chunks
+        if event_data and source_type == "calendar":
+            chunk["metadata"]["is_calendar_event"] = True
+            chunk["metadata"]["event_summary"] = event_data.get("summary", "")
+            chunk["metadata"]["event_location"] = event_data.get("location", "")
+            chunk["metadata"]["event_organizer"] = event_data.get("organizer", "")
+            chunk["metadata"]["event_uid"] = event_data.get("uid", "")
+            
+            # add timestamps for event filtering (handle both datetime objects and ISO strings)
+            from datetime import datetime
+            
+            start_time = event_data.get("start_time")
+            if start_time:
+                if isinstance(start_time, datetime):
+                    chunk["metadata"]["event_start_time"] = int(start_time.timestamp())
+                elif isinstance(start_time, str):
+                    # parse ISO format string (from JSON)
+                    try:
+                        dt = datetime.fromisoformat(start_time.replace('Z', '+00:00'))
+                        chunk["metadata"]["event_start_time"] = int(dt.timestamp())
+                    except:
+                        pass
+            
+            end_time = event_data.get("end_time")
+            if end_time:
+                if isinstance(end_time, datetime):
+                    chunk["metadata"]["event_end_time"] = int(end_time.timestamp())
+                elif isinstance(end_time, str):
+                    # parse ISO format string (from JSON)
+                    try:
+                        dt = datetime.fromisoformat(end_time.replace('Z', '+00:00'))
+                        chunk["metadata"]["event_end_time"] = int(dt.timestamp())
+                    except:
+                        pass
+            if event_data.get("start_time_str"):
+                chunk["metadata"]["event_start_str"] = event_data["start_time_str"]
+            if event_data.get("end_time_str"):
+                chunk["metadata"]["event_end_str"] = event_data["end_time_str"]
+
         return chunk
     
     
