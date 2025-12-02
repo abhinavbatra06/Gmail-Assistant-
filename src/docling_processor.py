@@ -5,7 +5,16 @@ Process emails fetched by gmail_ingest.py using Docling
 to convert EML files into structured JSON format ready for chunking.
 """
 
+# CRITICAL: Set environment variables BEFORE any imports
 import os
+os.environ['HF_HUB_DISABLE_SYMLINKS_WARNING'] = '1'
+os.environ['HF_HUB_DISABLE_SYMLINKS'] = '1'  # Fix Windows symlink permission error
+
+# Fix SSL issues with HuggingFace using proper certificates
+import ssl
+import certifi
+ssl._create_default_https_context = ssl.create_default_context(cafile=certifi.where())
+
 import json
 import yaml
 from pathlib import Path
