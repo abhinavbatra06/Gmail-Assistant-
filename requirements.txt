@@ -11,3 +11,8 @@ openai
 tiktoken
 numpy
 faiss-cpu
+chromadb
+python-dotenv
+rank-bm25
+# optional sentence-transformers for cross-encoder reranking (uncomment if using cross_encoder rerank_method)
+sentence-transformers

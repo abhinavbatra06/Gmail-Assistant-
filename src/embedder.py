@@ -105,6 +105,21 @@ class EmailEmbedder:
             print(f"Error generating embeddings: {str(e)}")
             raise
     
+    # added for testing
+    def embed_text(self, text: str) -> List[float]:
+        """
+        Generate embedding for a single text string.
+        Convenience method for testing and single-text embedding.
+        
+        Args:
+            text: Text string to embed
+            
+        Returns:
+            Embedding vector (list of floats)
+        """
+        embeddings = self._generate_embeddings([text])
+        return embeddings[0] if embeddings else []
+    
     def embed_message(self, message_id: str) -> List[Dict]:
         """
         Generate embeddings for all chunks of a single message.

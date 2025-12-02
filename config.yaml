@@ -1,4 +1,3 @@
-
 gmail:
   senders:
   # - "all"                                # Use "all" to fetch from all senders
@@ -11,6 +10,7 @@ gmail:
     - "ab12615@nyu.edu"
     - "ankitatripathi95@gmail.com"
     - "at6651@nyu.edu"
+    - "*@cs.nyu.edu"
 
   # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
   start_date: "2025-10-30"
@@ -71,13 +71,40 @@ vectorstore:
   embedding_model: "text-embedding-3-small"
 
 rag:
-  enable: false
   top_k: 5
   context_window: 2000
   response_model: "gpt-4o-mini"
+  # query optimization method: "rewrite" (query expansion), "hyde" (hypothetical document embeddings), or "none"
+  query_optimization: "rewrite"
+  # enable explicit query expansion with synonyms and related terms (works with any optimization method)
+  enable_query_expansion: true
+  # enable sub-query decomposition for complex multi-part queries
+  enable_subquery_decomposition: true
+  # enable intent-based query routing (classifies queries and applies intent-specific retrieval strategies)
+  enable_intent_routing: true
+  # enable Router module for query routing (modular architecture)
+  enable_routing: true
+  # enable Predict module for structured calendar event queries (faster than vector search)
+  enable_predict: true
+  predict_db_path: "db/events.db"
+  # enable Memory module for user preferences and query history
+  enable_memory: true
+  memory_db_path: "db/memory.db"
+  # enable small2big retrieval (expand small chunks to full email context)
+  enable_small2big: true
+  small2big_expansion_k: 3  # expand to 3x chunks per message
+  # enable hybrid retrieval (bm25 keyword + dense semantic search)
+  enable_hybrid_retrieval: true
+  hybrid_alpha: 0.5  # 0.0 = only bm25, 1.0 = only dense, 0.5 = balanced
+  # enable iterative retrieval (refine query based on initial results)
+  enable_iterative_retrieval: true
+  max_iterations: 3  # max retrieval refinement iterations
+  # enable reranking (post-retrieval relevance scoring)
+  enable_reranking: true
+  rerank_method: "llm"  # "llm" (OpenAI) or "cross_encoder" (sentence-transformers)
+  rerank_top_k: 20  # retrieve this many candidates, then rerank to top_k
 
 summarizer:
   enable: false
   model: "gpt-3.5-turbo"
   max_length: 500
-

@@ -22,6 +22,7 @@ except ImportError:
     PdfFormatOption = None
 from src.storage_manager import StorageManager
 from src.db_helper import DBHelper
+from src.ics_parser import ICSParser
 
 
 class DoclingProcessor:
@@ -153,62 +154,101 @@ class DoclingProcessor:
             docling_path = self.paths.path_for_docling(msg_id)
 
             if os.path.exists(docling_path):
-                with open(docling_path, 'r', encoding='utf-8') as f:
-                    structured_doc = json.load(f)
+                structured_doc = None
+                try:
+                    with open(docling_path, 'r', encoding='utf-8') as f:
+                        structured_doc = json.load(f)
+                except json.JSONDecodeError as json_err:
+                    print(f"⚠️  Error processing JSON file for {msg_id}, will reprocess: {str(json_err)}")
+                    # delete and reprocess
+                    try:
+                        os.remove(docling_path)
+                    except:
+                        pass
+                    structured_doc = None
+                except Exception as read_err:
+                    print(f"⚠️  Error reading docling file for {msg_id}, will reprocess: {str(read_err)}")
+                    # delete and reprocess
+                    try:
+                        if os.path.exists(docling_path):
+                            os.remove(docling_path)
+                    except:
+                        pass
+                    structured_doc = None
                 
-                # check if attachments need to be processed
-                should_process_attachments = self.docling_cfg.get("process_attachments", True)
-                # check if attachments_processed key exists (indicates whether attachments were ever processed)
-                attachments_processed_key_exists = "attachments_processed" in structured_doc
-                existing_attachments = structured_doc.get("attachments_processed", [])
-                
-                # use database as source of truth for what attachments exist
-                # more reliable than metadata JSON which might be missing/out of sync
-                db_attachments = self.db.get_attachments_for_email(msg_id)
-                db_attachment_count = len(db_attachments) if db_attachments else 0
-                
-                # check processed attachment files on disk
-                processed_attachment_files = []
-                if db_attachment_count > 0:
-                    for filename, _ in db_attachments:
-                        processed_path = self.paths.path_for_processed_attachment(msg_id, filename)
-                        if os.path.exists(processed_path):
-                            processed_attachment_files.append(filename)
+                if structured_doc is not None:
+                    # check if attachments need to be processed
+                    should_process_attachments = self.docling_cfg.get("process_attachments", True)
+                    # check if attachments_processed key exists (indicates whether attachments were ever processed)
+                    attachments_processed_key_exists = "attachments_processed" in structured_doc
+                    existing_attachments = structured_doc.get("attachments_processed", [])
+                    
+                    # use database as source of truth for what attachments exist
+                    # more reliable than metadata JSON which might be missing/out of sync
+                    db_attachments = self.db.get_attachments_for_email(msg_id)
+                    db_attachment_count = len(db_attachments) if db_attachments else 0
+                    
+                    # check processed attachment files on disk
+                    processed_attachment_files = []
+                    if db_attachment_count > 0:
+                        for filename, _ in db_attachments:
+                            processed_path = self.paths.path_for_processed_attachment(msg_id, filename)
+                            if os.path.exists(processed_path):
+                                processed_attachment_files.append(filename)
 
-                # determine if attachments need processing
-                has_unprocessed_attachments = False
-                if should_process_attachments and db_attachment_count > 0:
-                    # if attachments_processed key doesn't exist, attachments were never processed
-                    if not attachments_processed_key_exists:
-                        has_unprocessed_attachments = True
-                    # if database has more attachments than processed files on disk, need to process
-                    elif db_attachment_count > len(processed_attachment_files):
-                        has_unprocessed_attachments = True
-                    # if attachments_processed exists but count doesn't match database, need to process
-                    elif attachments_processed_key_exists and len(existing_attachments) < db_attachment_count:
-                        has_unprocessed_attachments = True
-                
-                if has_unprocessed_attachments:
-                    print(f"📎 Processing attachments for already-processed email: {msg_id} (DB has {db_attachment_count} attachments, {len(processed_attachment_files)} processed)")
-                    attachments = self.process_attachments(msg_id, save=True)
-                    structured_doc["attachments_processed"] = attachments
-                    structured_doc["metadata"]["attachment_count"] = len(attachments)
+                    # determine if attachments need processing
+                    has_unprocessed_attachments = False
+                    if should_process_attachments and db_attachment_count > 0:
+                        # if attachments_processed key doesn't exist, attachments were never processed
+                        if not attachments_processed_key_exists:
+                            has_unprocessed_attachments = True
+                        # if database has more attachments than processed files on disk, need to process
+                        elif db_attachment_count > len(processed_attachment_files):
+                            has_unprocessed_attachments = True
+                        # if attachments_processed exists but count doesn't match database, need to process
+                        elif attachments_processed_key_exists and len(existing_attachments) < db_attachment_count:
+                            has_unprocessed_attachments = True
                     
-                    # update the docling file with processed attachments
-                    with open(docling_path, 'w', encoding='utf-8') as f:
-                        json.dump(structured_doc, f, ensure_ascii=False, indent=2)
+                    if has_unprocessed_attachments:
+                        print(f"📎 Processing attachments for already-processed email: {msg_id} (DB has {db_attachment_count} attachments, {len(processed_attachment_files)} processed)")
+                        attachments = self.process_attachments(msg_id, save=True)
+                        structured_doc["attachments_processed"] = attachments
+                        structured_doc["metadata"]["attachment_count"] = len(attachments)
+                        
+                        # ensure JSON-serializable before writing
+                        structured_doc = self._ensure_json_serializable(structured_doc)
+                        
+                        # write to temp file first, then rename (atomic write)
+                        temp_path = docling_path + ".tmp"
+                        try:
+                            with open(temp_path, 'w', encoding='utf-8') as f:
+                                json.dump(structured_doc, f, ensure_ascii=False, indent=2)
+                            # Atomic rename
+                            os.replace(temp_path, docling_path)
+                        except Exception as write_err:
+                            # clean up temp file
+                            if os.path.exists(temp_path):
+                                try:
+                                    os.remove(temp_path)
+                                except:
+                                    pass
+                            raise write_err
+                        
+                        print(f"✅ Updated with attachments: {msg_id} | {structured_doc['metadata'].get('subject', '')[:60]}")
+                    else:
+                        print(f"⏭️  Already processed: {msg_id}")
                     
-                    print(f"✅ Updated with attachments: {msg_id} | {structured_doc['metadata'].get('subject', '')[:60]}")
-                else:
-                    print(f"⏭️  Already processed: {msg_id}")
-                
-                return structured_doc
+                    return structured_doc
 
             # email body hasn't been processed yet; process everything
             metadata = None
             if os.path.exists(meta_path):
-                with open(meta_path, 'r', encoding='utf-8') as f:
-                    metadata = json.load(f)
+                try:
+                    with open(meta_path, 'r', encoding='utf-8') as f:
+                        metadata = json.load(f)
+                except (json.JSONDecodeError, Exception) as meta_err:
+                    print(f"⚠️  Warning: Could not read metadata file for {msg_id}: {str(meta_err)}")
+                    metadata = None  # continue without metadata
 
             structured_doc = self.process_eml_file(eml_path, metadata)
 
@@ -264,6 +304,66 @@ class DoclingProcessor:
 
         return processed_docs
 
+    def _ensure_json_serializable(self, obj):
+        """
+        Recursively ensure all objects in a dict/list are JSON serializable.
+        Converts datetime objects, sets, and other non-serializable types.
+        
+        Args:
+            obj: Object to make JSON-serializable
+            
+        Returns:
+            JSON-serializable version of the object
+        """
+        from datetime import datetime, date
+        
+        if isinstance(obj, dict):
+            return {k: self._ensure_json_serializable(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [self._ensure_json_serializable(item) for item in obj]
+        elif isinstance(obj, (datetime, date)):
+            return obj.isoformat()
+        elif isinstance(obj, set):
+            return list(obj)
+        elif hasattr(obj, '__dict__'):
+            # convert custom objects to dict
+            try:
+                return self._ensure_json_serializable(obj.__dict__)
+            except:
+                return str(obj)
+        else:
+            # check if basic JSON-serializable type
+            try:
+                json.dumps(obj)
+                return obj
+            except (TypeError, ValueError):
+                # fallback to string representation
+                return str(obj)
+    
+    def _serialize_events(self, events: List[Dict]) -> List[Dict]:
+        """
+        Serialize event dictionaries for JSON storage.
+        Converts datetime objects to ISO format strings.
+        
+        Args:
+            events: List of event dictionaries with datetime objects
+            
+        Returns:
+            List of event dictionaries with datetime objects converted to strings
+        """
+        from datetime import datetime
+        
+        serialized = []
+        for event in events:
+            serialized_event = event.copy()
+            # convert datetime objects to ISO strings
+            if isinstance(serialized_event.get("start_time"), datetime):
+                serialized_event["start_time"] = serialized_event["start_time"].isoformat()
+            if isinstance(serialized_event.get("end_time"), datetime):
+                serialized_event["end_time"] = serialized_event["end_time"].isoformat()
+            serialized.append(serialized_event)
+        return serialized
+    
     def _process_ics_file(self, att_path: str) -> str:
         """
         Process .ics (iCalendar) files by extracting text content.
@@ -352,10 +452,19 @@ class DoclingProcessor:
             
             processed_path = self.paths.path_for_processed_attachment(msg_id, filename)
             if save and os.path.exists(processed_path):
-                with open(processed_path, 'r', encoding='utf-8') as f:
-                    att_doc = json.load(f)
-                processed_attachments.append(att_doc)
-                continue
+                try:
+                    with open(processed_path, 'r', encoding='utf-8') as f:
+                        att_doc = json.load(f)
+                    processed_attachments.append(att_doc)
+                    continue
+                except (json.JSONDecodeError, Exception) as read_err:
+                    print(f"  ⚠️  Error decoding JSON for {filename}, will reprocess: {str(read_err)}")
+                    # delete file and reprocess
+                    try:
+                        os.remove(processed_path)
+                    except:
+                        pass
+                    # continue to process the attachment
 
             att_doc = {
                 "filename": filename,
@@ -371,8 +480,24 @@ class DoclingProcessor:
 
             try:
                 if ext == '.ics':
-                    att_doc["text"] = self._process_ics_file(att_path)
-                    att_doc["metadata"]["content_type"] = "calendar"
+                    # use structured ICS parser
+                    events = ICSParser.parse_ics_file(att_path)
+                    if events:
+                        # convert datetime objects to ISO strings for JSON serialization
+                        serialized_events = self._serialize_events(events)
+                        # store structured events
+                        att_doc["events"] = serialized_events
+                        # create text representation for backward compatibility
+                        event_texts = [event["text"] for event in events]
+                        att_doc["text"] = "\n\n---\n\n".join(event_texts)
+                        att_doc["metadata"]["content_type"] = "calendar"
+                        att_doc["metadata"]["event_count"] = len(events)
+                        att_doc["metadata"]["is_calendar"] = True
+                    else:
+                        # fallback to old text extraction if parsing fails
+                        att_doc["text"] = self._process_ics_file(att_path)
+                        att_doc["metadata"]["content_type"] = "calendar"
+                        att_doc["metadata"]["is_calendar"] = True
                     
                 elif ext == '.xls':
                     # legacy Excel format; no docling support, use xlrd or openpyxl
@@ -603,8 +728,24 @@ class DoclingProcessor:
                     continue
 
                 if save:
-                    with open(processed_path, 'w', encoding='utf-8') as f:
-                        json.dump(att_doc, f, ensure_ascii=False, indent=2)
+                    # ensure JSON-serializable before writing
+                    att_doc = self._ensure_json_serializable(att_doc)
+                    
+                    # write to temp file first, then rename (atomic write)
+                    temp_path = processed_path + ".tmp"
+                    try:
+                        with open(temp_path, 'w', encoding='utf-8') as f:
+                            json.dump(att_doc, f, ensure_ascii=False, indent=2)
+                        # atomic rename
+                        os.replace(temp_path, processed_path)
+                    except Exception as write_err:
+                        # clean up temp file 
+                        if os.path.exists(temp_path):
+                            try:
+                                os.remove(temp_path)
+                            except:
+                                pass
+                        raise write_err
 
                 processed_attachments.append(att_doc)
                 print(f"  📎 Processed attachment: {filename} ({len(att_doc['text'])} chars)")
@@ -613,124 +754,27 @@ class DoclingProcessor:
                 print(f"  ⚠️  Could not process attachment {filename}: {str(e)}")
                 att_doc["metadata"]["error"] = str(e)
                 if save:
-                    with open(processed_path, 'w', encoding='utf-8') as f:
-                        json.dump(att_doc, f, ensure_ascii=False, indent=2)
+                    # ensure JSON-serializable before writing
+                    att_doc = self._ensure_json_serializable(att_doc)
+                    
+                    # write to temp file first, then rename (atomic write)
+                    temp_path = processed_path + ".tmp"
+                    try:
+                        with open(temp_path, 'w', encoding='utf-8') as f:
+                            json.dump(att_doc, f, ensure_ascii=False, indent=2)
+                        # atomic rename
+                        os.replace(temp_path, processed_path)
+                    except Exception as write_err:
+                        # clean up temp file if it exists
+                        if os.path.exists(temp_path):
+                            try:
+                                os.remove(temp_path)
+                            except:
+                                pass
+                        # don't raise; already logged the error
 
         return processed_attachments
 
-    def get_chunkable_text(self, msg_id: str, include_attachments: bool = True) -> str:
-        """
-        Get clean, chunkable text from a processed email, including attachments.
-        
-        Args:
-            msg_id: Gmail message ID
-            include_attachments: Whether to include attachment content
-            
-        Returns:
-            Combined text content ready for chunking
-        """
-        docling_path = self.paths.path_for_docling(msg_id)
-        if not os.path.exists(docling_path):
-            self.process_email(msg_id)
-
-        with open(docling_path, 'r', encoding='utf-8') as f:
-            doc = json.load(f)
-
-        text_parts = []
-        
-        meta = doc.get("metadata", {})
-        if meta.get("subject"):
-            text_parts.append(f"Subject: {meta['subject']}")
-        if meta.get("from"):
-            text_parts.append(f"From: {meta['from']}")
-        if meta.get("date"):
-            text_parts.append(f"Date: {meta['date']}")
-        
-        text_parts.append("")
-        text_parts.append("--- EMAIL BODY ---")
-        text_parts.append("")
-        
-        email_text = doc.get("text", "")
-        
-        if not email_text or not email_text.strip():
-            meta_path = self.paths.path_for_metadata(msg_id)
-            if os.path.exists(meta_path):
-                with open(meta_path, 'r', encoding='utf-8') as f:
-                    original_meta = json.load(f)
-                
-                if original_meta.get("body_text") and original_meta["body_text"].strip():
-                    email_text = original_meta["body_text"]
-                elif original_meta.get("body_html") and original_meta["body_html"].strip():
-                    soup = BeautifulSoup(original_meta["body_html"], 'html.parser')
-                    for script in soup(["script", "style"]):
-                        script.decompose()
-                    email_text = soup.get_text(separator=' ', strip=True)
-        
-        if email_text:
-            text_parts.append(email_text)
-
-        # process email tables (if enabled)
-        # extract meaningful table data while filtering out layout-only tables
-        include_email_tables = self.docling_cfg.get("include_email_tables", False)
-        
-        if include_email_tables:
-            for table in doc.get("tables", []):
-                table_text = ""
-                content = table.get("content", "")
-                
-                if content and content.strip():
-                    content_str = str(content)
-                    
-                    import re
-                    text_matches = re.findall(r"text='([^']*)'", content_str)
-                    meaningful_texts = [t for t in text_matches if t.strip() and len(t.strip()) > 3]
-                    
-                    if meaningful_texts:
-                        table_text = " | ".join(meaningful_texts)
-                    else:
-                        if len(content_str) > 100 and not content_str.startswith("self_ref"):
-                            cleaned = re.sub(r"self_ref='[^']*'", "", content_str)
-                            cleaned = re.sub(r"parent=[^)]*\)", "", cleaned)
-                            cleaned = re.sub(r"children=\[[^\]]*\]", "", cleaned)
-                            cleaned = re.sub(r"content_layer=[^,]*", "", cleaned)
-                            if cleaned.strip() and len(cleaned.strip()) > 50:
-                                table_text = cleaned.strip()[:500]
-                
-                # only include tables with meaningful content
-                # filter out: empty tables, single cell tables, very short tables
-                if table_text and len(table_text.strip()) > 20:
-                    text_parts.append(f"\n[Table]\n{table_text}")
-
-
-        for section in doc.get("sections", []):
-            if section.get("title"):
-                text_parts.append(f"\n### {section['title']}\n")
-            if section.get("text"):
-                text_parts.append(section["text"])
-
-        if include_attachments:
-            attachments = doc.get("attachments_processed", [])
-            if not attachments:
-                attachments = self.process_attachments(msg_id, save=False)
-            
-            if attachments:
-                text_parts.append("")
-                text_parts.append("--- ATTACHMENTS ---")
-                text_parts.append("")
-                
-                for att in attachments:
-                    filename = att.get("filename", "Unknown")
-                    text_parts.append(f"\n[Attachment: {filename}]")
-                    
-                    if att.get("text"):
-                        text_parts.append(att["text"])
-                    
-                    for table in att.get("tables", []):
-                        text_parts.append(f"\n[Table in {filename}]\n{table.get('content', '')}")
-                    
-                    text_parts.append("")
-
-        return "\n".join(text_parts)
     
     def get_processed_attachments(self, msg_id: str) -> List[Dict]:
         """

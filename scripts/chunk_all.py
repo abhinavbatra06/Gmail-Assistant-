@@ -43,10 +43,17 @@ def main():
     
     # Create chunker
     print("\n🔧 Initializing chunker...")
+
+    # added
+    # get Predict DB path from config if available
+    rag_config = config.get("rag", {})
+    predict_db_path = rag_config.get("predict_db_path", "db/events.db") if rag_config.get("enable_predict", True) else None
+
     chunker = EmailChunker(
         db_helper=db,
         chunk_size=chunk_size,
-        overlap=overlap
+        overlap=overlap,
+        predict_db_path=predict_db_path # added for predict DB integration
     )
     
     # Chunk all emails

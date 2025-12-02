@@ -28,14 +28,21 @@ def main():
     # Get chunking settings (with defaults if not in config)
     chunking_config = config.get("chunking", {})
     chunk_size = chunking_config.get("chunk_size", 600)
-    overlap = chunking_config.get("overlap", 100)
+    overlap = chunking_config.get("chunk_overlap", 100)
     
     print(f"   Chunk size: {chunk_size} tokens")
     print(f"   Overlap: {overlap} tokens")
     
-    # Connect to database
+    # # Connect to database
+    # print("\nConnecting to database...")
+    # db = DBHelper("db/emails.db")
+
+    # Connect to database (use config path)
     print("\nConnecting to database...")
-    db = DBHelper("db/emails.db")
+    from src.storage_manager import StorageManager
+    paths = StorageManager("config.yaml")
+    db = DBHelper(paths.db_path)
+    
     
     # Show current stats
     print("\nCurrent Statistics:")
