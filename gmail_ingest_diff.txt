@@ -1,0 +1,21 @@
+﻿diff --git a/src/gmail_ingest.py b/src/gmail_ingest.py
+index 6d2adf0..99f238b 100644
+--- a/src/gmail_ingest.py
++++ b/src/gmail_ingest.py
+@@ -139,6 +139,7 @@ class GmailIngestor:
+                         if p.get("filename") and p["body"].get("attachmentId"):
+                             fname, fpath = self._save_attachment(msg_id, p)
+                             attachments.append({"filename": fname, "path": fpath})
++                            self.db.insert_attachment(msg_id, fname, fpath)
+ 
+                 # metadata json
+                 meta = {
+@@ -163,3 +164,8 @@ class GmailIngestor:
+ 
+         print(f"\n­ƒÄ» Done. Total emails saved: {total_saved}")
+         self.db.close()
++
++if __name__ == "__main__":
++    print("Starting GmailIngestor...")  # simple debug
++    ingestor = GmailIngestor(config_path="config.yaml")
++    ingestor.run()
