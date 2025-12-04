@@ -6,6 +6,10 @@ Handles all scenarios: fresh start, partial completion, or re-indexing.
 
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import yaml
 import sqlite3
 from src.db_helper import DBHelper

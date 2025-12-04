@@ -78,6 +78,17 @@ class RAGQuery:
             except Exception as e:
                 print(f"   Warning: Memory module not available: {str(e)}")
         
+        # initialize Evaluation Logger for detailed query logging
+        self.eval_logger = None
+        enable_eval_logging = rag_cfg.get("enable_eval_logging", True)  # enabled by default
+        if enable_eval_logging:
+            try:
+                from src.eval_logger import EvalLogger
+                self.eval_logger = EvalLogger(memory_db_path)
+                print(f"   Eval Logger: enabled")
+            except Exception as e:
+                print(f"   Warning: Eval Logger not available: {str(e)}")
+        
         # Small2big retrieval settings
         self.enable_small2big = rag_cfg.get("enable_small2big", False)
         self.small2big_expansion_k = rag_cfg.get("small2big_expansion_k", 3)  # expand to 3x chunks
@@ -567,12 +578,14 @@ Otherwise, classify as "general"."""
         query_words = query_lower.split()
         
         # try to find location after "at" or "in"
+        # define stop words at the start
+        stop_words = {"the", "a", "an", "and", "or", "for", "to", "of", "on", "with"}
+        
         for i, word in enumerate(query_words):
             if word in ["at", "in"] and i + 1 < len(query_words):
                 # take next 2-3 words as potential location
                 location_parts = query_words[i+1:min(i+4, len(query_words))]
                 # filter out common stop words
-                stop_words = {"the", "a", "an", "and", "or", "for", "to", "of", "on", "with"}
                 location_parts = [w for w in location_parts if w not in stop_words]
                 if location_parts:
                     location_keywords = " ".join(location_parts)
@@ -1434,6 +1447,10 @@ Output ONLY the refined query, nothing else."""
         if top_k is None:
             top_k = self.top_k
         
+        # start timing for latency tracking
+        import time
+        start_time = time.time()
+        
         print(f"\n{'='*60}")
         print(f"RAG QUERY: {user_query}")
         print(f"{'='*60}")
@@ -1475,9 +1492,17 @@ Output ONLY the refined query, nothing else."""
                     is_event_query_fallback = True
                     # continue with regular RAG flow below
                 else:
-                    # log to memory
+                    # log to memory and get query_id
+                    query_id = None
                     if self.memory:
-                        self.memory.log_query(user_query, routing_decision["intent"], "predict", result.get("num_chunks_retrieved", 0))
+                        query_id = self.memory.log_query(user_query, routing_decision["intent"], "predict", result.get("num_chunks_retrieved", 0))
+                    
+                    # log detailed response for evaluation
+                    if self.eval_logger and query_id:
+                        end_time = __import__('time').time()
+                        latency_ms = int((end_time - start_time) * 1000) if 'start_time' in locals() else 0
+                        self.eval_logger.log_response(query_id, user_query, result, latency_ms)
+                    
                     return result
             
             # apply routing filters
@@ -1502,8 +1527,18 @@ Output ONLY the refined query, nothing else."""
                 if is_calendar_query:
                     print("📅 Detected calendar query - using Predict module...")
                     result = self._query_with_predict(user_query, top_k)
+                    
+                    # log to memory and get query_id
+                    query_id = None
                     if self.memory:
-                        self.memory.log_query(user_query, "calendar", "predict", result.get("num_chunks_retrieved", 0))
+                        query_id = self.memory.log_query(user_query, "calendar", "predict", result.get("num_chunks_retrieved", 0))
+                    
+                    # log detailed response for evaluation
+                    if self.eval_logger and query_id:
+                        end_time = __import__('time').time()
+                        latency_ms = int((end_time - start_time) * 1000) if 'start_time' in locals() else 0
+                        self.eval_logger.log_response(query_id, user_query, result, latency_ms)
+                    
                     return result
         
         # step 0d: classify intent and get routing strategy (legacy, if router not used)
@@ -1520,8 +1555,18 @@ Output ONLY the refined query, nothing else."""
             if intent_info['intent'] == 'calendar' and self.predict:
                 print("📅 Calendar intent detected - using Predict module...")
                 result = self._query_with_predict(user_query, top_k)
+                
+                # log to memory and get query_id
+                query_id = None
                 if self.memory:
-                    self.memory.log_query(user_query, intent_info['intent'], "predict", result.get("num_chunks_retrieved", 0))
+                    query_id = self.memory.log_query(user_query, intent_info['intent'], "predict", result.get("num_chunks_retrieved", 0))
+                
+                # log detailed response for evaluation
+                if self.eval_logger and query_id:
+                    end_time = __import__('time').time()
+                    latency_ms = int((end_time - start_time) * 1000) if 'start_time' in locals() else 0
+                    self.eval_logger.log_response(query_id, user_query, result, latency_ms)
+                
                 return result
             
             #adjust top_k based on intent if needed
@@ -1862,13 +1907,25 @@ Answer:"""
         
         # extract retrieved chunks for reference
         retrieved_chunks = []
+        chunk_scores = []
         if results.get("documents") and results["documents"][0]:
             documents = results["documents"][0] if isinstance(results["documents"][0], list) else results["documents"]
             ids = results["ids"][0] if isinstance(results["ids"][0], list) else results["ids"]
-            for chunk_id, doc in zip(ids, documents):
+            distances = results.get("distances", [[]])[0] if results.get("distances") else []
+            
+            for i, (chunk_id, doc) in enumerate(zip(ids, documents)):
                 retrieved_chunks.append({
                     "chunk_id": chunk_id,
                     "text": doc[:200] + "..." if len(doc) > 200 else doc  # preview
+                })
+                
+                # add chunk scores for evaluation
+                distance = distances[i] if i < len(distances) else None
+                chunk_scores.append({
+                    "chunk_id": chunk_id,
+                    "distance": distance,
+                    "similarity": 1 - distance if distance is not None else None,
+                    "rank": i + 1
                 })
         
         result = {
@@ -1876,6 +1933,7 @@ Answer:"""
             "answer": answer,
             "sources": sources,
             "retrieved_chunks": retrieved_chunks,
+            "chunk_scores": chunk_scores,
             "num_chunks_retrieved": len(sources)
         }
         
@@ -1884,14 +1942,31 @@ Answer:"""
             result["routing"] = routing_decision
             result["intent"] = routing_decision["intent"]
             result["intent_confidence"] = routing_decision["confidence"]
+            result["module_used"] = "retriever"
+            result["routing_reason"] = routing_decision.get("reason", "")
         elif intent_info:
             result["intent"] = intent_info["intent"]
             result["intent_confidence"] = intent_info["confidence"]
+            result["module_used"] = "retriever"
         
-        # log query to memory
+        # add retrieval metadata
+        result["retrieval_method"] = "hybrid" if self.enable_hybrid_retrieval else "dense"
+        result["reranked"] = self.enable_reranking
+        result["query_optimized"] = False  # TODO: track if query was optimized
+        
+        # calculate latency
+        end_time = __import__('time').time()
+        latency_ms = int((end_time - start_time) * 1000) if 'start_time' in locals() else 0
+        
+        # log query to memory and get query_id
+        query_id = None
         if self.memory:
             intent = routing_decision["intent"] if routing_decision else (intent_info["intent"] if intent_info else "general")
-            self.memory.log_query(user_query, intent, "retriever", len(sources))
+            query_id = self.memory.log_query(user_query, intent, "retriever", len(sources))
+        
+        # log detailed response for evaluation
+        if self.eval_logger and query_id:
+            self.eval_logger.log_response(query_id, user_query, result, latency_ms)
         
         return result
     

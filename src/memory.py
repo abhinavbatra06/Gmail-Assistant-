@@ -151,7 +151,7 @@ class Memory:
         
         return filters
     
-    def log_query(self, query: str, intent: str, module_used: str, result_count: int):
+    def log_query(self, query: str, intent: str, module_used: str, result_count: int) -> int:
         """
         Log a query to history.
         
@@ -160,6 +160,9 @@ class Memory:
             intent: Detected intent
             module_used: Module that handled the query
             result_count: Number of results returned
+            
+        Returns:
+            query_id: ID of inserted query (for linking to query_responses)
         """
         cur = self.conn.cursor()
         cur.execute("""
@@ -167,6 +170,7 @@ class Memory:
             VALUES (?, ?, ?, ?)
         """, (query, intent, module_used, result_count))
         self.conn.commit()
+        return cur.lastrowid
     
     def get_recent_queries(self, limit: int = 10) -> List[Dict]:
         """

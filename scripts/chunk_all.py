@@ -3,6 +3,10 @@ Chunk All Emails - Direct Execution
 No prompts, just chunks everything.
 """
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 import yaml
 from src.db_helper import DBHelper
 from src.chunker import EmailChunker
