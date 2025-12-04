@@ -1,9 +1,0 @@
-11-27-2025 : 
-
-- In storage manager , Ankita adds cleaned docling processed json named as follows : "msg_id_att_{cleaned_file_name}.json"
-- Added completely new src/docling_processor.py 
-- src/gmail_ingest.py , 2 changes 
-	- After saving the attachment file to disk, it also records it in the database in a new attachments table ( it is at a message id level)
-	- Making the file directly runnable 
-- src/db_helper.py : Added the creation of attachment's table and function to get attachments given message_id
-
