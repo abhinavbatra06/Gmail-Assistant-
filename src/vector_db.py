@@ -77,11 +77,11 @@ class EmailVectorDB:
             chunks = [c for c in chunks if c["chunk_id"] not in existing_ids]
             
             if not chunks:
-                print("⏭️  All chunks already exist in vector DB")
+                print("⏭All chunks already exist in vector DB")
                 return
             
             if len(existing_ids) > 0:
-                print(f"⏭️  Skipping {len(existing_ids)} existing chunks")
+                print(f"⏭Skipping {len(existing_ids)} existing chunks")
         
         ids = []
         embeddings = []
@@ -111,7 +111,7 @@ class EmailVectorDB:
             metadatas=metadatas
         )
         
-        print(f"✅ Added {len(chunks)} chunks to vector DB")
+        print(f"Added {len(chunks)} chunks to vector DB")
     
     def search(self, 
                query_embedding: List[float], 

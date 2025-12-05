@@ -237,7 +237,7 @@ class EvalLogger:
         with open(output_file, 'w', encoding='utf-8') as f:
             json.dump(responses, f, indent=2, ensure_ascii=False)
         
-        print(f"✅ Exported {len(responses)} responses to {output_file}")
+        print(f"Exported {len(responses)} responses to {output_file}")
     
     def close(self):
         """Close database connection."""

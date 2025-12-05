@@ -160,9 +160,9 @@ class GmailIngestor:
                 self.db.insert_email(msg_id, sender_line, subject, date, eml_path, meta_path)
                 total_saved += 1
 
-                print(f"✅ Saved email {msg_id} | {subject[:60]}")
+                print(f"Saved email {msg_id} | {subject[:60]}")
 
-        print(f"\n🎯 Done. Total emails saved: {total_saved}")
+        print(f"\nDone. Total emails saved: {total_saved}")
         self.db.close()
 
 if __name__ == "__main__":

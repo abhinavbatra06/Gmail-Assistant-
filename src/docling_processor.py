@@ -207,9 +207,9 @@ class DoclingProcessor:
                     with open(docling_path, 'w', encoding='utf-8') as f:
                         json.dump(structured_doc, f, ensure_ascii=False, indent=2)
                     
-                    print(f"✅ Updated with attachments: {msg_id} | {structured_doc['metadata'].get('subject', '')[:60]}")
+                    print(f"Updated with attachments: {msg_id} | {structured_doc['metadata'].get('subject', '')[:60]}")
                 else:
-                    print(f"⏭️  Already processed: {msg_id}")
+                    print(f"⏭Already processed: {msg_id}")
                 
                 return structured_doc
 
@@ -231,7 +231,7 @@ class DoclingProcessor:
 
             self.db.update_status(msg_id, "processed")
 
-            print(f"✅ Processed: {msg_id} | {structured_doc['metadata'].get('subject', '')[:60]}")
+            print(f"Processed: {msg_id} | {structured_doc['metadata'].get('subject', '')[:60]}")
             return structured_doc
 
         except Exception as e:
@@ -354,7 +354,7 @@ class DoclingProcessor:
             filename = att.get("filename", "")
             
             if not att_path or not os.path.exists(att_path):
-                print(f"  ⚠️  Attachment file not found: {att_path} (may not have been downloaded)")
+                print(f"  Attachment file not found: {att_path} (may not have been downloaded)")
                 continue
 
             ext = Path(att_path).suffix.lower()
@@ -523,7 +523,7 @@ class DoclingProcessor:
                     
                     if not extracted_text:
                         file_type = "Excel spreadsheet" if ext == '.xlsx' else "document"
-                        print(f"  ⚠️  Warning: No text extracted from {filename} (empty {file_type} or extraction failed)")
+                        print(f"  Warning: No text extracted from {filename} (empty {file_type} or extraction failed)")
                     
                 elif ext in ['.txt', '.csv', '.json', '.xml']:
                     with open(att_path, 'r', encoding='utf-8', errors='ignore') as f:
@@ -596,7 +596,7 @@ class DoclingProcessor:
                         
                         if not att_doc["text"]:
                             att_doc["text"] = f"[Image file: {filename} - OCR did not extract text (may be image without text)]"
-                            print(f"  ⚠️  Warning: No text extracted from image {filename}")
+                            print(f"  Warning: No text extracted from image {filename}")
                         
                         att_doc["metadata"]["content_type"] = "image"
                         att_doc["metadata"]["image_format"] = ext
@@ -608,7 +608,7 @@ class DoclingProcessor:
                         att_doc["metadata"]["processing_error"] = str(img_error)
 
                 else:
-                    print(f"  ⏭️  Skipping unsupported attachment type: {ext}")
+                    print(f"  ⏭Skipping unsupported attachment type: {ext}")
                     continue
 
                 if save:
@@ -619,7 +619,7 @@ class DoclingProcessor:
                 print(f"  📎 Processed attachment: {filename} ({len(att_doc['text'])} chars)")
 
             except Exception as e:
-                print(f"  ⚠️  Could not process attachment {filename}: {str(e)}")
+                print(f"  Could not process attachment {filename}: {str(e)}")
                 att_doc["metadata"]["error"] = str(e)
                 if save:
                     with open(processed_path, 'w', encoding='utf-8') as f:
@@ -786,7 +786,7 @@ if __name__ == "__main__":
                 processor.process_attachments(args.msg_id)
         else:
             docs = processor.process_all_emails(limit=args.limit)
-            print(f"\n🎯 Done. Processed {len(docs)} emails")
+            print(f"\nDone. Processed {len(docs)} emails")
             if args.attachments:
                 print("Processing attachments...")
                 for doc in docs:

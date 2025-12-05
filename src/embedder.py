@@ -79,7 +79,7 @@ class EmailEmbedder:
         elif isinstance(data, dict) and 'chunks' in data:
             return data['chunks']
         else:
-            print(f"⚠️  Unexpected chunk file format: {chunk_file}")
+            print(f"Unexpected chunk file format: {chunk_file}")
             return []
     
     def _generate_embeddings(self, texts: List[str]) -> List[List[float]]:
@@ -188,7 +188,7 @@ class EmailEmbedder:
             print("All messages are already embedded!")
             return []
         
-        print(f"\n📧 Found {len(unembedded)} messages to embed\n")
+        print(f"\nFound {len(unembedded)} messages to embed\n")
         
         all_embedded_chunks = []
         

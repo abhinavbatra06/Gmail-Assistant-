@@ -633,7 +633,7 @@ Otherwise, classify as "general"."""
         
         # if no events found in Predict module, return None to trigger fallback
         if not events:
-            print("⚠️  No events found in Predict module, will fall back to RAG retrieval...")
+            print("No events found in Predict module, will fall back to RAG retrieval...")
             return None
         
         events_text = self.predict.format_events_for_answer(events[:top_k])
@@ -827,7 +827,7 @@ Answer:"""
                 "distances": [[1.0 - combined_scores[i][1] for i in range(len(top_indices))]]  # convert back to distance
             }
         except ImportError:
-            print("⚠️  rank-bm25 not installed, falling back to dense search only")
+            print("rank-bm25 not installed, falling back to dense search only")
             return dense_results
     
     def _rerank_results(self, query: str, results: Dict, top_k: int) -> Dict:
@@ -854,7 +854,7 @@ Answer:"""
             # already have fewer results than top_k, no need to rerank
             return results
         
-        print(f"🔄 Reranking {len(ids)} results to top {top_k}...")
+        print(f"Reranking {len(ids)} results to top {top_k}...")
         
         if self.rerank_method == "llm":
             return self._llm_rerank(query, ids, documents, metadatas, distances, top_k)
@@ -1353,7 +1353,7 @@ Output ONLY the refined query, nothing else."""
         
         if not filtered_indices:
             # if filtering removed everything, return original results (better than nothing)
-            print("   ⚠️  Post-filtering removed all results, keeping original")
+            print("   Post-filtering removed all results, keeping original")
             return results
         
         # filter results
@@ -1467,12 +1467,12 @@ Output ONLY the refined query, nothing else."""
                         filter_metadata = {"$and": [filter_metadata, default_filters]}
                 else:
                     filter_metadata = default_filters
-                print(f"💾 Applied user preferences from Memory")
+                print(f"Applied user preferences from Memory")
         
         # step 0b: route query using Router module (if enabled)
         routing_decision = None
         if self.router:
-            print("🔄 Routing query...")
+            print("Routing query...")
             routing_decision = self.router.route_query(user_query)
             print(f"    Module: {routing_decision['module']}")
             print(f"    Intent: {routing_decision['intent']} (confidence: {routing_decision['confidence']:.2f})")
@@ -1481,7 +1481,7 @@ Output ONLY the refined query, nothing else."""
             # route to Predict module if router says so
             is_event_query_fallback = False
             if routing_decision["module"] == "predict" and self.predict:
-                print("📅 Router: Using Predict module for calendar query...")
+                print("Router: Using Predict module for calendar query...")
                 result = self._query_with_predict(user_query, top_k)
                 # if Predict module found no events, fall back to regular RAG with enhanced retrieval
                 if result is None:
@@ -1525,7 +1525,7 @@ Output ONLY the refined query, nothing else."""
                 is_calendar_query = any(keyword in query_lower for keyword in calendar_keywords)
                 
                 if is_calendar_query:
-                    print("📅 Detected calendar query - using Predict module...")
+                    print("Detected calendar query - using Predict module...")
                     result = self._query_with_predict(user_query, top_k)
                     
                     # log to memory and get query_id
@@ -1545,7 +1545,7 @@ Output ONLY the refined query, nothing else."""
         intent_info = None
         intent_strategy = None
         if self.enable_intent_routing and not self.router:
-            print("🎯 Classifying query intent...")
+            print("Classifying query intent...")
             intent_info = self._classify_intent(user_query)
             intent_strategy = self._get_intent_routing_strategy(intent_info)
             print(f"   Intent: {intent_info['intent']} (confidence: {intent_info['confidence']:.2f})")
@@ -1553,7 +1553,7 @@ Output ONLY the refined query, nothing else."""
             
             # for calendar intent, try Predict first
             if intent_info['intent'] == 'calendar' and self.predict:
-                print("📅 Calendar intent detected - using Predict module...")
+                print("Calendar intent detected - using Predict module...")
                 result = self._query_with_predict(user_query, top_k)
                 
                 # log to memory and get query_id
@@ -1588,7 +1588,7 @@ Output ONLY the refined query, nothing else."""
         # step 2: decompose query into sub-queries if enabled
         sub_queries = [user_query]  # default to single query
         if self.enable_subquery_decomposition:
-            print("🔀 Decomposing query into sub-queries...")
+            print("Decomposing query into sub-queries...")
             sub_queries = self._decompose_query(user_query)
             if len(sub_queries) > 1:
                 print(f"   Decomposed into {len(sub_queries)} sub-queries:")
@@ -1612,10 +1612,10 @@ Output ONLY the refined query, nothing else."""
             if intent_strategy and intent_strategy.get("query_optimization"):
                 optimization_method = intent_strategy["query_optimization"]
                 if len(sub_queries) == 1:
-                    print(f"🎯 Using intent-specific optimization: {optimization_method}")
+                    print(f"Using intent-specific optimization: {optimization_method}")
             
             if optimization_method == "rewrite":
-                print("✏️  Rewriting query for better search...")
+                print("Rewriting query for better search...")
                 retrieval_query = self._rewrite_query(sub_query)
                 if retrieval_query != sub_query:
                     print(f"   Original: {sub_query}")
@@ -1623,22 +1623,22 @@ Output ONLY the refined query, nothing else."""
                 else:
                     print("   Query unchanged")
             elif optimization_method == "hyde":
-                print("🎭 Generating hypothetical answer (HyDE)...")
+                print("Generating hypothetical answer (HyDE)...")
                 hypothetical_answer = self._generate_hypothetical_answer(sub_query)
                 print(f"   Hypothetical answer: {hypothetical_answer[:200]}..." if len(hypothetical_answer) > 200 else f"   Hypothetical answer: {hypothetical_answer}")
                 retrieval_query = hypothetical_answer
             else:  # "none" or invalid
                 if len(sub_queries) == 1:  # only print if single query
-                    print("🔍 Using original query without optimization...")
+                    print("Using original query without optimization...")
             
             # step 3b: apply query expansion if enabled (more conservative for event queries)
             if self.enable_query_expansion:
                 # for event queries, use more conservative expansion
                 if is_event_query_fallback:
-                    print("📝 Expanding query (conservative mode for event queries)...")
+                    print("Expanding query (conservative mode for event queries)...")
                     expanded_query = self._expand_query_conservative(retrieval_query)
                 else:
-                    print("📝 Expanding query with synonyms and related terms...")
+                    print("Expanding query with synonyms and related terms...")
                     expanded_query = self._expand_query(retrieval_query)
                 if expanded_query != retrieval_query:
                     print(f"   Before: {retrieval_query}")
@@ -1648,7 +1648,7 @@ Output ONLY the refined query, nothing else."""
                     print("   No expansion needed")
             
             # step 3c:  generate query embedding
-            print("🔍 Generating query embedding...")
+            print("Generating query embedding...")
             query_embedding = self._embed_query(retrieval_query)
             
             # step 3d: apply intent-specific and date filters
@@ -1665,7 +1665,7 @@ Output ONLY the refined query, nothing else."""
                 if intent_filters:
                     filter_parts.append(intent_filters)
                     if len(sub_queries) == 1:
-                        print(f"🎯 Applying intent-specific filters: {intent_filters}")
+                        print(f"Applying intent-specific filters: {intent_filters}")
             
             # handle sender intent - extract sender from query
             if intent_info and intent_info["intent"] == "sender":
@@ -1674,13 +1674,13 @@ Output ONLY the refined query, nothing else."""
                     sender_filter = {"from": {"$contains": sender}}
                     filter_parts.append(sender_filter)
                     if len(sub_queries) == 1:
-                        print(f"📧 Extracted sender filter: {sender}")
+                        print(f"Extracted sender filter: {sender}")
             
             # apply date filter (but don't include in chromadb filter - do post-filtering instead)
             # chromadb may not support numeric comparisons on metadata, so filter will be done after retrieval
             use_date_filter = date_filter is not None
             if use_date_filter and len(sub_queries) == 1:
-                print(f"📅 Will apply date filter after retrieval (ChromaDB compatibility)...")
+                print(f"Will apply date filter after retrieval (ChromaDB compatibility)...")
             
             # combine filters (excluding date filter for chromdb)
             if len(filter_parts) == 0:
@@ -1699,7 +1699,7 @@ Output ONLY the refined query, nothing else."""
             
             try:
                 if self.enable_hybrid_retrieval:
-                    print(f"🔀 Hybrid search (BM25 + Dense, alpha={self.hybrid_alpha})...")
+                    print(f"Hybrid search (BM25 + Dense, alpha={self.hybrid_alpha})...")
                     sub_results = self._hybrid_search(
                         query=retrieval_query,
             query_embedding=query_embedding,
@@ -1716,7 +1716,7 @@ Output ONLY the refined query, nothing else."""
             except Exception as e:
                 # if filter causes error, try without filter
                 if "Invalid where clause" in str(e) or "InvalidArgumentError" in str(type(e).__name__):
-                    print(f"⚠️  Filter error, retrying without metadata filter: {str(e)}")
+                    print(f"Filter error, retrying without metadata filter: {str(e)}")
                     if self.enable_hybrid_retrieval:
                         sub_results = self._hybrid_search(
                             query=retrieval_query,
@@ -1743,7 +1743,7 @@ Output ONLY the refined query, nothing else."""
             
             # step 3g: apply iterative retrieval if enabled (only for single queries)
             if self.enable_iterative_retrieval and len(sub_queries) == 1 and sub_idx == 0:
-                print(f"🔄 Iterative retrieval (max {self.max_iterations} iterations)...")
+                print(f"Iterative retrieval (max {self.max_iterations} iterations)...")
                 sub_results = self._iterative_retrieval(
                     query=retrieval_query,
                     initial_results=sub_results,
@@ -1755,7 +1755,7 @@ Output ONLY the refined query, nothing else."""
         
         # step 4a: merge results if multiple sub-queries
         if len(sub_queries) > 1:
-            print(f"\n🔗 Merging results from {len(sub_queries)} sub-queries...")
+            print(f"\nMerging results from {len(sub_queries)} sub-queries...")
             results = self._merge_search_results(all_search_results, top_k)
             print(f"   Merged to {len(results.get('ids', [[]])[0]) if results.get('ids') and results['ids'][0] else 0} unique chunks")
         else:
@@ -1763,7 +1763,7 @@ Output ONLY the refined query, nothing else."""
         
         # step 4b: Apply small2big expansion if enabled
         if self.enable_small2big and results.get("ids") and results["ids"][0]:
-            print(f"\n🔍 Small2big: Expanding to full context (k={self.small2big_expansion_k})...")
+            print(f"\nSmall2big: Expanding to full context (k={self.small2big_expansion_k})...")
             original_count = len(results["ids"][0]) if isinstance(results["ids"][0], list) else len(results["ids"])
             results = self._expand_to_full_context(results, expansion_k=self.small2big_expansion_k)
             expanded_count = len(results["ids"][0]) if isinstance(results["ids"][0], list) else len(results["ids"])
@@ -1772,12 +1772,12 @@ Output ONLY the refined query, nothing else."""
         # step 4c: apply reranking if enabled (for merged results from multiple sub-queries)
         if self.enable_reranking and len(sub_queries) > 1 and results.get("ids") and results["ids"][0]:
             # rerank merged results from multiple sub-queries
-            print(f"\n🔄 Reranking merged results from {len(sub_queries)} sub-queries...")
+            print(f"\nReranking merged results from {len(sub_queries)} sub-queries...")
             results = self._rerank_results(user_query, results, top_k)
         
         # step 4d: post-filter irrelevant chunks for event queries
         if is_event_query_fallback and results.get("ids") and results["ids"][0]:
-            print("\n🔍 Post-filtering event results to remove irrelevant chunks...")
+            print("\nPost-filtering event results to remove irrelevant chunks...")
             results = self._post_filter_event_results(user_query, results)
         
         # step 5: post-filter by date if needed (fallback if metadata filtering didn't work)
@@ -1836,7 +1836,7 @@ Output ONLY the refined query, nothing else."""
                 }
             else:
                 # no results after filtering - try without date filter
-                print("⚠️  No results with date filter, trying without...")
+                print("No results with date filter, trying without...")
                 results = self.vector_db.search(
                     query_embedding=query_embedding,
                     n_results=top_k,
@@ -1855,7 +1855,7 @@ Output ONLY the refined query, nothing else."""
         context = self._format_context(results)
         
         # step 7: generate answer with LLM
-        print("🤖 Generating answer...")
+        print("Generating answer...")
         
         # build prompt with current date context
         current_date_str = self.current_date.strftime("%A, %B %d, %Y")
