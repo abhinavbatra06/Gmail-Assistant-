@@ -1,18 +1,11 @@
 gmail:
   senders:
   # - "all"                                # Use "all" to fetch from all senders
-    - "mhd7641@nyu.edu"
-    - "ssn9062@nyu.edu"
-    - "mohammad@trilemma.foundation"
-    - "zl2068@nyu.edu"
-    - "noreply@mail.brightspace.nyu.edu"
-    - "gradlife@nyu.edu"
-    - "fj6@nyu.edu"
-    - "cdswidseboard@nyu.edu"
-    - "cds-masters@nyu.edu"
-    - "gsas.masterscollege@nyu.edu"
-    - "nyu536@nyu.edu"
-    - "cds-communications@nyu.edu"
+    - "advisor1@nyu.edu"
+    - "advisor2@nyu.edu"                 # replace with actual advisor emails
+    - "course-notifications@nyu.edu"
+    - "academic-dept@nyu.edu"
+
 
   # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
   start_date: "2025-09-03"
@@ -22,7 +15,7 @@ gmail:
   label: "INBOX"
 
   # Control fetch size
-  target_total: 100                   # Max total emails to fetch
+  target_total: 1000                   # Max total emails to fetch
   per_sender_cap: 100                  # Max per sender (ignored if senders="all")
 
   # Include attachments when downloading emails
