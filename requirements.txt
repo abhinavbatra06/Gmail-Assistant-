@@ -41,6 +41,9 @@ rank-bm25
 # Optional: sentence-transformers for cross-encoder reranking
 sentence-transformers
 
+# Streamlit UI
+streamlit
+
 # SSL Certificate Fix for HuggingFace/Docling (Windows)
 certifi>=2024.0.0
 python-certifi-win32>=1.6.0

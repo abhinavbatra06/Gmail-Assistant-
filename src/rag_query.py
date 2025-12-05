@@ -643,7 +643,7 @@ Otherwise, classify as "general"."""
         system_prompt = f"""You are a helpful assistant that answers questions about calendar events.
 Today's date is {current_date_str}.
 Use the provided event information to answer the user's question.
-Be concise and accurate."""
+Be concise and accurate. Do NOT include chunk citations or references in your answer."""
         
         user_prompt = f"""Based on the following calendar events, answer this question: {query}
 
@@ -1865,7 +1865,7 @@ Output ONLY the refined query, nothing else."""
 Today's date is {current_date_str} ({current_time_str}).
 You must ONLY use information from the provided email chunks. If the information is not in the chunks, say so.
 When answering questions about "this week" or "upcoming" events, consider that today is {current_date_str}.
-Be concise and accurate. Cite which chunks you used when relevant."""
+Be concise and accurate. Do NOT include chunk citations like (Chunk 1) or (Chunk 2) in your answer."""
         
         user_prompt = f"""Based on the following email chunks, answer this question: {user_query}
 
