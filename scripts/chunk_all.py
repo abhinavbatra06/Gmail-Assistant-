@@ -18,7 +18,7 @@ def main():
     print("="*60)
     
     # Load config
-    print("\n📂 Loading config...")
+    print("\n Loading config...")
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
     
@@ -30,23 +30,23 @@ def main():
     print(f"   Overlap: {overlap} tokens")
     
     # Connect to database
-    print("\n💾 Connecting to database...")
+    print("\n Connecting to database...")
     db = DBHelper("db/emails.db")
     
     # Show stats
-    print("\n📊 Current Statistics:")
+    print("\n Current Statistics:")
     stats = db.get_chunking_stats()
     print(f"   Total emails: {stats['total_emails']}")
     print(f"   Already chunked: {stats['chunked_emails']}")
     print(f"   Need chunking: {stats['unchunked_emails']}")
     
     if stats['unchunked_emails'] == 0:
-        print("\n✅ All emails already chunked!")
+        print("\n All emails already chunked!")
         db.close()
         return
     
     # Create chunker
-    print("\n🔧 Initializing chunker...")
+    print("\n Initializing chunker...")
     chunker = EmailChunker(
         db_helper=db,
         chunk_size=chunk_size,
@@ -55,7 +55,7 @@ def main():
     )
     
     # Chunk all emails
-    print(f"\n🚀 Starting to chunk {stats['unchunked_emails']} emails...\n")
+    print(f"\n Starting to chunk {stats['unchunked_emails']} emails...\n")
     chunker.chunk_all_emails()
     
     # Final stats
@@ -69,7 +69,7 @@ def main():
     print(f"   Avg chunks/email: {final_stats['avg_chunks_per_email']}")
     
     db.close()
-    print("\n✅ All done!")
+    print("\n All done!")
 
 
 if __name__ == "__main__":

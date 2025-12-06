@@ -9,7 +9,7 @@ from src.rag_query import RAGQuery
 # Page config
 st.set_page_config(
     page_title="Gmail Assistant",
-    page_icon="📧",
+    page_icon="",
     layout="wide"
 )
 

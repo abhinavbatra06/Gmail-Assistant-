@@ -198,7 +198,7 @@ class DoclingProcessor:
                         has_unprocessed_attachments = True
                 
                 if has_unprocessed_attachments:
-                    print(f"📎 Processing attachments for already-processed email: {msg_id} (DB has {db_attachment_count} attachments, {len(processed_attachment_files)} processed)")
+                    print(f" Processing attachments for already-processed email: {msg_id} (DB has {db_attachment_count} attachments, {len(processed_attachment_files)} processed)")
                     attachments = self.process_attachments(msg_id, save=True)
                     structured_doc["attachments_processed"] = attachments
                     structured_doc["metadata"]["attachment_count"] = len(attachments)
@@ -235,7 +235,7 @@ class DoclingProcessor:
             return structured_doc
 
         except Exception as e:
-            print(f"❌ Error processing {msg_id}: {str(e)}")
+            print(f" Error processing {msg_id}: {str(e)}")
             self.db.update_status(msg_id, f"error: {str(e)}")
             return None
 
@@ -616,7 +616,7 @@ class DoclingProcessor:
                         json.dump(att_doc, f, ensure_ascii=False, indent=2)
 
                 processed_attachments.append(att_doc)
-                print(f"  📎 Processed attachment: {filename} ({len(att_doc['text'])} chars)")
+                print(f"   Processed attachment: {filename} ({len(att_doc['text'])} chars)")
 
             except Exception as e:
                 print(f"  Could not process attachment {filename}: {str(e)}")

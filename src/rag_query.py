@@ -1707,7 +1707,7 @@ Output ONLY the refined query, nothing else."""
                         filter_metadata=combined_filter
                     )
                 else:
-                    print(f"📚 Searching vector DB (top {search_k})...")
+                    print(f" Searching vector DB (top {search_k})...")
                     sub_results = self.vector_db.search(
                         query_embedding=query_embedding,
                         n_results=search_k,
