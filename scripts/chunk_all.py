@@ -50,7 +50,8 @@ def main():
     chunker = EmailChunker(
         db_helper=db,
         chunk_size=chunk_size,
-        overlap=overlap
+        overlap=overlap,
+        predict_db_path="db/events.db"
     )
     
     # Chunk all emails
