@@ -151,7 +151,7 @@ class Memory:
         
         return filters
     
-    def log_query(self, query: str, intent: str, module_used: str, result_count: int) -> int:
+    def log_query(self, query: str, intent: str, module_used: str, result_count: int):
         """
         Log a query to history.
         

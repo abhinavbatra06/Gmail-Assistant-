@@ -29,8 +29,8 @@ def main():
     # Initialize components
     print("\nInitializing components...")
     db = DBHelper(config["paths"]["db_path"])
-    embedder = EmailEmbedder(db_helper=db)
-    vector_db = EmailVectorDB()
+    embedder = EmailEmbedder(config_path="config.yaml", db_helper=db) # modified to pass db_helper
+    vector_db = EmailVectorDB(config_path="config.yaml") # modified to pass config_path
     
     # Check current status
     print("\nChecking status...")
@@ -79,7 +79,7 @@ def main():
         print("\nRegenerating embeddings...")
         # Reinitialize with fresh state
         db_new = DBHelper(config["paths"]["db_path"])
-        embedder_new = EmailEmbedder(db_helper=db_new)
+        embedder_new = EmailEmbedder(config_path="config.yaml", db_helper=db_new) # modified to pass db_helper
         
         all_chunks = embedder_new.embed_all_messages()
         
