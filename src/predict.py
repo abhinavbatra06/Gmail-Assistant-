@@ -99,6 +99,57 @@ class Predict:
         
         self.conn.commit()
     
+    def _parse_datetime_from_db(self, dt_value) -> Optional[datetime]:
+        """
+        Parse datetime value from database (SQLite returns DATETIME as string).
+        
+        Args:
+            dt_value: Datetime value from database (string or datetime object)
+            
+        Returns:
+            datetime object or None if parsing fails
+        """
+        if dt_value is None:
+            return None
+        
+        if isinstance(dt_value, datetime):
+            return dt_value
+        
+        if isinstance(dt_value, str):
+            # try ISO format first
+            try:
+                return datetime.fromisoformat(dt_value.replace('Z', '+00:00'))
+            except (ValueError, AttributeError):
+                # try SQLite datetime format: "YYYY-MM-DD HH:MM:SS"
+                try:
+                    return datetime.strptime(dt_value, "%Y-%m-%d %H:%M:%S")
+                except:
+                    # try date only format
+                    try:
+                        return datetime.strptime(dt_value, "%Y-%m-%d")
+                    except:
+                        return None
+        
+        return None
+    
+    def _convert_event_datetimes(self, event: Dict) -> Dict:
+        """
+        Convert datetime strings in event dict to datetime objects.
+        
+        Args:
+            event: Event dictionary from database
+            
+        Returns:
+            Event dictionary with datetime objects
+        """
+        if event.get("start_time"):
+            event["start_time"] = self._parse_datetime_from_db(event["start_time"])
+        
+        if event.get("end_time"):
+            event["end_time"] = self._parse_datetime_from_db(event["end_time"])
+        
+        return event
+    
     def extract_events_from_email(self, message_id: str, attachment_path: str, 
                                   attachment_filename: str, email_date: Optional[str] = None) -> int:
         """
@@ -473,6 +524,10 @@ Return ONLY valid JSON object with "events" array, no other text:"""
                 event["message_ids"] = event["message_ids"].split(",")
             else:
                 event["message_ids"] = []
+            
+            # convert datetime strings back to datetime objects for proper comparison
+            # SQLite returns DATETIME columns as strings
+            event = self._convert_event_datetimes(event)
             events.append(event)
         
         return events
@@ -493,16 +548,75 @@ Return ONLY valid JSON object with "events" array, no other text:"""
     def get_upcoming_events(self, days: int = 7) -> List[Dict]:
         """
         Get upcoming events in the next N days.
+        Only returns events that START in the future (not events that are ongoing).
+        Includes calendar events and submission deadlines (assignments, quizzes, projects).
+        Excludes only job application deadlines.
         
         Args:
             days: Number of days to look ahead
             
         Returns:
-            List of upcoming events
+            List of upcoming events (including submission deadlines, excluding job application deadlines)
         """
         now = datetime.now()
         future = now + timedelta(days=days)
-        return self.query_events(start_date=now, end_date=future)
+        
+        # For upcoming events, we want events that START in the future
+        # Use a direct query instead of query_events which filters by end_time
+        # Exclude only job application deadlines, but include submission deadlines
+        cur = self.conn.cursor()
+        query = """
+            SELECT DISTINCT e.*, 
+                   GROUP_CONCAT(DISTINCT ee.message_id) as message_ids,
+                   COUNT(DISTINCT ee.message_id) as email_count
+            FROM events e
+            LEFT JOIN event_emails ee ON e.id = ee.event_id
+            WHERE e.start_time IS NOT NULL
+              AND e.start_time >= ?
+              AND e.start_time <= ?
+              AND e.summary NOT LIKE '%Job Application Deadline%'
+              AND (e.summary NOT LIKE '%Application Deadline%' 
+                   OR e.summary LIKE '%Submission%'
+                   OR e.summary LIKE '%Assignment%'
+                   OR e.summary LIKE '%Quiz%'
+                   OR e.summary LIKE '%Project%'
+                   OR e.summary LIKE '%Due%'
+                   OR e.summary LIKE '%Homework%')
+            GROUP BY e.id 
+            ORDER BY e.start_time ASC 
+            LIMIT ?
+        """
+        cur.execute(query, (now, future, 50))
+        rows = cur.fetchall()
+        
+        # get column names
+        columns = [desc[0] for desc in cur.description]
+        
+        events = []
+        for row in rows:
+            event = dict(zip(columns, row))
+            # parse message_ids string into list
+            if event.get("message_ids"):
+                event["message_ids"] = event["message_ids"].split(",")
+            else:
+                event["message_ids"] = []
+            
+            # convert datetime strings to datetime objects
+            event = self._convert_event_datetimes(event)
+            
+            # additional filtering: exclude only job application deadlines
+            summary = event.get("summary", "").lower()
+            # Exclude job application deadlines
+            if "job application deadline" in summary:
+                continue
+            # Allow if it's a submission/assignment/quiz/project deadline
+            if "application deadline" in summary:
+                # Check if it's an academic deadline (submission, assignment, quiz, project, due, homework)
+                if not any(term in summary for term in ["submission", "assignment", "quiz", "project", "due", "homework"]):
+                    continue  # It's a job application deadline, exclude it
+            events.append(event)
+        
+        return events
     
     def get_events_this_week(self) -> List[Dict]:
         """Get all events happening this week."""
@@ -547,6 +661,8 @@ Return ONLY valid JSON object with "events" array, no other text:"""
         events = []
         for row in rows:
             event = dict(zip(columns, row))
+            # convert datetime strings to datetime objects
+            event = self._convert_event_datetimes(event)
             events.append(event)
         
         return events

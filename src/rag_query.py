@@ -461,44 +461,44 @@ Otherwise, classify as "general"."""
                 "description": "Calendar/event queries - prioritizing calendar attachments"
             },
             "deadline": {
-                "top_k_multiplier": 1.2,
+                "top_k_multiplier": 1.5,  # get more results for deadline queries
                 "preferred_source_types": ["email", "attachment"],
-                "metadata_filters": None,  # no specific filter, but look for assignment language
+                "metadata_filters": {"source_type": {"$in": ["email", "attachment"]}},  # explicitly include attachments
                 "query_optimization": "rewrite",  # query rewriting helps with deadline queries
-                "prioritize_attachments": False,
-                "description": "Deadline/assignment queries - looking for due dates and assignments"
+                "prioritize_attachments": True,  # prioritize attachments for deadline queries
+                "description": "Deadline/assignment queries - looking for due dates and assignments in emails and attachments"
             },
             "sender": {
-                "top_k_multiplier": 1.0,
-                "preferred_source_types": ["email"],
-                "metadata_filters": None,  # will be set based on query analysis
+                "top_k_multiplier": 1.2,  # slightly more to account for attachments
+                "preferred_source_types": ["email", "attachment"],
+                "metadata_filters": {"source_type": {"$in": ["email", "attachment"]}},  # include attachments
                 "query_optimization": "rewrite",
-                "prioritize_attachments": False,
-                "description": "Sender-based queries - filtering by sender metadata"
+                "prioritize_attachments": True,  # attachments may contain relevant info from sender
+                "description": "Sender-based queries - filtering by sender metadata, including attachments"
             },
             "information": {
-                "top_k_multiplier": 1.0,
+                "top_k_multiplier": 1.2,  # slightly more to account for attachments
                 "preferred_source_types": ["email", "attachment"],
-                "metadata_filters": None,
+                "metadata_filters": {"source_type": {"$in": ["email", "attachment"]}},  # explicitly include attachments
                 "query_optimization": "rewrite",
-                "prioritize_attachments": False,
-                "description": "Information extraction queries - focused retrieval"
+                "prioritize_attachments": True,  # attachments often contain detailed information
+                "description": "Information extraction queries - searching emails and attachments"
             },
             "summarization": {
                 "top_k_multiplier": 2.0,  # get more chunks for summarization
-                "preferred_source_types": ["email"],
-                "metadata_filters": None,
+                "preferred_source_types": ["email", "attachment"],
+                "metadata_filters": {"source_type": {"$in": ["email", "attachment"]}},  # include attachments for context
                 "query_optimization": "rewrite",
-                "prioritize_attachments": False,
-                "description": "Summarization queries - retrieving more context"
+                "prioritize_attachments": True,  # attachments provide important context for summarization
+                "description": "Summarization queries - retrieving context from emails and attachments"
             },
             "general": {
                 "top_k_multiplier": 1.0,
                 "preferred_source_types": ["email", "attachment"],
-                "metadata_filters": None,
+                "metadata_filters": {"source_type": {"$in": ["email", "attachment"]}},  # always include attachments
                 "query_optimization": None,  # use default from config
-                "prioritize_attachments": False,
-                "description": "General email search queries"
+                "prioritize_attachments": True,  # attachments may contain relevant information
+                "description": "General email search queries - including emails and attachments"
             }
         }
         
@@ -592,6 +592,9 @@ Otherwise, classify as "general"."""
         start_date = None
         end_date = None
         
+        # check if this is a deadline query
+        is_deadline_query = "deadline" in query_lower or "due" in query_lower or "due date" in query_lower
+        
         if "this week" in query_lower:
             events = self.predict.get_events_this_week()
         elif "upcoming" in query_lower or "coming" in query_lower or "recent" in query_lower:
@@ -599,12 +602,28 @@ Otherwise, classify as "general"."""
                 # recent events: last 30 days
                 from datetime import timedelta
                 start_date = self.current_date - timedelta(days=30)
+                # for deadline queries, search for deadlines in this range
+                if is_deadline_query:
+                    events = self.predict.query_events(
+                        start_date=start_date,
+                        limit=top_k * 2,
+                        exclude_deadlines=False  # include all deadlines for deadline queries
+                    )
+                else:
+                    events = self.predict.query_events(start_date=start_date, limit=top_k * 2)
             else:
-                # upcoming events: next 7 days
-                events = self.predict.get_upcoming_events(days=7)
+                # upcoming events/deadlines: next 7 days (or more for deadline queries)
+                days_ahead = 30 if is_deadline_query else 7  # look further ahead for deadlines
+                events = self.predict.get_upcoming_events(days=days_ahead)
         else:
-            # general search - try with location filter first
-            if location_keywords:
+            # general search - for deadline queries, search more broadly
+            if is_deadline_query:
+                # search for deadlines specifically
+                events = self.predict.search_events(query, limit=top_k * 2, exclude_deadlines=False)
+                # also try searching for upcoming deadlines if no results
+                if not events:
+                    events = self.predict.get_upcoming_events(days=60)  # look 60 days ahead for deadlines
+            elif location_keywords:
                 # use query_events with location filter
                 events = self.predict.query_events(
                     location=location_keywords,
@@ -627,14 +646,23 @@ Otherwise, classify as "general"."""
         
         # generate answer with LLM
         current_date_str = self.current_date.strftime("%A, %B %d, %Y")
-        system_prompt = f"""You are a helpful assistant that answers questions about calendar events.
+        is_deadline_query = "deadline" in query.lower() or "due" in query.lower()
+        
+        if is_deadline_query:
+            system_prompt = f"""You are a helpful assistant that answers questions about deadlines and due dates.
+Today's date is {current_date_str}.
+Use the provided deadline and event information to answer the user's question.
+Be concise and accurate. List all relevant deadlines."""
+        else:
+            system_prompt = f"""You are a helpful assistant that answers questions about calendar events.
 Today's date is {current_date_str}.
 Use the provided event information to answer the user's question.
 Be concise and accurate."""
         
-        user_prompt = f"""Based on the following calendar events, answer this question: {query}
+        content_type = "Deadlines and events" if is_deadline_query else "Events"
+        user_prompt = f"""Based on the following {content_type.lower()}, answer this question: {query}
 
-Events:
+{content_type}:
 {events_text}
 
 Answer:"""
@@ -1461,16 +1489,22 @@ Output ONLY the refined query, nothing else."""
             print(f"    Intent: {routing_decision['intent']} (confidence: {routing_decision['confidence']:.2f})")
             print(f"    Reason: {routing_decision['reason']}")
             
-            # route to Predict module if router says so
+            # route to Predict module if router says so (for calendar or deadline queries)
             is_event_query_fallback = False
             if routing_decision["module"] == "predict" and self.predict:
-                print("📅 Router: Using Predict module for calendar query...")
+                if routing_decision["intent"] == "calendar":
+                    print("📅 Router: Using Predict module for calendar query...")
+                elif routing_decision["intent"] == "deadline":
+                    print("📋 Router: Using Predict module for deadline query...")
+                else:
+                    print(f"📌 Router: Using Predict module for {routing_decision['intent']} query...")
+                
                 result = self._query_with_predict(user_query, top_k)
-                # if Predict module found no events, fall back to regular RAG with enhanced retrieval
+                # if Predict module found no events/deadlines, fall back to regular RAG with enhanced retrieval
                 if result is None:
-                    print("    Falling back to RAG retrieval (no events in Predict DB)...")
-                    print("    Using enhanced retrieval for event queries...")
-                    # increase top_k for event queries (will also be filtered later)
+                    print("    Falling back to RAG retrieval (no events/deadlines in Predict DB)...")
+                    print("    Using enhanced retrieval for event/deadline queries...")
+                    # increase top_k for event/deadline queries (will also be filtered later)
                     top_k = top_k * 2  # get more chunks for event queries (reduced from 3x)
                     is_event_query_fallback = True
                     # continue with regular RAG flow below
@@ -1530,15 +1564,31 @@ Output ONLY the refined query, nothing else."""
                 print(f"   Adjusted top_k: {top_k} → {adjusted_top_k}")
                 top_k = adjusted_top_k
         
-        # step 1: enhance query for event queries that fell back from Predict
+        # step 1: enhance query for event/deadline queries that fell back from Predict
         if is_event_query_fallback:
             enhanced_query = user_query
-            if "event" not in user_query.lower():
+            query_lower = user_query.lower()
+            
+            # enhance deadline queries
+            if "deadline" in query_lower or "due" in query_lower:
+                if "deadline" not in query_lower:
+                    enhanced_query = f"{user_query} deadline due date"
+                if "upcoming" in query_lower or "coming" in query_lower:
+                    enhanced_query = f"{enhanced_query} upcoming future"
+                # prioritize attachments for deadline queries
+                print(f"   → Enhanced deadline query: {enhanced_query}")
+            # enhance event queries
+            elif "event" not in query_lower:
                 enhanced_query = f"{user_query} events calendar"
-            if "recent" in user_query.lower() or "upcoming" in user_query.lower():
-                enhanced_query = f"{enhanced_query} this week upcoming"
+                if "recent" in query_lower or "upcoming" in query_lower:
+                    enhanced_query = f"{enhanced_query} this week upcoming"
+                print(f"   → Enhanced event query: {enhanced_query}")
+            else:
+                if "recent" in query_lower or "upcoming" in query_lower:
+                    enhanced_query = f"{enhanced_query} this week upcoming"
+                print(f"   → Enhanced query: {enhanced_query}")
+            
             user_query = enhanced_query
-            print(f"   → Enhanced event query: {user_query}")
         
         # step 2: decompose query into sub-queries if enabled
         sub_queries = [user_query]  # default to single query
@@ -1636,6 +1686,36 @@ Output ONLY the refined query, nothing else."""
             use_date_filter = date_filter is not None
             if use_date_filter and len(sub_queries) == 1:
                 print(f"📅 Will apply date filter after retrieval (ChromaDB compatibility)...")
+            
+            # ensure attachments are always included unless explicitly excluded
+            # if no source_type filter exists, add one to include emails and attachments
+            def has_source_type_in_filter(filt):
+                """Recursively check if filter contains source_type"""
+                if not isinstance(filt, dict):
+                    return False
+                if "source_type" in filt:
+                    return True
+                # check nested filters (for $and, $or, etc.)
+                for key, value in filt.items():
+                    if isinstance(value, (dict, list)):
+                        if isinstance(value, list):
+                            for item in value:
+                                if has_source_type_in_filter(item):
+                                    return True
+                        elif has_source_type_in_filter(value):
+                            return True
+                return False
+            
+            has_source_type_filter = any(has_source_type_in_filter(fp) for fp in filter_parts)
+            
+            # if no source_type filter exists, add default to include emails and attachments
+            # this ensures attachments are always searched unless explicitly excluded
+            if not has_source_type_filter:
+                # add default to include emails and attachments for all queries
+                default_source_filter = {"source_type": {"$in": ["email", "attachment"]}}
+                filter_parts.append(default_source_filter)
+                if len(sub_queries) == 1:
+                    print(f"📎 Including attachments by default (ensuring email and attachment chunks are searched)")
             
             # combine filters (excluding date filter for chromdb)
             if len(filter_parts) == 0:
