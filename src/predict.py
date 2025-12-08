@@ -436,11 +436,11 @@ Return ONLY valid JSON object with "events" array, no other text:"""
         params = []
         
         if start_date:
-            query += " AND (e.end_time IS NULL OR e.end_time >= ?)"
+            query += " AND e.start_time >= ?"
             params.append(start_date)
         
         if end_date:
-            query += " AND (e.start_time IS NULL OR e.start_time <= ?)"
+            query += " AND e.start_time <= ?"
             params.append(end_date)
         
         if location:
