@@ -1,22 +1,36 @@
 gmail:
   senders:
-  - noreply@mail.brightspace.nyu.edu
-  - alerts@mail.libcal.com
-  - handshake@notifications.joinhandshake.com
-  - gsas.profdev@nyu.edu
-  - courant-academicaffairs@nyu.edu
-  - opportunities@cs.nyu.edu
-  - ab12615@nyu.edu
-  - at6651@nyu.edu
-  - '*@cs.nyu.edu'
-  - ankitatripathi95@gmail.com
-  start_date: '2025-11-30'
-  end_date: '2025-12-03'
-  label: INBOX
-  target_total: 100
-  per_sender_cap: 100
+  # - "all"                                # Use "all" to fetch from all senders
+    - noreply@mail.brightspace.nyu.edu
+    - alerts@mail.libcal.com
+    - handshake@notifications.joinhandshake.com
+    - gsas.profdev@nyu.edu
+    - courant-academicaffairs@nyu.edu
+    - opportunities@cs.nyu.edu
+    - ab12615@nyu.edu
+    - at6651@nyu.edu
+    - '*@cs.nyu.edu'
+    - ankitatripathi95@gmail.com
+
+
+  # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
+  start_date: "2025-10-30"
+  end_date: "2025-12-09"
+
+  # Gmail label to target: "INBOX", "UNREAD", "STARRED", etc.
+  label: "INBOX"
+
+  # Control fetch size
+  target_total: 1000                   # Max total emails to fetch
+  per_sender_cap: 100                  # Max per sender (ignored if senders="all")
+
+  # Include attachments when downloading emails
   include_attachments: true
+
+  # Gmail API pagination (for later scaling)
   page_size: 50
+
+# storage paths 
 paths:
   base_dir: data
   raw_emails: data/raw_emails
@@ -26,52 +40,72 @@ paths:
   chunks: data/chunks
   db_path: db/emails.db
   logs: logs
+
+
 creds:
-  gmail_client: creds/gmail_creds.json
-  gmail_token: creds/token.json
+  gmail_client: creds/gmail_creds.json    # Google OAuth client credentials
+  gmail_token: creds/token.json           # Auto-generated refresh token
+
+
 docling:
   convert_eml: true
   include_layout: true
   output_dir: data/docling
   process_attachments: true
-  include_email_tables: false
+  include_email_tables: false  # set to true to include email HTML tables
+
 chunking:
-  chunk_size: 600
-  chunk_overlap: 100
+  chunk_size: 600          # target tokens per chunk
+  chunk_overlap: 100         # overlap tokens between chunks
+
 embedding:
-  model: text-embedding-3-small
+  model: "text-embedding-3-small"
   batch_size: 100
-  openai_api_key_env: OPENAI_API_KEY
+  openai_api_key_env: "OPENAI_API_KEY"
+
 vectorstore:
   enable: true
-  type: chroma
-  persist_directory: data/vector_index
-  collection_name: email_chunks
-  distance_metric: cosine
-  embedding_model: text-embedding-3-small
+  type: "chroma"
+  persist_directory: "data/vector_index"
+  collection_name: "email_chunks"
+  distance_metric: "cosine"
+  embedding_model: "text-embedding-3-small"
+
 rag:
   top_k: 5
   context_window: 2000
-  response_model: gpt-4o-mini
-  query_optimization: rewrite
+  response_model: "gpt-4o-mini"
+  # query optimization method: "rewrite" (query expansion), "hyde" (hypothetical document embeddings), or "none"
+  query_optimization: "rewrite"
+  # enable explicit query expansion with synonyms and related terms (works with any optimization method)
   enable_query_expansion: true
+  # enable sub-query decomposition for complex multi-part queries
   enable_subquery_decomposition: true
+  # enable intent-based query routing (classifies queries and applies intent-specific retrieval strategies)
   enable_intent_routing: true
+  # enable Router module for query routing (modular architecture)
   enable_routing: true
+  # enable Predict module for structured calendar event queries (faster than vector search)
   enable_predict: true
-  predict_db_path: db/events.db
+  predict_db_path: "db/events.db"
+  # enable Memory module for user preferences and query history
   enable_memory: true
-  memory_db_path: db/memory.db
+  memory_db_path: "db/memory.db"
+  # enable small2big retrieval (expand small chunks to full email context)
   enable_small2big: true
-  small2big_expansion_k: 3
+  small2big_expansion_k: 3  # expand to 3x chunks per message
+  # enable hybrid retrieval (bm25 keyword + dense semantic search)
   enable_hybrid_retrieval: true
-  hybrid_alpha: 0.5
+  hybrid_alpha: 0.5  # 0.0 = only bm25, 1.0 = only dense, 0.5 = balanced
+  # enable iterative retrieval (refine query based on initial results)
   enable_iterative_retrieval: true
-  max_iterations: 3
+  max_iterations: 3  # max retrieval refinement iterations
+  # enable reranking (post-retrieval relevance scoring)
   enable_reranking: true
-  rerank_method: llm
-  rerank_top_k: 20
+  rerank_method: "llm"  # "llm" (OpenAI) or "cross_encoder" (sentence-transformers)
+  rerank_top_k: 20  # retrieve this many candidates, then rerank to top_k
+
 summarizer:
   enable: false
-  model: gpt-3.5-turbo
+  model: "gpt-3.5-turbo"
   max_length: 500
