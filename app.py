@@ -61,7 +61,11 @@ if prompt := st.chat_input("Ask about your emails..."):
             try:
                 # Create fresh RAG instance for this query to avoid SQLite threading issues
                 rag = RAGQuery()
-                result = rag.query(prompt)
+                
+                # Pass conversation history for context (last 10 messages)
+                chat_history = st.session_state.messages[-10:] if len(st.session_state.messages) > 10 else st.session_state.messages
+                
+                result = rag.query(prompt, chat_history=chat_history)
                 
                 # Extract response
                 answer = result.get("answer", "Sorry, I couldn't find an answer.")
