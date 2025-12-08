@@ -11,6 +11,7 @@ Each chunk includes:
 
 import os
 import json
+import hashlib
 from datetime import datetime
 from typing import Optional # added
 
@@ -386,24 +387,27 @@ class EmailChunker:
         """
         message_id = metadata.get("id", "unknown")
         
+        # Create a unique hash from the text content to ensure uniqueness
+        text_hash = hashlib.md5(text.encode('utf-8')).hexdigest()[:8]
+        
         # Build unique chunk ID
         if source_type == "email_body":
-            chunk_id = f"{message_id}_email_{chunk_index}"
+            chunk_id = f"{message_id}_email_{chunk_index}_{text_hash}"
 
         # added
         elif source_type == "calendar":
             # for calendar events, use event uid if available
             event_uid = event_data.get("uid", "") if event_data else ""
             if event_uid:
-                chunk_id = f"{message_id}_event_{event_uid}_{chunk_index}"
+                chunk_id = f"{message_id}_event_{event_uid}_{chunk_index}_{text_hash}"
             else:
                 clean_name = attachment_name.replace(".", "_").replace("/", "_").replace("\\", "_") if attachment_name else "calendar"
-                chunk_id = f"{message_id}_event_{clean_name}_{chunk_index}"
+                chunk_id = f"{message_id}_event_{clean_name}_{chunk_index}_{text_hash}"
 
         else:
             # Clean attachment name for ID (replace special chars)
             clean_name = attachment_name.replace(".", "_").replace("/", "_").replace("\\", "_")
-            chunk_id = f"{message_id}_att_{clean_name}_{chunk_index}"
+            chunk_id = f"{message_id}_att_{clean_name}_{chunk_index}_{text_hash}"
         
         # Create chunk object
         chunk = {
