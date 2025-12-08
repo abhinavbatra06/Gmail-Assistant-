@@ -565,14 +565,15 @@ Otherwise, classify as "general"."""
             "at the", "at", "in", "location", "place", "venue"
         ]
         query_words = query_lower.split()
-        
+
+        # filter out common stop words
+        stop_words = {"the", "a", "an", "and", "or", "for", "to", "of", "on", "with"}
+
         # try to find location after "at" or "in"
         for i, word in enumerate(query_words):
             if word in ["at", "in"] and i + 1 < len(query_words):
                 # take next 2-3 words as potential location
                 location_parts = query_words[i+1:min(i+4, len(query_words))]
-                # filter out common stop words
-                stop_words = {"the", "a", "an", "and", "or", "for", "to", "of", "on", "with"}
                 location_parts = [w for w in location_parts if w not in stop_words]
                 if location_parts:
                     location_keywords = " ".join(location_parts)
