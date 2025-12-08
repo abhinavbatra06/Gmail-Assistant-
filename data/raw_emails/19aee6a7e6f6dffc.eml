@@ -1,0 +1,183 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:4985:b0:50b:93c5:eed5 with SMTP id hb5csp96480gdb;
+        Fri, 5 Dec 2025 04:09:08 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG6KEY+zZ83OmDqnPAsnF0eU53O8CVODTawG3ru8dUZnbP5tSDrdQZojF4JNwJlvqBSPku0
+X-Received: by 2002:a05:6214:2aa4:b0:880:22f3:335e with SMTP id 6a1803df08f44-88824818833mr103715026d6.7.1764936548011;
+        Fri, 05 Dec 2025 04:09:08 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764936548; cv=none;
+        d=google.com; s=arc-20240605;
+        b=dwQIxBhVXExFOt9fk8LZ74k4v/C59GljeGoXtfyzCTVK7BR55FwqMbqNTq3baNaI79
+         uUG5k0Zsx50q4R2CsWw2Uqy7KGRgbDEPoIDCPtpnsWelshePHtztEz/c8QFvuMe2a/t5
+         K23K659BH5bPK+eUi5NOpeIkHNq75THO3EBeO65NRSoGXYzvHnBSGduVsJLY3mILFDD/
+         JMJ/TT85u/ln2FreavUKdDt/cn4XDzfjE/mE56EDzGHaoGphjUnaPzAEruJE1KLLTq2s
+         yfgkMX/xqz1TtuDZAvJdSwaGBEUh4PWHXDolDiYsAE3GIcWrz7KhjUYpgHqFBLsyw5o0
+         asgA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:content-id:mime-version:to:message-id
+         :subject:date:from:dkim-signature;
+        bh=sFF/7uIL83flAQf0JRBzFOu+X2XqUz7G3BiqogJ/QTc=;
+        fh=x8EhVKTD3Pk05++7UWYZ7ByCGW6DqwZOrfdg3akiVZw=;
+        b=AwmZ4Q4FCsUROmzOk0CETVKLCswz5Cx4PdjdKby4y3A88iYr34JnOgX+gM3kkBK3No
+         M1EGAnNn/3jR33Y0Xk2eVTGMDF8TSa9+gFUOKYAaWFoQOd8eSJaKIXMoSpbJLZvJucUo
+         IREJU/hML8U0bzJpqZ/qT7JKeKTJr82LHsg+ZM1VdAbWB3uVOvzp3o0eYPX5XFNNEa31
+         1cmke0REc0c8kysE4u/uk0ciY+F0IiyZpAJ2jKXBAqMPdq+/bkaJKMf/Qef8bjXa5gkx
+         FcMUBEpzEhf+gstGuqeK4nwsrQb3U95Z4f5UPRfTr8EOyDpkz9J9o6ggWdLF/8VigmKJ
+         ox/A==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=TKhzh5rC;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Return-Path: <noreply@mail.brightspace.nyu.edu>
+Received: from pco01la-1772s.nyu.edu (pco01la-1772s.cfs.its.nyu.edu. [216.165.75.8])
+        by mx.google.com with ESMTPS id 6a1803df08f44-888284b098bsi52676236d6.491.2025.12.05.04.09.07
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Dec 2025 04:09:07 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) client-ip=3.213.96.58;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=TKhzh5rC;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Received: from mx0a-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-1772s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5B5C96h1267578
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Fri, 5 Dec 2025 07:09:07 -0500
+Received: from pps.filterd (m0355794.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5B56sW7x105234
+	for <at6651@nyu.edu>; Fri, 5 Dec 2025 07:09:06 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=noreply@mail.brightspace.nyu.edu;
+	dkim=pass header.s=d2lmail1 header.d=mail.brightspace.nyu.edu;
+	dmarc=pass header.from=mail.brightspace.nyu.edu
+Received: from us04psmtp.brightspace.com (us04psmtpout.brightspace.com [3.213.96.58])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4auqqy309q-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Fri, 05 Dec 2025 07:09:06 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/relaxed;
+	d=mail.brightspace.nyu.edu; s=d2lmail1; t=1764936545;
+	bh=sFF/7uIL83flAQf0JRBzFOu+X2XqUz7G3BiqogJ/QTc=;
+	h=From:Date:Subject:To:From;
+	b=TKhzh5rCFzIgyy23M6L09mVpBcQ3q6g2EV6CzNLshH0JLCCZbcBZAmC0X4hylq1hl
+	 oo414unpPeDYLotERM19heVt1AriI0hARsS5qVBRyEtRt/804dvS278cGMfGUhP5+i
+	 lkUhJI9Qx/sEnTqOBOF+cRd45HZB4X3T4HahX6OZyIEQVhF5hYolfEtb2UR242O+Hd
+	 dc2KxFwiYe85FPmgNLiR0UBdxiBEAIvd51GV3PjzDpQGOlaUupvg8d9PYRDifjELVw
+	 NbLdjhXeu6dKM/EejleDXWTQq3ClG7YOUS7GspwJsHgtxuwmVObftmh2LlgsdGf/Mk
+	 v5HMa33FojDQQ==
+Received: from [172.27.13.61] (unknown [172.27.36.101])
+	by us04psmtpout003i.aue1.int.d2l (Postfix) with ESMTP id 74F59804CB
+	for <at6651@nyu.edu>; Fri,  5 Dec 2025 12:09:05 +0000 (UTC)
+From: "noreply@mail.brightspace.nyu.edu" <noreply@mail.brightspace.nyu.edu>
+Date: Fri, 05 Dec 2025 12:09:05 +0000
+Subject: Spec Top Computer SCI:, Section 091 - Announcements: Remote class and
+ guest lecture today Dec 5
+Message-Id: <GXG46MHHWRU4.L00031RBD7B82@IP-AC1B0D3D>
+To: "at6651@nyu.edu" <at6651@nyu.edu>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Id: <GXG46MHHWRU4.LYG3T37U2Q7W@IP-AC1B0D3D>
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjA1MDA4NyBTYWx0ZWRfXwpZCS+qWmudE
+ vKdFSLr6qts0zUhWHJN2IEm85tZSH4Vho6dGZH0NWRJvViubJSn5Akj3qfyuLDQmbqNYXOq7O9w
+ eATlJ0v/RvUWWESEYCnzD19uA4lOWgI90rjnwsB2pYCvNNmxTBAXX4XG0RbYeC0qY3G2trD05Mr
+ Nb5H4obP5eJvvtsDo7+9afClXYpY7c9oYHjZf8jZ/zVl+Y1vDEl0+ftgXljBcomtcfFlNBGFoVI
+ YGpGFRhmaPy6z4OYcPge6Uh3UmITjxK9kt9DnvzDIQBFJ2lk5sT/eJLSHEhcizx0oNiKNoh6NQ5
+ GcRQoBnw0TRWQOQNiNyqmF739nUks3LG3l5sgUQAluSLJ6PGh4XWf7ZLgiaQPtd+Kh+QFK8/ro+
+ lZIMtkhggjl5iw4XWvPFbqwI1E9FK95rkGyIOiKZm1yfjd6s9sxD6VBQvT+JkcWNnkwiytNlTqD
+ 8S7tObYMac0NPZJLy7w==
+X-Authority-Analysis: v=2.4 cv=Wf4BqkhX c=1 sm=1 tr=0 ts=6932cb62 b=1 cx=c_pps
+ a=rlx/2BXBPJfMdtrSDlE4mQ==:117 a=rlx/2BXBPJfMdtrSDlE4mQ==:17
+ a=IkcTkHD0fZMA:10 a=wP3pNCr1ah4A:10 a=7j0FZ4iXMVMA:10 a=Hi4HPhAiYaEA:10
+ a=g8TUdU_LZmEA:10 a=Kan8h273Bse8B8Jy5C1n:22 a=J-g6IGaxAAAA:8
+ a=IHeeESg9vTf6uJw9RacA:9 a=U-M2_vfZ9dHOMSH5:21 a=_W_S_7VecoQA:10
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 cc=ntf awl=host:51
+X-Proofpoint-GUID: JFQVNNFlM5BLx1xa6z3GMrX4Hzhx-Hrw
+X-CLX-Shades: MLX
+X-CLX-Response: 1TFkXGB8eEQpMehcTHxEKWUQXbkBoGUgSWhtNGB0RClhYF2dSXGkeck5HaV9
+ hEQp4ThdkfmtOX3tYUBJaUBEKeUwXa2cSc19iAVppW00RCkNIFwcfHxIRCkNZFwcYEh0RCkNJFx
+ oEGhoaEQpZTRdnZnIRCllJFxpxGhAadwYYGR5xGxsbExwQHxp3BhgaBhoRClleF2xseREKSUYXR
+ E9dU0VYQV91QkVZXk9OEQpJRxd4T00RCkNOF2Bse3xkZGxGZx9oZlIbUkscUBltZ1hyHmJQQlIH
+ YlhdEQpYXBcfBBoEHhsaBRsaBBsaGgQbGR4EGRkQGx4aHxoRCl5ZF01LbQUTEQpNXBcfHxkRCkx
+ aF2htTU1NEQpMRhdva2tra2sRCkJPF2JnelpZflxaZGESEQpDWhcZBBgbGQQTHAQfEhEKQl4XGx
+ EKRF4XGBEKQlwXGxEKQksXb2sFRn1BRlBmfE4RCkJJF2R+a05fe1hQElpQEQpCRRduclJoZWlvW
+ 31teREKQk4XZH5rTl97WFASWlARCkJMF2dSXGkeck5HaV9hEQpCbBdnUlxpHnJOR2lfYREKQkAX
+ ZnkBfBxlBXBPARIRCkJYF25CQXBSSEBnQhx8EQpaWBcbGBEKeUMXZmRhfhwFXloeTm0RCllLFxs
+ eGRoZEQpwaBdvXUZZexkBXUdobhAbHBoRCnBoF2tuHkxuE09kXX9tEBseHxEKcGgXa01tcHJQQk
+ 5wW0MQBx0aEQpwaBdtWk5eThMffn1GGhAeExEKcGgXYVNAYElSfWFPBXgQGhEKcGgXZm9bGx5mf
+ 01OAUwQGhEKcGgXZB9LE2Zue3kZeUEQGhEKcGgXYkAYZ3pYH0NYR1gQGhEKcH0Xb3geHm5IWl59
+ QEYQGhEKcH0XaU4cRlJeUkxSWBwQGhEKcH0Xa2VHQVBTYUdGHUUQGxgSEQpwfxdoHhN+aRttRUh
+ eThAbHB0RCnBfF2tnaRlMXkxiY2NQEBsYEhEKcF8XZFMaYUxYaHNaGGYQGxgSEQpwXxdoSWZPQX
+ tYSE9rYBAbGBIRCnBsF2ttSQVpG10eEk5SEB0aEQptfhcaEQpYTRdLESA=
+X-Proofpoint-ORIG-GUID: JFQVNNFlM5BLx1xa6z3GMrX4Hzhx-Hrw
+X-Orig-IP: 3.213.96.58
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-12-05_04,2025-12-04_04,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ impostorscore=0 spamscore=0 malwarescore=0 suspectscore=0 bulkscore=0
+ priorityscore=95 lowpriorityscore=0 clxscore=254 adultscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc=notification route=inbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2512050087 domainage_hfrom=14303
+
+<!doctype html>
+<html>
+	<head>
+		<title>Spec Top Computer SCI:, Section 091 - Announcements: Remote class and guest lecture today Dec 5</title>
+	</head>
+	<body style="font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+		<div style="width:100%;font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+			<div style="border-bottom:1px dotted #000000;margin-bottom:15px;padding-bottom:5px;">
+			<h1 style="margin:0px;padding:0px;color:#000000;font-size:0.95rem;font-weight:bold;">Spec Top Computer SCI:, Section 091 - Announcements: Remote class and guest lecture today Dec 5<br /><span style="color:#666666;font-size:0.8rem;font-weight:normal;">Posted Friday, December 5, 2025 7:07 AM EST</span></h1>
+		</div>
+		<div style="padding:0px;margin:0px;">
+			<div><div>
+<div>
+<div dir="ltr">
+<div dir="ltr">
+<div>
+<div>
+<div>
+<p>ello,&#160;</p>
+<p>The class will be held remotely over Zoom today. Today&#39;s class will be focused on GenAI platform in enterprise, APIs and MCP. We have a guest lecture today.&#160;</p>
+<h1><strong>From APIs to Agents: Building AI-Ready Platforms in the Enterprise</strong></h1>
+<h2><strong>Abstract</strong></h2>
+<p>Generative AI is transforming modern software systems, but deploying it inside enterprises requires more than calling a model API. This session explores the architectural foundations of GenAI platforms: how APIs, gateways, model routing, and protocols like MCP enable scalable, governable, and multi-model AI integration.</p>
+<p>We’ll walk through engineering patterns for API management at scale, cloud-native orchestration, multi-provider routing, latency–cost–safety tradeoffs, blast radius reduction, observability pipelines, and security controls across the AI stack. Students will see how agents invoke tools, how AI gateways abstract provider differences, and how platform teams design resilient, policy-driven AI systems suitable for real-world environments.</p>
+<h2><strong>Speaker Bio</strong></h2>
+<p><strong>Krithika Prakash</strong>&#160;is a Senior Distinguished Engineer at Capital One, leading enterprise Data and AI Platform strategy in the financial services sector. She brings 15 years of industry experience in AI architecture, API ecosystems, and cloud systems, previously serving as an AI Integration Architect at IBM where she focused on security and integration patterns across the API Management and Gateways portfolio.</p>
+<p>Krithika has contributed to Columbia University’s Reinforcement Learning course on Coursera, holds a Master’s in Machine Learning from Columbia University, and patents in the areas of security and integration.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p></p></div>
+			<div style="padding:0px;margin:0px;margin-top:15px;">
+				<div style="padding:0px;margin:0px;border-top:1px dotted #666666;margin-top:15px;padding-top:5px;">
+					<table style="width:100%;border-collapse:collapse;border-spacing:0px;padding:0px;margin:0px;font-family:&#39;Lato&#39;, sans-serif; font-size:18px;" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:100%;margin:0px;padding:0px;white-space:nowrap !important;vertical-align:top;text-align:left;" nowrap="nowrap">
+									<a style="color:#00617f;" href="https://brightspace.nyu.edu/d2l/p/home/504821">Spec Top Computer SCI:, Section 091</a>
+								</td>
+								<td style="width:100%;margin:0px;padding:0px;white-space:nowrap !important;vertical-align:top;text-align:right;" nowrap="nowrap">
+									<a style="color:#00617f;" href="https://brightspace.nyu.edu/d2l/p/le/news/504821">Go to Announcements &gt;&gt;</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style="padding:0px;margin:0px;margin-top:15px;">
+				<div style="padding:0px;margin:0px;text-align:center;">
+					<span style="margin:0px;padding:0px;color:#666666;font-size:0.8rem;">You are receiving this message because you subscribed to receive instant notifications via email.</span>
+					<a style="color:#00617f;font-size:0.8rem;" href="https://brightspace.nyu.edu/d2l/Notifications/Settings?ou=6606">Change Notification Settings</a>
+					<br /><span style="margin:0px;padding:0px;color:#666666;font-size:0.8rem;"></span>
+				</div>
+			</div>
+		</div>
+</div>
+	</body>
+</html>

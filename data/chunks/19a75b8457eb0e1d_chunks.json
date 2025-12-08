@@ -1,0 +1,22 @@
+{
+  "message_id": "19a75b8457eb0e1d",
+  "chunked_at": "2025-12-08T14:30:14.947390",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a75b8457eb0e1d_email_0_9b2b2e56",
+      "text": "GPUs - Announcements: Office hours this week GPUs - Announcements: Office hours this week Posted Tuesday, November 11, 2025 8:39 PM EST For this week only, Office hours will be on Wed (Nov 12th), 2-3pm Z GPUs Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a75b8457eb0e1d",
+        "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+        "to": [],
+        "subject": "GPUs - Announcements: Office hours this week",
+        "date": "Wed, 12 Nov 2025 01:39:59 +0000",
+        "timestamp": 1762911599,
+        "token_count": 89
+      }
+    }
+  ]
+}

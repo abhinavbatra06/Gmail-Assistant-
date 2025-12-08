@@ -1,0 +1,15 @@
+{
+  "id": "19ab8c83e7d1b525",
+  "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+  "subject": "IDLS - sample spreadsheet",
+  "date": "Mon, 24 Nov 2025 21:08:28 -0500",
+  "eml_path": "data/raw_emails/19ab8c83e7d1b525.eml",
+  "attachments": [
+    {
+      "filename": "file_example_XLS_50.xls",
+      "path": "data/attachments/19ab8c83e7d1b525_file_example_XLS_50.xls"
+    }
+  ],
+  "body_text": "PFA for project",
+  "body_html": "<div dir=\"ltr\">PFA for project</div>"
+}

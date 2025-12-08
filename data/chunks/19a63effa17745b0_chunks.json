@@ -1,0 +1,22 @@
+{
+  "message_id": "19a63effa17745b0",
+  "chunked_at": "2025-12-08T14:29:51.075438",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a63effa17745b0_email_0_e5029d7d",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from Capula Investment Management LLP, based on your preferences. Check it out! Applications are due Thursday, December 04 at  6 PM EST. Capula Investment Management LLP Investment / Portfolio Management Capula Analyst Graduate Programme $125–150K/yr Onsite Job New York, NY +1 View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a63effa17745b0",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Capula Investment Management LLP just posted a role 🌟",
+        "date": "Sat, 08 Nov 2025 14:47:40 +0000",
+        "timestamp": 1762613260,
+        "token_count": 149
+      }
+    }
+  ]
+}

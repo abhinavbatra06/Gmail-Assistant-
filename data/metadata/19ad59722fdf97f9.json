@@ -1,0 +1,15 @@
+{
+  "id": "19ad59722fdf97f9",
+  "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+  "subject": "Docling attachment processing debugging",
+  "date": "Sun, 30 Nov 2025 11:26:44 -0500",
+  "eml_path": "data/raw_emails/19ad59722fdf97f9.eml",
+  "attachments": [
+    {
+      "filename": "Reminders-11-29.pdf",
+      "path": "data/attachments/19ad59722fdf97f9_Reminders-11-29.pdf"
+    }
+  ],
+  "body_text": "PFA the attachment that will not be processed in round 1",
+  "body_html": "<div dir=\"ltr\">PFA the attachment that will not be processed in round 1</div>"
+}

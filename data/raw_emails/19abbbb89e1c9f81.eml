@@ -1,0 +1,360 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:4985:b0:50b:93c5:eed5 with SMTP id hb5csp2751303gdb;
+        Tue, 25 Nov 2025 07:57:01 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IESpjwqqWN81JFiVCn2rs1SEYiE9EY80Dni5m8SpV6AmplYRJrMZyq6/XY83GHrXw//t3UN
+X-Received: by 2002:a05:6214:518b:b0:880:51ab:a3e3 with SMTP id 6a1803df08f44-8847c53bb5bmr213523576d6.67.1764086221169;
+        Tue, 25 Nov 2025 07:57:01 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764086221; cv=none;
+        d=google.com; s=arc-20240605;
+        b=MZK2vRJzL7nm9HtBKMUX8KfDz3C8dtkE8YxXW7X1sR4cFM1x5ZqlVwXOdzF62UtjcR
+         7iWGW9ErhK2tiVCJtP/CXef0a9yBJch+tvSxVaULBLKQmINL+IuqdEOPF8cYTCRMmtQE
+         ZdUibCY76eKLCgmo1NLiV5SyQ0KR2RsF+y2PMoiKXv/Tbp/vvzfl0Zcwzci6aN9aWApO
+         UU3i1WJt7qKv3aCXiih3FFli/KRR9i4oQn7RbYXpmKZFmgBzolkdj6sNktQwCz/3wmPU
+         Z9pHZ2nrXH2l5IvP1/CscATn+KcvV9/BS6nxsAut9A+oIuCDCvjf77EPGOgrqE2l69rY
+         iH0Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:list-unsubscribe-post:list-unsubscribe:precedence
+         :reply-to:message-id:date:to:from:subject:mime-version
+         :dkim-signature:dkim-signature;
+        bh=K5CuIKsfGKNX1V6E52tuDlBIQinnRdjBgJ9SjU9iihw=;
+        fh=uBZigrcT4/eimFWNXbc+e9UoRXYu5p0qUsSILAaGf1U=;
+        b=jqFXApiV5ItK9VrZDoYw9ajnKYLrlwVMaA/yMUqphQCf89sKGp4tc76UMwufb19Gei
+         6if+VdtcQxnf3DmrObdatn94TYI5toVZRoZNiTegy3F55vjW+ePgRgpk3uKNu/VYY4of
+         3NcoyWM1N+9llW8QykjjkMsCl1O7jmHIlugrC9IitDTBFCzL8HVEIZm7mrufv9iL933r
+         9/6tQgsjaLL524ODzp6ENQ0qdqAfoRZfHpfaWo3aM52WWRJb6uaMXJCC/RpbKY7mMIDg
+         9wMErafQB5ZT87kBT+z8i5GGIcelMu5FGMasqak+avc6NGh62snfqhGniblWkuib/RRF
+         jApg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@nyu.edu header.s=e2ma-k2 header.b=R0lLLWeY;
+       dkim=pass header.i=@e2ma.net header.s=e2ma header.b=LqayM+fW;
+       spf=pass (google.com: domain of 586597227.1965931.246817498987@e2ma.net designates 139.60.0.213 as permitted sender) smtp.mailfrom=586597227.1965931.246817498987@e2ma.net
+Return-Path: <586597227.1965931.246817498987@e2ma.net>
+Received: from pco01la-1772s.nyu.edu (pco01la-1772s.cfs.its.nyu.edu. [216.165.75.8])
+        by mx.google.com with ESMTPS id 6a1803df08f44-8846e49f189si58341186d6.207.2025.11.25.07.57.00
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Nov 2025 07:57:01 -0800 (PST)
+Received-SPF: pass (google.com: domain of 586597227.1965931.246817498987@e2ma.net designates 139.60.0.213 as permitted sender) client-ip=139.60.0.213;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@nyu.edu header.s=e2ma-k2 header.b=R0lLLWeY;
+       dkim=pass header.i=@e2ma.net header.s=e2ma header.b=LqayM+fW;
+       spf=pass (google.com: domain of 586597227.1965931.246817498987@e2ma.net designates 139.60.0.213 as permitted sender) smtp.mailfrom=586597227.1965931.246817498987@e2ma.net
+Received: from mx0a-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-1772s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5APFv0pg2207979
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Tue, 25 Nov 2025 10:57:00 -0500
+Received: from pps.filterd (m0355794.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5APF7ECF3043280
+	for <at6651@nyu.edu>; Tue, 25 Nov 2025 10:56:59 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=586597227.1965931.246817498987@e2ma.net;
+	dkim=pass header.s=e2ma-k2 header.d=nyu.edu;
+	dkim=pass header.s=e2ma header.d=e2ma.net;
+	dmarc=pass header.from=nyu.edu
+Received: from mail213-2z9c.e2ma.net (mail213-2z9c.e2ma.net [139.60.0.213])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4anetr8ybh-27
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Tue, 25 Nov 2025 10:56:59 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=e2ma-k2; d=nyu.edu;
+ h=Content-Type:MIME-Version:Subject:From:To:Date:Message-ID:Reply-To:
+ List-Unsubscribe:List-Unsubscribe-Post:Feedback-ID:from:to:subject:cc;
+ i=courant-academicaffairs@nyu.edu;
+ bh=K5CuIKsfGKNX1V6E52tuDlBIQinnRdjBgJ9SjU9iihw=;
+ b=R0lLLWeYjyVmX1jJZgc1U9jZEfDwMdw4zG0NRUOi8AUKaTyZGEbsH0KfEzYLgfUXMaJ206c0LJKu
+   oauJL4CCw3Q5Dp9ChN/3iVxG57gtrioPs7B+0EXOA2HZvCa/dqzHCMuPM3JnqIPwiYXMJ8/7bHwX
+   RWBG+5no0kySt6jUtAT5iYfkkBidbpJcnutdS/N3r52PBvB2Zjl1+8lJuKzhyxnErXFw7m9GEPiJ
+   EogpFJ4ZwvW4+ZqHZ5XD4bPUTPOcKnEGBbAwUsgviY+8PH3xV4+XYCFmGpAdYeLMgXOa8NFOdT4B
+   C2RIrRoeJDn49RvuYq03mPFu7d5desRPwU7DlA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=e2ma; d=e2ma.net;
+ h=Content-Type:MIME-Version:Subject:From:To:Date:Message-ID:Reply-To:
+ List-Unsubscribe:List-Unsubscribe-Post:Feedback-ID; i=@mail213-2z9c.e2ma.net;
+ bh=K5CuIKsfGKNX1V6E52tuDlBIQinnRdjBgJ9SjU9iihw=;
+ b=LqayM+fWWtPK/+uDrTDIWNpzOMlBl4VVYjr6tjSAg4B/3r34gXeWumr7zC3r6flJsdKziqJ9Sg3F
+   VNaNipEyGvvC+RCEoJ8WRegPXPhSQTvjzlLsvXwmWE1STphDGdQQqiNAP+t1GcieMDNjnB+HKSg2
+   ytzXjxMzcI4DCD0jT5k=
+Received: by mail213-2z9c.e2ma.net id h4n8sm3791sg for <at6651@nyu.edu>; Tue, 25 Nov 2025 09:56:47 -0600 (envelope-from <586597227.1965931.246817498987@e2ma.net>)
+Content-Type: multipart/alternative;
+ boundary="==176408620742519=="
+MIME-Version: 1.0
+Subject: Courant x Entrepreneurial Institute Lecture Series and Happy Hour 
+From: "Courant Academic Affairs" <courant-academicaffairs@nyu.edu>
+To: at6651@nyu.edu
+Date: Tue, 25 Nov 2025 15:56:47 -0000
+Message-ID: <h7egb.pl3izj.tcv16nfd@e2ma.net>
+Reply-To: courant-academicaffairs@nyu.edu
+Precedence: bulk
+List-Unsubscribe: <https://t.e2ma.net/optout/pl3izj/tcv16nfd?s=lc03X3lVapsilWaZs6x7VHbRnoqrdF_wFaSbb_owYOU>,<mailto:tcv16nfd.pl3izj.h7egb.optout@e2ma.net>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+X-Test-Mailing: no
+Feedback-ID: 1965931:586597227:1907182_NYU:EMMAFBL
+X-Proofpoint-GUID: Fya7F8cTOQ2m2aayUp0XXxAzDuYzh76Z
+X-Proofpoint-ORIG-GUID: Fya7F8cTOQ2m2aayUp0XXxAzDuYzh76Z
+X-CLX-Response: 1TFkXGBIaEQpMehcYGBoRCllEF2AcRmBjWEtAQ3h7EQpYWBdoE05OUhJBZG4
+ TBREKeE4Xb2sFRn1BRlBmfE4RCnhLF2gTTk5SEkFkbhMFEQp5TBdrAU5bchxFWE5YQBEKQ0gXGh
+ EKQ1kXBxseGREKQ0kXGgQaGhoRCllNF2dmchEKWUkXGnEaEBp3BhgcGnEZExMQGncGGBoGGhEKW
+ V4XbGx5EQpJRhdET11TRVhBX3VCRVleT04RCklHF3hPTREKQ04XbFNLHWwSSX5lexhHGEtLU39a
+ GnJyUmtQbl9zUEIdHHARClhcFx8EGgQeGxoFGxoEGxoaBBsZHgQZHxAbHhofGhEKXlkXTX0ZcEc
+ RCk1cFxwfExEKTFoXaW9tTU1dEQpMRhdva2tNa2sRCkJPF2JnS0dnZ0N7fGtlEQpDWhcbGRMEHB
+ oEGgQYGxkRCkJeFxsRCkJGF2JbR2lae0MSRkMYEQpCRxdtRAUcG1hmZGkcYxEKQlwXGxEKXk4XG
+ xEKQksXb2sFRn1BRlBmfE4RCkJJF29rBUZ9QUZQZnxOEQpCRRdsWxoZRXwSW3BCWREKQk4Xb2sF
+ Rn1BRlBmfE4RCkJMF2gTTk5SEkFkbhMFEQpCbBdoTWdgX1Nve2hDZxEKQkAXaWVSRkRQRBJPGVI
+ RCkJYF25CQXBSSEBnQhx8EQpaWBcbGREKeUMXaRl6WGETHUZYExsRCllLFxseGBMZEQpaSxcbHh
+ gTGREKcGgXaX56Zl1DTWN5eGEQGRoRCnBoF2lQbU5vGmVSZwEfEBoRCnBoF2FeWBxvb19sBRNAE
+ BoRCnBoF296G2d/WVsaT2twEBoRCnBoF2NDeEl+Y1Mccm5eEBkaEQpwaBdnXB4cQlhZWlxYARAZ
+ GhEKcGgXbXtrRGsZRHleR10QGhEKcGgXaRJGWllgSGNrThwQHBMRCnB9F2xoTUJIbHpFWkYbEBo
+ RCnB9F2ReZ0dlTxseaE9iEBoRCnB9F2NiGEJwW2QfHXl7EBoRCnB9F2V5AWZLTnlBaG4bEBoRCn
+ B9F2tzZRxFcx0TUE55EBoRCnB9F2dGc1lbXh96eGcSEBkaEQpwfRdhQENdUEttcBkFHBAZGhEKc
+ H0XZ1oYBUkfR25YZV0QGRoRCnB9F3pgYGVdaFhofR5rEBwaEQpwfRdgQENme2ZSEl1TQxAfEhEK
+ cH0XaXpobG5fex5PTWsQGhEKcH0XYkdeWhptcgETHl4QGhEKcH0XbRleeX8bAWBcEkAQGRoRCnB
+ 9F25wfh9HcmFnSEEFEBoRCnB9F2tlZHNHRRtJYUNMEBoRCnB9F2EdTGd7fWAFfEYYEBkaEQpwfR
+ dsRhtpbn9sQEBGARAaEQpwfRdiWUIfenMcSGB5QxAaEQpwfxdlG34YH0VfZRwfaRATGxEKcF8Xa
+ XBFU0JTZUVyUmwQGhEKcF8XZB18eV1hAXxsG18QGhEKcF8XZ0NZQkNJbkVEXB8QExkRCnB/F2Fc
+ GXNCeW95QkBeEBIcEQpwXxdgGXtHbF9HZxxOexAdEhEKcH8XbWRpTm0BTUV7TEAQEhoRCnBfF2d
+ 8YGNBE05bThxHEBkaEQpwfxdmeR1lf2kBHE9rZBATGREKcF8XZW4femVtZFhHbWEQGRoRCnB/F2
+ dCYBhzTWsFW3llEBMdEQpwXxdgbk5bfRNdYkt/UhAbGxwRCnB/F2VlXVITa0ZbQUhjEB0dEQpwf
+ xdiTXlLQH4FGBluThATGhEKcF8XbksfXnNgZ1lMRnAQGhEKcH8XblhMExMbE0BpHGcQEh8RCnBf
+ F2UZbGJAWRpAbG5gEBoRCnBsF2sBBVNfEhIaEnxEEBkaEQptfhcaEQpYTRdLESA=
+X-CLX-Shades: MLX
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTI1MDEzMiBTYWx0ZWRfX78f2Tcuvawcw
+ 6suFRPk+YtjeTZT4EaL/Km6Xn8iGY+oEvaoDefN2Gt3QCIr8/+9p7WEcRly2k/vHOS0TWezLl91
+ ykYgiXfvJKAv2OO8SxIfxkYkNH/KE8mJfPdNSFzA28puXHI/P+oh3fV4Avpbq1ynihvEyVEXZvJ
+ RpHryxuDn8FeKXIlyGvPwXYAitjlVPdBfQedJT9ymcgBEAZBeUODss5+puRJkK1IFsfjFhYFfKP
+ p5lluj6DjvPD9vm03OVtaxFQfB3BHdQBEGQARsSj7jfouCCCk11QD1x7V6A9mdR56WCuuXdJCQ5
+ 9kYiGf/0Zim+8C0zlEVJJhMf+DxK5/3N7sN2ZA73j1mahXaLmkAp+WFoMUDANLnOxuG/zQmr1TH
+ YJhqG8rggShOkZ6fKXmE8J3qBE8oKruszgjDJ4dhRTPxi32p6asPlzj5fFHOVJzvGX0YRJvDBoF
+ ya7VfdvddKZZ2jEpHHw==
+X-Authority-Analysis: v=2.4 cv=deqNHHXe c=1 sm=1 tr=0 ts=6925d1cb b=1 cx=c_pps
+ a=EZzyLmfaJYH5PZbs0B61Bw==:117 a=EZzyLmfaJYH5PZbs0B61Bw==:17
+ a=6UeiqGixMTsA:10 a=oNLrAji_rE0A:10 a=x7bEGLp0ZPQA:10 a=S0S_EcBMpFAA:10
+ a=gS6w1ljqwLwA:10 a=Kan8h273Bse8B8Jy5C1n:22 a=5SPPdPmxAAAA:8 a=BkpHzsgbAAAA:8
+ a=vnREMb7VAAAA:8 a=jU4qhlNgAAAA:8 a=AlPcZ2V9h9AgdREnHIcA:9 a=QEXdDO2ut3YA:10
+ a=gB9rhKxzAAAA:8 a=xI6FaCqLfG6ZFBhiRecA:9 a=CN_2tR5RL18hxQlJ:21
+ a=gKO2Hq4RSVkA:10 a=_W_S_7VecoQA:10 a=Ru97nHiPDtp4odn3vKgu:22
+ a=Jz3iUO4KJTDyYpqPwFvP:22 a=sXmgbADxH74HsudMHiup:22
+X-Orig-IP: 139.60.0.213
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-25_02,2025-11-25_01,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Reason: orgsafe
+
+--==176408620742519==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+
+
+Join us on December 8th at South Park Commons NYC...
+
+
+NYU COURANT
+
+# NYU Courant x Entrepreneurial Institute Lecture Series
+
+On Monday December 8th, the Entrepreneurial Institute will present two fasc=
+inating and practical lectures designed to empower NYU innovators--followed=
+ by the NYU Innovation Happy Hour!
+
+You can find more information and
+register your attendance here (https://t.e2ma.net/click/pl3izj/tcv16nfd/d8g=
+ntw).
+
+
+NYU Courant (https://t.e2ma.net/click/pl3izj/tcv16nfd/t0hntw)
+
+
+251 Mercer Street, Room 823, New York, NY 10012
+
+[Unsubscribe](https://t.e2ma.net/optout/pl3izj/tcv16nfd?s=3Dlc03X3lVapsilWa=
+Zs6x7VHbRnoqrdF_wFaSbb_owYOU)  |  [Manage your preferences](https://app.e2m=
+a.net/app2/audience/signup/1987973/1965931/586597227/246817498987/?s=3D1EGp=
+S48eZmgp_Kxf9OKxenSdZFeSi1jHPLqq6rDohJc)
+
+
+ (https://t.e2ma.net/click/pl3izj/tcv16nfd/9sintw)
+% link:https://www.instagram.com/nyu.courant/ name=3D"https://www.instagram=
+.com/nyu.courant/" content=3D"" %]
+% link:https://www.youtube.com/channel/UCUDtVaZ-q_V0dYeSnkMrwJw name=3D"htt=
+ps://www.youtube.com/channel/UCUDtVaZ-q_V0dYeSnkMrwJw" content=3D"" %]
+% link:https://www.linkedin.com/school/courant-institute/ name=3D"https://w=
+ww.linkedin.com/school/courant-institute/" content=3D"" %]
+--==176408620742519==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en" xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns=
+:v=3D"urn:schemas-microsoft-com:vml"><head><title></title><meta content=3D"=
+text/html; charset=3Dutf-8" http-equiv=3D"Content-Type"><meta content=3D"wi=
+dth=3Ddevice-width,initial-scale=3D1" name=3D"viewport"><!--[if mso]>
+<xml><w:WordDocument xmlns:w=3D"urn:schemas-microsoft-com:office:word"><w:D=
+ontUseAdvancedTypographyReadingMail/></w:WordDocument>
+<o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch><o:AllowPNG/=
+></o:OfficeDocumentSettings></xml>
+<![endif]--><!--[if !mso]><!--><!--<![endif]--><style>
+*{box-sizing:border-box}body{margin:0;padding:0}a[x-apple-data-detectors]{c=
+olor:inherit!important;text-decoration:inherit!important}#MessageViewBody a=
+{color:inherit;text-decoration:none}p{line-height:inherit}.desktop_hide,.de=
+sktop_hide table{mso-hide:all;display:none;max-height:0;overflow:hidden}.im=
+age_block img+div{display:none}sub,sup{font-size:75%;line-height:0} @media =
+(max-width:660px){.social_block.desktop_hide .social-table{display:inline-b=
+lock!important}.mobile_hide{display:none}.row-content{width:100%!important}=
+.stack .column{width:100%;display:block}.mobile_hide{min-height:0;max-heigh=
+t:0;max-width:0;overflow:hidden;font-size:0}.desktop_hide,.desktop_hide tab=
+le{display:table!important;max-height:none!important}.row-2 .column-1 .bloc=
+k-1.heading_block td.pad{padding:10px!important}}
+</style><!--[if mso ]><style>sup, sub { font-size: 100% !important; } sup {=
+ mso-text-raise:10% } sub { mso-text-raise:-10% }</style> <![endif]--></hea=
+d><body class=3D"body" style=3D"background-color:#fff;margin:0;padding:0;-w=
+ebkit-text-size-adjust:none;text-size-adjust:none">
+
+<div style=3D"display: none !important; mso-hide:all;">Join us on December =
+8th at South Park Commons NYC...</div>
+<img style=3D"display: none !important; mso-hide:all;" src=3D"https://image=
+s.e2ma.net/images/spacer.gif" width=3D"1" height=3D"1" alt=3D"Join us on De=
+cember 8th at South Park Commons NYC...">
+
+
+
+
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"nl-contain=
+er" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;ba=
+ckground-color:#fff" width=3D"100%"><tbody><tr><td><table align=3D"center" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"row row-1" role=
+=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0" width=3D"=
+100%"><tbody><tr><td><table align=3D"center" border=3D"0" cellpadding=3D"0"=
+ cellspacing=3D"0" class=3D"row-content stack" role=3D"presentation" style=
+=3D"mso-table-lspace:0;mso-table-rspace:0;background-color:#57068c;border-r=
+adius:0;color:#000;width:640px;margin:0 auto" width=3D"640"><tbody><tr><td =
+class=3D"column column-1" style=3D"mso-table-lspace:0;mso-table-rspace:0;fo=
+nt-weight:400;text-align:left;vertical-align:top" width=3D"100%"><table bor=
+der=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"image_block block-1"=
+ role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0" widt=
+h=3D"100%"><tbody><tr><td class=3D"pad" style=3D"padding-bottom:25px;paddin=
+g-left:30px;padding-right:30px;padding-top:25px;width:100%"><div align=3D"l=
+eft" class=3D"alignment"><div style=3D"max-width:224px"><img alt=3D"NYU COU=
+RANT" height=3D"auto" src=3D"https://d31hzlhk6di2h5.cloudfront.net/20251125=
+/76/58/fa/df/cd68b492c4a6b8abd5bb12f0.png" style=3D"display:block;height:au=
+to;border:0;width:100%" title=3D"NYU COURANT" width=3D"224"></div>
+</div>
+</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tab=
+le><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ class=3D"row row-2" role=3D"presentation" style=3D"mso-table-lspace:0;mso-=
+table-rspace:0" width=3D"100%"><tbody><tr><td><table align=3D"center" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"row-content stack" rol=
+e=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;border-bo=
+ttom:1px solid #57068c;border-left:1px solid #57068c;border-radius:0;border=
+-right:1px solid #57068c;border-top:1px solid #57068c;color:#000;width:640p=
+x;margin:0 auto" width=3D"640"><tbody><tr><td class=3D"column column-1" sty=
+le=3D"mso-table-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left=
+;padding-bottom:5px;padding-top:5px;vertical-align:top" width=3D"33.3333333=
+33333336%"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D=
+"heading_block block-1" role=3D"presentation" style=3D"mso-table-lspace:0;m=
+so-table-rspace:0" width=3D"100%"><tbody><tr><td class=3D"pad" style=3D"pad=
+ding-bottom:5px;padding-left:30px;padding-right:5px;padding-top:10px;text-a=
+lign:center;width:100%"><h1 style=3D"margin:0;color:#000;direction:ltr;font=
+-family:Helvetica,Helvetica Neue,Arial,sans-serif;font-size:18px;font-weigh=
+t:700;letter-spacing:normal;line-height:1.2;text-align:left;margin-top:0;ma=
+rgin-bottom:0;mso-line-height-alt:22px"><span class=3D"tinyMce-placeholder"=
+ style=3D"word-break: break-word;">NYU Courant x Entrepreneurial Institute =
+Lecture Series</span></h1></td></tr></tbody></table><table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" class=3D"paragraph_block block-2" role=3D"=
+presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;word-break:bre=
+ak-word" width=3D"100%"><tbody><tr><td class=3D"pad" style=3D"padding-botto=
+m:10px;padding-left:30px;padding-right:5px;padding-top:5px"><div style=3D"c=
+olor:#333;direction:ltr;font-family:Helvetica,Helvetica Neue,Arial,sans-ser=
+if;font-size:15px;font-weight:400;letter-spacing:0;line-height:1.5;text-ali=
+gn:left;mso-line-height-alt:23px"><p style=3D"margin:0;margin-bottom:18px">
+On Monday December 8th, the Entrepreneurial Institute will present two fasc=
+inating and practical lectures designed to empower NYU innovators&mdash;fol=
+lowed by the NYU Innovation Happy Hour!&nbsp;</p>
+<p style=3D"margin:0">You can find more information and <a href=3D'https://=
+t.e2ma.net/click/pl3izj/tcv16nfd/phcntw' rel=3D'noopener' style=3D"text-dec=
+oration: underline; color: #57068c;" target=3D"_blank">register your attend=
+ance here</a>.</p>
+</div>
+</td></tr></tbody></table></td><td class=3D"column column-2" style=3D"mso-t=
+able-lspace:0;mso-table-rspace:0;font-weight:400;text-align:left;padding-bo=
+ttom:5px;padding-top:5px;vertical-align:top" width=3D"66.66666666666667%"><=
+table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"image_block=
+ block-1" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspac=
+e:0" width=3D"100%"><tbody><tr><td class=3D"pad" style=3D"padding-bottom:15=
+px;padding-left:30px;padding-right:30px;padding-top:15px;width:100%"><div a=
+lign=3D"center" class=3D"alignment"><div style=3D"max-width:365.333px">
+<img alt=3D"" height=3D"auto" src=3D"https://d31hzlhk6di2h5.cloudfront.net/=
+20251125/c6/7c/bd/1e/213d2b6461319c145afbb225.png" style=3D"display:block;h=
+eight:auto;border:0;width:100%" title=3D"" width=3D"365.333"></div>
+</div>
+</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tab=
+le><table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ class=3D"row row-3" role=3D"presentation" style=3D"mso-table-lspace:0;mso-=
+table-rspace:0" width=3D"100%"><tbody><tr><td><table align=3D"center" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"row-content stack" rol=
+e=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;border-ra=
+dius:0;color:#000;width:640px;margin:0 auto" width=3D"640"><tbody><tr><td c=
+lass=3D"column column-1" style=3D"mso-table-lspace:0;mso-table-rspace:0;fon=
+t-weight:400;text-align:left;vertical-align:top" width=3D"100%"><table bord=
+er=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"paragraph_block block=
+-1" role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;wo=
+rd-break:break-word" width=3D"100%"><tbody><tr><td class=3D"pad" style=3D"p=
+adding-bottom:10px;padding-left:30px;padding-right:30px;padding-top:40px"><=
+div style=3D"color:#000;direction:ltr;font-family:Helvetica,Helvetica Neue,=
+Arial,sans-serif;font-size:12px;font-weight:400;letter-spacing:0;line-heigh=
+t:1.5;text-align:center;mso-line-height-alt:18px"><p style=3D"margin:0">
+<a href=3D'https://t.e2ma.net/click/pl3izj/tcv16nfd/59cntw' rel=3D'noopener=
+' style=3D"text-decoration: underline; color: #000000;" target=3D"_blank">N=
+YU Courant</a></p>
+</div>
+</td></tr></tbody></table><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"paragraph_block block-2" role=3D"presentation" style=3D"mso=
+-table-lspace:0;mso-table-rspace:0;word-break:break-word" width=3D"100%"><t=
+body><tr><td class=3D"pad" style=3D"padding-bottom:10px;padding-left:30px;p=
+adding-right:30px;padding-top:10px"><div style=3D"color:#000;direction:ltr;=
+font-family:Helvetica,Helvetica Neue,Arial,sans-serif;font-size:12px;font-w=
+eight:400;letter-spacing:0;line-height:1.5;text-align:center;mso-line-heigh=
+t-alt:18px"><p style=3D"margin:0;margin-bottom:18px">251 Mercer Street, Roo=
+m 823, New York, NY 10012</p>
+<p style=3D"margin:0">
+<a href=3D'https://t.e2ma.net/optout/pl3izj/tcv16nfd?s=3Dlc03X3lVapsilWaZs6=
+x7VHbRnoqrdF_wFaSbb_owYOU' rel=3D'noopener' style=3D"text-decoration: under=
+line; color: #000000;" target=3D"_blank">Unsubscribe</a> &nbsp;| &nbsp;<a h=
+ref=3D"https://app.e2ma.net/app2/audience/signup/1987973/1965931/586597227/=
+246817498987/?s=3D1EGpS48eZmgp_Kxf9OKxenSdZFeSi1jHPLqq6rDohJc" rel=3D"noope=
+ner" style=3D"text-decoration: underline; color: #000000;" target=3D"_blank=
+">Manage your preferences</a></p>
+</div>
+</td></tr></tbody></table><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"social_block block-3" role=3D"presentation" style=3D"mso-ta=
+ble-lspace:0;mso-table-rspace:0" width=3D"100%"><tbody><tr><td class=3D"pad=
+" style=3D"padding-bottom:40px;padding-left:10px;padding-right:10px;padding=
+-top:10px;text-align:center"><div align=3D"center" class=3D"alignment"><tab=
+le border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"social-table" =
+role=3D"presentation" style=3D"mso-table-lspace:0;mso-table-rspace:0;displa=
+y:inline-block" width=3D"168px"><tbody><tr><td style=3D"padding:0 5px 0 5px=
+"><a href=3D'https://t.e2ma.net/click/pl3izj/tcv16nfd/l2dntw' target=3D'_bl=
+ank'><img alt=3D"X" height=3D"auto" src=3D"https://d31hzlhk6di2h5.cloudfron=
+t.net/20251125/48/ac/dd/4f/8905d739fc78043b6000d605.png" style=3D"display:b=
+lock;height:auto;border:0" title=3D"X" width=3D"32"></a></td><td style=3D"p=
+adding:0 5px 0 5px"><a href=3D'https://t.e2ma.net/click/pl3izj/tcv16nfd/1ue=
+ntw' target=3D'_blank'><img alt=3D"Instagram" height=3D"auto" src=3D"https:=
+//d31hzlhk6di2h5.cloudfront.net/20251125/0f/ca/e4/ab/e72eed70a73d87b2da3e3c=
+dd.png" style=3D"display:block;height:auto;border:0" title=3D"Instagram" wi=
+dth=3D"32"></a></td><td style=3D"padding:0 5px 0 5px"><a href=3D'https://t.=
+e2ma.net/click/pl3izj/tcv16nfd/hnfntw' target=3D'_blank'><img alt=3D"YouTub=
+e" height=3D"auto" src=3D"https://d31hzlhk6di2h5.cloudfront.net/20251125/6a=
+/20/1a/22/f02b8e616e92a321f1e414ed.png" style=3D"display:block;height:auto;=
+border:0" title=3D"YouTube" width=3D"32"></a></td><td style=3D"padding:0 5p=
+x 0 5px"><a href=3D'https://t.e2ma.net/click/pl3izj/tcv16nfd/xfgntw' target=
+=3D'_blank'>
+<img alt=3D"LinkedIn" height=3D"auto" src=3D"https://d31hzlhk6di2h5.cloudfr=
+ont.net/20251125/27/4b/35/d1/f78088d3130075444d9c1d0c.png" style=3D"display=
+:block;height:auto;border:0" title=3D"LinkedIn" width=3D"32"></a></td></tr>=
+</tbody></table></div>
+</td></tr></tbody></table></td></tr></tbody></table></td></tr></tbody></tab=
+le></td></tr></tbody></table><!-- End -->
+<img src=3D"https://t.e2ma.net/track/pl3izj/tcv16nfd" width=3D"1" height=3D=
+"1"></body></html>
+--==176408620742519==--

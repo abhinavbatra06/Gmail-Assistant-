@@ -1,0 +1,22 @@
+{
+  "message_id": "19a73c0c6450213d",
+  "chunked_at": "2025-12-08T14:30:03.497517",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a73c0c6450213d_email_0_003e8f2d",
+      "text": "Handshake Maggie just messaged you about a job We have already begun the interview process and are hiring some great candidates. Positions are filling up! APPLY TODAY! ( https://www.idtech.com/s2#/seasonal-app/intro ) Read more View message Mute iD Tech Hiring Stem Instructors · You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a73c0c6450213d",
+        "from": "Maggie Wright via Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Maggie just followed-up about a job on Handshake",
+        "date": "Tue, 11 Nov 2025 16:30:02 +0000",
+        "timestamp": 1762878602,
+        "token_count": 114
+      }
+    }
+  ]
+}

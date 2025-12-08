@@ -1,0 +1,39 @@
+{
+  "message_id": "19a9fabb645ee774",
+  "chunked_at": "2025-12-08T14:31:25.341786",
+  "total_chunks": 2,
+  "chunks": [
+    {
+      "chunk_id": "19a9fabb645ee774_email_0_f7a54640",
+      "text": "Hi Ankita, The following study room reservation(s) are confirmed: Space Information Location: Bobst Library I need a space for: Silent Study Space: Floor 4 Graduate Individual Study Room 419 Date: Thursday, November 20, 2025 Time: 5:00pm - 7:00pm To cancel a reservation please go to: https://nyu.libcal.com/equipment/cancel?id=384c7f799660 Directions to Study Rooms: Floor 4 Graduate Individual Study Room 419 : Floor 4 South Powered by Springshare. Read our privacy policy .",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a9fabb645ee774",
+        "from": "LibCal <alerts@mail.libcal.com>",
+        "to": [],
+        "subject": "Confirmed! Bobst Library Floor 4 Graduate Individual Study Room 419 reserved for Thursday, November 20, 2025 from 5:00pm - 7:00pm Thursday, November 20, 2025",
+        "date": "Thu, 20 Nov 2025 05:10:19 +0000",
+        "timestamp": 1763615419,
+        "token_count": 119
+      }
+    },
+    {
+      "chunk_id": "19a9fabb645ee774_att_Booking_108543085_ics_0_ac739f9d",
+      "text": "[VCALENDAR]\n\n[VEVENT]\nDTSTART: 20251120T220000Z\nDTEND: 20251121T000000Z\nSUMMARY: Booking: Floor 4 Graduate Individual Study Room 419 - Ankita Tripathi (at6651@nyu.edu)\nDESCRIPTION: Booking: Floor 4 Graduate Individual Study Room 419\n\nTo\nLOCATION: Floor 4 Graduate Individual Study Room 419\n\n[VALARM]\nDESCRIPTION: Reminder",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "attachment",
+        "message_id": "19a9fabb645ee774",
+        "from": "LibCal <alerts@mail.libcal.com>",
+        "to": [],
+        "subject": "Confirmed! Bobst Library Floor 4 Graduate Individual Study Room 419 reserved for Thursday, November 20, 2025 from 5:00pm - 7:00pm Thursday, November 20, 2025",
+        "date": "Thu, 20 Nov 2025 05:10:19 +0000",
+        "timestamp": 1763615419,
+        "token_count": 80,
+        "attachment_name": "Booking_108543085.ics",
+        "attachment_type": "ics"
+      }
+    }
+  ]
+}

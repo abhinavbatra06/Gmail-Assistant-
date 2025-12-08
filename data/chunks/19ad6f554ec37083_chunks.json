@@ -1,0 +1,22 @@
+{
+  "message_id": "19ad6f554ec37083",
+  "chunked_at": "2025-12-08T14:32:59.356163",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19ad6f554ec37083_email_0_e17d9aeb",
+      "text": "Spec Top Computer SCI:, Section 091 - Announcements: TA Office Hours Update for Dec 1 Spec Top Computer SCI:, Section 091 - Announcements: TA Office Hours Update for Dec 1 Posted Sunday, November 30, 2025 5:47 PM EST The TA office hours for tomorrow, December 1, will be held from 3–4 PM instead of 11 AM–12 PM for this week only. Thanks. Spec Top Computer SCI:, Section 091 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19ad6f554ec37083",
+        "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+        "to": [],
+        "subject": "Spec Top Computer SCI:, Section 091 - Announcements: TA Office Hours Update for Dec 1",
+        "date": "Sun, 30 Nov 2025 22:49:50 +0000",
+        "timestamp": 1764542990,
+        "token_count": 131
+      }
+    }
+  ]
+}

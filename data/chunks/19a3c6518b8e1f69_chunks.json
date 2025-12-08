@@ -1,0 +1,22 @@
+{
+  "message_id": "19a3c6518b8e1f69",
+  "chunked_at": "2025-12-08T14:28:12.662980",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a3c6518b8e1f69_email_0_55a0def7",
+      "text": "Spec Top Computer SCI:, Section 091 - Announcements: Homework 2 Grades Posted Spec Top Computer SCI:, Section 091 - Announcements: Homework 2 Grades Posted Posted Friday, October 31, 2025 6:29 PM EDT Grades for Homework 2 are now posted. If you have any concerns, please submit a regrade request on Gradescope within the next 4 days . Requests after the deadline won’t be considered. Spec Top Computer SCI:, Section 091 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a3c6518b8e1f69",
+        "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+        "to": [],
+        "subject": "Spec Top Computer SCI:, Section 091 - Announcements: Homework 2 Grades Posted",
+        "date": "Fri, 31 Oct 2025 22:30:48 +0000",
+        "timestamp": 1761949848,
+        "token_count": 142
+      }
+    }
+  ]
+}

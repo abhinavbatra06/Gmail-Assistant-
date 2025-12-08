@@ -1,0 +1,22 @@
+{
+  "message_id": "19adc09d188215f3",
+  "chunked_at": "2025-12-08T14:33:03.798759",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19adc09d188215f3_email_0_fde9439f",
+      "text": "Please review the Wasserman Center for Career Development Dear Students, Please review the Wasserman Center for Career Development December 2025 Newsletter as well as a list of Wasserman Center resources for the Fall 2025 semester. The Wasserman Center provides many great resources for graduate students and we encourage you to utiltize these resources whether you're looking for an internship or searching for full time work after graduation. You can visit the Events section on Handshake for a full list of programs. December 2025 Wasserman Newsletter Grad Career Resources Please note, students must be logged into their NYU email account through NYUHome to access the document. Best, Department of Computer Science https://t.e2ma.net/optout/r7jz1r/j939hwjc?s=uV8Z5K6wdSOq2_E-VQjIRi9OGvsKSsnADupVja3wS5Y",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19adc09d188215f3",
+        "from": "NYU Graduate Computer Science <graduate.cs.nyu.edu@jhefb.e2ma.net>",
+        "to": [],
+        "subject": "Wasserman December 2025 Grad Liaison Newsletter",
+        "date": "Mon, 01 Dec 2025 22:30:16 -0000",
+        "timestamp": 1764646216,
+        "token_count": 201
+      }
+    }
+  ]
+}

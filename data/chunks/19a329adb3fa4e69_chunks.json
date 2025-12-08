@@ -1,0 +1,22 @@
+{
+  "message_id": "19a329adb3fa4e69",
+  "chunked_at": "2025-12-08T14:28:06.766887",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a329adb3fa4e69_email_0_35dece35",
+      "text": "Handshake JPMorganChase is hiring—this could be your move You might be a match for this new job from JPMorganChase, based on your preferences. Check it out! Applications are due Monday, October 26 at  5 PM EDT. JPMorganChase Financial Services 2026 AI Research Associate Program - Internship Onsite Job Madrid, Madrid View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a329adb3fa4e69",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Hot job at JPMorganChase—worth a look 🔥",
+        "date": "Thu, 30 Oct 2025 00:53:17 +0000",
+        "timestamp": 1761785597,
+        "token_count": 141
+      }
+    }
+  ]
+}

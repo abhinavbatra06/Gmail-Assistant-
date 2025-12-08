@@ -1,0 +1,39 @@
+{
+  "message_id": "19abbcb5bd64b9db",
+  "chunked_at": "2025-12-08T14:32:19.870057",
+  "total_chunks": 2,
+  "chunks": [
+    {
+      "chunk_id": "19abbcb5bd64b9db_email_0_6ce93607",
+      "text": "Hi, This is a sample thesis defense PowerPoint presentation. Please find it attached. Best regards, Ankita",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19abbcb5bd64b9db",
+        "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+        "to": [],
+        "subject": "[IDLS] Sample thesis defense ppt",
+        "date": "Tue, 25 Nov 2025 11:11:04 -0500",
+        "timestamp": 1764087064,
+        "token_count": 26
+      }
+    },
+    {
+      "chunk_id": "19abbcb5bd64b9db_att_TEMPLATE-Defense-Presentation_pptx_0_866b7177",
+      "text": "Notes to the Student\nBest Practices\nBefore the Defense\nPractice your presentation with your research group (include having them ask questions and giving feedback)\nPractice answering questions you DON’T know the answer to. This is a professional discussion that sometimes gets off-topic.\nInvite family, friends, and lab mates to attend your defense and support you!\nYou should seek writing support and guidance - See Graduate Writing Resources page. \nWhen you send your finalized manuscript to your committee, also submit it for Preliminary Review to the Thesis Office to begin formatting review (formatting issues are the biggest slowdown and cause for delayed graduation after the defense, so start now!)\nDuring the Defense\nStudents should plan on presenting 30-45 mins. Public and private Q&A taking up the remainder of the time. You should schedule 2 hours, if possible, for the defense.\nGrad. Research Eng. Writing (GREW)\nNeed help with the big picture and how to organize your writing? It is strongly recommended that you review Dr. Funai’s comprehensive dissertation prep resources and/or schedule time to meet with her!\neTutoring and Online Writing Center\nSubmit your work online at any stage of the drafting process and receive feedback within approx. 48 hours\nGrammarly\nIf you have already used Grammarly, start now! It is a requirement by the Thesis Office that you have used it in order to have your written manuscript approved!\nHow to Answer Questions\nListen to the whole question.  Do not half-listen while forming your answer.\nRephrase the question.\nMakes sure you heard question correctly.\nMakes sure you understand the question.\nGives you opportunity to reframe the question.\nAnswer question honestly.  If you aren’t sure, make sure when you are speculating and explain why you think that.\nEnd answer on a positive note – toward the contribution of your work and it’s importance.\nTypical Questions from Scientists\n Why have you chosen this method rather than others?\n Why are you doing this research?  What is its expected impact?\n What in your contribution can be used concretely and immediately?\n Why have you decided to tackle this problem?\n What is novel in your presentation?\n What will you tackle next?\nPresentation Template\nFull Title of Work\nCommittee: Committee Chair \t\tMember 2 \t\tMember 3 \t\t\t\t       Member 4 PhD Only \t\t\t\t       Member 5 PhD Only\nStudent Name\nMaster’s Thesis / PhD Dissertation Defense\nJanuary 1, 2025\nIntroduction of the Research Topic\nWhat is the Big Picture Problem?\nGive a brief background of the research area\nIdentify and explain to the audience what is the problem in this research area you are looking to address\nPlan to spend approx. 3 minutes on this slide/topic.\nPlan to spend approx. 3 minutes on this slide/topic.\nOriginality / Value\nExplain the novelty of your work:\nWhat has everyone already done to fix Big Picture Problem?\nHow are you using what they’ve done or improving it?\nPlan to spend 3-5 minutes on this slide/topic.\nPlan to spend 3-5 minutes on this slide/topic.\nContributions Overview\nThe contributions of this thesis are:\nContribution \nAdditional Contribution\nAdditional Contribution…\nThis section/slide should outline 1-3 (or even more!) new ideas that come from your work. Discuss with your faculty advisor\nPlan to spend 1-2 minutes on this slide/topic. You will go in-depth on the following slides.\nThis exact wording should be in your PowerPoint and in your paper!\nPlan to spend 1-2 minutes on this slide/topic. You will go in-depth on the following slides.\nSet of Slides for Contributions\nThis begins the set of slides for each contribution. At least 1 separate slide for each contribution.\nGood to include references to prior material (yours and others) as needed in the slides\nPlan to spend approx. 5 minutes on each contribution (less time for more contributions, more time if you only have 1-2 contributions)\nPlan to spend approx. 5 minutes on each contribution (less time for more contributions, more time if you only have 1-2 contributions)\nPublished/Submitted Publications, Conferences, etc.\nMS thesis typically includes 1 journal publication submitted\nPhD thesis typically includes 1 journal publication accepted and at least 2+ submitted\nAlthough these are typical, they are not the rule. This must be discussed with faculty advisor and committee.\nSuper brief! Plan to spend approx. 30 seconds showing the slide.\nSuper brief! Plan to spend approx. 30 seconds showing the slide.\nConclusion\nContributions Repeated\nThe contributions of this thesis are:\nContribution \nAdditional Contribution\nAdditional Contribution…\nPlan to spend 1-2 minutes on this slide/topic.\nPlan to spend 1-2 minutes on this slide/topic.\nAdditional Slides\nThe presentation may only last 45 mins. but you have spent 4+ years with this material and could certainly share much more!\nBe prepared with additional slides with more information, charts, data, visual aides etc. at the end of your presentation with more information/background. \nThese will be useful if/when you are asked by your committee to go even more in-depth and provide further clarification.",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "attachment",
+        "message_id": "19abbcb5bd64b9db",
+        "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+        "to": [],
+        "subject": "[IDLS] Sample thesis defense ppt",
+        "date": "Tue, 25 Nov 2025 11:11:04 -0500",
+        "timestamp": 1764087064,
+        "token_count": 1277,
+        "attachment_name": "TEMPLATE-Defense-Presentation.pptx",
+        "attachment_type": "pptx"
+      }
+    }
+  ]
+}

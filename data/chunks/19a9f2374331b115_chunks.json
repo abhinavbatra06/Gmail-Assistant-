@@ -1,0 +1,22 @@
+{
+  "message_id": "19a9f2374331b115",
+  "chunked_at": "2025-12-08T14:31:19.685418",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a9f2374331b115_email_0_3b2a4da1",
+      "text": "Computer Vision, Section 001 - Announcements: In Person Guest Talk and Attendance Reminder Computer Vision, Section 001 - Announcements: In Person Guest Talk and Attendance Reminder Posted Wednesday, November 19, 2025 9:36 PM EST Dear all, We will have an in person guest speaker joining our class, and I would like everyone to attend. Attendance will be taken. A questionnaire will be shared afterward for you to complete. If you have a situation that prevents you from coming, please let me know ahead of time. Our guest speaker is Yutong Bai , a Postdoctoral Researcher at UC Berkeley in the Berkeley Artificial Intelligence Research group, advised by Prof. Alexei Efros, Prof. Jitendra Malik, and Prof. Trevor Darrell. She completed her PhD in Computer Science at Johns Hopkins University under Prof. Alan Yuille. She previously interned at Meta AI (FAIR Labs) and Google Brain, and she has been recognized as a 2023 Apple Scholar and a MIT EECS Rising Star. Title: Understanding Comes After Prediction Abstract: In this talk, Yutong will discuss prediction problems with a focus on recent work on PEVA (Whole Body Conditioned Egocentric Video Prediction). The work trains models to forecast first person video using past observations and future actions represented through 3D body pose trajectories. By conditioning on kinematic pose structured by the body’s joint hierarchy, the model learns how human physical actions affect the environment from an egocentric viewpoint. The approach uses an auto regressive conditional diffusion transformer trained on Nymeria, a large scale dataset containing real world egocentric video paired with full body motion capture. A hierarchical evaluation protocol with increasingly challenging tasks allows for thorough analysis of the model’s embodied prediction and control capabilities. This research offers an early step toward handling the challenges of modeling complex real world environments and embodied agent behavior through video prediction from the human perspective. Yutong will discuss the technical method, open problems, and future directions for this line of work. Looking forward to seeing you all in class. Computer Vision, Section 001 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a9f2374331b115",
+        "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+        "to": [],
+        "subject": "Computer Vision, Section 001 - Announcements: In Person Guest Talk and Attendance Reminder",
+        "date": "Thu, 20 Nov 2025 02:41:31 +0000",
+        "timestamp": 1763606491,
+        "token_count": 586
+      }
+    }
+  ]
+}

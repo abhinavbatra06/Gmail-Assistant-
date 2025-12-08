@@ -1,0 +1,261 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:5a94:b0:4ff:1ddc:eb54 with SMTP id ho20csp1914261gdb;
+        Fri, 7 Nov 2025 08:33:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHE2WACa/6w4xerdMN77XBft6oWkiwiIhn34garYjyaSsydGSnNMSEBdwlPv+l0+kVv1SWV
+X-Received: by 2002:a05:6214:629:b0:880:5886:c324 with SMTP id 6a1803df08f44-8817670bdafmr48589946d6.30.1762533186823;
+        Fri, 07 Nov 2025 08:33:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762533186; cv=none;
+        d=google.com; s=arc-20240605;
+        b=MazHchlHfaYNuG77S1hKJeZBWbd8r0q7mG6iUNAV1edNaJDmGQ1pXM10UJSxuhPw37
+         o1g4sXA5jEfMODrLcdLYhh1oF9uiwHxQ6VCbKwCUb+Tv+VInxiUO9Y32deNSs9fXCbJP
+         846Rm0N7y+avvAj0JrPcPIHuq88QJhJG8MgchPJUbxBW+Bk9zU0HiA7an6D4wQlT+/z1
+         LylBBkFQ6ank2PZ/xZyhRLrLmLl90nnbifpHdYJXS41DSPnYNY7/bqxSkykFwa4BgJfT
+         dLor8U/CaG4zh9p0RleRJKIBtgI32Y1jj1OX2e8i6sURNfvC480LJT5AYj3rH3kvsLu3
+         /U7Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:message-id:reply-to:to:from:subject:date
+         :dkim-signature;
+        bh=Ld2PncBw97moe85Hqo1Dih5QVqDxwTb+bMhPIZf9Wl0=;
+        fh=uBZigrcT4/eimFWNXbc+e9UoRXYu5p0qUsSILAaGf1U=;
+        b=fziEZFqvjEORULhDP8AhVv9catHYHizreHPAT/N3fCcrXnJn/E9LttEcCrc7ktuawv
+         lvu0UDhNwAb4RR8LdKCnUL8z22av/yLbQiyxRDmCxP3snu/+cJFdjT30kNOBC/FIg3kP
+         pxY6MSjV6ZKatloEsEu0WPri64/AUkueiNETWCHyQXS9pfY0ol+gX0HhSVasIp9K2v8P
+         eJIo5vY8iOAeLy6a117KsSndzWAmrTpNVyH3yRLnNAVVXtJXslmDwQYw50AVEpliSKoB
+         Zd+9S/AN1lYBhwC+JkSHJjoO1+9PBsSZltzO9EWhArtM7ENrPBuh0hACb8YSlk8hMfkT
+         jLxA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@mail.libcal.com header.s=krs header.b="Db6o//HW";
+       spf=pass (google.com: domain of alerts@mail.libcal.com designates 69.72.32.253 as permitted sender) smtp.mailfrom=alerts@mail.libcal.com
+Return-Path: <alerts@mail.libcal.com>
+Received: from pco01la-1769s.nyu.edu (pco01la-1769s.cfs.its.nyu.edu. [216.165.75.5])
+        by mx.google.com with ESMTPS id d75a77b69052e-4ed81413f8dsi19995061cf.388.2025.11.07.08.33.06
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Nov 2025 08:33:06 -0800 (PST)
+Received-SPF: pass (google.com: domain of alerts@mail.libcal.com designates 69.72.32.253 as permitted sender) client-ip=69.72.32.253;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@mail.libcal.com header.s=krs header.b="Db6o//HW";
+       spf=pass (google.com: domain of alerts@mail.libcal.com designates 69.72.32.253 as permitted sender) smtp.mailfrom=alerts@mail.libcal.com
+Received: from mx0b-00256a01.pphosted.com (mx0b-00256a01.pphosted.com [67.231.153.242])
+	by pco01la-1769s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5A7GX6kU2445809
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Fri, 7 Nov 2025 11:33:06 -0500
+Received: from pps.filterd (m0355791.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5A7GPCG31779819
+	for <at6651@nyu.edu>; Fri, 7 Nov 2025 11:33:06 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=alerts@mail.libcal.com;
+	dkim=pass header.d=mail.libcal.com header.s=krs;
+	dmarc=pass header.from=mail.libcal.com
+Received: from m32-253.mailgun.net (m32-253.mailgun.net [69.72.32.253])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4a9k319p10-1
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <at6651@nyu.edu>; Fri, 07 Nov 2025 11:33:05 -0500 (EST)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=mail.libcal.com; q=dns/txt; s=krs; t=1762533183; x=1762540383;
+ h=Message-Id: Reply-To: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: Sender;
+ bh=UighG6s6BCIuKHl+35WvKtDYY0bLfWPEbEw/Tdhrqww=;
+ b=Db6o//HWASZCh/fTo31XU7iwmcbDz2Fg17E5naLzPlnGhCaG69KBwj3EoO+jYUKz3yrtaZY/epKV7vux8yt6cuxv/lr4gUhb4sL9SxRuBt8JTMiy2jfmGVTCElkakcPW2zS1LwNnWbIWHDqQbVSwC9FoWgjAgQScJfjJfnfAE4A=
+X-Mailgun-Sid: WyI1MTA3NiIsImF0NjY1MUBueXUuZWR1IiwiZGE3MTY5Il0=
+Received: by eae918b25efd4be664ceb04bf065c59a59b6ce89648bf26630c6c12273c4af94 with HTTP
+ id 690e1f3f7efaa24ca7fa63d3; Fri, 07 Nov 2025 16:33:03 GMT
+X-Mailgun-Sending-Ip-Pool-Name: Other Apps US
+X-Mailgun-Sending-Ip-Pool: 63287b7506d94bf0745c4324
+X-Mailgun-Sending-Ip: 69.72.32.253
+Date: Fri, 07 Nov 2025 16:33:03 +0000
+Content-Type: multipart/mixed;
+ boundary="79d16ace925577a388eae50da7804e77578bad119318f06689c8de20327d"
+Subject: Confirmed! Bobst Library Floor 9 Individual Study Room 939 reserved for
+ Friday, November 7, 2025 from 2:00pm - 3:15pm Friday, November 7, 2025
+From: LibCal <alerts@mail.libcal.com>
+To: at6651@nyu.edu
+X-Mailgun-Tag: 201
+X-Mailgun-Tag: us
+X-Mailgun-Native-Send: true
+Reply-To: alerts@mail.libcal.com
+X-Auto-Response-Suppress: DR, RN, NRN, OOF, AutoReply
+Message-Id: <20251107163303.8deb529586606349@mail.libcal.com>
+X-CLX-Response: 1TFkXHBoYEQpMehcZHxsRCllEF21ySGJlHU9AU3pOEQpYWBd6XFJrbl9vQEh
+ BGREKeE4XZl5JEmkFRRl7XFwRCnhLF3pcUmtuX29ASEEZEQpDSBcHEhsRCkNZFwcbHB4RCkNJFx
+ oEGhoaEQpZTRdnZnIRCllJFx0acRgQGncGGRMYcRIZGhoQGncGGBoGGxgaEQpZXhdsbHkRCklGF
+ 0RPXVNFWEFfdUJFWV5PThEKSUcXeE9NEQpDThdaTBlDYB1sW0xAQnNbUF9JcmUTH1lGZ0lmb0ly
+ ZWNNHxEKWFwXHwQaBB4bGgUbGgQbGhoEGxkeBBkZEBseGh8aEQpeWRdNexJ6SREKTVwXHRsdEQp
+ MWhdoaU1NTREKTEYXb2tra2trEQpCTxdjXUZteE4FYFBvYxEKQ1oXHBMEHRgEGRgEGB8ZEQpCXh
+ cbEQpZRRcTEQpFSRcbEQpFZhceEQpCXBcbEQpCSxdpeFNlfmVcYWFkRhEKQkkXZl5JEmkFRRl7X
+ FwRCkJFF2FBWHJyRBNGcFpuEQpCThdmXkkSaQVFGXtcXBEKQkwXelxSa25fb0BIQRkRCkJsF2FY
+ e0kbEwVoXWdAEQpCQBduE0BbQUgeQEQfXBEKQlgXbkJBcFJIQGdCHHwRClpYFxwRCnlDF2sFem9
+ hYk4dekYcEQpZSxcfHhkfEQpaSxcfHhkfEQpwaBd6Q2JzcFpycnx+TxAdEhEKcGgXZF5tXUtNcE
+ tmWhIQGx4bEQpwaBdpSBJbemN+TXBIRxAbHhkRCnBoF2tFGktcfkJOQUcbEBsYEhEKcGgXaGlQX
+ hJuWkASQgEQGxwaEQpwaBdsaBkbBRIeZW1MXxAbHx4RCnBoF29BGntybGFleFxtEBsfHBEKcGgX
+ ZWVYHGd6bhJ+GU8QGhEKcH0XaHhhbHhLf21gRHwQGhEKcH0XbXhpTVhfSV9neR0QGxIfEQpwaxd
+ vRUAFW1webVwdUxAaEQpwSxdpfRkeUGNrYGRlARAaEQpwaxdme2gSeE9uZVNbeBAaEQpwfxdraW
+ MfbmgFYnphGBAbGhkRCnBfF2Zif2QeWkt6bEtTEBwaEQpwfxdgewFnXFxMc2dCWhAbEh0RCnBfF
+ 25BRRt4SXtCbHJpEBsSHxEKcGwXaVNrZkN8b2trTEwQEh8RCm1+FxoRClhNF0sRIA==
+X-CLX-Shades: MLX
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA3MDEzNyBTYWx0ZWRfXxZuppJAgJlRx
+ 4XiMV+ntsB94De2PLkjYSVbLNQTlXA51PR3cMWlWUztmk2iH091R5XHbnDH5KBz7WOVtMWNOl7S
+ lod7Ao54yvoWwbQ+RgGe6sI9wFYHBIjcKhc1tnCzFBXIagv9SAlZ6L2mUC7P73T3U6iFI5nY5Ue
+ Ul1oSTN3NZrzxpmjxXcXWoB0PJ4YmvWV+LbSU+wWTRuFkED2Xkz3YvL/ztuzTzc69pI4+Kr++/c
+ +PcDNXLA7PPwZOVubw7OyO/oppT0EiWNY/fjBe/5VmGx7nEy1d7fG367/HevRwaqOlAwUi07L6u
+ Y4UFYm336PaT3MTRKnJBunmYRx6BeWYcaLLNY0FCBc571vwnHusbE73LmKO5pme0fY0vOZLo7Oj
+ O344I/nz46Wr0T0FdcuMvArkqmMK7fjX7NCO0V+cvInsBYSfnIAkhcVXFSXSzBRaUr5rx3tRUgb
+ u4PJAH8D7VXIc2eqgDw==
+X-Proofpoint-ORIG-GUID: pf3iJ7FqfjhYqzucXO95slMcLEcXOIg5
+X-Authority-Analysis: v=2.4 cv=TubrRTXh c=1 sm=1 tr=0 ts=690e1f41 b=1 cx=c_pps
+ a=cJzlHcRZj+9Puw5RDW6oZQ==:117 a=cJzlHcRZj+9Puw5RDW6oZQ==:17
+ a=FSLEYM3gPxFCWAsE:21 a=6UeiqGixMTsA:10 a=fUlJnTLytPgA:10 a=g8TUdU_LZmEA:10
+ a=Kan8h273Bse8B8Jy5C1n:22 a=MwzFLiiVAAAA:8 a=Q1iZ_lj2_y3a06k6FFUA:9
+ a=e0Wss0Hxc_xZUhhA:21 a=e4xtJxf3HDoA:10 a=0lgtpPvCYYIA:10 a=MhN8FesYAAAA:8
+ a=kTk32Q0izIGNjHMjxoAA:9 a=eKt8Rs5_GYkJiVm2:21 a=_W_S_7VecoQA:10
+ a=Ei3FuKHBNh0A:10 a=hLx-Nz_Uzfj5aSazu74A:9 a=pt9G7I5XmLUTiVRDx3fboKQV4P0=:19
+ a=Ww3EAYOm5v4A:10 a=Zq7r0XqNILgA:10 a=_SqAGBIgob3hgBlIm18M:22
+ a=AdLLHMVGWFJ7rA5DTb08:22 cc=ntf
+X-Proofpoint-GUID: pf3iJ7FqfjhYqzucXO95slMcLEcXOIg5
+MIME-Version: 1.0
+X-Orig-IP: 69.72.32.253
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-07_04,2025-11-06_01,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ adultscore=0 phishscore=0 bulkscore=0 clxscore=602 impostorscore=0
+ priorityscore=351 malwarescore=0 spamscore=0 lowpriorityscore=0
+ suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=notification
+ route=inbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511070137 domainage_hfrom=5435 domainage_replyto=5435
+
+--79d16ace925577a388eae50da7804e77578bad119318f06689c8de20327d
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="a189ea7afb582521cfc18647d6e7c7b06bf23589b70959d52aa66531faa6"
+
+--a189ea7afb582521cfc18647d6e7c7b06bf23589b70959d52aa66531faa6
+Content-Type: text/plain; charset=ascii
+Content-Transfer-Encoding: quoted-printable
+
+Hi Ankita,<br /><br />The following study room reservation(s) are confirmed=
+:<br /><br /><strong>Space Information</strong><br><strong>Location:</stron=
+g> Bobst Library<br><strong>I need a space for:</strong> Silent Study<br><s=
+trong>Space:</strong> Floor 9 Individual Study Room 939<br><strong>Date:</s=
+trong> Friday, November 7, 2025<br><strong>Time:</strong> 2:00pm - 3:15pm<b=
+r /><br /><b>To cancel a reservation please go to: https://urldefense.proof=
+point.com/v2/url?u=3Dhttps-3A__nyu.libcal.com_equipment_cancel-3Fid-3D67fdc=
+689f9c2&d=3DDwICAA&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=
+=3Dztgx2cQvT6jpUuONwBuYcT_xutTLdukX2JAN6HsgI6-oqZps6St0CKU3xZA2RUOL&s=3DPzT=
+LxOWYOE5dpmwWmV8ZYg69UfSMMPxHl-vDkOCaNqg&e=3D </b><br /><br /><b>Directions=
+ to Study Rooms:</b> <strong>Floor 9 Individual Study Room 939</strong>: Fl=
+oor 9 West=
+
+--a189ea7afb582521cfc18647d6e7c7b06bf23589b70959d52aa66531faa6
+Content-Type: text/html; charset=ascii
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+				<html style=3D"font-family: 'Helvetica Neue', 'Helvetica', Helvetica, A=
+rial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: =
+0;">
+				<head>
+				<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+				<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3DUTF-8=
+">
+				<style>
+				th { text-align:right; }
+				ul {margin: 5px 5px 5px 5px;}
+				table, div, p, ul, li { font-family: 'Helvetica Neue', 'Helvetica', Hel=
+vetica, Arial, sans-serif; }
+				</style>
+				</head>
+				<body bgcolor=3D"#f6f6f6" style=3D"font-family: 'Helvetica Neue', 'Helv=
+etica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; =
+-webkit-font-smoothing: antialiased; height: 100%; -webkit-text-size-adjust=
+: none; width: 100% !important; margin: 0; padding: 0;">
+
+				<table class=3D"body-wrap" bgcolor=3D"#f6f6f6" style=3D"font-family: 'H=
+elvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%;=
+ line-height: 1.6em; width: 100%; margin: 0; padding: 20px;"><tr style=3D"f=
+ont-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; fo=
+nt-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
+				<td style=3D"font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Ari=
+al, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;=
+"></td>
+					<td class=3D"container" bgcolor=3D"#FFFFFF" style=3D"font-family: 'Hel=
+vetica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; l=
+ine-height: 1.6em; clear: both !important; display: block !important; max-w=
+idth: 80% !important; Margin: 0 auto; padding: 20px; border: 1px solid #f0f=
+0f0;">
+
+					  <div class=3D"content" style=3D"font-family: 'Helvetica Neue', 'Helv=
+etica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6em; =
+display: block; max-width: 94%; margin: 0 auto; padding: 0;">
+
+					  Hi Ankita,<br /><br />The following study room reservation(s) are co=
+nfirmed:<br /><br /><strong>Space Information</strong><br><strong>Location:=
+</strong> Bobst Library<br><strong>I need a space for:</strong> Silent Stud=
+y<br><strong>Space:</strong> Floor 9 Individual Study Room 939<br><strong>D=
+ate:</strong> Friday, November 7, 2025<br><strong>Time:</strong> 2:00pm - 3=
+:15pm<br /><br /><b>To cancel a reservation please go to: <a href=3D"https:=
+//urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyu.libcal.com_equipment_c=
+ancel-3Fid-3D67fdc689f9c2&amp;d=3DDwQFAA&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp=
+;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3Dztgx2cQvT6jpUuONwBuYcT_xutTLdukX2JAN6Hs=
+gI6-oqZps6St0CKU3xZA2RUOL&amp;s=3DPzTLxOWYOE5dpmwWmV8ZYg69UfSMMPxHl-vDkOCaN=
+qg&amp;e=3D">https://nyu.libcal.com/equipment/cancel?id=3D67fdc689f9c2</a><=
+/b><br /><br /><b>Directions to Study Rooms:</b> <strong>Floor 9 Individual=
+ Study Room 939</strong>: Floor 9 West
+
+					  </div>
+
+					</td>
+					<td style=3D"font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Ar=
+ial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0=
+;"></td>
+				  </tr></table>
+
+				<table class=3D"footer-wrap" style=3D"font-family: 'Helvetica Neue', 'H=
+elvetica', Helvetica, Arial, sans-serif; font-size: 100%; line-height: 1.6e=
+m; clear: both !important; width: 100%; margin: 0; padding: 0;"><tr style=
+=3D"font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-seri=
+f; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;">
+				<td style=3D"font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Ari=
+al, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0;=
+"></td>
+					<td class=3D"container" align=3D"center" style=3D"font-family: 'Helvet=
+ica Neue', 'Helvetica', Helvetica, Arial, sans-serif; font-size: 100%; line=
+-height: 1.6em; clear: both !important; display: block !important; max-widt=
+h: 80% !important; margin: 0 auto; padding: 0;">
+					  <p style=3D"font-family: 'Helvetica Neue', 'Helvetica', Helvetica, A=
+rial, sans-serif; font-size: 80%; line-height: 1.6em; color:#A5A5A5;">Power=
+ed by Springshare. Read our <a href=3D"https://urldefense.proofpoint.com/v2=
+/url?u=3Dhttps-3A__springshare.com_privacy.html&amp;d=3DDwMFAA&amp;c=3Dslrr=
+B7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3Dztgx2cQvT6jpUuONw=
+BuYcT_xutTLdukX2JAN6HsgI6-oqZps6St0CKU3xZA2RUOL&amp;s=3Dz1WmX7DHaZLaApMwEvJ=
+3MYY6CHCVfQn-MVbbl3QP_nI&amp;e=3D" style=3D"color:#A5A5A5;">privacy policy<=
+/a>.</p>
+					</td>
+					<td style=3D"font-family: 'Helvetica Neue', 'Helvetica', Helvetica, Ar=
+ial, sans-serif; font-size: 100%; line-height: 1.6em; margin: 0; padding: 0=
+;"></td>
+				  </tr></table>
+				</body>
+				</html>=
+
+--a189ea7afb582521cfc18647d6e7c7b06bf23589b70959d52aa66531faa6--
+
+--79d16ace925577a388eae50da7804e77578bad119318f06689c8de20327d
+Content-Type: text/calendar; name="Booking_107365158.ics"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Booking_107365158.ics"
+
+QkVHSU46VkNBTEVOREFSDQpWRVJTSU9OOjIuMA0KUFJPRElEOi0vL1NwcmluZ3NoYXJlLy9MaWJD
+YWwvL0VODQpDQUxTQ0FMRTpHUkVHT1JJQU4NCk1FVEhPRDpQVUJMSVNIDQpYLVdSLVRJTUVaT05F
+OkFtZXJpY2EvTmV3X1lvcmsNCkJFR0lOOlZFVkVOVA0KRFRTVEFSVDoyMDI1MTEwN1QxOTAwMDBa
+DQpEVEVORDoyMDI1MTEwN1QyMDE1MDBaDQpEVFNUQU1QOjIwMjUxMTA3VDE2MzMwMFoNClNVTU1B
+Ulk6Qm9va2luZzogRmxvb3IgOSBJbmRpdmlkdWFsIFN0dWR5IFJvb20gOTM5IC0gQW5raXRhIFRy
+aXBhdGhpIChhdDY2NTFAbnl1LmVkdSkNCkRFU0NSSVBUSU9OOkJvb2tpbmc6IEZsb29yIDkgSW5k
+aXZpZHVhbCBTdHVkeSBSb29tIDkzOVxuXG5UbyBjYW5jZWwgdGhpcyANCiBib29raW5nIHZpc2l0
+OiBodHRwczovL255dS5saWJjYWwuY29tL2VxdWlwbWVudC9jYW5jZWw/aWQ9NjdmZGM2ODlmOWMy
+XG4NCkxPQ0FUSU9OOkZsb29yIDkgSW5kaXZpZHVhbCBTdHVkeSBSb29tIDkzOQ0KVUlEOkxpYkNh
+bC1FcXVpcG1lbnQtMTA3MzY1MTU4DQpTVEFUVVM6Q09ORklSTUVEDQpYLU1JQ1JPU09GVC1DRE8t
+QlVTWVNUQVRVUzpCVVNZDQpCRUdJTjpWQUxBUk0NClRSSUdHRVI6LVBUMTVNDQpBQ1RJT046RElT
+UExBWQ0KREVTQ1JJUFRJT046UmVtaW5kZXINCkVORDpWQUxBUk0NCkVORDpWRVZFTlQNCkVORDpW
+Q0FMRU5EQVINCg==
+--79d16ace925577a388eae50da7804e77578bad119318f06689c8de20327d--

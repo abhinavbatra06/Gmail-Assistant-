@@ -1,0 +1,330 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:4985:b0:50b:93c5:eed5 with SMTP id hb5csp3352353gdb;
+        Wed, 26 Nov 2025 04:04:46 -0800 (PST)
+X-Forwarded-Encrypted: i=4; AJvYcCWzOuXK9K+QZ7EcSHgiKaKt22ifZZrC6Dg6CvVGh0z+aUSMKPgVuk2McZRANAqzeW7vYnxkoYE=@nyu.edu
+X-Google-Smtp-Source: AGHT+IFJLgQazFg2tdLWooMo9WPAh79M+pTdsm0fbfV5G86TkZQpBX6DDSnxY/d37U68zh05oSQ/
+X-Received: by 2002:a05:620a:2a11:b0:8b2:1dfd:f6a2 with SMTP id af79cd13be357-8b33d1f0606mr2330662985a.40.1764158686518;
+        Wed, 26 Nov 2025 04:04:46 -0800 (PST)
+ARC-Seal: i=3; a=rsa-sha256; t=1764158686; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=jrQZz6YR1zE6pYmTvvvTOT/eaMpD1LgAisrKoor9jQ/NpSwM0viwZ5zfjCPMBbB2DI
+         sZohp6q1ueRK05bsVFo4v9gvRjsyz3HrctPw1/cbCdRdTUWUtX6OcWpG+yUQE48qN899
+         fmLDILBcl7VpZYeQKDsz/EF9IDnHFQ66fA77BfWsxP5TnlrZYiF6UMoVWBk5jwoo0DlQ
+         ZvaQipWL9K3EjGucvE3RBHLE9E5/dMXQUWVMoU8NyOKnmsGCAjIE3yC2ELnJ+qCJQTqV
+         MBBU6T6ho5nDfFeE5LB65301br+aAPrrU782YJzbAL2z7I9Yun3y6JfjNwtDLiwBqwwy
+         fRIA==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:cc:to:subject
+         :message-id:date:from:in-reply-to:references;
+        bh=GI6RHeQP1X6N2d4w7FeffgWhIiQ7YLfFsMmLlWOMhoc=;
+        fh=L64Nux2w4hr4TO0GoShJcaX1PAPkkHN3/SjblivxSL8=;
+        b=FYihLBxBumDl+npucKA88H0J2PBbssN2no7rh5q68+NT50n7jR4z1bsP9BO6GzDDuS
+         FQ9Sl+Vivblt1zITBFdCX5rnRZc1c7a2yQBfMqboXqVs6nuIBPsIiremWAx62M6qY1o4
+         urJwi/Z3mo7KmQ5oLWgIEm3/sfE35ZLhfA7hhrNQbEgwXQ0jD9cwb7Vo1V4eOHZFoT7a
+         60wnJknFYQGhvCEUZt/2BYKkOWv4yW1T9tC+AYX6rpaOKVutHOIhHgefvOzQbf0+LPTT
+         kQ7fI7hUyuQJC7BGd8+h3MD7toPi5nrpEVcw/5LQbm9Qv+wKQejKA4UIWY4xhWlLjXKC
+         Z4WQ==;
+        dara=google.com
+ARC-Authentication-Results: i=3; mx.google.com;
+       arc=pass (i=2 spf=pass spfdomain=nyu.edu);
+       spf=pass (google.com: domain of cs-opportunities+bncbdg75wnf4ejrbsgztpeqmgqe6rdiaui@nyu.edu designates 209.85.160.200 as permitted sender) smtp.mailfrom=cs-opportunities+bncBDG75WNF4EJRBSGZTPEQMGQE6RDIAUI@nyu.edu;
+       dara=neutral header.i=@nyu.edu
+Return-Path: <cs-opportunities+bncBDG75WNF4EJRBSGZTPEQMGQE6RDIAUI@nyu.edu>
+Received: from pco01la-1772s.nyu.edu (pco01la-1772s.cfs.its.nyu.edu. [216.165.75.8])
+        by mx.google.com with ESMTPS id af79cd13be357-8b3295d6772si577136185a.1540.2025.11.26.04.04.46
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Nov 2025 04:04:46 -0800 (PST)
+Received-SPF: pass (google.com: domain of cs-opportunities+bncbdg75wnf4ejrbsgztpeqmgqe6rdiaui@nyu.edu designates 209.85.160.200 as permitted sender) client-ip=209.85.160.200;
+Authentication-Results: mx.google.com;
+       arc=pass (i=2 spf=pass spfdomain=nyu.edu);
+       spf=pass (google.com: domain of cs-opportunities+bncbdg75wnf4ejrbsgztpeqmgqe6rdiaui@nyu.edu designates 209.85.160.200 as permitted sender) smtp.mailfrom=cs-opportunities+bncBDG75WNF4EJRBSGZTPEQMGQE6RDIAUI@nyu.edu;
+       dara=neutral header.i=@nyu.edu
+Received: from mx0b-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-1772s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5AQC4jHl3031386
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Wed, 26 Nov 2025 07:04:46 -0500
+Received: from pps.filterd (m0094546.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AQBur131542104
+	for <at6651@nyu.edu>; Wed, 26 Nov 2025 07:04:45 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=cs-opportunities+bncBDG75WNF4EJRBSGZTPEQMGQE6RDIAUI@nyu.edu;
+	dmarc=pass header.from=cs.nyu.edu
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com [209.85.160.200])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4ap14dg55k-2
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <at6651@nyu.edu>; Wed, 26 Nov 2025 07:04:43 -0500 (EST)
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-4ed74ab4172sf160300681cf.1
+        for <at6651@nyu.edu>; Wed, 26 Nov 2025 04:04:41 -0800 (PST)
+ARC-Seal: i=2; a=rsa-sha256; t=1764158680; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=aqzsrKI1pc9u+00vwGscj0jh6KOGmS6a/GntEHyP1y5IllWYjaHoD2ab61TICL8UjL
+         eSzruXvZjqi/IkePgZ89e5kzsT9r46bvVam1Mo0EhQVZXLuPlRWQlaMM2wIGQjD1pk9D
+         jtw5Ec9mw3UbHx2UTrMF1AOPFGIlHq2wUh4BbaLo13P6cXl0dhTuOwDqR17HZcL3SS9i
+         MX9Cyvn1ltZp25e0buUKui1PITHQ36uYAEwZq3NEcR0DnBK2AORW1nSn31U+UFra2h+x
+         GrSL+8QsaOdrEpnAH/Wz+JDdhbkTvSya3ucEeEgIfVgAWj24ahVCVrT3b67xdM3rGTkx
+         0z1Q==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :list-id:mailing-list:precedence:reply-to:mime-version:cc:to:subject
+         :message-id:date:from:in-reply-to:references;
+        bh=GI6RHeQP1X6N2d4w7FeffgWhIiQ7YLfFsMmLlWOMhoc=;
+        fh=L64Nux2w4hr4TO0GoShJcaX1PAPkkHN3/SjblivxSL8=;
+        b=FEAWhhjE88JTvHUmfn+7ZtLCodA+7v5Usjv/r3A23xVoV70bLRLiDHn2CWZoOxrZae
+         layERzwbhwLGrk9yTEUONTo2d2SahsL9/YmZvW74nuNx49JsDVjiQktcDNyylzPmD3Jk
+         ZSdmAr+QGQoDM0rGBYgwaExBmC6QECFeaETGse9Ks6QHEepKEMs6reX7NzJayza7npeI
+         f5pP1METHMDKjOfD2XLm6D0lWMCJpo11s4XWquW3c20/B6wdXkjKjXmgxleeG3sW+zAk
+         fAUH20uyrEDGfU/mFPiTysqLh+UNdvCCTKjPdIey+tmfzvp1xd4zuj7gMPUsfomtYO+h
+         hmEA==;
+        darn=nyu.edu
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@cs.nyu.edu header.s=gcs01 header.b=GsifLyWJ;
+       spf=pass (google.com: domain of rk73@nyu.edu designates 216.165.22.131 as permitted sender) smtp.mailfrom=rk73@nyu.edu;
+       dara=neutral header.i=@nyu.edu
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764158680; x=1764763480;
+        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post
+         :x-spam-checked-in-group:list-id:mailing-list:precedence:reply-to
+         :x-original-authentication-results:x-original-sender:mime-version:cc
+         :to:subject:message-id:date:from:in-reply-to:references:x-gm-gg
+         :x-beenthere:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=GI6RHeQP1X6N2d4w7FeffgWhIiQ7YLfFsMmLlWOMhoc=;
+        b=lPXiTKC0bGrrptW7DUtXBc+DAG5DZ7/PxaroL8YBR0sHOMbv+s3hl3LXedu583xevI
+         UNRRBOSFk8dsVA0c9vkW0Oe/YCNUB7DOFUmHiboorbjaDiZO+m0TriLNkpBfunzu0s//
+         4gh+bi4Z5JHd4WD8HVmZAKPWhFfkmuX6suMrbuFHQ+WNMdyMb+UELSTTCUOMromyhgXf
+         NVJdYysYhk43fJRHK9I8dRJUMtm7jESno/gEjKuGV8IHju5TZHpRTsyNKH70C6cM3LbQ
+         5LVOEav8yQKOgvcZrsWE4xnRbIGYcInRBWwEgzoMAGRZ75ocKmN3OCR1MWQg3DtJNL9F
+         E9mQ==
+X-Forwarded-Encrypted: i=2; AJvYcCVN1jv+PhIZnl4tZzv6i8lkixGMpOqAoDDdUjIp6IXOdGqFB/M1Dc9q9igTAqsgUke/DLQbQRc=@nyu.edu
+X-Gm-Message-State: AOJu0YypDK9VXyt3gJlsk5vpJ+zGFISs40KshWh/4jHQFNbuTfTpcILS
+	OD8MsiD9Qg77jejbPJE6KFCXZ0Y4548kxy2MNYIBsSMgJy3jI9U0q3XajvvrxXO2cBGH
+X-Received: by 2002:a05:622a:1449:b0:4ec:f940:4e55 with SMTP id d75a77b69052e-4ee588cc9a9mr249397511cf.47.1764158679945;
+        Wed, 26 Nov 2025 04:04:39 -0800 (PST)
+X-BeenThere: cs-opportunities@nyu.edu; h="Ae8XA+akdsOxxMnPHobYFHRYjKmjYBtZw92E1apZv12xeb03PA=="
+Received: by 2002:a05:622a:244:b0:4ed:3036:f1ac with SMTP id
+ d75a77b69052e-4ee48fabdf1ls132314241cf.0.-pod-prod-01-us; Wed, 26 Nov 2025
+ 04:04:23 -0800 (PST)
+X-Forwarded-Encrypted: i=2; AJvYcCWSn1iu/xgHDaKrFgUskEdOwQ56npCjeNlnZebt2/MKhufDRLj4qbRbA3d94tQ7suSGjOem9OAAy8p953MNC6Xm@nyu.edu
+X-Received: by 2002:ac8:5d46:0:b0:4ee:275c:28d7 with SMTP id d75a77b69052e-4ee5893b2b3mr256060641cf.75.1764158658242;
+        Wed, 26 Nov 2025 04:04:18 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764158658; cv=none;
+        d=google.com; s=arc-20240605;
+        b=WYFsHazzCdsy6pGyr4ZouvvJkEdcgEt6U9PmOVLUqTwEJr+gr3EeL/fCFpgEK80mz1
+         dZMriPQReQO9fNY9khWHnA0P22mpgy5AfOFdbQvJmtU7hSxh0oiVyugJ+ysTDapJSdSq
+         qU0gWzhB9Fmah+79OGFdC7wwRkzoK+s+OAI/yDvyRkHpsJ6JowEjkuC6JIY8pR+7f4tA
+         VOhqpJrKAlDkpD3HVrQQ+ktcKPH8W98Jo5PW3HKsKCiVAq0qUGsU59iSUfWVz52eT/xE
+         kxt2UnxJiSAV/SAeMUKQi4PMpYyg9RHllC/PRieP8q4eqhZCxPVonw0RT7WBVfI/Ef0q
+         V1xw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:cc:to:subject:message-id:date:from:in-reply-to
+         :references:dkim-signature;
+        bh=GI6RHeQP1X6N2d4w7FeffgWhIiQ7YLfFsMmLlWOMhoc=;
+        fh=x0yxmNJB+FJWQktjFqrEYr8DRIlW6C/IJZ0djblKyVc=;
+        b=JbR4g7A3CUO7uZM2MGNj8jqOZ3kMp9tAotn5uF6vrtFy8bkN1EJj4yXk7Ddqbgu3ET
+         qTYpOYk5vSY8mpBe5M83DjJG2nQxR89c52en82UVvoxDiO65XhCkbg1iaMyuPHngbWBS
+         NKayyfIKwTaHe3gx54pbP+fD3QAVHTha2ivHMwKyjboH3bGQ+Pr/MXJ7poRDdhOKfI9K
+         fQBtMy/5x2HGtpozfHZusiMDZS/zhLEeFvzIbr9xU2ZweGc5EDXzJDNOS3OQ3RD+x5oZ
+         asM1NK6i9iNpfW8BkXSfdWMdT3hVEt+7U2d8/keckRmzBkNTUkdAOgjg9PJ78E0Adze1
+         yKvg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@cs.nyu.edu header.s=gcs01 header.b=GsifLyWJ;
+       spf=pass (google.com: domain of rk73@nyu.edu designates 216.165.22.131 as permitted sender) smtp.mailfrom=rk73@nyu.edu;
+       dara=neutral header.i=@nyu.edu
+Received: from pco01la-1771s.nyu.edu (pco01la-1771s.cfs.its.nyu.edu. [216.165.75.7])
+        by mx.google.com with ESMTPS id d75a77b69052e-4ee48f05082si63682561cf.1478.2025.11.26.04.04.18
+        for <cs-opportunities@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 26 Nov 2025 04:04:18 -0800 (PST)
+Received-SPF: pass (google.com: domain of rk73@nyu.edu designates 216.165.22.131 as permitted sender) client-ip=216.165.22.131;
+Received: from mx0b-00256a01.pphosted.com (mx0b-00256a01.pphosted.com [67.231.153.242])
+	by pco01la-1771s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5AQC4Hhm3088513
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <cs-opportunities@nyu.edu>; Wed, 26 Nov 2025 07:04:18 -0500
+Received: from pps.filterd (m0144081.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AQ102191349444
+	for <cs-opportunities@nyu.edu>; Wed, 26 Nov 2025 07:04:17 -0500
+Received: from mx.cims.nyu.edu (mx.cims.nyu.edu [216.165.22.131])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4anqgj42c0-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <cs-opportunities@nyu.edu>; Wed, 26 Nov 2025 07:04:17 -0500 (EST)
+Received: from mx0b-00256a01.pphosted.com (mx0b-00256a01.pphosted.com [67.231.153.242])
+	by mx.cims.nyu.edu (8.16.1/8.16.1) with ESMTPS id 5AQC4GvV1662301
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <opportunities@cs.nyu.edu>; Wed, 26 Nov 2025 07:04:16 -0500
+Received: from pps.filterd (m0355792.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AQ3VkWF1641123
+	for <opportunities@cs.nyu.edu>; Wed, 26 Nov 2025 07:04:16 -0500
+Received: from mail-il1-f178.google.com (mail-il1-f178.google.com [209.85.166.178])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4ansqe2uu8-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <opportunities@cs.nyu.edu>; Wed, 26 Nov 2025 07:04:16 -0500 (EST)
+Received: by mail-il1-f178.google.com with SMTP id e9e14a558f8ab-4330ef18d8aso27180195ab.0
+        for <opportunities@cs.nyu.edu>; Wed, 26 Nov 2025 04:04:16 -0800 (PST)
+X-Gm-Gg: ASbGncsYLUcSFx2E7WTpWk0Hv3fC4nG4pWtIFR/D59cShHKrZ+P8UkrVEInramGVIDG
+	3ZmBfVbSfOyyvE2Y7e7dy2VA4d3TDdSuGGBPmK/a1mcTxiucUeUiJa9TBV6VxQSk3LhjHg1KhW2
+	f5dC+EwnTmOxuyz8O38705RC84gphLKNftuagC2tL6JQc1TyKqgAyW7h0f7/4Mjfio8OtPqXlFP
+	myGqoaWeAKQEOYCy6DCTxf/qbSPb+860GWDFoUg37THakF7Niid6AxaQyZQmOjE4hiZ03YOSms1
+	cLT0eQ==
+X-Received: by 2002:a05:6638:3005:b0:5b7:3ab8:b3e6 with SMTP id
+ 8926c6da1cb9f-5b967a03b20mr16201297173.5.1764158654981; Wed, 26 Nov 2025
+ 04:04:14 -0800 (PST)
+References: <CAKpVKJHbwz-cMpFoyA7xafYULD0BLD-UNrnmD7dVoSfFuqd3cA@mail.gmail.com>
+In-Reply-To: <CAKpVKJHbwz-cMpFoyA7xafYULD0BLD-UNrnmD7dVoSfFuqd3cA@mail.gmail.com>
+From: Romeo Kumar <kumar@cs.nyu.edu>
+Date: Wed, 26 Nov 2025 07:04:03 -0500
+X-Gm-Features: AWmQ_bm6Ui0IdO9GbXmJQddinYrtoMqlwCkP7Zf5AJyBD6DKuVtIuMqEnnY-J8A
+Message-ID: <CAE6ixuT+64Zfbw4C2CmnntE_mK9naxyjBn61CsoTEMyvqOFufA@mail.gmail.com>
+Subject: [cs-opportunities] Mock Interview Workshop for CS Students
+To: opportunities@cs.nyu.edu
+Cc: "From: Nico Cernek" <nicocernek@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000f53ea806447e3114"
+X-mailroute: internal
+X-Proofpoint-id: 7dee7a77-7d0d-4761-9dfa-638768572a6e
+X-Orig-IP: 209.85.166.178
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-25_02,2025-11-25_01,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Reason: safe
+X-Greylist: inspected by milter-greylist-4.6.4 (mx.cims.nyu.edu [216.165.22.131]); Wed, 26 Nov 2025 07:04:16 -0500 (EST) for IP:'67.231.153.242' DOMAIN:'mx0b-00256a01.pphosted.com' HELO:'mx0b-00256a01.pphosted.com' FROM:'rk73@nyu.edu' RCPT:''
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.4 (mx.cims.nyu.edu [216.165.22.131]); Wed, 26 Nov 2025 07:04:16 -0500 (EST)
+MIME-Version: 1.0
+X-Orig-IP: 216.165.22.131
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-25_02,2025-11-25_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ clxscore=228 suspectscore=0 adultscore=0 priorityscore=0 lowpriorityscore=0
+ impostorscore=0 phishscore=0 malwarescore=0 bulkscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=inbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2511260099
+ domainage_hfrom=14294
+X-Original-Sender: kumar@cs.nyu.edu
+X-Original-Authentication-Results: mx.google.com;       dkim=neutral (body
+ hash did not verify) header.i=@cs.nyu.edu header.s=gcs01 header.b=GsifLyWJ;
+       spf=pass (google.com: domain of rk73@nyu.edu designates 216.165.22.131
+ as permitted sender) smtp.mailfrom=rk73@nyu.edu;       dara=neutral header.i=@nyu.edu
+Reply-To: kumar@cs.nyu.edu
+Precedence: list
+Mailing-list: list cs-opportunities@nyu.edu; contact cs-opportunities+owners@nyu.edu
+List-ID: <cs-opportunities.nyu.edu>
+X-Spam-Checked-In-Group: cs-opportunities@nyu.edu
+X-Google-Group-Id: 977670956515
+List-Post: <https://groups.google.com/a/nyu.edu/group/cs-opportunities/post>, <mailto:cs-opportunities@nyu.edu>
+List-Help: <https://support.google.com/a/nyu.edu/bin/topic.py?topic=25838>, <mailto:cs-opportunities+help@nyu.edu>
+List-Archive: <https://groups.google.com/a/nyu.edu/group/cs-opportunities/>
+List-Subscribe: <https://groups.google.com/a/nyu.edu/group/cs-opportunities/subscribe>,
+ <mailto:cs-opportunities+subscribe@nyu.edu>
+List-Unsubscribe: <mailto:googlegroups-manage+977670956515+unsubscribe@googlegroups.com>,
+ <https://groups.google.com/a/nyu.edu/group/cs-opportunities/subscribe>
+X-CLX-Response: 1TFkXGRwaEQpMehcaEQpZRBdgYkJnaGh6Hhp+cBEKWFgXYEAFTHxgX01FEh0
+ RCnhOF2d8eHpGU2JEYGcTEQp4SxdgQAVMfGBfTUUSHREKeUwXbHhMbR0eE1sbYB0RCkNIFwcbHh
+ IRCkNZFwcYEh8RCkNJFxoEGhoaEQpZTRdnZnIRCllJFxpxGhAadwYZHhpxGB4SEhAadwYYGgYaE
+ QpZXhdobnkRCklGF0RPXVNFWEFfdUJFWV5PThEKSUcXeE9NEQpDThdcbRtoU0Rhb2VZE05/S1NI
+ EmVcTEVsa1BGRm56T15bfREKWFwXHwQaBB4bGgUbGgQbGhoEGxkeBBkeEBseGh8aEQpeWRdNcmB
+ sGREKTVwXGRoSEQpMWhdtTU1dEQpMRhdnRmtuEQpCTxd6GUJrE0V5aFB+SxEKQ1oXGBscBBscHw
+ QdHwQdEQpCXhcbEQpESRcbEQpCRhdtf255ZWRteUVNfhEKQkcXaRpIU29OHmRJRx0RCkJFF2cYY
+ GJISUJgREhOEQpCThdnfHh6RlNiRGBnExEKQkwXYEAFTHxgX01FEh0RCkJsF28ac2hDem5bfF8B
+ EQpCQBdtSX94fR95Xk9fRxEKQlgXbkJBcFJIQGdCHHwRClpYFx4RCnlDF2JnSXxLchwbGVtkEQp
+ ZSxcbHhgTHhEKWksXGx4YEx4RCnBoF20eb0tpYRJAbh1+EAceGhEKcGgXbURMYF4YE0cZRVoQBx
+ 4aEQpwaBd6SB1uWAFnRGNQfxAHHhoRCnBoF2dHZR1+f016Z31OEAceGhEKcGgXY0UFZVkSRERsZ
+ 1MQBx4aEQpwaBdgb1ITWVgTc3N8ThAHHhoRCnBoF2wbHBh5XX1EUntZEAceGhEKcGgXaWZCSU55
+ aW1cRxIQBx4aEQpwfRdmUEduSBteExpnWxAHHhoRCnB9F2hyRhNOGx9gQH9zEAceGhEKcH0XaVk
+ ZQlBtEl9aRWgQBx4aEQpwfRdiU2tSbGhsBRl5chAHHhoRCnB9F2UbHEFGek5bU0weEAceGhEKcH
+ 0XY0J6R1ljYmVpfmQQBx4aEQpwfxdnQAVLc2RaEh1PaBASExEKcF8XZUZrW0hTZV94UGYQEh8RC
+ nBsF2EaUlJDU2hBHHpwEB0aEQpwQxdmYUd8Tm9hfUdIRhAeEhEKbX4XGhEKWE0XSxEg
+X-Proofpoint-ORIG-GUID: vG1BynKEOs9dUayb8OvfoFAzllDPetqW
+X-CLX-Shades: MLX
+X-Authority-Analysis: v=2.4 cv=btRBxUai c=1 sm=1 tr=0 ts=6926ecdc cx=c_pps
+ a=JbAStetqSzwMeJznSMzCyw==:117 a=KA0AVy8uI+0agnpDPpZZWw==:17
+ a=6UeiqGixMTsA:10 a=z5Pa2YWdGW4A:10 a=jJxKW8Ag-pUA:10 a=G0U3uluD9FMA:10
+ a=ZKS8Kw3IVw4A:10 a=3kCDOWzZvNEA:10 a=SKaEv8EmnvEA:10
+ a=JyWEw40TUO5AK6tc77iI:22 a=kYD52I4EAAAA:8 a=jU4qhlNgAAAA:8
+ a=bmLGaa6LWLeMOIU3R_8A:9 a=QEXdDO2ut3YA:10 a=ARmgLI5z0mQXLnbCNnEA:9
+ a=_3CzbP2oPT14c7Ls:21 a=uxP6HrT_eTzRwkO_Te1X:22 a=2PQu3l-eUiCK3ou-bJf3:22
+ cc=dsc
+X-Proofpoint-GUID: vG1BynKEOs9dUayb8OvfoFAzllDPetqW
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTI2MDA5OSBTYWx0ZWRfX37W02w9fjwZ0
+ OvaJPzocZY1Gz46SMLVWgoF6j58CMGpRWvCU2aNRZ7jmzkHC+QaFiOosXVQBIekRpfsgnaDJGNm
+ Y4KARJBe7wP/YCgAr9poNtt24bm6xN+4kdz9QxcdmxL74FmhxEXJBpd5QkgC2zE1OkLqOBp/pIb
+ /X1vTkPGHXH45QXR3W1IkzATHTPfJf3pRFuZE6RMCwi467bNS2RoNLrfHkRW+cfaxhZqVLBBYM1
+ 2eoeig/rxtiVEbm4oCH8nKIAlv7sWCAIGNdhDT/SGqd4b2GN6VhzdJ0rwBMGZyQey0vRqHzQKz6
+ YAxYetwgVneg3fQcSlPgL4fkBzK9paAoTLXW9nN5cbP9F9B4hTXWJZdCKEgu1QVoJSIOfUtdfgt
+ aHQiH0Dg8F3Hnv1X9lgBdJYdbQUdPI+/qF1T+orqfcIcvM5v+xDWchiTHX6IjL2aLnBJLrziJl6
+ mzuIPNIAof/ZMb3JwTg==
+X-Orig-IP: 209.85.160.200
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-25_02,2025-11-25_01,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Reason: safe
+
+--000000000000f53ea806447e3114
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.meetup.com_the-5=
+Ftech-5Flead-5Fnyc_events_312171002_&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&=
+r=3DfHfZETLfqzEq1PEY7qjitvlMyPTllRBgr7IgP_XSKho&m=3DYPYayeh9s0G_SQEjx09JhOc=
+3Azi-qVm1PBhycfNdv5LP--UbzqD-TO_KW-9pa_az&s=3DceFU9oHYsoUJVBbSe363ZARNKrkEn=
+dXSr4cYCtpvs_w&e=3D=20
+<https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.meetup.com_the-=
+5Ftech-5Flead-5Fnyc_events_312171002_&d=3DDwMFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ=
+&r=3D80cd5DVpUcN3Ok07Ocnexg&m=3D1OaPm4dhj6fhJnHnNfXWUmZVpwqQLYnmVo10lLqn6oK=
+YzOzb6Qgze0NxBWscgOy5&s=3D5_yjsiKv7bmXG5CmQCb1F5tFcU1qF4w0IWPcPP8ZCA8&e=3D>
+
+I'm hosting a public gathering at Essex Market on Thursdays that allows
+participants to do peer-to-peer mock interview practice. I'll provide them
+with a list of questions, depending on which type of interview they want to
+practice. I'll also float from group to group and provide my own feedback.
+I've interviewed over 100+ candidates for various technical roles, and have
+some insight into what works and what doesn't.
+
+If you think this would be helpful to the students in your program, please
+pass it along.
+
+Thanks and have a good thanksgiving!
+Nico
+
+https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.linkedin.com_in_=
+nico-2Dcernek-2D39834837_&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DfHfZETL=
+fqzEq1PEY7qjitvlMyPTllRBgr7IgP_XSKho&m=3DYPYayeh9s0G_SQEjx09JhOc3Azi-qVm1PB=
+hycfNdv5LP--UbzqD-TO_KW-9pa_az&s=3DjwqY9U5lRDJG8gxZLNV_4HC4j2QLUCP_xz7JrF5R=
+UZY&e=3D=20
+<https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.linkedin.com_in=
+_nico-2Dcernek-2D39834837_&d=3DDwMFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3D80cd5D=
+VpUcN3Ok07Ocnexg&m=3D1OaPm4dhj6fhJnHnNfXWUmZVpwqQLYnmVo10lLqn6oKYzOzb6Qgze0=
+NxBWscgOy5&s=3DqhFHEQ6_xfJsP4vKrF9gZjlEcQJzl84IyxN_1mE1NVg&e=3D>
+
+--000000000000f53ea806447e3114
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_quote gmail_quote_container"><div dir=
+=3D"ltr"><div><br><a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dh=
+ttps-3A__www.meetup.com_the-5Ftech-5Flead-5Fnyc_events_312171002_&amp;d=3DD=
+wMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3D80cd5DVpUcN3Ok07Ocnexg&amp;m=
+=3D1OaPm4dhj6fhJnHnNfXWUmZVpwqQLYnmVo10lLqn6oKYzOzb6Qgze0NxBWscgOy5&amp;s=
+=3D5_yjsiKv7bmXG5CmQCb1F5tFcU1qF4w0IWPcPP8ZCA8&amp;e=3D" target=3D"_blank">=
+https://www.meetup.com/the_tech_lead_nyc/events/312171002/</a></div><div><b=
+r></div><div>I&#39;m hosting a public gathering at Essex Market on Thursday=
+s that allows participants to do peer-to-peer mock interview practice. I&#3=
+9;ll provide them with a list of questions, depending on which type of inte=
+rview they want to practice. I&#39;ll also float from group to group and pr=
+ovide my own feedback. I&#39;ve interviewed over 100+ candidates for variou=
+s technical roles, and have some insight into what works and what doesn&#39=
+;t.</div><div><br></div><div>If you think this would be helpful to the stud=
+ents in your program, please pass it along.</div><div><br></div><div>Thanks=
+ and have a good thanksgiving!</div><div>Nico<br><br><a href=3D"https://url=
+defense.proofpoint.com/v2/url?u=3Dhttps-3A__www.linkedin.com_in_nico-2Dcern=
+ek-2D39834837_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3D80cd5D=
+VpUcN3Ok07Ocnexg&amp;m=3D1OaPm4dhj6fhJnHnNfXWUmZVpwqQLYnmVo10lLqn6oKYzOzb6Q=
+gze0NxBWscgOy5&amp;s=3DqhFHEQ6_xfJsP4vKrF9gZjlEcQJzl84IyxN_1mE1NVg&amp;e=3D=
+" target=3D"_blank">https://www.linkedin.com/in/nico-cernek-39834837/</a></=
+div><div><br></div><div><br></div></div>
+</div></div>
+
+--000000000000f53ea806447e3114--

@@ -1,0 +1,22 @@
+{
+  "filename": "test_sheet.xlsx",
+  "path": "data/attachments/19ab8ca2e7a06fb6_test_sheet.xlsx",
+  "text": "Test Spreadsheet | Value\n123",
+  "tables": [
+    {
+      "rows": 0,
+      "content": "Test Spreadsheet | Value"
+    },
+    {
+      "rows": 0,
+      "content": "123"
+    }
+  ],
+  "metadata": {
+    "email_id": "19ab8ca2e7a06fb6",
+    "attachment_type": ".xlsx",
+    "original_filename": "test_sheet.xlsx",
+    "content_type": "spreadsheet",
+    "file_format": "xlsx"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "filename": "invite.ics",
+  "path": "data/attachments/19af024597868865_invite.ics",
+  "text": "\n[VCALENDAR]\n\n[VEVENT]\nDTSTART: 20251206T163000Z\nDTEND: 20251206T180000Z\nDESCRIPTION: \nLOCATION: \nSUMMARY: Demo recording",
+  "tables": [],
+  "metadata": {
+    "email_id": "19af024597868865",
+    "attachment_type": ".ics",
+    "original_filename": "invite.ics",
+    "content_type": "calendar"
+  }
+}

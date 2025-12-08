@@ -1,0 +1,39 @@
+{
+  "message_id": "19a79ece91e957a7",
+  "chunked_at": "2025-12-08T14:30:27.390438",
+  "total_chunks": 2,
+  "chunks": [
+    {
+      "chunk_id": "19a79ece91e957a7_email_0_e348283b",
+      "text": "Ankita / Abhinav Join with Google Meet – You have been invited by Abhinav Batra to attend an event named Ankita / Abhinav on Thursday Nov 20, 2025 ⋅ 4pm – 5pm (Eastern Time - New York). Join with Google Meet Meeting link meet.google.com/mie-dnbd-dma Join by phone (US) +1 617-297-2196 PIN: 410872365 When Thursday Nov 20, 2025 ⋅ 4pm – 5pm (Eastern Time - New York) Guests Abhinav Batra - organizer Ankita Tripathi View all guest info Reply for at6651@nyu.edu Yes No Maybe More options Invitation from Google Calendar You are receiving this email because you are subscribed to calendar notifications. To stop receiving these emails, go to Calendar settings , select this calendar, and change \"Other notifications\". Forwarding this invitation could allow any recipient to send a response to the organizer, be added to the guest list, invite others regardless of their own invitation status, or modify your RSVP. Learn more",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a79ece91e957a7",
+        "from": "Abhinav Batra <ab12615@nyu.edu>",
+        "to": [],
+        "subject": "Invitation: Ankita / Abhinav @ Thu Nov 20, 2025 4pm - 5pm (EST) (Ankita Tripathi)",
+        "date": "Wed, 12 Nov 2025 21:15:56 +0000",
+        "timestamp": 1762982156,
+        "token_count": 230
+      }
+    },
+    {
+      "chunk_id": "19a79ece91e957a7_att_invite_ics_0_e0462df1",
+      "text": "[VCALENDAR]\n\n[VTIMEZONE]\n\n[DAYLIGHT]\nDTSTART: 19700308T020000\n\n[STANDARD]\nDTSTART: 19701101T020000\n\n[VEVENT]\nDESCRIPTION: -::~:~::~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~:~\nLOCATION: https://meet.google.com/mie-dnbd-dma\nSUMMARY: Ankita / Abhinav",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "attachment",
+        "message_id": "19a79ece91e957a7",
+        "from": "Abhinav Batra <ab12615@nyu.edu>",
+        "to": [],
+        "subject": "Invitation: Ankita / Abhinav @ Thu Nov 20, 2025 4pm - 5pm (EST) (Ankita Tripathi)",
+        "date": "Wed, 12 Nov 2025 21:15:56 +0000",
+        "timestamp": 1762982156,
+        "token_count": 64,
+        "attachment_name": "invite.ics",
+        "attachment_type": "ics"
+      }
+    }
+  ]
+}

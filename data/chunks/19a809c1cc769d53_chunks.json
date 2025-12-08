@@ -1,0 +1,22 @@
+{
+  "message_id": "19a809c1cc769d53",
+  "chunked_at": "2025-12-08T14:30:42.914104",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a809c1cc769d53_email_0_a84c8a1f",
+      "text": "Handshake 2 unread messages since last Thursday 1 employer: iD Tech 1 job in: Education Maggie Wright iD Tech · Regional Manager Administrative Aide Onsite Job Maggie Wright iD Tech · Regional Manager Administrative Aide Onsite Job Catch up on messages Want daily digests? Update your preferences . If you'd no longer like to receive emails like this you can sign in to manage your notification preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a809c1cc769d53",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Weekly digest: 2 unread messages are waiting for you 👀",
+        "date": "Fri, 14 Nov 2025 04:25:03 +0000",
+        "timestamp": 1763094303,
+        "token_count": 115
+      }
+    }
+  ]
+}

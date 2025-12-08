@@ -1,0 +1,19 @@
+{
+  "id": "19ae02c060bdbaf8",
+  "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+  "subject": "Event flyers",
+  "date": "Tue, 2 Dec 2025 12:45:32 -0500",
+  "eml_path": "data/raw_emails/19ae02c060bdbaf8.eml",
+  "attachments": [
+    {
+      "filename": "THREEJS_TV.png",
+      "path": "data/attachments/19ae02c060bdbaf8_THREEJS_TV.png"
+    },
+    {
+      "filename": "THREEJS_TV.png",
+      "path": "data/attachments/19ae02c060bdbaf8_THREEJS_TV.png"
+    }
+  ],
+  "body_text": "PFA [image: THREEJS_TV.png][image: THREEJS_TV.png]",
+  "body_html": "<div dir=\"ltr\">PFA <img src=\"cid:ii_miovce3p0\" alt=\"THREEJS_TV.png\" width=\"542\" height=\"305\"><img src=\"cid:ii_miovcgpt1\" alt=\"THREEJS_TV.png\" width=\"542\" height=\"305\"><br></div>"
+}

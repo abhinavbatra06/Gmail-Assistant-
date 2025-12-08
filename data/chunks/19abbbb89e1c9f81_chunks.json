@@ -1,0 +1,22 @@
+{
+  "message_id": "19abbbb89e1c9f81",
+  "chunked_at": "2025-12-08T14:32:15.599842",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19abbbb89e1c9f81_email_0_4ec84510",
+      "text": "Join us on December 8th at South Park Commons NYC... NYU Courant x Entrepreneurial Institute Lecture Series On Monday December 8th, the Entrepreneurial Institute will present two fascinating and practical lectures designed to empower NYU innovators—followed by the NYU Innovation Happy Hour! You can find more information and register your attendance here . NYU Courant 251 Mercer Street, Room 823, New York, NY 10012 Unsubscribe | Manage your preferences",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19abbbb89e1c9f81",
+        "from": "Courant Academic Affairs <courant-academicaffairs@nyu.edu>",
+        "to": [],
+        "subject": "Courant x Entrepreneurial Institute Lecture Series and Happy Hour",
+        "date": "Tue, 25 Nov 2025 15:56:47 -0000",
+        "timestamp": 1764104207,
+        "token_count": 113
+      }
+    }
+  ]
+}

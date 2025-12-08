@@ -1,0 +1,166 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:545:b0:50b:93c5:eed5 with SMTP id cp5csp693933gdb;
+        Wed, 19 Nov 2025 18:41:32 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEWPtrt8zaKbKTMLMaPxg3Hmwu7tOe7GOWHiEbZS/FatIV7I8uLB+hziIvTLfBGJAm94VAF
+X-Received: by 2002:a05:622a:1b92:b0:4ed:2ff9:b325 with SMTP id d75a77b69052e-4ee497493efmr19728631cf.59.1763606492586;
+        Wed, 19 Nov 2025 18:41:32 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1763606492; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Jd3jZww2Mk70euc0BCR1OGtkPFBAs6EWJM9XlKL5rS8PMXTqbRCcuNkK+JboBAIPf4
+         MjL+oKxCaDcOUNc80MSH6xYaEo+n/qHLn732VMn3UT53ko+x2WrasSYsVCK0TIm+XuiB
+         5Q4fcebj4fbSnmvC52B/vVOlQb7QAXHO4WG5STxYSwIAhmbuA+5tI1nXf9GpKdb+JNsE
+         toyQYx3Q5XJ6nSgOp9PDVRyxjP02vOnbg9pKlnDvJ/ogSJZgWliwWNtq+PappviBPINb
+         vp/Ipw3reUHYXbJxhc3TrDT57EiqjbCbpuFP1ye6n6D6uUEdPZ9KLsfQrytmtoikzN8j
+         xKrw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:content-id:mime-version:to:message-id
+         :subject:date:from:dkim-signature;
+        bh=UrSkZJWEkRJD2XQY9K+wbeEgKTscLHwuXhpeQP5+j84=;
+        fh=x8EhVKTD3Pk05++7UWYZ7ByCGW6DqwZOrfdg3akiVZw=;
+        b=I3J2nzuj8wp2bW8ZNuG6Qhqy9wxbzEYbCJOImI/5ZoPWGXHE6RF9luV1fQY9LvrRM1
+         QnNlog0idkXmYE3GW1MMfsg1TycpGsB3/x0eK+IV4O0jP2ji2QAQgw5RsJ1IZg68bYLE
+         qUFK5WL35QVJnNC9abZsdjxLaMfBmLpjeLYV33elUl8EePQHL4rFb3VEjDMYb1RuVstv
+         /4IfiqEE1chaBCmW1TfWoe9sjWnisK2juPLGn+zv4c9xBOddS6MerC95L3rAztY2J1tn
+         h56WfL8Hi+rWuP+q4yc87x6rMZp2V0Lsii6avRAqJ0jOoQ7BBfIjxKXabl53fsLkWLQB
+         yMcQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=PaQWnXsO;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Return-Path: <noreply@mail.brightspace.nyu.edu>
+Received: from pco01la-2007s.nyu.edu (pco01la-2007s.cfs.its.nyu.edu. [216.165.75.15])
+        by mx.google.com with ESMTPS id 6a1803df08f44-8846e4942f6si4498476d6.152.2025.11.19.18.41.32
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 19 Nov 2025 18:41:32 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) client-ip=3.213.96.58;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=PaQWnXsO;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Received: from mx0b-00256a01.pphosted.com (mx0b-00256a01.pphosted.com [67.231.153.242])
+	by pco01la-2007s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5AK2fVTP3665429
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Wed, 19 Nov 2025 21:41:32 -0500
+Received: from pps.filterd (m0144081.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AJMUQJb3364545
+	for <at6651@nyu.edu>; Wed, 19 Nov 2025 21:41:31 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=noreply@mail.brightspace.nyu.edu;
+	dkim=pass header.s=d2lmail1 header.d=mail.brightspace.nyu.edu;
+	dmarc=pass header.from=mail.brightspace.nyu.edu
+Received: from us04psmtp.brightspace.com (us04psmtpout.brightspace.com [3.213.96.58])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4ahprg2d82-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Wed, 19 Nov 2025 21:41:31 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/relaxed;
+	d=mail.brightspace.nyu.edu; s=d2lmail1; t=1763606491;
+	bh=UrSkZJWEkRJD2XQY9K+wbeEgKTscLHwuXhpeQP5+j84=;
+	h=From:Date:Subject:To:From;
+	b=PaQWnXsO79J3q5drENJ2axn39wN3li0zdi7MhTqlcXgS5N4KQiMDNpHsHSXbr6m8m
+	 F7L9wmc3tUkvzz0PZporw0MB3P6Jj7xUYFzNo+3vaUNy8TBklIoRJSdcHPvFYpnQ/O
+	 /oJmkcNDfwSd35t3WpCtFZVKb35T7W2QJlDGHRwFCjzIdX7aXrbgeJay6LbmIvkV1D
+	 MwEBk06vC3xi8H0pgKvQMFkFCjdQ/31pLI6QZFbAEtcgjtViN2o9Kkn+el68bVzWuE
+	 MbPiDRuv/2pUgjZqzX9oseFVcD6XZ8fZwKuuuNlrTJ/AkAad2HtWIu4o4KKACnXNaN
+	 P4L91jwd5tLcg==
+Received: from [172.27.11.14] (unknown [172.27.36.101])
+	by us04psmtpout003i.aue1.int.d2l (Postfix) with ESMTP id 221BC80393
+	for <at6651@nyu.edu>; Thu, 20 Nov 2025 02:41:31 +0000 (UTC)
+From: "noreply@mail.brightspace.nyu.edu" <noreply@mail.brightspace.nyu.edu>
+Date: Thu, 20 Nov 2025 02:41:31 +0000
+Subject: Computer Vision, Section 001 - Announcements: In Person Guest Talk
+ and Attendance Reminder
+Message-Id: <XZKXHFRRRRU4.GI77PVS2KNSY2@IP-AC1B0B0E>
+To: "at6651@nyu.edu" <at6651@nyu.edu>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Id: <XZKXHFRRRRU4.11ZNVOOFI6JX2@IP-AC1B0B0E>
+Content-Transfer-Encoding: 8bit
+X-CLX-Shades: MLX
+X-Proofpoint-GUID: vShP9jv7OL-l_4gxdn6tFA_QkidZIfE6
+X-Proofpoint-ORIG-GUID: vShP9jv7OL-l_4gxdn6tFA_QkidZIfE6
+X-CLX-Response: 1TFkXGRkbEQpMehccGhEKWUQXbkBoGUgSWhtNGB0RClhYF2dSXGkeck5HaV9
+ hEQp4ThdkfmtOX3tYUBJaUBEKeUwXa2cSc19iAVppW00RCkNIFwcYGhkRCkNZFwceExoRCkNJFx
+ oEGhoaEQpZTRdnZnIRCllJFxpxGhAadwYZGxtxExsbHBAcdwYYGgYaEQpZXhdsbHkRCklGF0RPX
+ VNFWEFfdUJFWV5PThEKSUcXeE9NEQpDThdceUJ6E0BcHWVmB0Z1Hk1STkQcXmxrdXtBQ05wY0xv
+ HBEKWFwXHwQaBB4bGgUbGgQbGhoEGxkeBBkZEBseGh8aEQpeWRdNfGl4GBEKTVwXHxgbEQpMWhd
+ paG1NTU0RCkxGF29ra2traxEKQk8XYmd6Wll+XFpkYRIRCkNaFxkEGBsZBBMcBB8SEQpCXhcbEQ
+ pEXhcYEQpCXBcbEQpCSxdvawVGfUFGUGZ8ThEKQkkXZH5rTl97WFASWlARCkJFF25yUmhlaW9bf
+ W15EQpCThdkfmtOX3tYUBJaUBEKQkwXZ1JcaR5yTkdpX2ERCkJsF2dSXGkeck5HaV9hEQpCQBdm
+ G1xjGkRMQRxtfhEKQlgXbkJBcFJIQGdCHHwRClpYFxsaEQp5Qxdhe3B/enldQ0ZAQxEKWUsXGx4
+ YEhIRCnBoF21aTl5OEx9+fUYaEBMfEQpwaBdjZGJYT1NBcGRNcBAaEQpwaBdgZkx+YhMFfnhkfB
+ AaEQpwaBdnTl1PEh1kexlGARAaEQpwaBdpTWwcSxNEbGxQGhAaEQpwaBdlYnhkXnlGfXseWhAaE
+ QpwaBd6RWVvSxpeUwETQhAaEQpwaBdhHUxDaEJFEm9AHxAaEQpwfRdpSUFIfkRachxDbxAaEQpw
+ fRdhSUFPWnJee3tfWBAaEQpwfRdrZUdBUFNhR0YdRRAbGRgRCnB/F2geE35pG21FSF5OEBscHRE
+ KcF8Xa2dpGUxeTGJjY1AQGxkeEQpwXxdkUxphTFhoc1oYZhAbGRgRCnBfF2hJZk9Be1hIT2tgEB
+ sZGBEKcGwXa21JBWkbXR4STlIQHRIRCm1+FxoRClhNF0sRIA==
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTIwMDAxMiBTYWx0ZWRfX6/DZltnj5nbH
+ r3CDHguZt3cdhpGtQl+Ha87S1Ev7y/eIjuUgDoPYE0WsDNOcWuptuR5944/Ezwp5wgq8AmF7Z1f
+ a2V7A1Lr4vcSmsJV/xs+ZLgxEhmRegkFP2oB3kTIMOY237lpsuePsXagJ75JpwAMfH/d1gHCcDI
+ 8qpacTCjDmtDL8SK/kNIexev/y1YIiVcpV2ozh2diVZ5Pxf69bqOiLM2l4lTkmKP2knLXjtKZyU
+ kAQI29bN+6eyNjU3aznf/bOExPeQMPpRHQgn8wyjAquphWClXcxouC005wqSNJTt9d67fTIExVp
+ fZEdzKa/Up25p5KcviSoGup5ZbuSVIMoAehFjCxYwKBH6DJRbk+bS9GEK9cRm7qtSvPBeF7pbAO
+ v7Hqy7QmmJg9o6uOx9YgHBI003lqqzC+Wz9emeKX3PCtudvpcu+/iUWXNITQ/G4CVoDON0ZJD/M
+ ElerzGOjFDPpesf6Aqw==
+X-Authority-Analysis: v=2.4 cv=MeJhep/f c=1 sm=1 tr=0 ts=691e7fdb b=1 cx=c_pps
+ a=rlx/2BXBPJfMdtrSDlE4mQ==:117 a=rlx/2BXBPJfMdtrSDlE4mQ==:17
+ a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=7j0FZ4iXMVMA:10 a=Hi4HPhAiYaEA:10
+ a=g8TUdU_LZmEA:10 a=Kan8h273Bse8B8Jy5C1n:22 a=J-g6IGaxAAAA:8
+ a=T8W2MitzIuCCXOgcRVIA:9 a=o4o01wXHau716k4C:21 a=_W_S_7VecoQA:10
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 cc=ntf awl=host:51
+X-Orig-IP: 3.213.96.58
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-20_01,2025-11-18_02,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ suspectscore=0 malwarescore=0 lowpriorityscore=0 priorityscore=60 spamscore=0
+ bulkscore=0 adultscore=0 impostorscore=0 clxscore=331 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc=notification route=inbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511200012 domainage_hfrom=14288
+
+<!doctype html>
+<html>
+	<head>
+		<title>Computer Vision, Section 001 - Announcements: In Person Guest Talk and Attendance Reminder</title>
+	</head>
+	<body style="font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+		<div style="width:100%;font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+			<div style="border-bottom:1px dotted #000000;margin-bottom:15px;padding-bottom:5px;">
+			<h1 style="margin:0px;padding:0px;color:#000000;font-size:0.95rem;font-weight:bold;">Computer Vision, Section 001 - Announcements: In Person Guest Talk and Attendance Reminder<br /><span style="color:#666666;font-size:0.8rem;font-weight:normal;">Posted Wednesday, November 19, 2025 9:36 PM EST</span></h1>
+		</div>
+		<div style="padding:0px;margin:0px;">
+			<div><p>Dear all,</p>
+<p>We will have an in person guest speaker joining our class, and I would like everyone to attend. Attendance will be taken. A questionnaire will be shared afterward for you to complete. If you have a situation that prevents you from coming, please let me know ahead of time.</p>
+<p>Our guest speaker is <strong>Yutong Bai</strong>, a Postdoctoral Researcher at UC Berkeley in the Berkeley Artificial Intelligence Research group, advised by Prof. Alexei Efros, Prof. Jitendra Malik, and Prof. Trevor Darrell. She completed her PhD in Computer Science at Johns Hopkins University under Prof. Alan Yuille. She previously interned at Meta AI (FAIR Labs) and Google Brain, and she has been recognized as a 2023 Apple Scholar and a MIT EECS Rising Star.</p>
+<p><strong>Title:</strong> Understanding Comes After Prediction<br/><strong>Abstract:</strong><br/>In this talk, Yutong will discuss prediction problems with a focus on recent work on PEVA (Whole Body Conditioned Egocentric Video Prediction). The work trains models to forecast first person video using past observations and future actions represented through 3D body pose trajectories. By conditioning on kinematic pose structured by the body’s joint hierarchy, the model learns how human physical actions affect the environment from an egocentric viewpoint.</p>
+<p>The approach uses an auto regressive conditional diffusion transformer trained on Nymeria, a large scale dataset containing real world egocentric video paired with full body motion capture. A hierarchical evaluation protocol with increasingly challenging tasks allows for thorough analysis of the model’s embodied prediction and control capabilities.</p>
+<p>This research offers an early step toward handling the challenges of modeling complex real world environments and embodied agent behavior through video prediction from the human perspective. Yutong will discuss the technical method, open problems, and future directions for this line of work.</p>
+<p>Looking forward to seeing you all in class.</p></div>
+			<div style="padding:0px;margin:0px;margin-top:15px;">
+				<div style="padding:0px;margin:0px;border-top:1px dotted #666666;margin-top:15px;padding-top:5px;">
+					<table style="width:100%;border-collapse:collapse;border-spacing:0px;padding:0px;margin:0px;font-family:&#39;Lato&#39;, sans-serif; font-size:18px;" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:100%;margin:0px;padding:0px;white-space:nowrap !important;vertical-align:top;text-align:left;" nowrap="nowrap">
+									<a style="color:#00617f;" href="https://brightspace.nyu.edu/d2l/p/home/505961">Computer Vision, Section 001</a>
+								</td>
+								<td style="width:100%;margin:0px;padding:0px;white-space:nowrap !important;vertical-align:top;text-align:right;" nowrap="nowrap">
+									<a style="color:#00617f;" href="https://brightspace.nyu.edu/d2l/p/le/news/505961">Go to Announcements &gt;&gt;</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style="padding:0px;margin:0px;margin-top:15px;">
+				<div style="padding:0px;margin:0px;text-align:center;">
+					<span style="margin:0px;padding:0px;color:#666666;font-size:0.8rem;">You are receiving this message because you subscribed to receive instant notifications via email.</span>
+					<a style="color:#00617f;font-size:0.8rem;" href="https://brightspace.nyu.edu/d2l/Notifications/Settings?ou=6606">Change Notification Settings</a>
+					<br /><span style="margin:0px;padding:0px;color:#666666;font-size:0.8rem;"></span>
+				</div>
+			</div>
+		</div>
+</div>
+	</body>
+</html>

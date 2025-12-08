@@ -1,0 +1,19 @@
+{
+  "text": "Computer Vision, Section 001 - Announcements: Expectations for the Final Presentation Computer Vision, Section 001 - Announcements: Expectations for the Final Presentation Posted Wednesday, December 3, 2025 3:55 PM EST Dear all, Here are some expectations for your final presentation: We have many teams, so each group will have 3 minutes to present. Please add your slides to the shared deck before our next class: https://docs.google.com/presentation/d/1essgWHeizyk00Xp5niRseJIBT9KvsixRQXxIQJfSISg/edit?usp=sharing The presentation order has been randomized. Please check the corresponding slide to see when your team will present. Only one team member needs to do the presentation but of course co-presenting is also good / encouraged. The goal of the presentation is to share your results with your peers and receive feedback from me and others. There will be a short Q&A, and you may also show videos, demos, or anything else relevant. Focus on the problem definition, why it is interesting, your preliminary solution, and the insights you have gained. Do not worry if the results are not strong yet or if you need more time to polish your work. The purpose of this presentation is to help you practice sharing and communicating research and applications, which is a key skill. Grading will be based on the final report, though a strong presentation can earn you a significant bonus. You will have time to submit your report at the end of the final week. Please let me know if you have any questions. I look forward to seeing your presentations. Best regards, Saining and the teaching team Computer Vision, Section 001 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+  "tables": [
+    {
+      "rows": 0,
+      "content": "self_ref='#/tables/0' parent=RefItem(cref='#/texts/1') children=[RefItem(cref='#/groups/2'), RefItem(cref='#/groups/3')] content_layer=<ContentLayer.BODY: 'body'> meta=None label=<DocItemLabel.TABLE: 'table'> prov=[] captions=[] references=[] footnotes=[] image=None data=TableData(table_cells=[RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=0, end_col_offset_idx=1, text='Computer Vision, Section 001', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/2')), RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=1, end_col_offset_idx=2, text='Go to Announcements >>', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/3'))], num_rows=1, num_cols=2, grid=[[RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=0, end_col_offset_idx=1, text='Computer Vision, Section 001', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/2')), RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=1, end_col_offset_idx=2, text='Go to Announcements >>', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/3'))]]) annotations=[]"
+    }
+  ],
+  "metadata": {
+    "id": "19ae6021798f8ea7",
+    "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+    "subject": "Computer Vision, Section 001 - Announcements: Expectations for the Final Presentation",
+    "date": "Wed, 03 Dec 2025 20:58:05 +0000",
+    "eml_path": "data/raw_emails/19ae6021798f8ea7.eml",
+    "attachments": [],
+    "attachment_count": 0
+  },
+  "attachments_processed": []
+}

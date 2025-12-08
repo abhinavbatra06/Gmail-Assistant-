@@ -1,0 +1,39 @@
+{
+  "message_id": "19aff064fba1aab9",
+  "chunked_at": "2025-12-08T14:34:25.363278",
+  "total_chunks": 2,
+  "chunks": [
+    {
+      "chunk_id": "19aff064fba1aab9_email_0_58cdff76",
+      "text": "Review these for testing attachment processing",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19aff064fba1aab9",
+        "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+        "to": [],
+        "subject": "[IDLS] Docling file processing",
+        "date": "Mon, 8 Dec 2025 12:32:35 -0500",
+        "timestamp": 1765215155,
+        "token_count": 11
+      }
+    },
+    {
+      "chunk_id": "19aff064fba1aab9_att_docling_text_info_txt_0_b10e8cb0",
+      "text": "this is a sample text file to test docling processing for .txt files in attachments. if docling cannot parse this then this must be handled.",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "attachment",
+        "message_id": "19aff064fba1aab9",
+        "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+        "to": [],
+        "subject": "[IDLS] Docling file processing",
+        "date": "Mon, 8 Dec 2025 12:32:35 -0500",
+        "timestamp": 1765215155,
+        "token_count": 35,
+        "attachment_name": "docling_text_info.txt",
+        "attachment_type": "txt"
+      }
+    }
+  ]
+}

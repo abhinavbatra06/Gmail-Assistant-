@@ -1,0 +1,15 @@
+{
+  "id": "19abbcb5bd64b9db",
+  "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+  "subject": "[IDLS] Sample thesis defense ppt",
+  "date": "Tue, 25 Nov 2025 11:11:04 -0500",
+  "eml_path": "data/raw_emails/19abbcb5bd64b9db.eml",
+  "attachments": [
+    {
+      "filename": "TEMPLATE-Defense-Presentation.pptx",
+      "path": "data/attachments/19abbcb5bd64b9db_TEMPLATE-Defense-Presentation.pptx"
+    }
+  ],
+  "body_text": "Hi,\r\n\r\nThis is a sample thesis defense PowerPoint presentation. Please find it\r\nattached.\r\n\r\nBest regards,\r\nAnkita",
+  "body_html": "<div dir=\"ltr\"><div>Hi,</div><div><br></div><div>This is a sample thesis defense PowerPoint presentation. Please find it attached.</div><div><br></div><div>Best regards,</div><div>Ankita</div><br></div>"
+}

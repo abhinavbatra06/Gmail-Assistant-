@@ -1,0 +1,22 @@
+{
+  "message_id": "19ad7654ba780745",
+  "chunked_at": "2025-12-08T14:33:01.858778",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19ad7654ba780745_email_0_be3168fa",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from New York University On Campus, based on your preferences. Check it out! Applications are due Friday, December 19 at 11 PM EST. New York University On Campus Higher Education [NYU Athletics] Student Facility Attendant - 404 Fitness $16.5–17/hr Onsite On Campus Student Employment New York, NY View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19ad7654ba780745",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "New York University On Campus just posted a role 🌟",
+        "date": "Mon, 01 Dec 2025 00:52:08 +0000",
+        "timestamp": 1764550328,
+        "token_count": 154
+      }
+    }
+  ]
+}

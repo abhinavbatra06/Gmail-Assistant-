@@ -1,0 +1,22 @@
+{
+  "message_id": "19ad095a2cefc4a5",
+  "chunked_at": "2025-12-08T14:32:53.188364",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19ad095a2cefc4a5_email_0_fd1fee45",
+      "text": "GPUs - Announcements: Slightly updated presentation schedule GPUs - Announcements: Slightly updated presentation schedule Posted Saturday, November 29, 2025 12:06 PM EST Folks, Based on the emails I received, I made a very slight adjustment to the presentation schedule. Z GPUs Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19ad095a2cefc4a5",
+        "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+        "to": [],
+        "subject": "GPUs - Announcements: Slightly updated presentation schedule",
+        "date": "Sat, 29 Nov 2025 17:07:36 +0000",
+        "timestamp": 1764436056,
+        "token_count": 106
+      }
+    }
+  ]
+}

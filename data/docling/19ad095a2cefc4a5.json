@@ -1,0 +1,19 @@
+{
+  "text": "GPUs - Announcements: Slightly updated presentation schedule GPUs - Announcements: Slightly updated presentation schedule Posted Saturday, November 29, 2025 12:06 PM EST Folks, Based on the emails I received, I made a very slight adjustment to the presentation schedule. Z GPUs Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+  "tables": [
+    {
+      "rows": 0,
+      "content": "self_ref='#/tables/0' parent=RefItem(cref='#/texts/1') children=[RefItem(cref='#/groups/0'), RefItem(cref='#/groups/1')] content_layer=<ContentLayer.BODY: 'body'> meta=None label=<DocItemLabel.TABLE: 'table'> prov=[] captions=[] references=[] footnotes=[] image=None data=TableData(table_cells=[RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=0, end_col_offset_idx=1, text='GPUs', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/0')), RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=1, end_col_offset_idx=2, text='Go to Announcements >>', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/1'))], num_rows=1, num_cols=2, grid=[[RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=0, end_col_offset_idx=1, text='GPUs', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/0')), RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=1, end_col_offset_idx=2, text='Go to Announcements >>', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/1'))]]) annotations=[]"
+    }
+  ],
+  "metadata": {
+    "id": "19ad095a2cefc4a5",
+    "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+    "subject": "GPUs - Announcements: Slightly updated presentation schedule",
+    "date": "Sat, 29 Nov 2025 17:07:36 +0000",
+    "eml_path": "data/raw_emails/19ad095a2cefc4a5.eml",
+    "attachments": [],
+    "attachment_count": 0
+  },
+  "attachments_processed": []
+}

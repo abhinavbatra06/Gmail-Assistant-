@@ -1,0 +1,200 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:4985:b0:50b:93c5:eed5 with SMTP id hb5csp5959840gdb;
+        Sat, 29 Nov 2025 09:15:38 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFgiKOpPv7rY/luJQAE3Wskw/zMUTz+sU4hMfK/Ob4HYIRTUlbXdCozOmduoHDd0ITiLBLY
+X-Received: by 2002:a05:6214:29e8:b0:880:4d78:89ea with SMTP id 6a1803df08f44-8863aff42d2mr319397246d6.60.1764436537979;
+        Sat, 29 Nov 2025 09:15:37 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764436537; cv=none;
+        d=google.com; s=arc-20240605;
+        b=cYaPMEC0hR0wUTqwzfuzl6j6V9lUQKXLuoB6xP/dNiZ9f2HoXysTTBjULR3sNhVTU1
+         +K7qbiRTzLGVTuTb7RJWXG1iRDfIAdW/Xfg7RjogK1iACL3OTZONwpChnilBHEgFNS1c
+         cphYTFzDsm9XgcUumyhjxTc37dKljug4AExKB3xbn2T5+vrERGZ8vRYaWZgHKmslQ105
+         KK8N5F06XNjIauBERV1sjaj8MX7ZqC2/opMijgt4UOwau6kfzmYCwSVApNq92IhkrzaT
+         dNwyDfV39/ajaJX0mLK6dHY7mej4ktmIDxF7qbeUDftXdNlNZSP6aUOUvHQdPPVxd7k3
+         qmcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:content-transfer-encoding:content-id:to:message-id
+         :subject:date:from:dkim-signature;
+        bh=ykDAGR9Ui5dCYK9KtNZpzlhEzYckO57iw0N5TWbukSY=;
+        fh=x8EhVKTD3Pk05++7UWYZ7ByCGW6DqwZOrfdg3akiVZw=;
+        b=Ie3s4XNt3qfO22RXHuC5L2rLx5fOKMQQQqmDv089Bg5SIXDdmAbwWwnObIEAwwPViw
+         p6E/aCSQ7Or5I0PNBGyXq4qW94iVUyatI3r9SNegPvhMLAQ2BAez8502rypqQwMs9UXH
+         DO2lrQ3o124ai76NogdIA5q/NnagyhgTf8dqOmTYXkAVxjpTqWkGbf2m1rwKoRTBoSjW
+         IXQTl+S/26puaOYhrWIGU2+DmYRtSokGsIJb+WBz2Ut0uiTB+48vJ4MosdpZdX8kRco+
+         F0o5boy7e17ZW/QT+5drbN7yHcyqtxAnG3tMI2MCpyImPgcuzhWS7c7SzlkQEy+Hmkz4
+         Gs7g==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=RjDIU8Wr;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Return-Path: <noreply@mail.brightspace.nyu.edu>
+Received: from pco01la-2007s.nyu.edu (pco01la-2007s.cfs.its.nyu.edu. [216.165.75.15])
+        by mx.google.com with ESMTPS id 6a1803df08f44-88652b82fa0si34468346d6.1607.2025.11.29.09.15.37
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 29 Nov 2025 09:15:37 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) client-ip=3.213.96.58;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=RjDIU8Wr;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Received: from mx0b-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-2007s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5ATHFa6S2437815
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Sat, 29 Nov 2025 12:15:37 -0500
+Received: from pps.filterd (m0142701.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5ATGZbEl2669857
+	for <at6651@nyu.edu>; Sat, 29 Nov 2025 12:15:36 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=noreply@mail.brightspace.nyu.edu;
+	dkim=pass header.d=mail.brightspace.nyu.edu header.s=d2lmail1;
+	dmarc=pass header.from=mail.brightspace.nyu.edu
+Received: from us04psmtp.brightspace.com (us04psmtpout.brightspace.com [3.213.96.58])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4ar4g4gfty-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Sat, 29 Nov 2025 12:15:36 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/relaxed;
+	d=mail.brightspace.nyu.edu; s=d2lmail1; t=1764436535;
+	bh=Hq4GUdPlYI3yJswBjN3PYsh4oDBSdXL1dmcVNenK1J4=;
+	h=From:Date:Subject:To:From;
+	b=RjDIU8WreeA+qttwnZZn6MarTQkbQrVrIqP+ss+fkJlm+0n8jpWiL3t0x6yBKJJ6X
+	 yANlrfz50sYTrNgtKtSN9WPv2s37cDw3NVCz79NTauEK63pzayfQtPLLlJXIoqpiFs
+	 rM9UodnZ6hkdsKA8NqNTYrIwY6o72bmjboDzSV8uG9n8j3gVxAgpFHqSe1WKyJhNDG
+	 eDkvrMtRqw2KBrrZhNREhpoggvULFyF+mRJhJWosPJzrRfgOC1bc9XgS+ePIJYcR+n
+	 xEU5fdh7mtYrCyEY24NBpV2hLeDUIkdl8IwjTuAS39MzcRe5omeKcKTJn9WVyQeJu+
+	 rHAdLeK3J1YsQ==
+Received: from [172.27.29.205] (unknown [172.27.36.101])
+	by us04psmtpout003i.aue1.int.d2l (Postfix) with ESMTP id 32DDB80276
+	for <at6651@nyu.edu>; Sat, 29 Nov 2025 17:15:35 +0000 (UTC)
+From: "noreply@mail.brightspace.nyu.edu" <noreply@mail.brightspace.nyu.edu>
+Date: Sat, 29 Nov 2025 17:15:35 +0000
+Subject: Spec Top Computer SCI:, Section 091 - Announcements: Homework 5
+Message-Id: <Y9K3MLOPURU4.5HMOBCOLWLDO1@IP-AC1B1DCD>
+To: "at6651@nyu.edu" <at6651@nyu.edu>
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTI5MDE0MCBTYWx0ZWRfX3kNbh5knvYKl
+ uwT8EATf9rSi2PGnwIIL1nR70TfTjsUsiTT9Rug8D7ES7U9RTN1fTb6zISAwaElJABth/6ch1O1
+ h3a07fCSfthSFtT97xyMyzSMhxwfTIK/5TJB2GHrl/vZKcH9FWzltGtc0nSXTWBp0AUSI0ydtqq
+ HqOqWPJirs737KI8t4cpwj3jfkHtfRYvsQHC1Ts1umi+NwK7tyojiK7Imv2SLusdrtfN7fLgXSJ
+ M7n6mrEKfbDKOS9Va0gH69M3kVKJvpsArR7RnxpKwh0F23GnaiR8g7gM4oqItrganqu1v71Wglm
+ 6UK3V7bTrHpXWSelOiMn/6oJNjN8kp8U5IvUSD0RqFjeLwuWUpoEpMzeAMKWpqcGf6OOxo69C7y
+ LMOqYgaqOyNQ+OarAnzwvtk4yR+1X/XP+NZdeUvpdQ96Mz8d5Bd0KNUqincu53jVVcxSG6VrQ3Q
+ e+elSi1VjrhK2fHZLQw==
+X-Proofpoint-GUID: q5FH6ZKpCAOMKS-JRemymIDtPSwDU_gc
+X-CLX-Response: 1TFkXGRMeEQpMehcaEQpZRBduQGgZSBJaG00YHREKWFgXZ1JcaR5yTkdpX2E
+ RCnhOF2R+a05fe1hQElpQEQp5TBdrZxJzX2IBWmlbTREKQ0gXBxwbGxEKQ1kXBxgSHREKQ0kXGg
+ QaGhoRCllNF2dmchEKWUkXGnEaEBp3BhkdHnEfHxkcEBp3BhgaBhoRClleF2xseREKSUYXRE9dU
+ 0VYQV91QkVZXk9OEQpJRxd4T00RCkNOF1sfbGIccGFaaWtlZ2F5B2B4T0dTR2NuXnp5XW5/dU1J
+ EQpYXBcfBBoEHhsaBRsaBBsbGgQbGR4EGR8QGx4aHxoRCl5ZF01zZx1+EQpNXBcdGhkRCkxaF2h
+ tTU1NEQpMRhdva2tra2sRCkJPF2JnelpZflxaZGESEQpDWhcZBBgbGQQTHAQfEhEKQl4XGxEKRF
+ 4XGBEKQlwXGxEKQksXb2sFRn1BRlBmfE4RCkJJF2R+a05fe1hQElpQEQpCRRduclJoZWlvW31te
+ REKQk4XZH5rTl97WFASWlARCkJMF2dSXGkeck5HaV9hEQpCbBdnUlxpHnJOR2lfYREKQkAXZnkB
+ fBxlBXBPARIRCkJYF25CQXBSSEBnQhx8EQpaWBcbGBEKeUMXZmRhfhwFXloeTm0RCllLFxseGBM
+ dEQpwaBdvTmN6RGJCf016YhAaEQpwaBdvXUZZexkBXUdobhAbHh0RCnBoF2tuHkxuE09kXX9tEB
+ sZGBEKcGgXa2trQ2JjZEdyaWkQGhEKcGgXbVpOXk4TH359RhoQEx4RCnBoF25PZBJdHmddAUVlE
+ BoRCnBoF2tMQmdDflBTHBllEBoRCnBoF2ZQeRNkeExJYRsbEBoRCnB9F2JfZlNBT3oSXG1sEBoR
+ CnB9F294Hh5uSFpefUBGEBoRCnB9F2lOHEZSXlJMUlgcEBoRCnB9F2tlR0FQU2FHRh1FEBMfEQp
+ wfxdvelBJX2VeGBhcXBAbGh4RCnBfF29/b0ReSWJaRWxGEBkaEQpwfxdoHhN+aRttRUheThAbHB
+ sRCnBfF2tnaRlMXkxiY2NQEBMfEQpwXxdkUxphTFhoc1oYZhATGhEKcF8XaElmT0F7WEhPa2AQE
+ x8RCnBsF2ttSQVpG10eEk5SEBwaEQptfhcaEQpYTRdLESA=
+X-Authority-Analysis: v=2.4 cv=RJe+3oi+ c=1 sm=1 tr=0 ts=692b2a38 b=1 cx=c_pps
+ a=rlx/2BXBPJfMdtrSDlE4mQ==:117 a=rlx/2BXBPJfMdtrSDlE4mQ==:17
+ a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=7j0FZ4iXMVMA:10 a=Hi4HPhAiYaEA:10
+ a=g8TUdU_LZmEA:10 a=Kan8h273Bse8B8Jy5C1n:22 a=X_dL2GomAAAA:8 a=J-g6IGaxAAAA:8
+ a=_Z67MejpHolRu1Pc0voA:9 a=UPBsvIj4IEE60t2w:21 a=_W_S_7VecoQA:10
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=12xV73JbObQzG1Iz8n5N:22 cc=ntf
+ awl=host:51
+X-Proofpoint-ORIG-GUID: q5FH6ZKpCAOMKS-JRemymIDtPSwDU_gc
+X-CLX-Shades: MLX
+Content-Type: text/html; charset=utf-8
+Content-ID: <Y9K3MLOPURU4.53FBF33M4JY11@IP-AC1B1DCD>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Orig-IP: 3.213.96.58
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-28_08,2025-11-27_02,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ priorityscore=0 lowpriorityscore=0 malwarescore=0 adultscore=0 clxscore=394
+ bulkscore=0 spamscore=0 suspectscore=0 phishscore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc=notification route=inbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511290140 domainage_hfrom=14297
+
+<!doctype html>
+<html>
+	<head>
+		<title>Spec Top Computer SCI:, Section 091 - Announcements: Homework 5</t=
+itle>
+	</head>
+	<body style=3D"font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+		<div style=3D"width:100%;font-family:&#39;Lato&#39;, sans-serif; font-siz=
+e:18px;">
+			<div style=3D"border-bottom:1px dotted #000000;margin-bottom:15px;paddin=
+g-bottom:5px;">
+			<h1 style=3D"margin:0px;padding:0px;color:#000000;font-size:0.95rem;font=
+-weight:bold;">Spec Top Computer SCI:, Section 091 - Announcements: Homewor=
+k 5<br /><span style=3D"color:#666666;font-size:0.8rem;font-weight:normal;"=
+>Posted Saturday, November 29, 2025 12:12 PM EST</span></h1>
+		</div>
+		<div style=3D"padding:0px;margin:0px;">
+			<div><p>Homework 5 has been released on Gradescope and Brightspace and i=
+s due by <strong>11:59 PM on Friday, December 12</strong>.</p>
+<p>Please make sure to follow the submission guidelines:</p>
+<ul style=3D"list-style-type: disc;">
+<li>
+<p><strong>Upload your answers on Gradescope</strong>:&#160;<a rel=3D"noope=
+ner" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.gra=
+descope.com_courses_1115917&amp;d=3DDwMDaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&a=
+mp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DlzkCeBJ07KPquRtfqs9R5T3ATeqjgDrBlKS4A=
+h0f25TEoyGn3CaU7GncW30WiFrh&amp;s=3Dp-ttzSB3-txRq31GI9dY1eQ5nmJxfOyrv1PTSlP=
+v9_E&amp;e=3D" target=3D"_self">here</a><br/>Submit a single PDF that inclu=
+des copies of your Jupyter Notebooks in PDF format, along with screenshots,=
+ and elaborate on them thoroughly.&#160;</p>
+</li>
+<li>
+<p>Upload a ZIP file containing all your notebooks on Brightspace.</p>
+</li>
+</ul>
+<p>Late Policy:<br/>You are granted a total of 5 late days across all assig=
+nments for the course. These days are shared cumulatively =E2=80=94 for exa=
+mple, if you use 3 late days on HW1, you will have 2 remaining for the rest=
+ of the term.</p></div>
+			<div style=3D"padding:0px;margin:0px;margin-top:15px;">
+				<div style=3D"padding:0px;margin:0px;border-top:1px dotted #666666;marg=
+in-top:15px;padding-top:5px;">
+					<table style=3D"width:100%;border-collapse:collapse;border-spacing:0px=
+;padding:0px;margin:0px;font-family:&#39;Lato&#39;, sans-serif; font-size:1=
+8px;" cellspacing=3D"0" cellpadding=3D"0">
+						<tbody>
+							<tr>
+								<td style=3D"width:100%;margin:0px;padding:0px;white-space:nowrap !=
+important;vertical-align:top;text-align:left;" nowrap=3D"nowrap">
+									<a style=3D"color:#00617f;" href=3D"https://brightspace.nyu.edu/d2=
+l/p/home/504821">Spec Top Computer SCI:, Section 091</a>
+								</td>
+								<td style=3D"width:100%;margin:0px;padding:0px;white-space:nowrap !=
+important;vertical-align:top;text-align:right;" nowrap=3D"nowrap">
+									<a style=3D"color:#00617f;" href=3D"https://brightspace.nyu.edu/d2=
+l/p/le/news/504821">Go to Announcements &gt;&gt;</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style=3D"padding:0px;margin:0px;margin-top:15px;">
+				<div style=3D"padding:0px;margin:0px;text-align:center;">
+					<span style=3D"margin:0px;padding:0px;color:#666666;font-size:0.8rem;"=
+>You are receiving this message because you subscribed to receive instant n=
+otifications via email.</span>
+					<a style=3D"color:#00617f;font-size:0.8rem;" href=3D"https://brightspa=
+ce.nyu.edu/d2l/Notifications/Settings?ou=3D6606">Change Notification Settin=
+gs</a>
+					<br /><span style=3D"margin:0px;padding:0px;color:#666666;font-size:0.=
+8rem;"></span>
+				</div>
+			</div>
+		</div>
+</div>
+	</body>
+</html>

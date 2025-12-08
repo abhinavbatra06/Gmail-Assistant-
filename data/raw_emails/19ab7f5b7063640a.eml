@@ -1,0 +1,239 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:4985:b0:50b:93c5:eed5 with SMTP id hb5csp2247889gdb;
+        Mon, 24 Nov 2025 14:22:05 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHFUTY/1kDvwDiti07aamCe6Ha+wxb+D3UAZWVkJDm3W4sR0LsOJ9nRcX4wggaHgT189QgL
+X-Received: by 2002:a05:620a:2982:b0:8a1:762a:ab13 with SMTP id af79cd13be357-8b33d1dd003mr1840771885a.10.1764022925099;
+        Mon, 24 Nov 2025 14:22:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764022925; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Yw2RlDsOCk9gDWBe7+qcqooEqdo40M624H2t0jkmpvQKWjSdhJCV0s+TnF7Xh0vcI9
+         KpG2IeYZX5tg8GXS52vy3Bzs6q5/7BaR/y0gmdUCcV8jEvEWm7aELyXmUoCrHN4jBKgF
+         aCu/u+NOJ9ArQkAydZ0eNcW1LAxhWFyJiuhCMxqe60VYxwKEOxIgRUZoUvNciJfredMg
+         GFdQBFf0T+TiAYrUDtdjwhAVrNufj72lSH0+5w7NqHkPqy1okxsu/IddBupY+k7owMLE
+         raUZNi7iatBGsruhlRohBkcX5pYTL7GbmHSD6DwHwwLugw5kaTR/aUzpl5b2Ii2accfb
+         /G4g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:to:subject:message-id:date:from:in-reply-to:references
+         :dkim-signature:dkim-filter;
+        bh=yrEem9BBrzWDXcxIYIH3pKBA//Gs+5GH81A5XlSOOcc=;
+        fh=Ve8bNZxNIKc3i80BLW5OfcA/t7ACAF3NISRO6zbrfXo=;
+        b=Mcdn/L4sgdg7Ew3TF+u0bouIOUmD6FFqyd6WXUbd9HqvBODI04lKPnMxozkvbmr61X
+         MDwtPSg4qXPTrKOFhcLHtcw/PeB5JKfr7vc6IFR2hrfCO/b1K0yLRBPVXRKCWDeoZseT
+         6Es/235XKo78An8/4ZcCDjJRRDUBBNOpl1xxomKue0lKdtb9NGyJ8Ig3EL6MGVkYwFjj
+         XHQGfRMZfMZADOzGTrmv0gmrfaHObtOiDylBdi/QLdE0qLhOcAiT8NFaBlcOofNLGVa4
+         H5PW3lj/D6K743BiN4xNJuPWfT+8bhSgkuU+XHKARdfbdXkCf03ls1OEir2LhkqoSQlq
+         Echg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@cs.nyu.edu header.s=20200805 header.b=flmCHnNL;
+       spf=pass (google.com: domain of mmz1@cs.nyu.edu designates 216.165.22.131 as permitted sender) smtp.mailfrom=mmz1@cs.nyu.edu
+Return-Path: <mmz1@cs.nyu.edu>
+Received: from pco01la-2005s.nyu.edu (pco01la-2005s.cfs.its.nyu.edu. [216.165.75.13])
+        by mx.google.com with ESMTPS id d75a77b69052e-4ee48d1fd5fsi48243821cf.7.2025.11.24.14.22.04
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 24 Nov 2025 14:22:05 -0800 (PST)
+Received-SPF: pass (google.com: domain of mmz1@cs.nyu.edu designates 216.165.22.131 as permitted sender) client-ip=216.165.22.131;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@cs.nyu.edu header.s=20200805 header.b=flmCHnNL;
+       spf=pass (google.com: domain of mmz1@cs.nyu.edu designates 216.165.22.131 as permitted sender) smtp.mailfrom=mmz1@cs.nyu.edu
+Received: from mx0b-00256a01.pphosted.com (mx0b-00256a01.pphosted.com [67.231.153.242])
+	by pco01la-2005s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5AOMM4BH1508592
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Mon, 24 Nov 2025 17:22:04 -0500
+Received: from pps.filterd (m0355791.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AOK4or13811555
+	for <at6651@nyu.edu>; Mon, 24 Nov 2025 17:22:04 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=mmz1@cs.nyu.edu
+Received: from mx.cims.nyu.edu (mx.cims.nyu.edu [216.165.22.131])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4amx3823tm-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Mon, 24 Nov 2025 17:22:04 -0500 (EST)
+Received: from smtp.cims.nyu.edu (smtp.cims.nyu.edu [216.165.22.161])
+	by mx.cims.nyu.edu (8.16.1/8.16.1) with ESMTPS id 5AOMM3n51395614
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NO)
+	for <at6651@nyu.edu>; Mon, 24 Nov 2025 17:22:03 -0500
+DKIM-Filter: OpenDKIM Filter v2.11.0 mx.cims.nyu.edu 5AOMM3n51395614
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cs.nyu.edu;
+	s=20200805; t=1764022923;
+	bh=/4tPXKjDJQadNbUiidgrKjsc9YzDUuAUHDTn2vMNxT4=;
+	h=References:In-Reply-To:From:Date:Subject:To:From;
+	b=flmCHnNLxlMEfclhy6g55xyeZFWBC1K57LEUCYb+3c9TnCgLaXG4451kgjquHQALz
+	 ykdlexxe/6EtJ0XHKCBLoJhvLd7o0cDkHuEfY2yzbeNyVQnPlyBGU6KN0hNDEj4caF
+	 wRz3qQuoxU6RGWYx6Q8SgyaEZqfcn5zfFema6TLI=
+Received: from mail-pg1-f176.google.com (mail-pg1-f176.google.com [209.85.215.176])
+	by smtp.cims.nyu.edu (Postfix) with ESMTPSA id 5FADD8988C
+	for <at6651@nyu.edu>; Mon, 24 Nov 2025 17:22:03 -0500 (EST)
+Received: by mail-pg1-f176.google.com with SMTP id 41be03b00d2f7-bc29d64b39dso2960678a12.3
+        for <at6651@nyu.edu>; Mon, 24 Nov 2025 14:22:03 -0800 (PST)
+X-Gm-Message-State: AOJu0YxefF2a7aBbhnanTyvT2seM62VuNWC5NDaYAteeUBtKxSaDdUES
+	CmL5YDtLO7Er3yIBWgC87B2dRR9CrMwRcbtpdEW9oHXbP2A32DZH/aPUIRCUsOl0TOBcrQDjxC3
+	taAfO9DZEwMEWwNDs8+DqpKo6bj6MuJo=
+X-Received: by 2002:a05:7300:f58b:b0:2a4:3593:ddd4 with SMTP id
+ 5a478bee46e88-2a71953b791mr5515541eec.1.1764022922416; Mon, 24 Nov 2025
+ 14:22:02 -0800 (PST)
+References: <CAEs_o4PMR-vMfH0hMnf7a+CtvSxxJ-HrqA2tuSZzdH3aeGfy=w@mail.gmail.com>
+ <CAEs_o4Oy5LwTfM2kU0eO++Ujq3XEXvom04vkWo1vRyoYx+d2Nw@mail.gmail.com>
+In-Reply-To: <CAEs_o4Oy5LwTfM2kU0eO++Ujq3XEXvom04vkWo1vRyoYx+d2Nw@mail.gmail.com>
+From: Mohamed Zahran <mmz1@cs.nyu.edu>
+Date: Mon, 24 Nov 2025 17:21:52 -0500
+X-Gmail-Original-Message-ID: <CAP_TYkdw6TvW2SudwXjMjsYYa6uZ=3kxBw0voL_71yD2hzYVTw@mail.gmail.com>
+X-Gm-Features: AWmQ_bnwAlsehIi7lPSE3pva774DKbsl93Q-InRf3pmP6Vumutnesh3fIeEGnJE
+Message-ID: <CAP_TYkdw6TvW2SudwXjMjsYYa6uZ=3kxBw0voL_71yD2hzYVTw@mail.gmail.com>
+Subject: Re: GPUs Final Presentation
+To: Ankita Tripathi <at6651@nyu.edu>
+Content-Type: multipart/alternative; boundary="000000000000aa99da06445e977a"
+X-Greylist: inspected by milter-greylist-4.6.4 (mx.cims.nyu.edu [216.165.22.131]); Mon, 24 Nov 2025 17:22:03 -0500 (EST) for IP:'216.165.22.161' DOMAIN:'smtp.cims.nyu.edu' HELO:'smtp.cims.nyu.edu' FROM:'mmz1@cs.nyu.edu' RCPT:''
+X-Greylist: Sender IP whitelisted, not delayed by milter-greylist-4.6.4 (mx.cims.nyu.edu [216.165.22.131]); Mon, 24 Nov 2025 17:22:03 -0500 (EST)
+X-Scanned-By: MIMEDefang 3.6 on 216.165.22.131
+X-CLX-Response: 1TFkXGx0TEQpMehcaEQpZRBdvTU0eZ29eR0lJaxEKWFgXenlZWh4ZXWF+Y04
+ RCnhOF2d8eHpGU2JEYGcTEQp5TBdgYWNdfmxNWRkTeBEKQ0gXGxgRCkNZFwcYHRoRCkNJFxoEGh
+ oaEQpZTRdnZnIRCllJFxpxGhAadwYbHxNxGRIQGncGGBoGGhEKWV4XaG55EQpJRhdET11TRVhBX
+ 3VCRVleT04RCklHF3hPTREKQ04XaUZ1YWlIeR1QUHliQl4eTkdzaHoZE1pQbnlobF1hGUERClhc
+ Fx8EGgQeGxoFGxoEGxsaBBsZHgQZGRAbHhofGhEKXlkXTX1EEkQRCk1cFx8dExEKTFoXbGlrTWs
+ RCkxGF2xraxEKQk8XZ2lmf29jaFtkX2cRCkNaFxgbHAQbHB8EGBgEGxkbEQpCXhcbEQpCRRdiHA
+ FnWGhlaGxfQxEKQk4XZ3x4ekZTYkRgZxMRCkJMF3p5WVoeGV1hfmNOEQpCbBdrcGl4eGdYQlhTQ
+ hEKQkAXaWZyS2RQQx1pTn4RCkJYF25CQXBSSEBnQhx8EQpaWBcZEQp5QxdoRR5bUFoZSUVkQxEK
+ WUsXGx4YExgRCnBnF2JzT0NBQBIcAUZeEBsbHREKcGgXbUNzHUNjcmsfQEwQGRoRCnBoF2ZNbBx
+ BfERhSVxgEBkaEQpwaBdpGx1OaVIcGFBDYBAZGhEKcGgXbUthZR19aEdwGBkQGRoRCnBoF2tscA
+ VOHFlAbWwbEBkaEQpwaBdoYU9iY3JtWxtuQRAZGhEKcGgXZGZZcE1pRX9fXQEQGRoRCnBoF2Z+Z
+ B1da2dDZ2JYEBkaEQpwZxdjfUtEW15vSRwZThAZGhEKcH0XemtFAVxEE0RhYn0QGRoRCnB/F2VL
+ X3NOE0UYGWteEBkaEQpwXxd6a0UBXEQTRGFifRAZGhEKcGwXY01MbERGRk9YGUsQEh8RCnBMF2d
+ zGBgFGnhwaUkcEBkaEQpwQxdmbnJ8TmJoTkJ4ZRAfEhEKbX4XGhEKWE0XSxEg
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTI0MDE5MyBTYWx0ZWRfX5T/vaGOZGRWT
+ K0PrNJF5Dpc6zizFA9aWUGEy54SJOUzAhe4HoGgwvJlPYwICJvX4HY2/GPsJ0ckAPfmiTVzSIQh
+ vqI+ZOs/SfaqQLlYtSzD+IHuO43nmOLe37zsx9EQF30q+5iVUCqSGEjKKdCYQVyIC55JWVojhKm
+ mgkVZP3/jFfMGzbV8/N8wmra+0LwTb8/m+APvXQSMXk3jkH2rn17s3Zc6594uHV+ppMIxlRnJ0c
+ 10Gb91X3Qv+qabLw+yiHRF8Mwp1Ix7cUEkwmx/IqmJhJG5ZAn81kBDH1U+ANPAQYtEz6fZgmiLr
+ jQuKvptAovVKJE/8y99WNCunhFVaLx43mWlEOeNeKMDfWx4p3c2R0e7N/6fyBMZ1Qf55fxW74xH
+ n8fc7Lx/t2TBQ9zmDEPA+yDoEUWuGeZXbyz/rDbml0uDsOZaaeGodslnIX/e0fCtUXvbhvHS1qM
+ RfYQ4Iv1VqBIch5Xp2Q==
+X-Authority-Analysis: v=2.4 cv=JZaxbEKV c=1 sm=1 tr=0 ts=6924da8c cx=c_pps
+ a=z3S5VRK8toIfEG0HrKkRUw==:117 a=z3S5VRK8toIfEG0HrKkRUw==:17
+ a=6UeiqGixMTsA:10 a=av0FL7Zrd8wA:10 a=Kan8h273Bse8B8Jy5C1n:22
+ a=RBgjNinkAAAA:8 a=V9kvcI9axvXcEUI6UNYA:9 a=QEXdDO2ut3YA:10
+ a=mbai_pWKzWGjVnLsLEQA:9 a=Sw-XJ-mls32VgkJQ:21 a=lqcHg5cX4UMA:10
+ a=j5mQgro2v2KBCi5dEbXB:22
+X-Proofpoint-GUID: Cl_KCbS7zzSHht4dmYBP39pzDSBFwK3k
+X-Proofpoint-ORIG-GUID: Cl_KCbS7zzSHht4dmYBP39pzDSBFwK3k
+X-CLX-Shades: MLX
+MIME-Version: 1.0
+X-Orig-IP: 216.165.22.131
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-24_08,2025-11-24_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ spamscore=0 lowpriorityscore=0 clxscore=179 malwarescore=0 phishscore=0
+ priorityscore=0 bulkscore=0 impostorscore=0 adultscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=inbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2510240001 definitions=main-2511240193
+ domainage_hfrom=14292
+
+--000000000000aa99da06445e977a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Ankita,
+
+I received your first email. It will be taken into account when the
+schedule is set.
+
+Z
+
+
+On Mon, Nov 24, 2025 at 5:04=E2=80=AFPM Ankita Tripathi <at6651@nyu.edu> wr=
+ote:
+
+>
+> Hi Professor Zahran,
+>
+> I previously reached out to you about the final presentation scheduling
+> but it looks like I sent the email to the wrong email address. Please find
+> my original email below.
+>
+> Thank you,
+> Ankita
+>
+>
+> ---------- Forwarded message ---------
+> From: Ankita Tripathi <at6651@nyu.edu>
+> Date: Wed, Nov 19, 2025 at 11:54=E2=80=AFPM
+> Subject: GPUs Final Presentation
+> To: Mohamed Zahran <mohamed.zahran@nyu.edu>
+>
+>
+> Hi Professor Zahran,
+>
+> I hope you're well. I wanted to discuss a potential time conflict for the
+> GPU project's presentation. I have a final presentation for another class
+> on December 10th at 8:30 pm.
+>
+> Would it be possible to schedule me for the presentation on December 3rd
+> or in an early slot on December 10th? My group number is *31*
+> (GPU-Accelerated Monte Carlo Option Pricing: Barrier Options).
+>
+> Please let me know.
+>
+> Thank you,
+> Ankita
+>
+
+
+--=20
+-------------------------------------------------------------
+Prof. Mohamed Zahran
+Computer Science Department
+Courant Institute of Mathematical Sciences
+NYU
+https://urldefense.proofpoint.com/v2/url?u=3Dhttp-3A__www.mzahran.com&d=3DD=
+wIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3DfuHxqOJswc0=
+NCLmDOnJh36kV0vmRrygLS_cV8pSLwV8pR-c3011nMN3t0ANkuXMB&s=3DrQOcwqAHuaeJSu_Vw=
+O1KOQJf0mkT2ggm8lsHSdGf19c&e=3D=20
+-------------------------------------------------------------
+
+--000000000000aa99da06445e977a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Hi=C2=A0Ankita,<div><br></div><div>I received your first e=
+mail. It will be taken into account when the schedule is set.</div><div><br=
+></div><div>Z</div><div><br></div></div><br><div class=3D"gmail_quote gmail=
+_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Mon, Nov 24, 202=
+5 at 5:04=E2=80=AFPM Ankita Tripathi &lt;<a href=3D"mailto:at6651@nyu.edu">=
+at6651@nyu.edu</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padd=
+ing-left:1ex"><div dir=3D"ltr"><br>Hi Professor Zahran,<div><br></div><div>=
+I previously reached out to you about the final presentation scheduling but=
+ it looks like I sent the email to the wrong email address. Please find my =
+original email below.</div><div><br></div><div>Thank you,</div><div>Ankita<=
+/div><div><br></div><div><br><div class=3D"gmail_quote"><div dir=3D"ltr" cl=
+ass=3D"gmail_attr">---------- Forwarded message ---------<br>From: <strong =
+class=3D"gmail_sendername" dir=3D"auto">Ankita Tripathi</strong> <span dir=
+=3D"auto">&lt;<a href=3D"mailto:at6651@nyu.edu" target=3D"_blank">at6651@ny=
+u.edu</a>&gt;</span><br>Date: Wed, Nov 19, 2025 at 11:54=E2=80=AFPM<br>Subj=
+ect: GPUs Final Presentation<br>To: Mohamed Zahran &lt;<a href=3D"mailto:mo=
+hamed.zahran@nyu.edu" target=3D"_blank">mohamed.zahran@nyu.edu</a>&gt;<br><=
+/div><br><br><div dir=3D"ltr">Hi Professor Zahran,<br><div><br></div><div>I=
+ hope you&#39;re well. I wanted to discuss=C2=A0a potential time conflict f=
+or the GPU project&#39;s presentation. I have a final presentation for anot=
+her class on December 10th at 8:30 pm.=C2=A0</div><div><br></div><div>Would=
+ it be possible to schedule me for the presentation on December 3rd or in a=
+n early slot on December 10th? My group number is <b>31</b> (GPU-Accelerate=
+d Monte Carlo Option Pricing: Barrier Options).</div><div><br></div><div>Pl=
+ease let me know.</div><div><br></div><div>Thank=C2=A0you,</div><div>Ankita=
+=C2=A0</div></div>
+</div></div></div>
+</blockquote></div><div><br clear=3D"all"></div><div><br></div><span class=
+=3D"gmail_signature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_s=
+ignature"><div dir=3D"ltr"><div>-------------------------------------------=
+------------------<br>Prof. Mohamed Zahran</div><div>Computer Science Depar=
+tment</div><div>Courant Institute of Mathematical Sciences</div><div>NYU<br=
+><a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttp-3A__www.mzahr=
+an.com&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS=
+8Ifj-gIg&amp;m=3DfuHxqOJswc0NCLmDOnJh36kV0vmRrygLS_cV8pSLwV8pR-c3011nMN3t0A=
+NkuXMB&amp;s=3DrQOcwqAHuaeJSu_VwO1KOQJf0mkT2ggm8lsHSdGf19c&amp;e=3D" target=
+=3D"_blank">http://www.mzahran.com</a><br>---------------------------------=
+----------------------------</div></div></div>
+
+--000000000000aa99da06445e977a--

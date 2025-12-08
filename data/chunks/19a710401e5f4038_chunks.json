@@ -1,0 +1,22 @@
+{
+  "message_id": "19a710401e5f4038",
+  "chunked_at": "2025-12-08T14:30:02.867080",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a710401e5f4038_email_0_82b33765",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from Adobe Systems, based on your preferences. Check it out! Applications are due Friday, December 05 at  2 AM EST. Adobe Systems Internet & Software Software Engineer $50–60/hr Hybrid Job San Jose, CA View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a710401e5f4038",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Adobe Systems just posted a role 🌟",
+        "date": "Tue, 11 Nov 2025 03:44:36 +0000",
+        "timestamp": 1762832676,
+        "token_count": 130
+      }
+    }
+  ]
+}

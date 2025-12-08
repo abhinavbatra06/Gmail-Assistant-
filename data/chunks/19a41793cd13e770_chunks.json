@@ -1,0 +1,22 @@
+{
+  "message_id": "19a41793cd13e770",
+  "chunked_at": "2025-12-08T14:28:22.938214",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a41793cd13e770_email_0_a28130c2",
+      "text": "Spec Top Computer SCI:, Section 091 - Announcements: Homework 4 Spec Top Computer SCI:, Section 091 - Announcements: Homework 4 Posted Saturday, November 1, 2025 5:58 PM EDT Homework 4 has been released on Gradescope and Brightspace and is due by 11:59 PM on Saturday, November 15 . Please make sure to follow the submission guidelines: Upload your answers on Gradescope : here Submit a single PDF that includes copies of your Jupyter Notebooks in PDF format, along with screenshots, and elaborate on them thoroughly. Upload a ZIP file containing all your notebooks on Brightspace. Late Policy: You are granted a total of 5 late days across all assignments for the course. These days are shared cumulatively — for example, if you use 3 late days on HW1, you will have 2 remaining for the rest of the term. Spec Top Computer SCI:, Section 091 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a41793cd13e770",
+        "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+        "to": [],
+        "subject": "Spec Top Computer SCI:, Section 091 - Announcements: Homework 4",
+        "date": "Sat, 01 Nov 2025 22:10:53 +0000",
+        "timestamp": 1762035053,
+        "token_count": 247
+      }
+    }
+  ]
+}

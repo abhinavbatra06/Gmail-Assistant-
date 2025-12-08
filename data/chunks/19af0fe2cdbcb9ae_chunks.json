@@ -1,0 +1,22 @@
+{
+  "message_id": "19af0fe2cdbcb9ae",
+  "chunked_at": "2025-12-08T14:34:04.932241",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19af0fe2cdbcb9ae_email_0_a0f4a4b1",
+      "text": "Spec Top Computer SCI:, Section 091 - Announcements: Zoom link for today's lecture Spec Top Computer SCI:, Section 091 - Announcements: Zoom link for today's lecture Posted Friday, December 5, 2025 7:09 PM EST Join URL: https://nyu.zoom.us/j/95845598650 Spec Top Computer SCI:, Section 091 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19af0fe2cdbcb9ae",
+        "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+        "to": [],
+        "subject": "Spec Top Computer SCI:, Section 091 - Announcements: Zoom link for today's lecture",
+        "date": "Sat, 06 Dec 2025 00:09:38 +0000",
+        "timestamp": 1764979778,
+        "token_count": 109
+      }
+    }
+  ]
+}

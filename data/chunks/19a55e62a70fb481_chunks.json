@@ -1,0 +1,22 @@
+{
+  "message_id": "19a55e62a70fb481",
+  "chunked_at": "2025-12-08T14:28:40.129544",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a55e62a70fb481_email_0_eb24d119",
+      "text": "Dear Students, The Wasserman Center for Career Development is launching a new pilot program: Global Career Trek: London! The Global Career Trek , focused on exploring London’s finance and consulting sectors, which is happening in March during spring break. NYU Global Career Treks are an immersive, short-term career exploration program designed to connect NYU graduate students with global industries, alumni networks, and regional economic trends. This Trek to London , happening March 15 - 20 , will focus on finance and consulting industries . Professional Exposure : Visit global employers in London across finance and consulting. Alumni Connections: Network at panels/receptions with NYU alumni working in London. Career Readiness: Learn about UK economic trends, visa pathways, and job application strategies. HOW TO APPLY? Open to NYU graduate students across all schools served by the Wasserman Center interested in finance and consulting careers. Applications are due by 5:00 pm November 24. No late applications will be accepted. Link to application found in Handshake. Cost for the program will be approximately $2500 which includes airfare, accommodations (2 students/room), transportation in London for trek events, and most meals. For questions about this event, please contact the Wasserman Center for Career Development: career.development@nyu.edu . Best, Department of Computer Science https://t.e2ma.net/optout/r34szr/j939hwjc?s=8_Wa--EwY6vVDUds7oxQk4pBbz1MtxGvQmkoS_xA2ug",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a55e62a70fb481",
+        "from": "NYU Graduate Computer Science <graduate.cs.nyu.edu@jhefb.e2ma.net>",
+        "to": [],
+        "subject": "Wasserman Center - Global Career Trek for Grad Students",
+        "date": "Wed, 05 Nov 2025 21:04:59 -0000",
+        "timestamp": 1762394699,
+        "token_count": 372
+      }
+    }
+  ]
+}

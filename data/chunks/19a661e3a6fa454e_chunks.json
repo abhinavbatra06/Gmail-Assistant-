@@ -1,0 +1,22 @@
+{
+  "message_id": "19a661e3a6fa454e",
+  "chunked_at": "2025-12-08T14:29:52.854592",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a661e3a6fa454e_email_0_a34b6946",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from echo3D, based on your preferences. Check it out! Applications are due Thursday, December 04 at 11 PM EST. echo3D Internet & Software Software Engineer $129K/yr Remote Job New York, NY View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a661e3a6fa454e",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "echo3D just posted a role 🌟",
+        "date": "Sun, 09 Nov 2025 00:57:25 +0000",
+        "timestamp": 1762649845,
+        "token_count": 127
+      }
+    }
+  ]
+}

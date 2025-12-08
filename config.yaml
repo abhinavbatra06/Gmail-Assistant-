@@ -1,15 +1,20 @@
 gmail:
   senders:
   # - "all"                                # Use "all" to fetch from all senders
-    - "advisor1@nyu.edu"
-    - "advisor2@nyu.edu"                 # replace with actual advisor emails
-    - "course-notifications@nyu.edu"
-    - "academic-dept@nyu.edu"
-
+    - noreply@mail.brightspace.nyu.edu
+    - alerts@mail.libcal.com
+    - handshake@notifications.joinhandshake.com
+    - gsas.profdev@nyu.edu
+    - courant-academicaffairs@nyu.edu
+    - opportunities@cs.nyu.edu
+    - ab12615@nyu.edu
+    - at6651@nyu.edu
+    - '*@cs.nyu.edu'
+    - ankitatripathi95@gmail.com
 
   # Optional date filters (YYYY-MM-DD). Leave blank to ignore.
-  start_date: "2025-09-03"
-  end_date: "2025-12-03"
+  start_date: "2025-10-30"
+  end_date: "2025-12-09"
 
   # Gmail label to target: "INBOX", "UNREAD", "STARRED", etc.
   label: "INBOX"

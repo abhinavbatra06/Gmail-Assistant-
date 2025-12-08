@@ -1,0 +1,22 @@
+{
+  "message_id": "19a798fc8af26e74",
+  "chunked_at": "2025-12-08T14:30:22.655189",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a798fc8af26e74_email_0_d09b60e6",
+      "text": "Dear Students, The annual CSO T-shirt and hoodie sale is back! We'll have the classic TeXed Courant logo on T-shirts and sweatshirts as seen in the flyer below. New this year, we have grey T shirts and XXL sizes for all items!! A portion of the proceeds from pink T-shirts will be donated to SPECTRA: The Association for LGBTQ+ Mathematicians, in honor of Professor Aleks Donev. The sale will be Friday, November 21st, 9am-4pm, 13th floor of Warren Weaver Hall . The T-shirts are $20 and the hoodies are $40, everything in black, navy, and green, plus T-shirts in purple, pink, and grey. The sale is CASH ONLY so be sure to bring some. Get a shirt for yourself and another as a last-minute Thanksgiving present for your family and friends! It only happens once a year. Best, Department of Computer Science https://t.e2ma.net/optout/rbve0r/j939hwjc?s=OexfoAQRP2pQnMvTwXebiE882RmDrU4ftFbtuhLF_E8",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a798fc8af26e74",
+        "from": "NYU Graduate Computer Science <graduate.cs.nyu.edu@jhefb.e2ma.net>",
+        "to": [],
+        "subject": "Courant T-Shirt & Hoodie Sale",
+        "date": "Wed, 12 Nov 2025 19:34:09 -0000",
+        "timestamp": 1762994049,
+        "token_count": 223
+      }
+    }
+  ]
+}

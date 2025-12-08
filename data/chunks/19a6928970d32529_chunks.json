@@ -1,0 +1,22 @@
+{
+  "message_id": "19a6928970d32529",
+  "chunked_at": "2025-12-08T14:29:54.494431",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a6928970d32529_email_0_379a0e62",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from Clear Street, based on your preferences. Check it out! Applications are due Friday, December 05 at 11 PM EST. Clear Street Financial Services 2026 Clear Street Engineering Internship $110K/yr Onsite Internship New York, NY View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a6928970d32529",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Clear Street just posted a role 🌟",
+        "date": "Sun, 09 Nov 2025 15:07:37 +0000",
+        "timestamp": 1762700857,
+        "token_count": 136
+      }
+    }
+  ]
+}

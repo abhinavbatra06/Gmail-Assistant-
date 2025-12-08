@@ -1,0 +1,160 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:9a05:b0:4ff:1ddc:eb54 with SMTP id fh5csp1655448gdb;
+        Mon, 3 Nov 2025 10:12:00 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IG8r/aPdTdXr98nCYoBYizsWbDBkFOdF2uFioUMKLYAY5lcGRClHUJY6KhpfvpFeUsLUlv+
+X-Received: by 2002:a05:600c:3149:b0:477:fcb:2256 with SMTP id 5b1f17b1804b1-477307e486fmr116490445e9.17.1762193520607;
+        Mon, 03 Nov 2025 10:12:00 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762193520; cv=none;
+        d=google.com; s=arc-20240605;
+        b=fljLrbvUqD1CatcSxAQlYxJWREnv7ZcOk6EzFIzkSQY1Ju0aZHxUt+dp6xfUtPDKI3
+         irFZbcdQSELdkCuVnK/HFQDCfKL/zhCypJgzqnHXar+zaQ1RUqtAWuuQzP9PDq78IIyC
+         2kqPAs/bzjs+Nzk1NZNOAvzWzY9xeQ9ADSU2oc7mDtqT3M5HWVdGs2bznvT6YVee2rh4
+         aAEhoKj3IlnS4bEjswLlaunisgCc1XLc5du2uHNY0qsCoKitNE9zxwfhnzYyjqdswt+e
+         9R1esuwiCBhNW/DZl6c/d8//O89qwJNA2coEPpFoPlGMHotLMYQfc56+8C8jo0ypyAlE
+         DLwQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-id:mime-version:to:message-id:subject:date:from
+         :dkim-signature;
+        bh=cI9hzoHrvFqKr7GausUB/gQiIus256BSVDkAAK1ITzk=;
+        fh=x8EhVKTD3Pk05++7UWYZ7ByCGW6DqwZOrfdg3akiVZw=;
+        b=ZU1qYwyChvzIEuX4zHO36fuWytqXfk0xnRc7yo26CkHrfoy6OnCSLw+75+Wqrkf8Y3
+         CaCPdMdeeL150pDbcSuU/+d0pSpH9dUYPX7EzdVElF9xw9cJg3PWMVTW6M0/GX+lfHRb
+         WR0KyjL8Zba+CCvVbDV64YVKhTPBwBvTB/br1P76gjChHnr1icVlJf2h9E9YopG6me8A
+         ObaPb2ZSRu2o2UxV92kyldQaaL4ssQMXASl0jjHlDAtLKdQwtxDCV46R6ob5kVjwndIW
+         MvJTQhgWXKrxsiYWqQZufIrKbpgOvnh7SNvZZbkPzBZpMHCy9zDWgWz4KbidF7BmItDs
+         Qyyw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=S0KEGcgn;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.209.245.19 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Return-Path: <noreply@mail.brightspace.nyu.edu>
+Received: from Psy01la-2019s.nyu.edu (psy01la-2019s.cfs.its.nyu.edu. [216.165.86.104])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-429c114672bsi6278069f8f.433.2025.11.03.10.12.00
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 03 Nov 2025 10:12:00 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.209.245.19 as permitted sender) client-ip=3.209.245.19;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=S0KEGcgn;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.209.245.19 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Received: from mx0b-00256a01.pphosted.com (mx0b-00256a01.pphosted.com [67.231.153.242])
+	by Psy01la-2019s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5A3IBx7l1594165
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Mon, 3 Nov 2025 13:11:59 -0500
+Received: from pps.filterd (m0355791.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5A3I2Mso2144941
+	for <at6651@nyu.edu>; Mon, 3 Nov 2025 13:11:58 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=noreply@mail.brightspace.nyu.edu;
+	dkim=pass header.s=d2lmail1 header.d=mail.brightspace.nyu.edu;
+	dmarc=pass header.from=mail.brightspace.nyu.edu
+Received: from us04psmtp.brightspace.com (us04psmtpout.brightspace.com [3.209.245.19])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4a6y2bb0nk-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Mon, 03 Nov 2025 13:11:58 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/relaxed;
+	d=mail.brightspace.nyu.edu; s=d2lmail1; t=1762193518;
+	bh=cI9hzoHrvFqKr7GausUB/gQiIus256BSVDkAAK1ITzk=;
+	h=From:Date:Subject:To:From;
+	b=S0KEGcgnk2pRLz+xRGDlD/SQO2gTzA0tkj6viDLLxrZpcl9NWzAwEOD1se6xw48CN
+	 5Q0yUR0vR33uSk+SqWDEy3lOu8u++W4nqVKCk+JxgQZQ79NLRebJ6aXa9CCFRIRXML
+	 zDDd8U0FlN+oZlN5eP4/PDiqlcTflGb+/Gtm2mRhOGXmj/yc1QkpkMW+utpngGvy4V
+	 6FvfflTZkgAVgd5TUwYQ5Dmwz7Qz/A7Z5ubfT6Q2mKwFPJjrtxofX9LoHoyatE+D2t
+	 jndSu49IMTpvHhxAyfwbyIRyx2tnbhZTIGKiOL2ZENo3GcGxeYlNRju5p9EVjmikiT
+	 rEDqzSlhWGP5Q==
+Received: from [172.27.23.70] (unknown [172.27.38.120])
+	by us04psmtpout003h.aue1.int.d2l (Postfix) with ESMTP id 37F768D754
+	for <at6651@nyu.edu>; Mon,  3 Nov 2025 18:11:58 +0000 (UTC)
+From: "noreply@mail.brightspace.nyu.edu" <noreply@mail.brightspace.nyu.edu>
+Date: Mon, 03 Nov 2025 18:11:58 +0000
+Subject: Spec Top Computer SCI:, Section 091 - Announcements: In-person class
+ this Friday Nov 7
+Message-Id: <WPR2MBGRMRU4.9RBH25MTOODY@IP-AC1B1746>
+To: "at6651@nyu.edu" <at6651@nyu.edu>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Id: <WPR2MBGRMRU4.5GE76PO55M162@IP-AC1B1746>
+X-CLX-Response: 1TFkXGBIZEQpMehcaEQpZRBduQGgZSBJaG00YHREKWFgXZ1JcaR5yTkdpX2E
+ RCnhOF2R+a05fe1hQElpQEQp5TBdrZxJzX2IBWmlbTREKQ0gXBxkdHxEKQ1kXBxgSHxEKQ0kXGg
+ QaGhoRCllNF2dmchEKWUkXGnEaEBp3BhgcGXEbGx4fHRAYHHcGGBoGGhEKWV4XbGx5EQpJRhdET
+ 11TRVhBX3VCRVleT04RCklHF3hPTREKQ04XSU0caX5gT1ofbkRzS1BPbBNcGX5LQVgTcx1Ffmlr
+ GnwRClhcFx8EGgQeGxoFGxoEGxsaBBsZHgQZHxAbHhofGhEKXlkXTXpaf2ARCk1cFxwYGBEKTFo
+ XaG1NTU0RCkxGF29ra2traxEKQk8XYmd6Wll+XFpkYRIRCkNaFxkEGBoTBBgeHwQbExEKQl4XGx
+ EKRF4XGBEKQlwXGxEKQksXb2sFRn1BRlBmfE4RCkJJF2R+a05fe1hQElpQEQpCRRduclJoZWlvW
+ 31teREKQk4XZH5rTl97WFASWlARCkJMF2dSXGkeck5HaV9hEQpCbBdnUlxpHnJOR2lfYREKQkAX
+ ZnkBfBxlBXBPARIRCkJYF25CQXBSSEBnQhx8EQpaWBcbGREKeUMXZmRhfhwFXloeTm0RCllLFxs
+ eGB0bEQpwaBdke2QFeWlia01sTRAaEQpwaBdtXlldZkRneQVdTxAaEQpwaBdmY0JaHnIFa0hZGB
+ AbGRgRCnBoF29OY3pEYkJ/TXpiEBoRCnBoF29dRll7GQFdR2huEBseEhEKcGgXa24eTG4TT2Rdf
+ 20QGxkdEQpwaBdtWk5eThMffn1GGhAbGh8RCnBoF2J4SBkZfnpNTElAEBoRCnB9F294Hh5uSFpe
+ fUBGEBoRCnB9F2lOHEZSXlJMUlgcEBoRCnB9F2tlR0FQU2FHRh1FEBsZGhEKcH8XaB4TfmkbbUV
+ IXk4QGxwbEQpwXxdrZ2kZTF5MYmNjUBAbGRoRCnBfF2RTGmFMWGhzWhhmEBsYGREKcF8XaElmT0
+ F7WEhPa2AQGxkaEQpwbBdrbUkFaRtdHhJOUhAdGhEKbX4XGhEKWE0XSxEg
+X-Authority-Analysis: v=2.4 cv=TPlIilla c=1 sm=1 tr=0 ts=6908f06e b=1 cx=c_pps
+ a=qY8KLFITwKFLILDkRxZE/Q==:117 a=qY8KLFITwKFLILDkRxZE/Q==:17
+ a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=7j0FZ4iXMVMA:10 a=Hi4HPhAiYaEA:10
+ a=g8TUdU_LZmEA:10 a=Kan8h273Bse8B8Jy5C1n:22 a=J-g6IGaxAAAA:8
+ a=JmTTG6qHcNeWB0Lt-SgA:9 a=yjuARmnkdt77w6Z5:21 a=_W_S_7VecoQA:10
+ a=QEXdDO2ut3YA:10 cc=ntf awl=host:47
+X-Proofpoint-GUID: cg6CTJep5DnYazeF9v3Takr9Y7oTCA0V
+X-Proofpoint-ORIG-GUID: cg6CTJep5DnYazeF9v3Takr9Y7oTCA0V
+X-CLX-Shades: MLX
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTAzMDE2MyBTYWx0ZWRfX7efDCy3nzu7h
+ hTCsygcQUhGc6BSN5Kk7PxFbeHbTEuAEqi6+3TpRMMRXKvfFiYVI2fnyqU4u2mJdCUcSKJ+SX92
+ 6Ax9pvLNwZbsNvwqJrLv6CAGirGlYbozlX/bvA15jVd8qHntRv/W+QQ81cnde0w12/PRVU1jKNd
+ buMrUpCa68LNxk9Wk8F45aRM/dgxUMl3jWO5FOI2Iuxri+lJc8lW7S/lW0evl01U3r1YnkfVWF5
+ KY2vLhbnIgV11AxH1dUAlFT3ddE3zZHuVvBjFrJYZd1rjOVBgN60nDJB0fNzR3a+2KgnBD2ZY6B
+ UXl6Y71HjU01vpkmDjJHXGc3HtRR4WjOSah5Xxbkp8ZXLwXdICxo3SkYW+Z03ThgCe4wHU2pw5i
+ LzgzqYxh7nEs0vTizeJWiEA6Ms5VHuFBQkVNpVAXcsl1Dvkn5upRRyhRFAiJGzCmKpB4HGkCdk0
+ 8FpVKa3jz9OZ9GTc0UQ==
+X-Orig-IP: 3.209.245.19
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-03_03,2025-11-03_03,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ spamscore=0 suspectscore=0 phishscore=0 lowpriorityscore=0 priorityscore=0
+ bulkscore=0 impostorscore=0 adultscore=0 clxscore=283 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc=notification route=inbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511030163 domainage_hfrom=14271
+
+<!doctype html>
+<html>
+	<head>
+		<title>Spec Top Computer SCI:, Section 091 - Announcements: In-person class this Friday Nov 7</title>
+	</head>
+	<body style="font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+		<div style="width:100%;font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+			<div style="border-bottom:1px dotted #000000;margin-bottom:15px;padding-bottom:5px;">
+			<h1 style="margin:0px;padding:0px;color:#000000;font-size:0.95rem;font-weight:bold;">Spec Top Computer SCI:, Section 091 - Announcements: In-person class this Friday Nov 7<br /><span style="color:#666666;font-size:0.8rem;font-weight:normal;">Posted Monday, November 3, 2025 1:10 PM EST</span></h1>
+		</div>
+		<div style="padding:0px;margin:0px;">
+			<div><p>This week&#39;s lecture will be in-person. I will teach tool assisted LLMs.&#160;</p>
+<p>Parijat</p></div>
+			<div style="padding:0px;margin:0px;margin-top:15px;">
+				<div style="padding:0px;margin:0px;border-top:1px dotted #666666;margin-top:15px;padding-top:5px;">
+					<table style="width:100%;border-collapse:collapse;border-spacing:0px;padding:0px;margin:0px;font-family:&#39;Lato&#39;, sans-serif; font-size:18px;" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:100%;margin:0px;padding:0px;white-space:nowrap !important;vertical-align:top;text-align:left;" nowrap="nowrap">
+									<a style="color:#00617f;" href="https://brightspace.nyu.edu/d2l/p/home/504821">Spec Top Computer SCI:, Section 091</a>
+								</td>
+								<td style="width:100%;margin:0px;padding:0px;white-space:nowrap !important;vertical-align:top;text-align:right;" nowrap="nowrap">
+									<a style="color:#00617f;" href="https://brightspace.nyu.edu/d2l/p/le/news/504821">Go to Announcements &gt;&gt;</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style="padding:0px;margin:0px;margin-top:15px;">
+				<div style="padding:0px;margin:0px;text-align:center;">
+					<span style="margin:0px;padding:0px;color:#666666;font-size:0.8rem;">You are receiving this message because you subscribed to receive instant notifications via email.</span>
+					<a style="color:#00617f;font-size:0.8rem;" href="https://brightspace.nyu.edu/d2l/Notifications/Settings?ou=6606">Change Notification Settings</a>
+					<br /><span style="margin:0px;padding:0px;color:#666666;font-size:0.8rem;"></span>
+				</div>
+			</div>
+		</div>
+</div>
+	</body>
+</html>

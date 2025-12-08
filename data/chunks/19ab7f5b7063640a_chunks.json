@@ -1,0 +1,22 @@
+{
+  "message_id": "19ab7f5b7063640a",
+  "chunked_at": "2025-12-08T14:32:02.254949",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19ab7f5b7063640a_email_0_c10d3bbc",
+      "text": "Hi Ankita, I received your first email. It will be taken into account when the schedule is set. Z On Mon, Nov 24, 2025 at 5:04 PM Ankita Tripathi < at6651@nyu.edu > wrote: Hi Professor Zahran, I previously reached out to you about the final presentation scheduling but it looks like I sent the email to the wrong email address. Please find my original email below. Thank you, Ankita ---------- Forwarded message --------- From: Ankita Tripathi < at6651@nyu.edu > Date: Wed, Nov 19, 2025 at 11:54 PM Subject: GPUs Final Presentation To: Mohamed Zahran < mohamed.zahran@nyu.edu > Hi Professor Zahran, I hope you're well. I wanted to discuss a potential time conflict for the GPU project's presentation. I have a final presentation for another class on December 10th at 8:30 pm. Would it be possible to schedule me for the presentation on December 3rd or in an early slot on December 10th? My group number is 31 (GPU-Accelerated Monte Carlo Option Pricing: Barrier Options). Please let me know. Thank you, Ankita -- ------------------------------------------------------------- Prof. Mohamed Zahran Computer Science Department Courant Institute of Mathematical Sciences NYU http://www.mzahran.com -------------------------------------------------------------",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19ab7f5b7063640a",
+        "from": "Mohamed Zahran <mmz1@cs.nyu.edu>",
+        "to": [],
+        "subject": "Re: GPUs Final Presentation",
+        "date": "Mon, 24 Nov 2025 17:21:52 -0500",
+        "timestamp": 1764022912,
+        "token_count": 313
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "text": "Computer Vision, Section 001 - Announcements: Assignment 3 Computer Vision, Section 001 - Announcements: Assignment 3 Posted Thursday, November 6, 2025 6:59 PM EST Assignment 3 has been posted on Brightspace and is due by November 27th at 6 PM . Please download the pdf and zip files for parts A and B. Submissions will be made through Gradescope—make sure to follow the submission guidelines outlined in the PDF. Let us know if you have any questions! Best Regards, Austin Computer Vision, Section 001 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+  "tables": [
+    {
+      "rows": 0,
+      "content": "self_ref='#/tables/0' parent=RefItem(cref='#/texts/1') children=[RefItem(cref='#/groups/1'), RefItem(cref='#/groups/2')] content_layer=<ContentLayer.BODY: 'body'> meta=None label=<DocItemLabel.TABLE: 'table'> prov=[] captions=[] references=[] footnotes=[] image=None data=TableData(table_cells=[RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=0, end_col_offset_idx=1, text='Computer Vision, Section 001', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/1')), RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=1, end_col_offset_idx=2, text='Go to Announcements >>', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/2'))], num_rows=1, num_cols=2, grid=[[RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=0, end_col_offset_idx=1, text='Computer Vision, Section 001', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/1')), RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=1, end_col_offset_idx=2, text='Go to Announcements >>', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/2'))]]) annotations=[]"
+    }
+  ],
+  "metadata": {
+    "id": "19a5b9cf7d94b404",
+    "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+    "subject": "Computer Vision, Section 001 - Announcements: Assignment 3",
+    "date": "Fri, 07 Nov 2025 00:00:02 +0000",
+    "eml_path": "data/raw_emails/19a5b9cf7d94b404.eml",
+    "attachments": [],
+    "attachment_count": 0
+  },
+  "attachments_processed": []
+}

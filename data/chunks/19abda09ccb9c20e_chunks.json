@@ -1,0 +1,22 @@
+{
+  "message_id": "19abda09ccb9c20e",
+  "chunked_at": "2025-12-08T14:32:26.324193",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19abda09ccb9c20e_email_0_48424052",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from Visa, Inc., based on your preferences. Check it out! Applications are due Monday, December 22 at  2 AM EST. Visa, Inc. Financial Services Software Engineer, Intern $35–40/hr Hybrid Internship Ashburn, VA View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19abda09ccb9c20e",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Visa, Inc. just posted a role 🌟",
+        "date": "Wed, 26 Nov 2025 00:46:47 +0000",
+        "timestamp": 1764118007,
+        "token_count": 132
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "message_id": "19a7c76d8037581b",
+  "chunked_at": "2025-12-08T14:30:34.833684",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a7c76d8037581b_email_0_0ecfa788",
+      "text": "Handshake Dr. Catrenia just messaged you about an event Dr. Catrenia McLendon Academic Liaison/Project and Content Manager · \r\nIBM SkillsBuild Hi Ankita, I’d like to invite you to a live virtual event hosted by IBM SkillsBuild. What you’ll learn: * How to build a Retrieval-Augmented Generation (RAG) system using your own documents * Ho... View message IBM SkillsBuild Virtual Event Building Smarter RAG Systems with Muhammad Farooq Wed, Nov 19 ⋅ 5 pm–6 pm EST Virtual View message Mute You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a7c76d8037581b",
+        "from": "\"Dr. Catrenia McLendon via Handshake\" <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Elevate Your AI Skills — Free Virtual Session on Developing RAG Systems",
+        "date": "Thu, 13 Nov 2025 09:05:52 +0000",
+        "timestamp": 1763024752,
+        "token_count": 166
+      }
+    }
+  ]
+}

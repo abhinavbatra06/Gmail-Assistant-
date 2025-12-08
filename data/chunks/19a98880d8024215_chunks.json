@@ -1,0 +1,22 @@
+{
+  "message_id": "19a98880d8024215",
+  "chunked_at": "2025-12-08T14:31:12.192642",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a98880d8024215_email_0_9abf9db5",
+      "text": "NYU Entrepreneurial Institute to Host Lecture Series for Courant Students On December 8th, the Entrepreneurial Institute will present on a range of captivating and practical topics designed to inspire and empower NYU innovators, followed by an NYU Innovation Happy Hour. Join the NYU Courant Institute School of Mathematics, Computing, and Data Science and the NYU Entrepreneurial Institute for Startup & Venture Capital Talks, a special event for aspiring founders and innovators at NYU. The lecture series will consist of two parts. During the \"How to Start a Startup\" talk at 4:00 PM, learn how to launch your startup venture with practical guidance on customer discovery, campus resources, and funding opportunities. Then, at 5:00 PM, get an inside look with \"Intro to Venture Capital\" - understand what investors look for and how to position your startup for funding. Meet the Entrepreneurial Institute team, connect with fellow students, and explore NYU's vibrant innovation ecosystem. Right after the talks, there will be a special edition of the NYU Innovation Happy Hour with complementary food & drinks. Come for the talks, stay afterwards to mingle! Hosted by South Park Commons NYC. Find more info and REGISTER HERE for the lectures & find more info and REGISTER HERE for the happy hour NYU Courant 251 Mercer Street, Room 823, New York, NY 10012 Unsubscribe | Manage your preferences",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a98880d8024215",
+        "from": "Courant Academic Affairs  <courant-academicaffairs@nyu.edu>",
+        "to": [],
+        "subject": "Entrepreneurial Institute Lecture Series & Happy Hour",
+        "date": "Tue, 18 Nov 2025 19:53:53 -0000",
+        "timestamp": 1763513633,
+        "token_count": 349
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "message_id": "19acaf10d23db0cb",
+  "chunked_at": "2025-12-08T14:32:44.676239",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19acaf10d23db0cb_email_0_a7cbe6aa",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from The Riverside Company, based on your preferences. Check it out! Applications are due Friday, February 27 at 11 PM EST. The Riverside Company Investment / Portfolio Management (#8221153002) 2026 Summer Internship, Portfolio Reporting & Analytics $20/hr Onsite Internship New York, NY View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19acaf10d23db0cb",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "The Riverside Company just posted a role 🌟",
+        "date": "Fri, 28 Nov 2025 14:49:42 +0000",
+        "timestamp": 1764341382,
+        "token_count": 151
+      }
+    }
+  ]
+}

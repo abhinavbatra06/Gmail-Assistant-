@@ -1,0 +1,2723 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:5a94:b0:4ff:1ddc:eb54 with SMTP id ho20csp1822517gdb;
+        Fri, 7 Nov 2025 06:25:56 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFLA7gymJRa+7cIXxIa/p6txj3zBsDXSbBGM7x4Pc01r1e9dEDtR6VNI0DOKkp5KmnxQGZI
+X-Received: by 2002:ac8:5810:0:b0:4e8:a1eb:3e2d with SMTP id d75a77b69052e-4ed949398d0mr41862861cf.2.1762525556171;
+        Fri, 07 Nov 2025 06:25:56 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762525556; cv=none;
+        d=google.com; s=arc-20240605;
+        b=PNItFVgrZ2N0GS8/nxec9mU1sBjnqX/0rAk+6N8dfKqPAKaOfW1rCjYx8y2Ji/qbpy
+         yuGqlHIExrqd6ONmNpc7mBQx95WI6VMhQPR0B7VWjL4L76+mu7naq/1USKzGI/awt0w/
+         2BZJ11iEz5Q/ogBEQxkrT6WiBTXVlY7kqUa7mtZ3XSeS+L9iiYDhVWChHeYA0ZFV+uu5
+         u8CtQiHVJxFgrN266ZdDjb2Im5yKVamed9rU667koLprI1rxfxyhRXEpCiqeP2aGoF1S
+         tJpsm42iF7Df8vH/KvF4c3qxJs2sFIWUMSO9+viTuY29icM0hdSEwPBSA1kxrQUbgmz1
+         ikRw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:message-id:list-unsubscribe-post:list-unsubscribe:date
+         :reply-to:to:from:subject:dkim-signature:dkim-signature;
+        bh=Md9C2/ypcwjFTzarcUbu214qzLzkJGMH8TTbsC9kDR0=;
+        fh=x8EhVKTD3Pk05++7UWYZ7ByCGW6DqwZOrfdg3akiVZw=;
+        b=J2+m745+XZHI4JNhW2YZyZBJArbCCyhBaf+Rb986LEuSIQEBtSlChQ6bdCIm68fQJF
+         d+CAX279B4xS6zWdCuxSVjicqoty2JULdUlpiUcFxQ0BZQP9BJEDqLScyhEsV/UgJROi
+         a5YZYWkzdnbGfcHu+KrR8lagA0kiYkoqF//aVLk3/r5OOLBcVV5YsCpceipa6Gp49irr
+         GoIltnor9xzfiIR+HBJJK7bYcBgqVX1AIGFzYe0S1dmzxDkmanrJ4fC85O7gbqM4HU25
+         TO+vXZQytBylq/rzhBikn37AVVq9pmlblnnfco/B7kflJvJAOLsRRnh/lWyLBwfKYcRz
+         n/YQ==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@nyu.edu header.s=cm header.b="oD0lxQ/a";
+       dkim=neutral (body hash did not verify) header.i=@cmail2.com header.s=cs2013 header.b=b1nvoHfZ;
+       spf=pass (google.com: domain of gsasprofessionaldevelopment-gjrjkhl1hlwthulju1d@cmail19.com designates 203.55.21.143 as permitted sender) smtp.mailfrom=GSASProfessionalDevelopment-gjrjkhl1hlwthulju1d@cmail19.com
+Return-Path: <GSASProfessionalDevelopment-gjrjkhl1hlwthulju1d@cmail19.com>
+Received: from pco01la-1772s.nyu.edu (pco01la-1772s.cfs.its.nyu.edu. [216.165.75.8])
+        by mx.google.com with ESMTPS id 6a1803df08f44-88082b3c681si16422916d6.487.2025.11.07.06.25.55
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 07 Nov 2025 06:25:56 -0800 (PST)
+Received-SPF: pass (google.com: domain of gsasprofessionaldevelopment-gjrjkhl1hlwthulju1d@cmail19.com designates 203.55.21.143 as permitted sender) client-ip=203.55.21.143;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@nyu.edu header.s=cm header.b="oD0lxQ/a";
+       dkim=neutral (body hash did not verify) header.i=@cmail2.com header.s=cs2013 header.b=b1nvoHfZ;
+       spf=pass (google.com: domain of gsasprofessionaldevelopment-gjrjkhl1hlwthulju1d@cmail19.com designates 203.55.21.143 as permitted sender) smtp.mailfrom=GSASProfessionalDevelopment-gjrjkhl1hlwthulju1d@cmail19.com
+Received: from mx0b-00256a01.pphosted.com (mx0b-00256a01.pphosted.com [67.231.153.242])
+	by pco01la-1772s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5A7EPtFS2188832
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Fri, 7 Nov 2025 09:25:55 -0500
+Received: from pps.filterd (m0355792.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5A7DNaO53965709
+	for <at6651@nyu.edu>; Fri, 7 Nov 2025 09:25:55 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=GSASProfessionalDevelopment-gjrjkhl1hlwthulju1d@cmail19.com;
+	dkim=pass header.s=cm header.d=nyu.edu;
+	dkim=pass header.s=cs2013 header.d=cmail2.com;
+	dmarc=pass header.from=nyu.edu
+Received: from mx143.a.outbound.createsend.com (mx143.a.outbound.createsend.com [203.55.21.143])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4a97sgd9qp-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Fri, 07 Nov 2025 09:25:54 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=cm; d=nyu.edu;
+ h=Subject:From:To:Reply-To:Date:MIME-Version:Content-Type:List-Unsubscribe:
+ List-Unsubscribe-Post:Message-ID; i=gsas.profdev@nyu.edu;
+ bh=enrPHooJoa7oCPKVg9pGSywUGE7hamFsCQ9XGwoSa98=;
+ b=oD0lxQ/aJ8sNSE4GLfFd7VPd8kbmNYR8ijf+ujC0W2o1C+05mOcujPerLJvDRN1w+XHc1wz8435e
+   aiL7V8TCZawTKRLU3PaHujNonf0ClNieZWarPtXW0vZxNAVPbYHoJ4muvZMXteAJpHwXbdQme2zJ
+   JbhE+7IpwzdTCZ0j07A=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=cs2013; d=cmail2.com;
+ h=Subject:From:To:Reply-To:Date:MIME-Version:Content-Type:List-Unsubscribe:
+ List-Unsubscribe-Post:Message-ID;
+ bh=enrPHooJoa7oCPKVg9pGSywUGE7hamFsCQ9XGwoSa98=;
+ b=b1nvoHfZPTMxVePm14dQfuaMPiRtLIh/oND+Mpu4Ph56fAhZ1sPCGfwgrRfWyV5ouXq02Um55qrk
+   nCEV/KmTpS3P8DOCMId1++auWGqbk4oj2te9odxncb9T6PPZM/l++5Lu6oeBUsJOM0Tzv4ca2Hf1
+   hyHW7vCwtBVx/P9xgRE=
+Subject: The Grapevine - November 7th, 2025 Issue
+From: "GSAS Professional Development" <gsas.profdev@nyu.edu>
+To: "at6651@nyu.edu" <at6651@nyu.edu>
+Reply-To: gsas.profdev@nyu.edu
+Date: Sat, 08 Nov 2025 01:00:17 +1100
+Content-Type: multipart/alternative;
+ boundary="_bf2512a3-6c29-4f16-bf77-8444949a91ae_"; charset=utf-8
+X-Mailer: Create Send
+X-Complaints-To: abuse@cmail19.com
+X-Feedback-ID: CA1-d-gjrjkhl:LI1-d-tdykluy:CL1-d-gllhd:createSEND
+List-Unsubscribe: <https://unsub.cmail19.com/t/completeheader/d/gjrjkhl/hlwthulju/c/>,
+ <mailto:unsubscribe-gjrjkhl2hlwthulju2d-36ABC3EC@cmail19.com?subject=Unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Message-ID: <cm.0100177984608.gjrjkhl.hlwthulju.d@cmail19.com>
+X-Proofpoint-ORIG-GUID: PIIllVr7R_hFOP2OgOxzTEe6nXxaQMGu
+X-CLX-Shades: MLX
+X-Proofpoint-GUID: PIIllVr7R_hFOP2OgOxzTEe6nXxaQMGu
+X-Authority-Analysis: v=2.4 cv=WsQm8Nfv c=1 sm=1 tr=0 ts=690e0173 b=1 cx=c_pps
+ a=2xSBCxu5tHQ6obPRC7JU3A==:117 a=2xSBCxu5tHQ6obPRC7JU3A==:17
+ a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=0WUeHgc6uKsA:10 a=x7bEGLp0ZPQA:10
+ a=S0S_EcBMpFAA:10 a=w0KIsgkFJTcA:10 a=Kan8h273Bse8B8Jy5C1n:22
+ a=1XWaLZrsAAAA:8 a=8nBmmgpqAAAA:8 a=jeqsFHzyAAAA:8 a=EMyeuVBdAAAA:8
+ a=J-g6IGaxAAAA:8 a=Bc9wuDTiAAAA:8 a=k6kzAvARAAAA:8 a=6wunJAEjAAAA:8
+ a=g6bvYZC3AAAA:8 a=fxcp04R7AAAA:8 a=bb6SUohxAAAA:8 a=6FPNYluCAAAA:8
+ a=guS1b1vXAAAA:8 a=fY5mEs-bJBXGTJZC-_MA:9 a=QEXdDO2ut3YA:10 a=YE4ZSWguQNEA:10
+ a=U1AxYMgIl4QA:10 a=9i6YSCDweT0A:10 a=e4r3ZvZFIjYA:10 a=fJFQkZ_BnSkA:10
+ a=-Gtbw98v_Q8A:10 a=JK71aDqxYbIA:10 a=l-uIDSgrNj4A:10 a=523u4N-utLMA:10
+ a=3g80flMcAAAA:8 a=SSmOFEACAAAA:8 a=kJPYMyTqQf7k7xf2Z5EA:9
+ a=4jBFQQN4renIhQrT:21 a=frz4AuCg-hUA:10 a=_W_S_7VecoQA:10 a=lqcHg5cX4UMA:10
+ a=Ru97nHiPDtp4odn3vKgu:22 a=bfyjJSFVJUzR-EyeF7E_:22 a=Bn0ZHLDANccHVLNQogQz:22
+ a=0rmH7TX8jb4foNnuO_qp:22 a=njpqTNRfeUx610d3bhoA:22 a=UATaL_7XzoIxXc-BfMpQ:22
+ a=dJJtEx0kz6L8SwvXypf2:22 a=ycVSqckT14n76d4WbRnl:22 a=G_ELIFsA8IjJT0NDqt7s:22
+ a=ugl5dUk1bAxiwtkaWXM-:22 a=0TkXfT2pXjVnQC2iIllu:22 a=x-IIn4RE9_EtAbX18AFu:22
+ a=3urWGuTZa-U-TZ_dHwj2:22
+X-CLX-Response: 1TFkXHhocEQpMehcYGxMRCllEF2RIUl59Xm9kZGh/EQpYWBduXhl6AQVYS39
+ 8ExEKeE4Xb2sFRn1BRlBmfE4RCnhLF25eGXoBBVhLf3wTEQp5TBdoe318ThJYeEJkRBEKQ0gXBx
+ kbGBEKQ1kXBxsTGBEKQ0kXGgQaGhoRCllNF2dmchEKWUkXGnEaEBp3BhgcHHEeHxsQGncGGBoGG
+ xgaEQpZXhdsbHkRCklGF0RPXVNFWEFfdUJFWV5PThEKSUcXeE9NEQpDThd6Y2NGRnxYHXh1Qmxl
+ ehhlTWVSUH5vTxxEclJLe2dtXxEKWFwXHwQaBB4bGgUbGgQbGhoEGxkeBBkeEBseGh8aEQpeWRd
+ NexxzZREKTVwXEhkTEQpMWhdpa21NTV0RCkxGF29ra2traxEKQk8Xax1IcEhmG0Z/EkkRCkNaFx
+ gaGQQfHwQYGwQbHhkRCkJeFxsRCllFFxMRCkVJFxsRCkVmFx4RCkReFxgRCkJGF2ZNH3pcZGR7H
+ 29JEQpCRxdme1hYaWBwaAEcfREKQlwXGxEKXk4XGxEKQksXb2sFRn1BRlBmfE4RCkJJF29rBUZ9
+ QUZQZnxOEQpCRRdsRkRHRRhoYGhIWxEKQk4Xb2sFRn1BRlBmfE4RCkJMF25eGXoBBVhLf3wTEQp
+ CbBduUnpGGlhDSExdcxEKQkAXaG56RmFgHQVpHEARCkJYF25CQXBSSEBnQhx8EQpaWBcYGREKeU
+ MXb0kfExgbGBNBb2YRCllLFxseGB0fEQpaSxcbHhgdHxEKcGcXYX9aXmd9Z1tibUsQGRoRCnBoF
+ 21db0lwGkdMYXhSEBMZEQpwaBdjemBdBW0cb0hLSBAZGhEKcGgXbHseZllsTmt5aUEQExgRCnBo
+ F2xZGlt/H1weXmlIEBMaEQpwaBdpGG1hZUNYTV9ZfRAZGhEKcGgXZkxpZ1hwaGMBeEkQGRoRCnB
+ oF2lCeRhncn56GHgZEBITEQpwaBdrbVplXxNhRHxiQBATGBEKcH0XYHtrfktMGhsTEgEQGhEKcH
+ 0XaFhnfRNZWR9dE2sQGhEKcH0Xa39pfBJCGUxmf04QGhEKcH0XbHlvXFlkeGITfnIQGhEKcH0Xb
+ kAfTklAR25cTnMQGhEKcH0XZ0EBbH8SXhJmeFsQGhEKcH0XZkJlQ2JiH1MBWk8QGhEKcH0XaE1a
+ Y14SUBNtHkUQGhEKcH0XYE1BGgUTQ117ZUAQGhEKcH0XYG9bH1NYSEIdQ2QQGhEKcH0XekhEHFw
+ cc2x4RGsQGhEKcH0XYUZBWXtAclpwZlkQGhEKcH0Xb3JMemZeSHMcbx0QGhEKcH0XZHscQ0seG1
+ 9aWmwQGhEKcH0XZh1JGh5TW39eXX0QGhEKcH0XbR5/e25QXGhySGwQGhEKcH0XbU9tGBJrZHh9Y
+ G8QGhEKcH0XelNkekhkcAFZWUgQGhEKcH0XYnxSQRJOXVNiZxgQGhEKcH0XYmt8GG1oZmFYS3gQ
+ GhEKcH0XYnAbEnlcSB5DRkcQGhEKcH0XbnMZSGVbQx0aWGwQGhEKcH0XenkFawFTXEgcfhgQGhE
+ KcGcXYxNMT0RPSx1aXUIQHR0RCnBnF2daUxwZS0YTbH5FEB0cEQpwZxdmGURfSR9TfH5ZTRAdHB
+ EKcGcXZUVBbkkdQE9ZQxIQHRIRCnB9F2QTaxNZbUZzGGZ5EBgYEQpwfxdvRGFQEhN/GxwSfhATG
+ xEKcF8XenIdHG9LTBJFQAEQGxoSEQpwfxdkU28BU0JrYEAdeBAdGxEKcF8XZXt/R0h7Xm5heUUQ
+ GhEKcH8XYU4YfXodGnxJfUsQGhEKcF8XaWVbR2NYRVtsQGwQGhEKcH8XZ21PZXJ8TUheSR8QHB4
+ RCnBfF2FGTXgZb1NCU01TEBoRCnB/F2geE35pG21FSF5OEBscEhEKcF8XbXhaYkIbf35hb3gQGx
+ 4TEQpwXxdna3obQh9QaBNochAeEhEKcF8XbUNhQhxiaXJvf0wQGRoRCnBfF24ZRENMZ1wSTWlvE
+ BkaEQpwXxdvZk9/XG1hH0FzQRAZGhEKcH8XbX1dUnIdU11LclsQHRoRCnBfF21CbkRuUGZgGWYe
+ EBoRCnBfF2kTAVBgGmtlY15kEBoRCnB/F2EeSB0cSxxMTxhwEBoRCnBfF2lQHkdNWGhLU3kTEBo
+ RCnB/F2BDc3tzYXNdSB1cEBsbEhEKcF8XY2Bze3tCa0BJa0kQGhEKcF8Xa2J/E1MSQEFOHH4QGh
+ EKcH8XZ3l/WWVvY3xeQ0gQGRoRCnBfF25fXVh5XmVFQVsBEBoRCnB/F2ZdZkwTSEBYZmgeEBMfE
+ QpwXxdva2ZoRxhaemBsGBAaEQpwXxdoZGhyWBp8QFBHSRAaEQpwfxdmcBp5HHkSbVNoRBASHBEK
+ cF8XZkJPRFoeWWdmU10QGhEKcH8Xa0dLeURNT1NoSXMQEhIRCnBfF25MHEtcRU9rHlNwEBoRCnB
+ /F21DZWQYZkhNYX8aEAceBB8RCnBfF2VkYGhlSU1bWgFvEAcZBBIRCnBsF3pyaRJLTHsfZEZyEB
+ kaEQptfhcaEQpYTRdLESA=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA3MDExOCBTYWx0ZWRfXxK/U676SiRry
+ sdnl7jn4AbccXs9votWx/v9aiZJ736nv8nAAvdgwB+RaujjhzByD4R1FmrCIqliX6FhVOpko9Ld
+ jHIOuYyIqMhxMoP5sY7KYFwe0FPUaM2eEdajvQu/E5vYurozJewfjro8iib3OB5S7q0A7LIoZqp
+ 19esHaOGnMHmjx6/PDGq32Kn389afFRWOcW4lQmNhZUbn7Lr1RcCJNuEwFUvosmLmunNFlznhSQ
+ 6EK2kWMzuX2BuZhBMgw/E33PokaKTU3TU3+mdzAMDWDrNBnYsriFitgp3OD/+Id0akwKowEKLmv
+ v4RevaYsHdTX1Kq+nd2dFM1aJYtCK5F7UuLqJdrPvvmDE28V1rGCgDEYY9swNsQ/lv+kEWrME1x
+ 8D3Rw+0lFREXqIJtJs4EQw61WodjUfTBTLq6dkFE021jinrLO0aVEy3EQt1wjrmA6CziG+WqBaF
+ onBOCez616qQUQRuRBw==
+MIME-Version: 1.0
+X-Orig-IP: 203.55.21.143
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-07_03,2025-11-06_01,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Reason: orgsafe
+
+--_bf2512a3-6c29-4f16-bf77-8444949a91ae_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+This email serves as your November 7th, 2025 newsletter for notable profess=
+ional development and fellowships news at NYU GSAS. Remember you can stay u=
+p to date with all upcoming professional development events by subscribing =
+to  our Google calendar [https://urldefense.proofpoint.com/v2/url?u=3Dhttps=
+-3A__calendar.google.com_calendar_u_0-3Fcid-3DY18xOGNjMTg3MDEzZjJmNDRlYmM4M=
+zhhNDI3MWU4YmIxZWVmZjFmNjdjNTZjNDc3MTg2NDU0MWUxN2Q3NWVjY2Y1QGdyb3VwLmNhbGVu=
+ZGFyLmdvb2dsZS5jb20-255D-21&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O=
+1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uu=
+IgvT5k2uPRk&s=3DymV4U1MgYVHFTVSZtCc6NZqzuwg4v55ewZHE17QU_jA&e=3D=20
+
+If you have questions about the contents of this newsletter, please contact=
+ Abby Williams for Professional Development at  [gsas.profdev@nyu.edu] or E=
+mily Hollenbach for Fellowships & Awards at  [gsas.fellowships@nyu.edu].
+
+Congratulations to our Quad Fellowship Recipient, Nina Harano!
+
+Please join us in celebrating GSAS PhD student and fellowship recipient, Ni=
+na Harano, who is an awardee of the 2025 Quad Fellowship! The Quad Fellowsh=
+ip is designed to build ties among the next generation of scientists and te=
+chnologists and builds on the renewed commitment to regional cooperation. W=
+e can=E2=80=99t wait to see what Nina accomplishes in the fellowship year!
+
+Born in Tokyo and raised in Okinawa, Nina Harano developed an interest in s=
+cience through interactions with students at the Okinawa Institute of Scien=
+ce and Technology (OIST) during high school, which inspired her to study ab=
+road. After graduating from Columbia University in the United States with a=
+ departmental honor in neuroscience, she is currently pursuing a Ph.D. in N=
+euroscience at the GSAS-affiliated Vilcek Institute of Graduate Biomedical =
+Sciences. Her research in the Sigurdsson Lab focuses on elucidating the mol=
+ecular mechanisms underlying neurodegenerative diseases, particularly recov=
+ery from tau-mediated pathologies. Through her research, she aims to bridge=
+ science and society by serving as a bridge between Japan and the United St=
+ates.
+
+Ask a Hiring Manager: What Employers Look for in Candidates
+
+Tuesday, November 11th, 1:00-2:00PM
+
+Virtual
+
+As part of our Ask the Expert Series, get an insider scoop on navigating th=
+e job market from a hiring manager who will share what employers look for i=
+n candidates. Build your confidence, expand your network, and find answers =
+to your most important career questions through expert advice and interacti=
+ve activities in a relaxed setting.
+
+Register [https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyu.joinha=
+ndshake.com_events_1756520&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1=
+KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuI=
+gvT5k2uPRk&s=3DgTVmyTcrtrRYgPJlVJIZhETZSo-PDebeygfKIQvSnvg&e=3D ]          =
+     Advocacy and Nonprofit Panel
+
+Wednesday, November 12th, 5:30-7:00PM
+
+Wasserman USQ
+
+Learn about roles in advocacy, policy analysis, and community-based work fr=
+om NYU alumni discussing their career paths. Stick around for a structured =
+mingling session where you can utilize this time to make introductions, gat=
+her insights, and establish your own connections. It=E2=80=99s the perfect =
+atmosphere to chat one-on-one with alumni and industry professionals in a r=
+elaxed, supportive space.
+
+Register [https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyu.joinha=
+ndshake.com_events_1757077&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1=
+KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuI=
+gvT5k2uPRk&s=3DKJEO-bAt0GrytHAHRyFzMusn-mVNG7NwfoV-XS3HFSg&e=3D ]          =
+     Meet the Industry: Arts Funders
+
+Thursday, November 13th, 6:30-8:00PM
+
+NYU Production Lab
+
+Funding can transform your creative ideas into reality=E2=80=94but where do=
+ you begin? Whether you=E2=80=99re developing your first film, launching a =
+new play, or creating an experimental music installation, understanding wha=
+t funders look for is key. This conversation will illuminate how different =
+organizations support artists, what makes an application stand out, and how=
+ seeking funding can become an empowering part of your creative practice ra=
+ther than an obstacle. Join the NYU Production Lab for an open discussion w=
+ith representatives from several organizations that fund artists and artist=
+ic works. You=E2=80=99ll hear insider perspectives on discovering and suppo=
+rting new talent, and gain practical insights to help you approach funding =
+with clarity and confidence.
+
+Register [https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyu.joinha=
+ndshake.com_events_1800530&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1=
+KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuI=
+gvT5k2uPRk&s=3Des80d-ll-xKo8kysvw2qpwywPoSgtBZ72sYVIBzKcbU&e=3D ]          =
+     Grant Writing 101
+
+Tuesday, November 18th, 12:30-2:00PM
+
+NYU Changemaker Center
+
+This workshop is part of a collaborative series between the Social Impact C=
+areer Hub and the Changemaker Center, designed to help students explore pur=
+pose-driven career paths and leadership development. This session will intr=
+oduce strategies to write a successful grant proposal, including program ov=
+erview, outcomes, budgeting, assessment, and more. The workshop will run fo=
+r the first hour, and the remainder of the session will be for connecting a=
+nd building community with peers.
+
+Register [https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyu.joinha=
+ndshake.com_events_1776645&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1=
+KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuI=
+gvT5k2uPRk&s=3DCoJXS9rwfSOTGdp_Atq_j4UQwJQ4lfqCvrWeosLx5qo&e=3D ]          =
+     Mastering the Informational Interview or Coffee Chat (with Employers)
+
+Tuesday, November 18th, 5:30-6:30PM
+
+Wasserman USQ
+
+Join this session and hear from employers as they provide valuable insight =
+into the informational interview. Learn how to initiate coffee chats, condu=
+ct conversations, and build connections. Whether you=E2=80=99re interested =
+in networking with recruiters or alumni, this session will equip you with t=
+he knowledge needed to embark on your career exploration journey.
+
+Register [https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyu.joinha=
+ndshake.com_events_1757381&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1=
+KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuI=
+gvT5k2uPRk&s=3DWqjP8tWwPwLKWLD4n7YqfU_SFB9i5-3mEB0iZxshfF4&e=3D ]          =
+          ResourcesBeyond the Professoriate
+
+Beyond the Professoriate [https://urldefense.proofpoint.com/v2/url?u=3Dhttp=
+s-3A__institutions.beyondprof.com_&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwM=
+QGlgT3uuIgvT5k2uPRk&s=3D1DZ2oP0Ez6CuQxleWEnwmwREo7OCHyAU15FiAGoE17k&e=3D ] =
+is a professional development tool where doctoral students and postdocs can=
+ explore your career options, make informed career decisions, and learn pro=
+ven job search strategies.
+
+Big Interview
+
+Big Interview [https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyu.b=
+iginterview.com_-255D-27s&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1K=
+eqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIg=
+vT5k2uPRk&s=3DXjqzoS5fFx2f69dmW22HIMbOU5TnKZFOoY8MnEeIfXQ&e=3D  proven, ste=
+p-by-step system combines expert video lessons and interactive interview pr=
+actice tools to help students land their dream job. Through this career too=
+l, students will get hands-on practice with mock interviews tailored to the=
+ir specific industry, job, and experience level.
+
+Wasserman Headshot Photo Booth
+
+Visit the Headshot Photo Booth at the Wasserman Union Square location anyti=
+me the office is open to use the self-service booth. You can even borrow pr=
+ofessional clothing from the career closet for your photo!  Read more here.=
+ [https://www.nyu.edu/students/student-information-and-resources/career-dev=
+elopment-and-jobs/find-a-job-or-internship/wasserman-headshot-photo-booth-c=
+areer-closet.html ]
+
+LinkedIn Learning
+
+NYU provides no-cost access to  LinkedIn Learning [https://www.nyu.edu/life=
+/information-technology/teaching-and-learning-services/instructional-tools/=
+linkedin-learning.html ] with thousands of online how-to tutorials taught b=
+y real-world professionals covering topics that include technology, busines=
+s, and creative skills. You'll find tutorials on personal branding, video e=
+diting,  Google Sheets, and much more.
+
+Focus 2 Career
+
+Explore different career options [https://urldefense.proofpoint.com/v2/url?=
+u=3Dhttps-3A__app.joinhandshake.com_stu_articles_30578&d=3DDwIFaQ&c=3DslrrB=
+7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=3D-jXOGebWfzS4QEs5JMHrHNBKSuG8CySi=
+ngyYi3JBRho&e=3D ] through interactive, online assessments. Reflect on your=
+ values, skills, and interests and relate them to possible career paths!
+
+Reminder: Use Fellowship Databases!
+
+GSAS Fellowships encourages you to view their  website [https://gsas.nyu.ed=
+u/profdev/fellowships.html ]. But fellowship databases and guides on our  E=
+xternal Resources page [https://gsas.nyu.edu/profdev/fellowships/external-r=
+esources.html ] can also be helpful!
+
+Lafayette Fellowship
+
+Benefits:
+
+A =E2=82=AC1,500 monthly stipend from mid-July 2026 through the end of June=
+ 2027 to cover living expensesOne year of tuition at a partner French insti=
+tution for eligible programsApplication fee waivers for French academic ins=
+titutions and master=E2=80=99s programsStudent visa fee waivers for one aca=
+demic year A round-trip flight to and from France at the start and end of t=
+he programCoverage of travel costs and activities related to the French-Ame=
+rican Leadership Program
+
+Application Deadline: November 30, 2025
+
+The Lafayette Fellowship is a prestigious new graduate fellowship in France=
+ for tomorrow=E2=80=99s leaders. Partnering with 15 of the top French highe=
+r education institutions, one year of master=E2=80=99s-level studies are av=
+ailable across science, technology, engineering, and mathematics (STEM); th=
+e humanities and social sciences; and the arts, either in French or entirel=
+y in English.
+
+In addition to their academic studies, fellows will take part in the French=
+-American Leadership Program, which explores the future of the transatlanti=
+c relationship and provides a 360-degree immersion into European innovation=
+, culture, and policy, as well as access to an international network of men=
+tors.
+
+Open to:
+
+U.S. citizensApplicants who will be under 27 years of age on July 1, 2026Po=
+ssessors of a Bachelor=E2=80=99s degree from a U.S. institution earned betw=
+een August 2023 and June 20263.7 minimum GPASTEM, humanities, social scienc=
+es, and arts students interested in addressing global challenges in a Frenc=
+h-American contextFrench proficiency not required                Read More =
+[https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__lafayette.villa-2Da=
+lbertine.org_&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-=
+gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=
+=3D-GBvX7gno6T47l0QifUJWTHNrGWc92t38T7ru6eNOsM&e=3D ]        Apply Now [htt=
+ps://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__candidatures.villa-2Dal=
+bertine.org_en_applications_lafayette-2Dfellowship&d=3DDwIFaQ&c=3DslrrB7dE8=
+n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHb=
+qa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=3DbNoVAWaE6eMkwO02QyI-Il_Z52LnsTFg9VMl=
+eCcfK0Y&e=3D ]              2026-27 Language Fellowships from the Blakemore=
+ Foundation
+
+Benefits:
+
+Full tuition and stipend for living, travel, and study expenses
+
+Application Deadline: December 30th, 2025 at 11:00 PM PST
+
+Blakemore Foundation Asian Language Fellowships are awarded for one academi=
+c year for the advanced study of Chinese (in Taiwan), Japanese, Korean, Ind=
+onesian, Khmer, Thai, or Vietnamese in Asia. Study of Chinese at Tsinghua U=
+niversity in Beijing is also available as a Blakemore Fellowship.
+
+Open to:
+
+U.S. citizens or permanent residentsGraduate students and young/mid-career =
+professionals planning to use referenced language(s) in their careerHave co=
+mpleted at minimum the third year of study of the Asian language, and ready=
+ to advance to professional fluency
+
+Blakemore Kingfisher Art History Language Fellowships are awarded for 9-12 =
+months for study of Chinese or Korean in East Asia, who have a well-demonst=
+rated intent to study the pre-twentieth century history of Chinese or Korea=
+n art at the doctoral level.
+
+Open to:
+
+U.S. and Canadian citizens or permanent residents and foreign nationals stu=
+dying in U.S. or Canadian collegesInterest in pursuing doctoral degree in p=
+re-twentieth century Chinese or Korean art historyHave completed at minimum=
+ the second year of study of the Asian language in rigorous college-level l=
+anguage programs                Read More [https://urldefense.proofpoint.co=
+m/v2/url?u=3Dhttps-3A__www.blakemorefoundation.org_&d=3DDwIFaQ&c=3DslrrB7dE=
+8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlH=
+bqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=3DA8Ry6x_oU3yQMrb8VGMoKq2veY0NULuHP4R=
+mE1CTicg&e=3D ]        Apply Now [https://urldefense.proofpoint.com/v2/url?=
+u=3Dhttps-3A__blakemorefoundation.communityforce.com_Funds_Search.aspx-2343=
+71597136646D517975544F5976596D4E73384E69673D3D&d=3DDwIFaQ&c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m=
+44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=3DuTCjMSREGZRrt-HSK8ucwfvvFHHRrGf89Mm0IeiE=
+Hyg&e=3D ]              Siddall Sheffield Scholarship
+
+Benefits:
+
+Full tuition fees for one year Master=E2=80=99s in Engineering program at t=
+he University of SheffieldStipend of =C2=A318,000
+
+Application Deadline: January 13, 2026 at 5:00 PM UK time
+
+The Siddall Sheffield Scholarship recognizes academic excellence, promise o=
+f advancement of the Engineering field, and civic engagement in sponsoring =
+prospective Engineering students to study at the University of Sheffield in=
+ the UK. Please note you must first apply to the Engineering Masters progra=
+m to be considered for this award.
+
+Open to:
+
+US citizen who has formerly studied in the US, is a non-UK resident, and ha=
+s not lived in the UKHolds a Bachelor degree in a relevant field before UK =
+departurePreferred GPA of 3.7 or higher
+
+Join the University of Sheffield Postgraduate  online open day [https://url=
+defense.proofpoint.com/v2/url?u=3Dhttps-3A__sheffield.ac.uk_postgraduate_vi=
+sit_open-2Dday&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj=
+-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=
+=3DHov7SEp-INQgl_hEJJOhZsEvWoWWChbNMuIc5mXMQfs&e=3D ] on Wednesday 26 Novem=
+ber 2025 to learn more about the postgraduate programs available.
+
+Read More [https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.sheff=
+ield.ac.uk_international_fees-2Dand-2Dfunding_us_siddall-2Dscholarship&d=3D=
+DwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANB=
+Y9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=3DobXWg8fA56HZC1qP=
+fQznD7c1yWmnthBgkyLQ9QUjeNQ&e=3D ]        Apply Now [https://urldefense.pro=
+ofpoint.com/v2/url?u=3Dhttps-3A__finance.ssid.shef.ac.uk_users_sign-5Fin&d=
+=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcT=
+ANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=3DDM2h9spTkZzQf=
+hKRz8h6qNk9LzDi_tXWGaJcWmcLH-s&e=3D ]                                  Appl=
+y Now for 2026 Summer Internships at RAND
+
+The RAND Summer Associate Program introduces outstanding graduate students =
+to RAND, an institution that conducts research on a wide range of domestic =
+and international social policy issues and matters of national security. Su=
+mmer Associates work at RAND full-time for a 12-week period during the summ=
+er and are given the opportunity to conduct research while mentored by an e=
+xperienced researcher.
+
+The program is designed for full-time students who have completed at least =
+two years of graduate work leading to a doctorate (e.g., PhD, EDD, DRPH, Sc=
+iD, etc.) or professional degree (e.g., law or medical degree, professional=
+ engineer certificate). Students must be enrolled full-time in a graduate d=
+egree program during the spring and fall of 2026 to be considered for the p=
+rogram.
+
+Applications are open now and due by December 1, 2025, 11:59 p.m. Pacific T=
+ime.
+
+Read More [https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__www.rand.=
+org_jobs_summer-2Dassociates.html&d=3DDwIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwM=
+QGlgT3uuIgvT5k2uPRk&s=3DMN34HwoocSrWRqJYcACgJ2XGkV779PkW-4GUimpeQ_4&e=3D ] =
+                        New Career Resource: Interstride
+
+OGS and the Wasserman Center have teamed up to bring the NYU community a gr=
+eat new resource for international students as well as students looking to =
+work abroad. Interstride is an interactive portal to support your global jo=
+b search. Access resources for navigating the immigration journey, find job=
+s from international-student friendly employers, access country guides supp=
+orting job searches across the globe, and more! Students can find  Interstr=
+ide at NYUHome [https://globalhome.nyu.edu/services/card/220 ].
+
+[https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__x.com_nyugsas&d=3DD=
+wIFaQ&c=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY=
+9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=3D4J1SXn_sqM9ODftv5=
+eZ6vpXuDDEkTj2sOSGdOBPpBg4&e=3D ]
+
+Note: Clicking unsubscribe will unsubscribe you from all emails from the Gr=
+aduate School of Arts and Science
+
+NYU Graduate School of Arts and Science
+
+Unsubscribe https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsass=
+tudentaffairs.cmail20.com_t_d-2Du-2Dgjrjkhl-2Dhlwthulju-2Dz_&d=3DDwIFaQ&c=
+=3DslrrB7dE8n7gBJbeO0g-IQ&r=3DW4d5O1KeqHtZtS8Ifj-gIg&m=3D-YwNRcTANBY9CLFOuW=
+w-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&s=3DVs1cgjDuplWYU29KjvYPZeDD=
+LgrFmZQHskR26dCd1mU&e=3D=20
+
+--_bf2512a3-6c29-4f16-bf77-8444949a91ae_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www=
+.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html style=3D"margin: 0;pad=
+ding: 0;" xmlns=3D"http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8=
+">
+    <title></title>
+    <!--[if !mso]><!--><meta http-equiv=3D"X-UA-Compatible" content=3D"IE=
+=3Dedge"><!--<![endif]-->
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width"><style type=3D=
+"text/css">
+@media only screen and (min-width: 620px){.column{}.wrapper{min-width:600px=
+ !important}.wrapper h1{}.wrapper h1{font-size:34px !important;line-height:=
+43px !important}.wrapper h2{}.wrapper h2{font-size:26px !important;line-hei=
+ght:34px !important}.wrapper h3{}.wrapper h3{font-size:22px !important;line=
+-height:31px !important}.wrapper .size-8,.wrapper .size-8-m,.wrapper .size-=
+8-l{font-size:8px !important;line-height:14px !important}.wrapper .size-8-m=
+{line-height:16px !important}.wrapper .size-8-l{line-height:24px !important=
+}.wrapper .size-9,.wrapper .size-9-m,.wrapper .size-9-l{font-size:9px !impo=
+rtant;line-height:16px !important}.wrapper .size-9-m{line-height:18px !impo=
+rtant}.wrapper .size-9-l{line-height:27px !important}.wrapper .size-10,.wra=
+pper .size-10-m,.wrapper .size-10-l{font-size:10px !important;line-height:1=
+8px !important}.wrapper .size-10-m{line-height:20px !important}.wrapper=20
+.size-10-l{line-height:30px !important}.wrapper .size-11,.wrapper .size-11-=
+m,.wrapper .size-11-l{font-size:11px !important;line-height:19px !important=
+}.wrapper .size-11-m{line-height:22px !important}.wrapper .size-11-l{line-h=
+eight:33px !important}.wrapper .size-12,.wrapper .size-12-m,.wrapper .size-=
+12-l{font-size:12px !important;line-height:19px !important}.wrapper .size-1=
+2-m{line-height:24px !important}.wrapper .size-12-l{line-height:36px !impor=
+tant}.wrapper .size-13,.wrapper .size-13-m,.wrapper .size-13-l{font-size:13=
+px !important;line-height:21px !important}.wrapper .size-13-m{line-height:2=
+6px !important}.wrapper .size-13-l{line-height:39px !important}.wrapper .si=
+ze-14,.wrapper .size-14-m,.wrapper .size-14-l{font-size:14px !important;lin=
+e-height:21px !important}.wrapper .size-14-m{line-height:28px !important}.w=
+rapper .size-14-l{line-height:42px !important}.wrapper .size-15,.wrapper=20
+.size-15-m,.wrapper .size-15-l{font-size:15px !important;line-height:23px !=
+important}.wrapper .size-15-m{line-height:30px !important}.wrapper .size-15=
+-l{line-height:45px !important}.wrapper .size-16,.wrapper .size-16-m,.wrapp=
+er .size-16-l{font-size:16px !important;line-height:24px !important}.wrappe=
+r .size-16-m{line-height:32px !important}.wrapper .size-16-l{line-height:48=
+px !important}.wrapper .size-17,.wrapper .size-17-m,.wrapper .size-17-l{fon=
+t-size:17px !important;line-height:26px !important}.wrapper .size-17-m{line=
+-height:34px !important}.wrapper .size-17-l{line-height:51px !important}.wr=
+apper .size-18,.wrapper .size-18-m,.wrapper .size-18-l{font-size:18px !impo=
+rtant;line-height:26px !important}.wrapper .size-18-m{line-height:36px !imp=
+ortant}.wrapper .size-18-l{line-height:54px !important}.wrapper .size-20,.w=
+rapper .size-20-m,.wrapper .size-20-l{font-size:20px=20
+!important;line-height:28px !important}.wrapper .size-20-m{line-height:40px=
+ !important}.wrapper .size-20-l{line-height:60px !important}.wrapper .size-=
+22,.wrapper .size-22-m,.wrapper .size-22-l{font-size:22px !important;line-h=
+eight:31px !important}.wrapper .size-22-m{line-height:44px !important}.wrap=
+per .size-22-l{line-height:66px !important}.wrapper .size-24,.wrapper .size=
+-24-m,.wrapper .size-24-l{font-size:24px !important;line-height:32px !impor=
+tant}.wrapper .size-24-m{line-height:48px !important}.wrapper .size-24-l{li=
+ne-height:72px !important}.wrapper .size-26,.wrapper .size-26-m,.wrapper .s=
+ize-26-l{font-size:26px !important;line-height:34px !important}.wrapper .si=
+ze-26-m{line-height:52px !important}.wrapper .size-26-l{line-height:78px !i=
+mportant}.wrapper .size-28,.wrapper .size-28-m,.wrapper .size-28-l{font-siz=
+e:28px !important;line-height:36px !important}.wrapper=20
+.size-28-m{line-height:56px !important}.wrapper .size-28-l{line-height:84px=
+ !important}.wrapper .size-30,.wrapper .size-30-m,.wrapper .size-30-l{font-=
+size:30px !important;line-height:38px !important}.wrapper .size-30-m{line-h=
+eight:60px !important}.wrapper .size-30-l{line-height:90px !important}.wrap=
+per .size-32,.wrapper .size-32-m,.wrapper .size-32-l{font-size:32px !import=
+ant;line-height:40px !important}.wrapper .size-32-m{line-height:64px !impor=
+tant}.wrapper .size-32-l{line-height:96px !important}.wrapper .size-34,.wra=
+pper .size-34-m,.wrapper .size-34-l{font-size:34px !important;line-height:4=
+3px !important}.wrapper .size-34-m{line-height:68px !important}.wrapper .si=
+ze-34-l{line-height:102px !important}.wrapper .size-36,.wrapper .size-36-m,=
+.wrapper .size-36-l{font-size:36px !important;line-height:43px !important}.=
+wrapper .size-36-m{line-height:72px !important}.wrapper=20
+.size-36-l{line-height:108px !important}.wrapper .size-40,.wrapper .size-40=
+-m,.wrapper .size-40-l{font-size:40px !important;line-height:47px !importan=
+t}.wrapper .size-40-m{line-height:80px !important}.wrapper .size-40-l{line-=
+height:120px !important}.wrapper .size-44,.wrapper .size-44-m,.wrapper .siz=
+e-44-l{font-size:44px !important;line-height:50px !important}.wrapper .size=
+-44-m{line-height:88px !important}.wrapper .size-44-l{line-height:132px !im=
+portant}.wrapper .size-48,.wrapper .size-48-m,.wrapper .size-48-l{font-size=
+:48px !important;line-height:54px !important}.wrapper .size-48-m{line-heigh=
+t:96px !important}.wrapper .size-48-l{line-height:144px !important}.wrapper=
+ .size-56,.wrapper .size-56-m,.wrapper .size-56-l{font-size:56px !important=
+;line-height:60px !important}.wrapper .size-56-m{line-height:112px !importa=
+nt}.wrapper .size-56-l{line-height:168px !important}.wrapper=20
+.size-64,.wrapper .size-64-m,.wrapper .size-64-l{font-size:64px !important;=
+line-height:68px !important}.wrapper .size-64-m{line-height:128px !importan=
+t}.wrapper .size-64-l{line-height:192px !important}.wrapper .size-72,.wrapp=
+er .size-72-m,.wrapper .size-72-l{font-size:72px !important;line-height:76p=
+x !important}.wrapper .size-72-m{line-height:144px !important}.wrapper .siz=
+e-72-l{line-height:216px !important}.wrapper .size-80,.wrapper .size-80-m,.=
+wrapper .size-80-l{font-size:80px !important;line-height:84px !important}.w=
+rapper .size-80-m{line-height:160px !important}.wrapper .size-80-l{line-hei=
+ght:240px !important}.wrapper .size-96,.wrapper .size-96-m,.wrapper .size-9=
+6-l{font-size:96px !important;line-height:100px !important}.wrapper .size-9=
+6-m{line-height:192px !important}.wrapper .size-96-l{line-height:288px !imp=
+ortant}.wrapper .size-112,.wrapper .size-112-m,.wrapper=20
+.size-112-l{font-size:112px !important;line-height:116px !important}.wrappe=
+r .size-112-m{line-height:224px !important}.wrapper .size-112-l{line-height=
+:336px !important}.wrapper .size-128,.wrapper .size-128-m,.wrapper .size-12=
+8-l{font-size:128px !important;line-height:132px !important}.wrapper .size-=
+128-m{line-height:256px !important}.wrapper .size-128-l{line-height:384px !=
+important}.wrapper .size-144,.wrapper .size-144-m,.wrapper .size-144-l{font=
+-size:144px !important;line-height:148px !important}.wrapper .size-144-m{li=
+ne-height:288px !important}.wrapper .size-144-l{line-height:432px !importan=
+t}}
+</style>
+    <meta name=3D"x-apple-disable-message-reformatting">
+    <style type=3D"text/css">
+.main, .mso {
+  margin: 0;
+  padding: 0;
+}
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+* {
+  line-height: inherit;
+}
+[x-apple-data-detectors] {
+  color: inherit !important;
+  text-decoration: none !important;
+}
+.wrapper .footer__share-button a:hover,
+.wrapper .footer__share-button a:focus {
+  color: #ffffff !important;
+}
+.wrapper .footer__share-button a.icon-white:hover,
+.wrapper .footer__share-button a.icon-white:focus {
+  color: #ffffff !important;
+}
+.wrapper .footer__share-button a.icon-black:hover,
+.wrapper .footer__share-button a.icon-black:focus {
+  color: #000000 !important;
+}
+.btn a:hover,
+.btn a:focus,
+.footer__share-button a:hover,
+.footer__share-button a:focus,
+.email-footer__links a:hover,
+.email-footer__links a:focus {
+  opacity: 0.8;
+}
+.preheader,
+.header,
+.layout,
+.column {
+  transition: width 0.25s ease-in-out, max-width 0.25s ease-in-out;
+}
+.preheader td {
+  padding-bottom: 8px;
+}
+.layout,
+div.header {
+  max-width: 400px !important;
+  -fallback-width: 95% !important;
+  width: calc(100% - 20px) !important;
+}
+div.preheader {
+  max-width: 360px !important;
+  -fallback-width: 90% !important;
+  width: calc(100% - 60px) !important;
+}
+.snippet,
+.webversion {
+  Float: none !important;
+}
+.stack .column {
+  max-width: 400px !important;
+  width: 100% !important;
+}
+.fixed-width.has-border {
+  max-width: 402px !important;
+}
+.fixed-width.has-border .layout__inner {
+  box-sizing: border-box;
+}
+.snippet,
+.webversion {
+  width: 50% !important;
+}
+.mso .layout__edges {
+  font-size: 0;
+}
+.layout-fixed-width,
+.mso .layout-full-width {
+  background-color: #ffffff;
+}
+@media only screen and (min-width: 620px) {
+  .column,
+  .gutter {
+    display: table-cell;
+    Float: none !important;
+    vertical-align: top;
+  }
+  div.preheader,
+  .email-footer {
+    max-width: 560px !important;
+    width: 560px !important;
+  }
+  .snippet,
+  .webversion {
+    width: 280px !important;
+  }
+  div.header,
+  .layout,
+  .one-col .column {
+    max-width: 600px !important;
+    width: 600px !important;
+  }
+  .fixed-width.has-border,
+  .fixed-width.x_has-border,
+  .has-gutter.has-border,
+  .has-gutter.x_has-border {
+    max-width: 602px !important;
+    width: 602px !important;
+  }
+  .two-col .column {
+    max-width: 300px !important;
+    width: 300px !important;
+  }
+  .three-col .column,
+  .column.narrow,
+  .column.x_narrow {
+    max-width: 200px !important;
+    width: 200px !important;
+  }
+  .column.wide,
+  .column.x_wide {
+    width: 400px !important;
+  }
+  .two-col.has-gutter .column,
+  .two-col.x_has-gutter .column {
+    max-width: 290px !important;
+    width: 290px !important;
+  }
+  .three-col.has-gutter .column,
+  .three-col.x_has-gutter .column,
+  .has-gutter .narrow {
+    max-width: 188px !important;
+    width: 188px !important;
+  }
+  .has-gutter .wide {
+    max-width: 394px !important;
+    width: 394px !important;
+  }
+  .two-col.has-gutter.has-border .column,
+  .two-col.x_has-gutter.x_has-border .column {
+    max-width: 292px !important;
+    width: 292px !important;
+  }
+  .three-col.has-gutter.has-border .column,
+  .three-col.x_has-gutter.x_has-border .column,
+  .has-gutter.has-border .narrow,
+  .has-gutter.x_has-border .narrow {
+    max-width: 190px !important;
+    width: 190px !important;
+  }
+  .has-gutter.has-border .wide,
+  .has-gutter.x_has-border .wide {
+    max-width: 396px !important;
+    width: 396px !important;
+  }
+}
+@supports (display: flex) {
+  @media only screen and (min-width: 620px) {
+    .fixed-width.has-border .layout__inner {
+      display: flex !important;
+    }
+  }
+}
+/***
+* Mobile Styles
+*
+* 1. Overriding inline styles
+*/
+@media(max-width: 619px) {
+  .email-flexible-footer .left-aligned-footer .column,
+  .email-flexible-footer .center-aligned-footer,
+  .email-flexible-footer .right-aligned-footer .column {
+    max-width: 100% !important; /* [1] */
+    text-align: center !important; /* [1] */
+    width: 100% !important; /* [1] */
+  }
+  .flexible-footer-logo {
+    margin-left: 0px !important; /* [1] */
+    margin-right: 0px !important; /* [1] */
+  }
+  .email-flexible-footer .left-aligned-footer .flexible-footer__share-butto=
+n__container,
+  .email-flexible-footer .center-aligned-footer .flexible-footer__share-but=
+ton__container,
+  .email-flexible-footer .right-aligned-footer .flexible-footer__share-butt=
+on__container {
+    display: inline-block;
+    margin-left: 5px !important; /* [1] */
+    margin-right: 5px !important; /* [1] */
+  }
+  .email-flexible-footer__additionalinfo--center {
+    text-align: center !important; /* [1] */
+  }
+ =20
+  .email-flexible-footer .left-aligned-footer table,
+  .email-flexible-footer .center-aligned-footer table,
+  .email-flexible-footer .right-aligned-footer table {
+    display: table !important; /* [1] */
+    width: 100% !important; /* [1] */
+  }
+  .email-flexible-footer .footer__share-button,
+  .email-flexible-footer .email-footer__additional-info {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and=
+ (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-rat=
+io: 2/1), only screen and (min-device-pixel-ratio: 2), only screen and (min=
+-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
+  .fblike {
+    background-image: url(https://i7.cmail20.com/static/eb/master/13-the-bl=
+ueprint-3/images/fblike@2x.png) !important;
+  }
+  .tweet {
+    background-image: url(https://i8.cmail20.com/static/eb/master/13-the-bl=
+ueprint-3/images/tweet@2x.png) !important;
+  }
+  .linkedinshare {
+    background-image: url(https://i9.cmail20.com/static/eb/master/13-the-bl=
+ueprint-3/images/lishare@2x.png) !important;
+  }
+  .forwardtoafriend {
+    background-image: url(https://i10.cmail20.com/static/eb/master/13-the-b=
+lueprint-3/images/forward@2x.png) !important;
+  }
+}
+@media (max-width: 321px) {
+  .fixed-width.has-border .layout__inner {
+    border-width: 1px 0 !important;
+  }
+  .layout,
+  .stack .column {
+    min-width: 320px !important;
+    width: 320px !important;
+  }
+  .border {
+    display: none;
+  }
+  .has-gutter .border {
+    display: table-cell;
+  }
+}
+.cmctbl--inline table {
+  border-collapse: collapse;
+}
+</style>
+   =20
+    <!--[if mso]><xml>
+      <w:WordDocument xmlns:w=3D"urn:schemas-microsoft-com:office:word">
+        <w:DontUseAdvancedTypographyReadingMail/>
+      </w:WordDocument>
+    </xml><![endif]-->
+  <!--[if !mso]><!--><style type=3D"text/css">
+@import url(https://fonts.googleapis.com/css?family=3DPT+Sans:400,700,400it=
+alic,700italic|PT+Serif:400,700,400italic,700italic);
+</style><link href=3D"https://fonts.googleapis.com/css?family=3DPT+Sans:400=
+,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel=3D"style=
+sheet" type=3D"text/css"><!--<![endif]--><style type=3D"text/css">
+.main,.mso{background-color:#fff}.logo a:hover,.logo a:focus{color:#859bb1 =
+!important}.footer-logo a:hover,.footer-logo a:focus{color:#372d1b !importa=
+nt}.mso .layout-has-border{border-top:1px solid #ccc;border-bottom:1px soli=
+d #ccc}.mso .layout-has-bottom-border{border-bottom:1px solid #ccc}.mso .bo=
+rder{background-color:#ccc}.mso h1{}.mso h1{font-size:34px !important;line-=
+height:43px !important}.mso h2{}.mso h2{font-size:26px !important;line-heig=
+ht:34px !important}.mso h3{}.mso h3{font-size:22px !important;line-height:3=
+1px !important}.mso .layout__inner{}.mso .footer__share-button p{}.mso .foo=
+ter__share-button p{font-family:PT Serif,Georgia,serif}
+</style><!--[if mso]><style type=3D"text/css" emb-not-inline>
+.mso div{border:0 none white !important}.mso .w560 .divider{}.mso .w560 .di=
+vider{Margin-left:260px !important;Margin-right:260px !important}.mso .w360=
+ .divider{}.mso .w360 .divider{Margin-left:160px !important;Margin-right:16=
+0px !important}.mso .w260 .divider{}.mso .w260 .divider{Margin-left:110px !=
+important;Margin-right:110px !important}.mso .w160 .divider{}.mso .w160 .di=
+vider{Margin-left:60px !important;Margin-right:60px !important}.mso .w60 .d=
+ivider{}.mso .w60 .divider{Margin-left:10px !important;Margin-right:10px !i=
+mportant}.mso .w354 .divider{}.mso .w354 .divider{Margin-left:157px !import=
+ant;Margin-right:157px !important}.mso .w250 .divider{}.mso .w250 .divider{=
+Margin-left:105px !important;Margin-right:105px !important}.mso .w148 .divi=
+der{}.mso .w148 .divider{Margin-left:54px !important;Margin-right:54px !imp=
+ortant}.mso .size-8,.mso .size-8-m,.mso .size-8-l{font-size:8px=20
+!important;line-height:14px !important}.mso .size-8-m{line-height:16px !imp=
+ortant}.mso .size-8-l{line-height:24px !important}.mso .size-9,.mso .size-9=
+-m,.mso .size-9-l{font-size:9px !important;line-height:16px !important}.mso=
+ .size-9-m{line-height:18px !important}.mso .size-9-l{line-height:27px !imp=
+ortant}.mso .size-10,.mso .size-10-m,.mso .size-10-l{font-size:10px !import=
+ant;line-height:18px !important}.mso .size-10-m{line-height:20px !important=
+}.mso .size-10-l{line-height:30px !important}.mso .size-11,.mso .size-11-m,=
+.mso .size-11-l{font-size:11px !important;line-height:19px !important}.mso =
+.size-11-m{line-height:22px !important}.mso .size-11-l{line-height:33px !im=
+portant}.mso .size-12,.mso .size-12-m,.mso .size-12-l{font-size:12px !impor=
+tant;line-height:19px !important}.mso .size-12-m{line-height:24px !importan=
+t}.mso .size-12-l{line-height:36px !important}.mso .size-13,.mso=20
+.size-13-m,.mso .size-13-l{font-size:13px !important;line-height:21px !impo=
+rtant}.mso .size-13-m{line-height:26px !important}.mso .size-13-l{line-heig=
+ht:39px !important}.mso .size-14,.mso .size-14-m,.mso .size-14-l{font-size:=
+14px !important;line-height:21px !important}.mso .size-14-m{line-height:28p=
+x !important}.mso .size-14-l{line-height:42px !important}.mso .size-15,.mso=
+ .size-15-m,.mso .size-15-l{font-size:15px !important;line-height:23px !imp=
+ortant}.mso .size-15-m{line-height:30px !important}.mso .size-15-l{line-hei=
+ght:45px !important}.mso .size-16,.mso .size-16-m,.mso .size-16-l{font-size=
+:16px !important;line-height:24px !important}.mso .size-16-m{line-height:32=
+px !important}.mso .size-16-l{line-height:48px !important}.mso .size-17,.ms=
+o .size-17-m,.mso .size-17-l{font-size:17px !important;line-height:26px !im=
+portant}.mso .size-17-m{line-height:34px !important}.mso=20
+.size-17-l{line-height:51px !important}.mso .size-18,.mso .size-18-m,.mso .=
+size-18-l{font-size:18px !important;line-height:26px !important}.mso .size-=
+18-m{line-height:36px !important}.mso .size-18-l{line-height:54px !importan=
+t}.mso .size-20,.mso .size-20-m,.mso .size-20-l{font-size:20px !important;l=
+ine-height:28px !important}.mso .size-20-m{line-height:40px !important}.mso=
+ .size-20-l{line-height:60px !important}.mso .size-22,.mso .size-22-m,.mso =
+.size-22-l{font-size:22px !important;line-height:31px !important}.mso .size=
+-22-m{line-height:44px !important}.mso .size-22-l{line-height:66px !importa=
+nt}.mso .size-24,.mso .size-24-m,.mso .size-24-l{font-size:24px !important;=
+line-height:32px !important}.mso .size-24-m{line-height:48px !important}.ms=
+o .size-24-l{line-height:72px !important}.mso .size-26,.mso .size-26-m,.mso=
+ .size-26-l{font-size:26px !important;line-height:34px !important}.mso=20
+.size-26-m{line-height:52px !important}.mso .size-26-l{line-height:78px !im=
+portant}.mso .size-28,.mso .size-28-m,.mso .size-28-l{font-size:28px !impor=
+tant;line-height:36px !important}.mso .size-28-m{line-height:56px !importan=
+t}.mso .size-28-l{line-height:84px !important}.mso .size-30,.mso .size-30-m=
+,.mso .size-30-l{font-size:30px !important;line-height:38px !important}.mso=
+ .size-30-m{line-height:60px !important}.mso .size-30-l{line-height:90px !i=
+mportant}.mso .size-32,.mso .size-32-m,.mso .size-32-l{font-size:32px !impo=
+rtant;line-height:40px !important}.mso .size-32-m{line-height:64px !importa=
+nt}.mso .size-32-l{line-height:96px !important}.mso .size-34,.mso .size-34-=
+m,.mso .size-34-l{font-size:34px !important;line-height:43px !important}.ms=
+o .size-34-m{line-height:68px !important}.mso .size-34-l{line-height:102px =
+!important}.mso .size-36,.mso .size-36-m,.mso .size-36-l{font-size:36px=20
+!important;line-height:43px !important}.mso .size-36-m{line-height:72px !im=
+portant}.mso .size-36-l{line-height:108px !important}.mso .size-40,.mso .si=
+ze-40-m,.mso .size-40-l{font-size:40px !important;line-height:47px !importa=
+nt}.mso .size-40-m{line-height:80px !important}.mso .size-40-l{line-height:=
+120px !important}.mso .size-44,.mso .size-44-m,.mso .size-44-l{font-size:44=
+px !important;line-height:50px !important}.mso .size-44-m{line-height:88px =
+!important}.mso .size-44-l{line-height:132px !important}.mso .size-48,.mso =
+.size-48-m,.mso .size-48-l{font-size:48px !important;line-height:54px !impo=
+rtant}.mso .size-48-m{line-height:96px !important}.mso .size-48-l{line-heig=
+ht:144px !important}.mso .size-56,.mso .size-56-m,.mso .size-56-l{font-size=
+:56px !important;line-height:60px !important}.mso .size-56-m{line-height:11=
+2px !important}.mso .size-56-l{line-height:168px !important}.mso=20
+.size-64,.mso .size-64-m,.mso .size-64-l{font-size:64px !important;line-hei=
+ght:68px !important}.mso .size-64-m{line-height:128px !important}.mso .size=
+-64-l{line-height:192px !important}.mso .size-72,.mso .size-72-m,.mso .size=
+-72-l{font-size:72px !important;line-height:76px !important}.mso .size-72-m=
+{line-height:144px !important}.mso .size-72-l{line-height:216px !important}=
+.mso .size-80,.mso .size-80-m,.mso .size-80-l{font-size:80px !important;lin=
+e-height:84px !important}.mso .size-80-m{line-height:160px !important}.mso =
+.size-80-l{line-height:240px !important}.mso .size-96,.mso .size-96-m,.mso =
+.size-96-l{font-size:96px !important;line-height:100px !important}.mso .siz=
+e-96-m{line-height:192px !important}.mso .size-96-l{line-height:288px !impo=
+rtant}.mso .size-112,.mso .size-112-m,.mso .size-112-l{font-size:112px !imp=
+ortant;line-height:116px !important}.mso .size-112-m{line-height:224px=20
+!important}.mso .size-112-l{line-height:336px !important}.mso .size-128,.ms=
+o .size-128-m,.mso .size-128-l{font-size:128px !important;line-height:132px=
+ !important}.mso .size-128-m{line-height:256px !important}.mso .size-128-l{=
+line-height:384px !important}.mso .size-144,.mso .size-144-m,.mso .size-144=
+-l{font-size:144px !important;line-height:148px !important}.mso .size-144-m=
+{line-height:288px !important}.mso .size-144-l{line-height:432px !important=
+}.mso .cmctbl table td,.mso .cmctbl table th{Margin-left:20px !important;Ma=
+rgin-right:20px !important}.mso .cmctbl- -inline,.mso .cmctbl{padding-left:=
+20px !important;padding-right:20px !important}.mso .cmctbl- -inline table,.=
+mso .cmctbl=20
+table{mso-table-lspace:0pt;mso-table-rspace:0pt;mso-line-height-rule:exactl=
+y}.size-8,.size-9{mso-text-raise:9px}.size-34,h1{mso-text-raise:13px}.size-=
+36{mso-text-raise:14px}.size-40{mso-text-raise:16px}.size-44{mso-text-raise=
+:17px}.size-48{mso-text-raise:18px}.size-56{mso-text-raise:22px}.size-64{ms=
+o-text-raise:25px}.size-72{mso-text-raise:28px}.size-80{mso-text-raise:32px=
+}.size-96{mso-text-raise:40px}.size-112{mso-text-raise:46px}.size-128{mso-t=
+ext-raise:54px}.size-144{mso-text-raise:58px}.size-11-m,.size-12-m{mso-text=
+-raise:6px}.size-13-m,.size-14-m{mso-text-raise:7px}.size-15-m,.size-16-m,.=
+size-8-l{mso-text-raise:8px}.size-17-m,.size-18-m{mso-text-raise:9px}.size-=
+20-m,.size-10-l{mso-text-raise:10px}.size-22-m,.size-11-l{mso-text-raise:11=
+px}.size-24-m,.size-12-l{mso-text-raise:12px}.size-26-m,.size-13-l{mso-text=
+-raise:13px}.size-28-m,.size-14-l{mso-text-raise:14px}.size-30-m,.size-15-l=
+{mso-text-raise:15px}.size-32-m,.size-16-l{mso-text-raise:16px}.size-34-m,.=
+size-17-l{mso-text-raise:17px}.size-36-m,.size-18-l{mso-text-raise:18px}.si=
+ze-40-m,.size-20-l{mso-text-raise:20px}.size-44-m,.size-22-l{mso-text-raise=
+:22px}.size-48-m,.size-24-l{mso-text-raise:24px}.size-26-l{mso-text-raise:2=
+6px}.size-56-m,.size-28-l{mso-text-raise:28px}.size-30-l{mso-text-raise:30p=
+x}.size-64-m,.size-32-l{mso-text-raise:32px}.size-34-l{mso-text-raise:34px}=
+.size-72-m,.size-36-l{mso-text-raise:36px}.size-80-m,.size-40-l{mso-text-ra=
+ise:40px}.size-44-l{mso-text-raise:44px}.size-96-m,.size-48-l{mso-text-rais=
+e:48px}.size-112-m,.size-56-l{mso-text-raise:56px}.size-128-m,.size-64-l{ms=
+o-text-raise:64px}.size-144-m,.size-72-l{mso-text-raise:72px}.size-80-l{mso=
+-text-raise:80px}.size-96-l{mso-text-raise:96px}.size-112-l{mso-text-raise:=
+112px}.size-128-l{mso-text-raise:128px}.size-144-l{mso-text-raise:144px}
+</style><![endif]--></head>
+<!--[if mso]>
+  <body class=3D"mso">
+<![endif]-->
+<!--[if !mso]><!-->
+  <body class=3D"main no-padding" style=3D"margin: 0;padding: 0;-webkit-tex=
+t-size-adjust: 100%;">
+<!--<![endif]-->
+    <table class=3D"wrapper" style=3D"border-collapse: collapse;table-layou=
+t: fixed;min-width: 320px;width: 100%;background-color: #fff;" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation"><tbody><tr><td>
+      <div role=3D"banner">
+        <div class=3D"preheader" style=3D"Margin: 0 auto;max-width: 560px;m=
+in-width: 280px; width: 280px;width: calc(28000% - 167440px);">
+          <div style=3D"border-collapse: collapse;display: table;width: 100=
+%;">
+          <!--[if mso]><table align=3D"center" class=3D"preheader" cellpadd=
+ing=3D"0" cellspacing=3D"0" role=3D"presentation"><tr><td style=3D"width: 2=
+80px" valign=3D"top"><![endif]-->
+            <div class=3D"snippet" style=3D"display: table-cell;Float: left=
+;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 140px; width=
+: 140px;width: calc(14000% - 78120px);padding: 10px 0 5px 0;color: #fff;fon=
+t-family: PT Serif,Georgia,serif;">
+             =20
+            </div>
+          <!--[if mso]></td><td style=3D"width: 280px" valign=3D"top"><![en=
+dif]-->
+            <div class=3D"webversion" style=3D"display: table-cell;Float: l=
+eft;font-size: 12px;line-height: 19px;max-width: 280px;min-width: 139px; wi=
+dth: 139px;width: calc(14100% - 78680px);padding: 10px 0 5px 0;text-align: =
+right;color: #fff;font-family: PT Serif,Georgia,serif;">
+             =20
+            </div>
+          <!--[if mso]></td></tr></table><![endif]-->
+          </div>
+        </div>
+        <div class=3D"header" style=3D"Margin: 0 auto;max-width: 600px;min-=
+width: 320px; width: 320px;width: calc(28000% - 167400px);" id=3D"emb-email=
+-header-container">
+        <!--[if mso]><table align=3D"center" class=3D"header" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation"><tr><td style=3D"width: 600p=
+x"><![endif]-->
+          <div class=3D"logo emb-logo-margin-box" style=3D"font-size: 26px;=
+line-height: 32px;Margin-top: 6px;Margin-bottom: 7px;color: #c3ced9;font-fa=
+mily: Roboto,Tahoma,sans-serif;Margin-left: 20px;Margin-right: 20px;" align=
+=3D"center">
+            <div class=3D"logo-left" align=3D"left" id=3D"emb-email-header"=
+><a style=3D"text-decoration: none;transition: opacity 0.1s ease-in;color: =
+#c3ced9;" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__ny=
+ugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dr_&amp;d=3D=
+DwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=
+=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=
+=3DxiB9WdYYC92_qHXsla1j4hY9JM7sZTEvT5T8MxRduhM&amp;e=3D"><img style=3D"disp=
+lay: block;height: auto;width: 100%;border: 0;max-width: 321px;" src=3D"htt=
+ps://i1.cmail20.com/ei/d/B9/1D5/26F/063759/csfinal/gsas_long_color.png" alt=
+=3D"" width=3D"321"></a></div>
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+      <div>
+      <div style=3D"background-color: #330062;">
+        <div class=3D"layout one-col stack" style=3D"Margin: 0 auto;max-wid=
+th: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);ove=
+rflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
+          <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;">
+          <!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-full-width" style=3D"backg=
+round-color: #330062;"><td class=3D"layout__edges">&nbsp;</td><td style=3D"=
+width: 600px" class=3D"w560"><![endif]-->
+            <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;=
+font-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+           =20
+              <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 2px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+           =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-bottom" style=3D"border: 0;display: block;height: auto;width: 100%;m=
+ax-width: 900px;" alt=3D"The Grapevine" width=3D"600" src=3D"https://i1.cma=
+il20.com/ei/d/B9/1D5/26F/063759/csfinal/Screenshot2024-06-07at5.00.47PM-990=
+0000000079e3c.png">
+        </div>
+     =20
+            </div>
+          <!--[if mso]></td><td class=3D"layout__edges">&nbsp;</td></tr></t=
+able><![endif]-->
+          </div>
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 16px;font-si=
+ze: 1px;">&nbsp;</div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">This email serves as y=
+our <strong>November 7th, 2025</strong><strong>&nbsp;</strong>newsletter fo=
+r notable professional development and fellowships news at NYU GSAS. Rememb=
+er you can stay up to date with all upcoming professional development event=
+s by subscribing to&nbsp;<a style=3D"text-decoration: underline;transition:=
+ opacity 0.1s ease-in;color: #e84526;" data-emb-iscopy=3D"true" href=3D"htt=
+ps://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.c=
+mail20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dy_&amp;d=3DDwMFaQ&amp;c=3DslrrB7=
+dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw=
+-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DRDvVrtKZtmh6ORGYdkqSZ=
+5OQoQoZQ3ZC9O-XtMG_pVA&amp;e=3D"><span style=3D"text-decoration: inherit;co=
+lor: #0000ee;">our Google calendar</span></a>!</p><p style=3D"Margin-top: 2=
+0px;Margin-bottom: 20px;">If you have questions about the contents of this =
+newsletter, please contact <strong>Abby Williams</strong> for Professional =
+Development at <a style=3D"text-decoration: underline;transition: opacity 0=
+.1s ease-in;color: #e84526;"=20
+data-emb-iscopy=3D"true" href=3D"mailto:gsas.profdev@nyu.edu"><span style=
+=3D"text-decoration: inherit;color: #0000ee;">gsas.profdev@nyu.edu</span></=
+a> or <strong>Emily Hollenbach </strong>for Fellowships &amp; Awards at <a =
+style=3D"text-decoration: underline;transition: opacity 0.1s ease-in;color:=
+ #e84526;" data-emb-iscopy=3D"true" href=3D"mailto:gsas.fellowships@nyu.edu=
+"><span style=3D"text-decoration: inherit;color: #0000ee;">gsas.fellowships=
+@nyu.edu</span></a>.</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 4px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"background-color: #ffffff;">
+        <div class=3D"layout one-col stack" style=3D"Margin: 0 auto;max-wid=
+th: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);ove=
+rflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
+          <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;">
+          <!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-full-width" style=3D"backg=
+round-color: #ffffff;"><td class=3D"layout__edges">&nbsp;</td><td style=3D"=
+width: 600px" class=3D"w560"><![endif]-->
+            <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;=
+font-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+           =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top gnd-corner-image-bottom" style=3D"border: 0;display: block;heigh=
+t: auto;width: 100%;max-width: 360px;" alt=3D"Announcements" width=3D"360" =
+src=3D"https://i2.cmail20.com/ei/d/B9/1D5/26F/063759/csfinal/TheGrapevineGr=
+aphics13-990000079e03cf3c.png">
+        </div>
+     =20
+            </div>
+          <!--[if mso]></td><td class=3D"layout__edges">&nbsp;</td></tr></t=
+able><![endif]-->
+          </div>
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 10px;font-si=
+ze: 1px;">&nbsp;</div>
+    </div>
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img style=3D"border: 0;display: block;height: auto;width: 100%;m=
+ax-width: 488px;" alt=3D"" width=3D"488" src=3D"https://i3.cmail20.com/ei/d=
+/B9/1D5/26F/063759/csfinal/unnamed13-f78e030ae446b483.png">
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top: =
+20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-20" style=3D"Margin-top: 0;Margin-bottom: 12px;fo=
+nt-style: normal;font-weight: normal;color: #000;font-size: 17px;line-heigh=
+t: 26px;" lang=3D"x-size-20"><strong>Congratulations to our Quad Fellowship=
+ Recipient, Nina Harano!</strong></h3>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <p style=3D"Margin-top: 0;Margin-bottom: 0;">Please join us in cele=
+brating GSAS PhD student and fellowship recipient, <strong>Nina Harano</str=
+ong>, who is an awardee of the <strong>2025 Quad Fellowship</strong>! The Q=
+uad Fellowship is designed to build ties among the next generation of scien=
+tists and technologists and builds on the renewed commitment to regional co=
+operation. We can&#8217;t wait to see what Nina accomplishes in the fellows=
+hip year!</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;"><em>Born in To=
+kyo and raised in Okinawa, Nina Harano developed an interest in science thr=
+ough interactions with students at the Okinawa Institute of Science and Tec=
+hnology (OIST) during high school, which inspired her to study abroad. Afte=
+r graduating from Columbia University in the United States with a departmen=
+tal honor in neuroscience, she is currently pursuing a Ph.D. in Neuroscienc=
+e at=20
+the GSAS-affiliated Vilcek Institute of Graduate Biomedical Sciences. Her r=
+esearch in the Sigurdsson Lab focuses on elucidating the molecular mechanis=
+ms underlying neurodegenerative diseases, particularly recovery from tau-me=
+diated pathologies. Through her research, she aims to bridge science and so=
+ciety by serving as a bridge between Japan and the United States.</em></p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 10px;font-si=
+ze: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"background-color: #ffffff;">
+        <div class=3D"layout one-col stack" style=3D"Margin: 0 auto;max-wid=
+th: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167400px);ove=
+rflow-wrap: break-word;word-wrap: break-word;word-break: break-word;">
+          <div class=3D"layout__inner" style=3D"border-collapse: collapse;d=
+isplay: table;width: 100%;">
+          <!--[if mso]><table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-full-width" style=3D"backg=
+round-color: #ffffff;"><td class=3D"layout__edges">&nbsp;</td><td style=3D"=
+width: 600px" class=3D"w560"><![endif]-->
+            <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;=
+font-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+           =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top gnd-corner-image-bottom" style=3D"border: 0;display: block;heigh=
+t: auto;width: 100%;max-width: 360px;" alt=3D"Upcoming Events" width=3D"360=
+" src=3D"https://i4.cmail20.com/ei/d/B9/1D5/26F/063759/csfinal/UpcomingEven=
+ts2-990000079e03cf3c.png">
+        </div>
+     =20
+            </div>
+          <!--[if mso]></td><td class=3D"layout__edges">&nbsp;</td></tr></t=
+able><![endif]-->
+          </div>
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 20px;font-si=
+ze: 1px;">&nbsp;</div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Ask a Hiring Manager: What Employers Look=
+ for in Candidates</strong></h3><p style=3D"Margin-top: 12px;Margin-bottom:=
+ 0;"><strong>Tuesday, November 11th, 1:00-2:00PM<br>
+Virtual</strong></p><p style=3D"Margin-top: 20px;Margin-bottom: 20px;">As p=
+art of our Ask the Expert Series, get an insider scoop on navigating the jo=
+b market from a hiring manager who will share what employers look for in ca=
+ndidates. Build your confidence, expand your network, and find answers to y=
+our most important career questions through expert advice and interactive a=
+ctivities in a relaxed setting.</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:center;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dj_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DSITiu07eqhxDqwKEkHfNxTodJHK7=
+5Gxt8xLWjDSMRpw&amp;e=3D">Register</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Dj_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DSITiu07eqhxDqwKEkHfNxTodJHK75Gxt8xLWjDSMRpw=
+&amp;e=3D" style=3D"width:72.75pt" filled=3D"f" strokecolor=3D"#460273" str=
+okeweight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt=
+,9pt,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068=
+C;font-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-hei=
+ght-rule:exactly;mso-text-raise:1.5px">Register</center></v:textbox></v:rec=
+t><![endif]--></div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 20px;font-si=
+ze: 1px;">&nbsp;</div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Advocacy and Nonprofit Panel</strong></h3=
+><p style=3D"Margin-top: 12px;Margin-bottom: 0;"><strong>Wednesday, Novembe=
+r 12th, 5:30-7:00PM<br>
+Wasserman USQ&nbsp;</strong></p><p style=3D"Margin-top: 20px;Margin-bottom:=
+ 20px;">Learn about roles in advocacy, policy analysis, and community-based=
+ work from NYU alumni discussing their career paths. Stick around for a str=
+uctured mingling session where you can utilize this time to make introducti=
+ons, gather insights, and establish your own connections. It&#8217;s the pe=
+rfect atmosphere to chat one-on-one with alumni and industry professionals =
+in a relaxed, supportive space.&nbsp;</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:center;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dt_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3Dpttg_CVl9BKf7eSZTHsTVcLoBRF5=
+k3a2COiW5WyIYFU&amp;e=3D">Register</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Dt_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3Dpttg_CVl9BKf7eSZTHsTVcLoBRF5k3a2COiW5WyIYFU=
+&amp;e=3D" style=3D"width:72.75pt" filled=3D"f" strokecolor=3D"#460273" str=
+okeweight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt=
+,9pt,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068=
+C;font-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-hei=
+ght-rule:exactly;mso-text-raise:1.5px">Register</center></v:textbox></v:rec=
+t><![endif]--></div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 20px;font-si=
+ze: 1px;">&nbsp;</div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Meet the Industry: Arts Funders</strong><=
+/h3><p style=3D"Margin-top: 12px;Margin-bottom: 0;"><strong>Thursday, Novem=
+ber 13th, 6:30-8:00PM<br>
+NYU Production Lab</strong></p><p style=3D"Margin-top: 20px;Margin-bottom: =
+20px;">Funding can transform your creative ideas into reality&#8212;but whe=
+re do you begin? Whether you&#8217;re developing your first film, launching=
+ a new play, or creating an experimental music installation, understanding =
+what funders look for is key. This conversation will illuminate how differe=
+nt organizations support artists, what makes an application stand out, and =
+how seeking funding can become an empowering part of your creative practice=
+ rather than an obstacle. Join the NYU Production Lab for an open discussio=
+n with representatives from several organizations that fund artists and art=
+istic works. You&#8217;ll hear insider perspectives on discovering and supp=
+orting new talent, and gain practical insights to help you approach funding=
+ with clarity and confidence.</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:center;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Di_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DelVVTrpfAMqDPuAtd5jCXUCulQG2=
+WiG0ZNOqUgDKjJs&amp;e=3D">Register</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Di_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DelVVTrpfAMqDPuAtd5jCXUCulQG2WiG0ZNOqUgDKjJs=
+&amp;e=3D" style=3D"width:72.75pt" filled=3D"f" strokecolor=3D"#460273" str=
+okeweight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt=
+,9pt,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068=
+C;font-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-hei=
+ght-rule:exactly;mso-text-raise:1.5px">Register</center></v:textbox></v:rec=
+t><![endif]--></div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 20px;font-si=
+ze: 1px;">&nbsp;</div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Grant Writing 101</strong></h3><p style=
+=3D"Margin-top: 12px;Margin-bottom: 0;"><strong>Tuesday, November 18th, 12:=
+30-2:00PM<br>
+NYU Changemaker Center&nbsp;</strong></p><p style=3D"Margin-top: 20px;Margi=
+n-bottom: 20px;">This workshop is part of a collaborative series between th=
+e Social Impact Career Hub and the Changemaker Center, designed to help stu=
+dents explore purpose-driven career paths and leadership development. This =
+session will introduce strategies to write a successful grant proposal, inc=
+luding program overview, outcomes, budgeting, assessment, and more. The wor=
+kshop will run for the first hour, and the remainder of the session will be=
+ for connecting and building community with peers.&nbsp;</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:center;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dd_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DNpW6rlkPwwtSLfdKxtwN9foDj25g=
+xMDt0MSuciVjL44&amp;e=3D">Register</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Dd_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DNpW6rlkPwwtSLfdKxtwN9foDj25gxMDt0MSuciVjL44=
+&amp;e=3D" style=3D"width:72.75pt" filled=3D"f" strokecolor=3D"#460273" str=
+okeweight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt=
+,9pt,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068=
+C;font-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-hei=
+ght-rule:exactly;mso-text-raise:1.5px">Register</center></v:textbox></v:rec=
+t><![endif]--></div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 20px;font-si=
+ze: 1px;">&nbsp;</div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Mastering the Informational Interview or =
+Coffee Chat (with Employers)</strong></h3><p style=3D"Margin-top: 12px;Marg=
+in-bottom: 0;"><strong>Tuesday, November 18th, 5:30-6:30PM<br>
+Wasserman USQ&nbsp;</strong></p><p style=3D"Margin-top: 20px;Margin-bottom:=
+ 20px;">Join this session and hear from employers as they provide valuable =
+insight into the informational interview. Learn how to initiate coffee chat=
+s, conduct conversations, and build connections. Whether you&#8217;re inter=
+ested in networking with recruiters or alumni, this session will equip you =
+with the knowledge needed to embark on your career exploration journey.</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:center;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dh_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DoZGaiiofi9lkzINtj3XvWjIlFn6j=
+eIvQt67UrtBPTIY&amp;e=3D">Register</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Dh_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DoZGaiiofi9lkzINtj3XvWjIlFn6jeIvQt67UrtBPTIY=
+&amp;e=3D" style=3D"width:72.75pt" filled=3D"f" strokecolor=3D"#460273" str=
+okeweight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt=
+,9pt,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068=
+C;font-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-hei=
+ght-rule:exactly;mso-text-raise:1.5px">Register</center></v:textbox></v:rec=
+t><![endif]--></div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #ffffff;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #ffffff;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top gnd-corner-image-bottom" style=3D"border: 0;display: block;heigh=
+t: auto;width: 100%;max-width: 360px;" alt=3D"Professional Development" wid=
+th=3D"360" src=3D"https://i5.cmail20.com/ei/d/B9/1D5/26F/063759/csfinal/Pro=
+fDev2-990000079e03cf3c.png">
+        </div>
+     =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Resources</strong></h3><h3 class=3D"size-=
+16" style=3D"Margin-top: 12px;Margin-bottom: 0;font-style: normal;font-weig=
+ht: normal;color: #000;font-size: 16px;line-height: 24px;" lang=3D"x-size-1=
+6"><strong>Beyond the Professoriate</strong></h3><p style=3D"Margin-top: 12=
+px;Margin-bottom: 0;"><a style=3D"text-decoration: underline;transition: op=
+acity 0.1s ease-in;color: #e84526;" data-emb-iscopy=3D"true" href=3D"https:=
+//urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmai=
+l20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dk_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8=
+n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_=
+Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DCfpH9FZKf6-zEXJgntQ6ZPrr=
+sRiDkInt7YgaFj6CCbo&amp;e=3D">Beyond&nbsp;the&nbsp;Professoriate</a>&nbsp;i=
+s a professional development tool where doctoral students and postdocs can&=
+nbsp;<strong>explore your career options</strong>,&nbsp;<strong>make inform=
+ed career decisions</strong>,=20
+and&nbsp;<strong>learn proven job search strategies</strong>.&nbsp;</p><p s=
+tyle=3D"Margin-top: 20px;Margin-bottom: 0;"><span style=3D"text-decoration:=
+ inherit;color: #000000;"><strong>Big Interview</strong></span></p><p style=
+=3D"Margin-top: 20px;Margin-bottom: 0;"><a style=3D"text-decoration: underl=
+ine;transition: opacity 0.1s ease-in;color: #e84526;" href=3D"https://urlde=
+fense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com=
+_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Du_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbe=
+O0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlH=
+bqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DKfUbaT_ZWyKlVcbpVGp6uF5UnhqiYKN=
+1tCOkbrLcplc&amp;e=3D">Big&nbsp;Interview</a>'s proven, step-by-step system=
+ combines expert video lessons and interactive&nbsp;interview&nbsp;practice=
+ tools to help students land their dream job. Through this career tool, stu=
+dents will get hands-on practice with mock interviews tailored to their spe=
+cific industry, job, and experience level.&nbsp;</p><h3 class=3D"size-16" s=
+tyle=3D"Margin-top: 20px;Margin-bottom: 0;font-style: normal;font-weight: n=
+ormal;color: #000;font-size:=20
+16px;line-height: 24px;" lang=3D"x-size-16"><strong>Wasserman Headshot Phot=
+o Booth</strong></h3><p style=3D"Margin-top: 12px;Margin-bottom: 0;">Visit =
+the Headshot Photo Booth at the Wasserman Union Square location anytime the=
+ office is open to use the self-service booth. You can even borrow professi=
+onal clothing from the career closet for your photo! <a style=3D"text-decor=
+ation: underline;transition: opacity 0.1s ease-in;color: #e84526;" data-emb=
+-iscopy=3D"true" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps=
+-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Do_&a=
+mp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg=
+&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&a=
+mp;s=3DrWlC3D8p-Q2HHAT93CFWt9RFdV7tiEOrnWVRj_BAxUI&amp;e=3D">Read more here=
+.</a>&nbsp;</p><h3 class=3D"size-16" style=3D"Margin-top: 20px;Margin-botto=
+m: 0;font-style: normal;font-weight: normal;color: #000;font-size: 16px;lin=
+e-height: 24px;" lang=3D"x-size-16"><strong>LinkedIn Learning</strong></h3>=
+<p style=3D"Margin-top: 12px;Margin-bottom: 0;">NYU provides no-cost access=
+ to <a style=3D"text-decoration:=20
+underline;transition: opacity 0.1s ease-in;color: #e84526;" data-emb-iscopy=
+=3D"true" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__ny=
+ugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Db_&amp;d=3D=
+DwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=
+=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=
+=3Dz1ihRRf_2V-39536tdmAUOwlqe01mWx8iilSJOYEnhI&amp;e=3D">LinkedIn Learning<=
+/a> with thousands of online how-to tutorials taught by real-world professi=
+onals covering topics that include technology, business, and creative skill=
+s. You'll find tutorials on personal branding, video editing,&nbsp; Google =
+Sheets, and much more.&nbsp;</p><h3 class=3D"size-16" style=3D"Margin-top: =
+20px;Margin-bottom: 0;font-style: normal;font-weight: normal;color: #000;fo=
+nt-size: 16px;line-height: 24px;" lang=3D"x-size-16"><strong>Focus 2 Career=
+</strong></h3><p style=3D"Margin-top: 12px;Margin-bottom: 0;"><a style=3D"t=
+ext-decoration: underline;transition: opacity 0.1s ease-in;color: #e84526;"=
+ data-emb-iscopy=3D"true" href=3D"https://urldefense.proofpoint.com/v2/url?=
+u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthul=
+ju-2Dn_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZt=
+S8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT=
+5k2uPRk&amp;s=3D0oQYUCWIG7jEjMZFbzpk4dO6ibB7cE7wc6Xkt0s15so&amp;e=3D">Explo=
+re different career options</a>&nbsp;through interactive, online assessment=
+s. Reflect on your values, skills, and interests and relate them to possibl=
+e career paths!</p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div style=3D"mso-line-height-rule: exactly;line-height: 20px;font-si=
+ze: 20px;">&nbsp;</div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #ffffff;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #ffffff;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top gnd-corner-image-bottom" style=3D"border: 0;display: block;heigh=
+t: auto;width: 100%;max-width: 360px;" alt=3D"Fellowships & Awards" width=
+=3D"360" src=3D"https://i6.cmail20.com/ei/d/B9/1D5/26F/063759/csfinal/FA-99=
+0000079e03cf3c.png">
+        </div>
+     =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 5px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 1px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h2 class=3D"size-20" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-20"><strong>Reminder: Use Fellowship Databases!</stro=
+ng></h2><p style=3D"Margin-top: 16px;Margin-bottom: 20px;">GSAS Fellowships=
+ encourages you to view their <a style=3D"text-decoration: underline;transi=
+tion: opacity 0.1s ease-in;color: #e84526;" data-emb-iscopy=3D"true" href=
+=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaf=
+fairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dp_&amp;d=3DDwMFaQ&amp;c=
+=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANB=
+Y9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DkAkY3V8vOZzr=
+HaqsVWw0-_sNTi8iuxiCvlE9QR2GEAE&amp;e=3D">website</a>. But fellowship datab=
+ases and guides on our <a style=3D"text-decoration: underline;transition: o=
+pacity 0.1s ease-in;color: #e84526;" data-emb-iscopy=3D"true" href=3D"https=
+://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cma=
+il20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dx_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE=
+8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4=
+_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3Dz2wepGKD2Xxn3qTjznoShHJ=
+EYkOzD1TSgZ0VlnxHW04&amp;e=3D">External Resources page</a> can also be help=
+ful! &nbsp; &nbsp; &nbsp; &nbsp;</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 1px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top" style=3D"border: 0;display: block;height: auto;width: 100%;max-=
+width: 900px;" alt=3D"" width=3D"600" src=3D"https://i7.cmail20.com/ei/d/B9=
+/1D5/26F/063759/csfinal/Screenshot2025-09-09143346-6b4d03b45dde9881.png">
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top: =
+20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Lafayette Fellowship</strong></h3><p styl=
+e=3D"Margin-top: 12px;Margin-bottom: 0;"><em>Benefits:</em></p><ul style=3D=
+"Margin-top: 20px;Margin-bottom: 0;Margin-left: 24px;padding: 0;list-style-=
+type: disc;"><li style=3D"Margin-top: 20px;Margin-bottom: 0;Margin-left: 0;=
+">A &#8364;1,500 monthly stipend from mid-July 2026 through the end of June=
+ 2027 to cover living expenses</li><li style=3D"Margin-top: 0;Margin-bottom=
+: 0;Margin-left: 0;">One year of tuition at a partner French institution fo=
+r eligible programs</li><li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-=
+left: 0;">Application fee waivers for French academic institutions and mast=
+er&#8217;s programs</li><li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-=
+left: 0;">Student=20
+visa fee waivers for one academic year&nbsp;</li><li style=3D"Margin-top: 0=
+;Margin-bottom: 0;Margin-left: 0;">A round-trip flight to and from France a=
+t the start and end of the program</li><li style=3D"Margin-top: 0;Margin-bo=
+ttom: 0;Margin-left: 0;">Coverage of travel costs and activities related to=
+ the French-American Leadership Program</li></ul><p style=3D"Margin-top: 20=
+px;Margin-bottom: 0;"><strong>Application Deadline: November 30, 2025</stro=
+ng></p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">The <strong>Lafayett=
+e Fellowship</strong> is a prestigious new graduate fellowship in France fo=
+r tomorrow&#8217;s leaders. Partnering with 15 of the top French higher edu=
+cation institutions, one year of master&#8217;s-level studies are available=
+ across science, technology, engineering, and mathematics (STEM); the human=
+ities and social sciences; and the arts, either in French or entirely in=20
+English.</p><p style=3D"Margin-top: 20px;Margin-bottom: 0;">In addition to =
+their academic studies, fellows will take part in the French-American Leade=
+rship Program, which explores the future of the transatlantic relationship =
+and provides a 360-degree immersion into European innovation, culture, and =
+policy, as well as access to an international network of mentors.</p><p sty=
+le=3D"Margin-top: 20px;Margin-bottom: 0;"><em>Open to:</em></p><ul style=3D=
+"Margin-top: 20px;Margin-bottom: 20px;Margin-left: 24px;padding: 0;list-sty=
+le-type: disc;"><li style=3D"Margin-top: 20px;Margin-bottom: 0;Margin-left:=
+ 0;">U.S. citizens</li><li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-l=
+eft: 0;">Applicants who will be under 27 years of age on July 1, 2026</li><=
+li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-left: 0;">Possessors of a=
+ Bachelor&#8217;s degree from a U.S. institution earned between August 2023=
+ and June=20
+2026</li><li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-left: 0;">3.7 m=
+inimum GPA</li><li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-left: 0;"=
+>STEM, humanities, social sciences, and arts students interested in address=
+ing global challenges in a French-American context</li><li style=3D"Margin-=
+top: 0;Margin-bottom: 0;Margin-left: 0;">French proficiency not required</l=
+i></ul>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 1px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout two-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 300px" valign=3D"top" class=3D"=
+w260"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;max-wid=
+th: 320px;min-width: 300px; width: 320px;width: calc(12300px - 2000%);Float=
+: left;">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:left;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dm_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DAkfVztoEwGFr8lTz7WlfI7p1gJgu=
+ZtmY2dux4O1EIwo&amp;e=3D">Read More</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Dm_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DAkfVztoEwGFr8lTz7WlfI7p1gJguZtmY2dux4O1EIwo=
+&amp;e=3D" style=3D"width:84pt" filled=3D"f" strokecolor=3D"#460273" stroke=
+weight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt,9p=
+t,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068C;f=
+ont-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-height=
+-rule:exactly;mso-text-raise:1.5px">Read More</center></v:textbox></v:rect>=
+<![endif]--></div>
+    </div>
+         =20
+          </div>
+        <!--[if mso]></td><td style=3D"width: 300px" valign=3D"top" class=
+=3D"w260"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;max-wid=
+th: 320px;min-width: 300px; width: 320px;width: calc(12300px - 2000%);Float=
+: left;">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:right;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dc_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DgsPmtw7_CiqrOECyRLimifUl323u=
+oPpDBP3VBXNc4FE&amp;e=3D">Apply Now</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Dc_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DgsPmtw7_CiqrOECyRLimifUl323uoPpDBP3VBXNc4FE=
+&amp;e=3D" style=3D"width:84pt" filled=3D"f" strokecolor=3D"#460273" stroke=
+weight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt,9p=
+t,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068C;f=
+ont-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-height=
+-rule:exactly;mso-text-raise:1.5px">Apply Now</center></v:textbox></v:rect>=
+<![endif]--></div>
+    </div>
+         =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top" style=3D"border: 0;display: block;height: auto;width: 100%;max-=
+width: 900px;" alt=3D"" width=3D"600" src=3D"https://i8.cmail20.com/ei/d/B9=
+/1D5/26F/063759/csfinal/Tier4GrapevineBanners11-9900000000079e3c.png">
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top: =
+20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>2026-27 Language Fellowships from the Bla=
+kemore Foundation</strong></h3><p style=3D"Margin-top: 12px;Margin-bottom: =
+0;"><em>Benefits:</em></p><ul style=3D"Margin-top: 20px;Margin-bottom: 0;Ma=
+rgin-left: 24px;padding: 0;list-style-type: disc;"><li style=3D"Margin-top:=
+ 20px;Margin-bottom: 0;Margin-left: 0;">Full tuition and stipend for living=
+, travel, and study expenses</li></ul><p style=3D"Margin-top: 20px;Margin-b=
+ottom: 0;"><em><strong>Application Deadline: December 30th, 2025 at 11:00 P=
+M PST</strong></em></p><p style=3D"Margin-top: 20px;Margin-bottom: 0;"><str=
+ong>Blakemore Foundation Asian Language Fellowships</strong> are awarded fo=
+r one academic year for the advanced study of Chinese (in Taiwan), Japanese=
+, Korean,=20
+Indonesian, Khmer, Thai, or Vietnamese in Asia. Study of Chinese at Tsinghu=
+a University in Beijing is also available as a Blakemore Fellowship.</p><p =
+style=3D"Margin-top: 20px;Margin-bottom: 0;"><em>Open to:</em></p><ul style=
+=3D"Margin-top: 20px;Margin-bottom: 0;Margin-left: 24px;padding: 0;list-sty=
+le-type: disc;"><li style=3D"Margin-top: 20px;Margin-bottom: 0;Margin-left:=
+ 0;">U.S. citizens or permanent residents</li><li style=3D"Margin-top: 0;Ma=
+rgin-bottom: 0;Margin-left: 0;">Graduate students and young/mid-career prof=
+essionals planning to use referenced language(s) in their career</li><li st=
+yle=3D"Margin-top: 0;Margin-bottom: 0;Margin-left: 0;">Have completed at mi=
+nimum the third year of study of the Asian language, and ready to advance t=
+o professional fluency</li></ul><p style=3D"Margin-top: 20px;Margin-bottom:=
+ 0;"><strong>Blakemore Kingfisher Art History Language Fellowships </strong=
+>are awarded=20
+for 9-12 months for study of Chinese or Korean in East Asia, who have a wel=
+l-demonstrated intent to study the pre-twentieth century history of Chinese=
+ or Korean art at the doctoral level.</p><p style=3D"Margin-top: 20px;Margi=
+n-bottom: 0;"><em>Open to:</em></p><ul style=3D"Margin-top: 20px;Margin-bot=
+tom: 20px;Margin-left: 24px;padding: 0;list-style-type: disc;"><li style=3D=
+"Margin-top: 20px;Margin-bottom: 0;Margin-left: 0;">U.S. and Canadian citiz=
+ens or permanent residents and foreign nationals studying in U.S. or Canadi=
+an colleges</li><li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-left: 0;=
+">Interest in pursuing doctoral degree in pre-twentieth century Chinese or =
+Korean art history</li><li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-l=
+eft: 0;">Have completed at minimum the second year of study of the Asian la=
+nguage in rigorous college-level language programs</li></ul>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 1px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout two-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 300px" valign=3D"top" class=3D"=
+w260"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;max-wid=
+th: 320px;min-width: 300px; width: 320px;width: calc(12300px - 2000%);Float=
+: left;">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:left;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dq_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DQNOejYcgXChCHTRA7KjMXSGPCqua=
+P2xqJuW6jDQq4pM&amp;e=3D">Read More</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Dq_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DQNOejYcgXChCHTRA7KjMXSGPCquaP2xqJuW6jDQq4pM=
+&amp;e=3D" style=3D"width:84pt" filled=3D"f" strokecolor=3D"#460273" stroke=
+weight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt,9p=
+t,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068C;f=
+ont-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-height=
+-rule:exactly;mso-text-raise:1.5px">Read More</center></v:textbox></v:rect>=
+<![endif]--></div>
+    </div>
+         =20
+          </div>
+        <!--[if mso]></td><td style=3D"width: 300px" valign=3D"top" class=
+=3D"w260"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;max-wid=
+th: 320px;min-width: 300px; width: 320px;width: calc(12300px - 2000%);Float=
+: left;">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:right;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Da_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3Dabya69qgOpW_S_IyR9y8cHndlT5Y=
+HYM1Rf14BnhbrjU&amp;e=3D">Apply Now</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Da_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3Dabya69qgOpW_S_IyR9y8cHndlT5YHYM1Rf14BnhbrjU=
+&amp;e=3D" style=3D"width:84pt" filled=3D"f" strokecolor=3D"#460273" stroke=
+weight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt,9p=
+t,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068C;f=
+ont-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-height=
+-rule:exactly;mso-text-raise:1.5px">Apply Now</center></v:textbox></v:rect>=
+<![endif]--></div>
+    </div>
+         =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top" style=3D"border: 0;display: block;height: auto;width: 100%;max-=
+width: 900px;" alt=3D"" width=3D"600" src=3D"https://i9.cmail20.com/ei/d/B9=
+/1D5/26F/063759/csfinal/SidallFlyer-IG-3abdf3129c3ffbea.png">
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top: =
+20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Siddall Sheffield Scholarship</strong></h=
+3><p style=3D"Margin-top: 12px;Margin-bottom: 0;"><em>Benefits:</em></p><ul=
+ style=3D"Margin-top: 20px;Margin-bottom: 0;Margin-left: 24px;padding: 0;li=
+st-style-type: disc;"><li style=3D"Margin-top: 20px;Margin-bottom: 0;Margin=
+-left: 0;">Full tuition fees for one year Master&#8217;s in Engineering pro=
+gram at the University of Sheffield</li><li style=3D"Margin-top: 0;Margin-b=
+ottom: 0;Margin-left: 0;">Stipend of &#163;18,000</li></ul><p style=3D"Marg=
+in-top: 20px;Margin-bottom: 0;"><em><strong>Application Deadline: January 1=
+3, 2026 at 5:00 PM UK time</strong></em></p><p style=3D"Margin-top: 20px;Ma=
+rgin-bottom: 0;">The <strong>Siddall Sheffield Scholarship</strong> recogni=
+zes academic=20
+excellence, promise of advancement of the Engineering field, and civic enga=
+gement in sponsoring prospective Engineering students to study at the Unive=
+rsity of Sheffield in the UK. Please note you must first apply to the Engin=
+eering Masters program to be considered for this award.</p><p style=3D"Marg=
+in-top: 20px;Margin-bottom: 0;"><em>Open to:</em></p><ul style=3D"Margin-to=
+p: 20px;Margin-bottom: 0;Margin-left: 24px;padding: 0;list-style-type: disc=
+;"><li style=3D"Margin-top: 20px;Margin-bottom: 0;Margin-left: 0;">US citiz=
+en who has formerly studied in the US, is a non-UK resident, and has not li=
+ved in the UK</li><li style=3D"Margin-top: 0;Margin-bottom: 0;Margin-left: =
+0;">Holds a Bachelor degree in a relevant field before UK departure</li><li=
+ style=3D"Margin-top: 0;Margin-bottom: 0;Margin-left: 0;">Preferred GPA of =
+3.7 or higher</li></ul><p style=3D"Margin-top: 20px;Margin-bottom: 0;">&nbs=
+p;</p><p=20
+style=3D"Margin-top: 20px;Margin-bottom: 20px;">Join the University of Shef=
+field Postgraduate <a style=3D"text-decoration: underline;transition: opaci=
+ty 0.1s ease-in;color: #e84526;" href=3D"https://urldefense.proofpoint.com/=
+v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2D=
+hlwthulju-2Df_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1=
+KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT=
+3uuIgvT5k2uPRk&amp;s=3DvBotPKJXJmQu2nT_K26fhgkujkiQ_bBB4toOoCCFdtE&amp;e=3D=
+">online open day</a> on <strong>Wednesday 26 November 2025</strong> to lea=
+rn more about the postgraduate programs available.</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 1px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout two-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 300px" valign=3D"top" class=3D"=
+w260"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;max-wid=
+th: 320px;min-width: 300px; width: 320px;width: calc(12300px - 2000%);Float=
+: left;">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:left;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dv_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DPHzdcFSXpzQvmH2Zgtbb66LDnjv6=
+G_79LQYTKWKQdU8&amp;e=3D">Read More</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Dv_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DPHzdcFSXpzQvmH2Zgtbb66LDnjv6G_79LQYTKWKQdU8=
+&amp;e=3D" style=3D"width:84pt" filled=3D"f" strokecolor=3D"#460273" stroke=
+weight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt,9p=
+t,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068C;f=
+ont-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-height=
+-rule:exactly;mso-text-raise:1.5px">Read More</center></v:textbox></v:rect>=
+<![endif]--></div>
+    </div>
+         =20
+          </div>
+        <!--[if mso]></td><td style=3D"width: 300px" valign=3D"top" class=
+=3D"w260"><![endif]-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;max-wid=
+th: 320px;min-width: 300px; width: 320px;width: calc(12300px - 2000%);Float=
+: left;">
+         =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:right;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2De_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DA6kpcHvZeRooaWQCQOZ3UUB8eCzh=
+deINBTfb9STAzck&amp;e=3D">Apply Now</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2De_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DA6kpcHvZeRooaWQCQOZ3UUB8eCzhdeINBTfb9STAzck=
+&amp;e=3D" style=3D"width:84pt" filled=3D"f" strokecolor=3D"#460273" stroke=
+weight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt,9p=
+t,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068C;f=
+ont-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-height=
+-rule:exactly;mso-text-raise:1.5px">Apply Now</center></v:textbox></v:rect>=
+<![endif]--></div>
+    </div>
+         =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #ffffff;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #ffffff;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top gnd-corner-image-bottom" style=3D"border: 0;display: block;heigh=
+t: auto;width: 100%;max-width: 361px;" alt=3D"Career & Internship Opportuni=
+ties" width=3D"361" src=3D"https://i10.cmail20.com/ei/d/B9/1D5/26F/063759/c=
+sfinal/CIO-990145079e03cf3c.png">
+        </div>
+     =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 5px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 5px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>Apply Now for 2026 Summer Internships at =
+RAND</strong></h3><p style=3D"Margin-top: 12px;Margin-bottom: 0;">The <stro=
+ng>RAND Summer Associate Program</strong> introduces outstanding graduate s=
+tudents to RAND, an institution that conducts research on a wide range of d=
+omestic and international social policy issues and matters of national secu=
+rity. Summer Associates work at RAND full-time for a 12-week period during =
+the summer and are given the opportunity to conduct research while mentored=
+ by an experienced researcher.</p><p style=3D"Margin-top: 20px;Margin-botto=
+m: 0;">The program is designed for full-time students who have completed at=
+ least two years of graduate work leading to a doctorate (e.g., PhD, EDD, D=
+RPH, SciD,=20
+etc.) or professional degree (e.g., law or medical degree, professional eng=
+ineer certificate). Students must be enrolled full-time in a graduate degre=
+e program during the spring and fall of 2026 to be considered for the progr=
+am.</p><p style=3D"Margin-top: 20px;Margin-bottom: 20px;"><strong>Applicati=
+ons are open now and due by&nbsp;December 1, 2025, 11:59 p.m. Pacific Time<=
+/strong>.</p>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div class=3D"btn btn--ghost btn--large" style=3D"text-align:center;">
+        <!--[if !mso]><!--><a style=3D"border-radius: 0;display: inline-blo=
+ck;font-size: 14px;font-weight: bold;line-height: 24px;padding: 12px 24px;t=
+ext-align: center;text-decoration: none !important;transition: opacity 0.1s=
+ ease-in;color: #57068c !important;border: 1px solid #460273;font-family: P=
+T Sans, Trebuchet MS, sans-serif;border-color: #57068c;" href=3D"https://ur=
+ldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.=
+com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Ds_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-K=
+JlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DWneRVbACvVlI6jvDlwn_1nX2K9oK=
+-LjZwvOweagMMyM&amp;e=3D">Read More</a><!--<![endif]-->
+      <!--[if mso]><p style=3D"line-height:0;margin:0;">&nbsp;</p><v:rect x=
+mlns:v=3D"urn:schemas-microsoft-com:vml" href=3D"https://urldefense.proofpo=
+int.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgj=
+rjkhl-2Dhlwthulju-2Ds_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2=
+HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DWneRVbACvVlI6jvDlwn_1nX2K9oK-LjZwvOweagMMyM=
+&amp;e=3D" style=3D"width:84pt" filled=3D"f" strokecolor=3D"#460273" stroke=
+weight=3D"1px"><v:textbox style=3D"mso-fit-shape-to-text:t" inset=3D"0pt,9p=
+t,0pt,9pt"><center style=3D"font-size:14px;line-height:24px;color:#57068C;f=
+ont-family:PT Sans,Trebuchet MS,sans-serif;font-weight:bold;mso-line-height=
+-rule:exactly;mso-text-raise:1.5px">Read More</center></v:textbox></v:rect>=
+<![endif]--></div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 5px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #eee6f3;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #eee6f3;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;line-height: 5px;font-siz=
+e: 1px;">&nbsp;</div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <h3 class=3D"size-18" style=3D"Margin-top: 0;Margin-bottom: 0;font-=
+style: normal;font-weight: normal;color: #000;font-size: 17px;line-height: =
+26px;" lang=3D"x-size-18"><strong>New Career Resource: Interstride</strong>=
+</h3><p style=3D"Margin-top: 12px;Margin-bottom: 0;">OGS and the Wasserman =
+Center have teamed up to bring the NYU community a great new resource for i=
+nternational students as well as students looking to work abroad. <strong>I=
+nterstride is an interactive portal to support your global job search. </st=
+rong>Access resources for navigating the immigration journey, find jobs fro=
+m international-student friendly employers, access country guides supportin=
+g job searches across the globe, and more! Students can find&nbsp;<a style=
+=3D"text-decoration: underline;transition: opacity 0.1s ease-in;color: #e84=
+526;" data-emb-iscopy=3D"true" href=3D"https://urldefense.proofpoint.com/v2=
+/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2Dhl=
+wthulju-2Dg_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1Ke=
+qHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3u=
+uIgvT5k2uPRk&amp;s=3DZFizDpvqbd4KyL4fP0nZR9K_XsWW7RmGCMpYhB1jN0Q&amp;e=3D">=
+Interstride at NYUHome</a>.</p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      <div class=3D"layout one-col fixed-width stack" style=3D"Margin: 0 au=
+to;max-width: 600px;min-width: 320px; width: 320px;width: calc(28000% - 167=
+400px);overflow-wrap: break-word;word-wrap: break-word;word-break: break-wo=
+rd;">
+        <div class=3D"layout__inner" style=3D"border-collapse: collapse;dis=
+play: table;width: 100%;background-color: #ffffff;">
+        <!--[if mso]><table align=3D"center" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr class=3D"layout-fixed-width" style=3D"back=
+ground-color: #ffffff;"><td style=3D"width: 600px" class=3D"w560"><![endif]=
+-->
+          <div class=3D"column" style=3D"text-align: left;color: #6b6b6b;fo=
+nt-size: 16px;line-height: 24px;font-family: PT Serif,Georgia,serif;">
+       =20
+        <div style=3D"font-size: 12px;font-style: normal;font-weight: norma=
+l;line-height: 19px;" align=3D"center">
+          <img class=3D"gnd-corner-image gnd-corner-image-center gnd-corner=
+-image-top" style=3D"border: 0;display: block;height: auto;width: 100%;max-=
+width: 397px;" alt=3D"Have Questions? Stay connected with GSAS social media=
+!" width=3D"397" src=3D"https://i1.cmail20.com/ei/d/B9/1D5/26F/063759/csfin=
+al/QuestionsLastTime-38cc8a5f609b542a.png">
+        </div>
+     =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;Margin-top: =
+20px;">
+      <div>
+        <div style=3D"padding-top: 8px; text-align: left"><span style=3D"pa=
+dding-right: 4px;"><a style=3D"text-decoration: underline;transition: opaci=
+ty 0.1s ease-in;color: #e84526;display: inline-block;" href=3D"https://urld=
+efense.proofpoint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.co=
+m_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dw_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJb=
+eO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJl=
+Hbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3Dio0X-xaKX4wVrqvcVVr_HPTREfHDjw=
+2-UYPJBqKRrpU&amp;e=3D"><img style=3D"border: 0;" src=3D"https://i1.cmail20=
+.com/static/eb/master/13-the-blueprint-3/images/socialmedia/facebook-brandc=
+olor-small-circle.png" alt=3D"Facebook" height=3D"24" width=3D"24" cm_donti=
+mportimage></a></span><span style=3D"padding-right: 4px;"><a style=3D"text-=
+decoration: underline;transition: opacity 0.1s ease-in;color: #e84526;displ=
+ay: inline-block;" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhtt=
+ps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dyd=
+_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-=
+gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPR=
+k&amp;s=3D1OETqm86ZAYO8HWXCA1G-47ClrfPCxHyxRn_UwN7emE&amp;e=3D"><img style=
+=3D"border: 0;"=20
+src=3D"https://i4.cmail20.com/static/eb/master/13-the-blueprint-3/images/so=
+cialmedia/twitter-brandcolor-small-circle.png" alt=3D"Twitter" height=3D"24=
+" width=3D"24" cm_dontimportimage></a></span><span style=3D"padding-right: =
+4px;"><a style=3D"text-decoration: underline;transition: opacity 0.1s ease-=
+in;color: #e84526;display: inline-block;" href=3D"https://urldefense.proofp=
+oint.com/v2/url?u=3Dhttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dg=
+jrjkhl-2Dhlwthulju-2Dyh_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;=
+r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z=
+2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=3DGzh_8f_yHcbsWUUbk6yZo_VkM5XmqfE3RU8iM2IWHe=
+o&amp;e=3D"><img style=3D"border: 0;" src=3D"https://i10.cmail20.com/static=
+/eb/master/13-the-blueprint-3/images/socialmedia/instagram-brandcolor-small=
+-circle.png" alt=3D"Instagram" height=3D"24" width=3D"24" cm_dontimportimag=
+e></a></span><span style=3D"padding-right: 4px;"><a style=3D"text-decoratio=
+n: underline;transition: opacity 0.1s ease-in;color: #e84526;display: inlin=
+e-block;" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__ny=
+ugsasstudentaffairs.cmail20.com_t_d-2Dl-2Dgjrjkhl-2Dhlwthulju-2Dyk_&amp;d=
+=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp=
+;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2uPRk&amp;s=
+=3DJ7Sj8suiQmf07jzeANohVxP03EQ3wrq9JaDRlmkQbmQ&amp;e=3D"><img style=3D"bord=
+er: 0;" src=3D"https://i2.cmail20.com/static/eb/master/13-the-blueprint-3/i=
+mages/socialmedia/linkedin-brandcolor-small-circle.png" alt=3D"LinkedIn" he=
+ight=3D"24" width=3D"24" cm_dontimportimage></a></span></div>
+      </div>
+    </div>
+       =20
+            <div style=3D"Margin-left: 20px;Margin-right: 20px;">
+      <div style=3D"mso-line-height-rule: exactly;mso-text-raise: 11px;vert=
+ical-align: middle;">
+        <p class=3D"size-11" style=3D"Margin-top: 0;Margin-bottom: 0;font-s=
+ize: 11px;line-height: 19px;" lang=3D"x-size-11"><span style=3D"text-decora=
+tion: inherit;color: #bfbfbf;"><em>Note: Clicking unsubscribe will unsubscr=
+ibe you from&nbsp;<strong>all</strong>&nbsp;emails from the Graduate School=
+ of Arts and Science</em></span></p>
+      </div>
+    </div>
+       =20
+          </div>
+        <!--[if mso]></td></tr></table><![endif]-->
+        </div>
+      </div>
+ =20
+      </div>
+      <div role=3D"contentinfo"><div style=3D"line-height:4px;font-size:4px=
+;" id=3D"footer-top-spacing">&nbsp;</div><div class=3D"layout email-flexibl=
+e-footer email-footer" style=3D"Margin: 0 auto;max-width: 600px;min-width: =
+320px; width: 320px;width: calc(28000% - 167400px);overflow-wrap: break-wor=
+d;word-wrap: break-word;word-break: break-word;" id=3D"footer-content">
+      <div class=3D"layout__inner center-aligned-footer" style=3D"border-co=
+llapse: collapse;display: table;width: 100%;">
+        <!--[if mso]><table style=3D"width: 600px;" align=3D"center" cellpa=
+dding=3D"0" cellspacing=3D"0" role=3D"presentation"><![endif]-->
+        <!--[if mso]><tr class=3D"layout-email-footer"><![endif]-->
+          <div class=3D"column" style=3D"text-align: center;font-size: 12px=
+;line-height: 19px;color: #fff;font-family: PT Serif,Georgia,serif;display:=
+ none;" align=3D"center">
+      <div class=3D"footer-logo emb-logo-margin-box" style=3D"font-size: 26=
+px;line-height: 32px;Margin-top: 6px;Margin-bottom: 7px;color: #7b663d;font=
+-family: Roboto,Tahoma,sans-serif;" align=3D"center">
+        <div emb-flexible-footer-logo align=3D"center"></div>
+      </div>
+    </div>
+        <!--[if mso]></tr><![endif]-->
+        <!--[if mso]><tr class=3D"layout-email-footer"><![endif]-->
+          <div class=3D"column" style=3D"text-align: center;font-size: 12px=
+;line-height: 19px;color: #fff;font-family: PT Serif,Georgia,serif;display:=
+ none;" align=3D"center">
+     =20
+    </div>
+        <!--[if mso]></tr><![endif]-->
+        <!--[if mso]><tr class=3D"layout-email-footer"><![endif]-->
+          <table style=3D"border-collapse: collapse;table-layout: fixed;wid=
+th: 100%;" cellpadding=3D"0" cellspacing=3D"0"><tbody><tr><td><div class=3D=
+"column js-footer-additional-info" style=3D"text-align: center;font-size: 1=
+2px;line-height: 19px;color: #fff;font-family: PT Serif,Georgia,serif;displ=
+ay: inline;width: 100%;" align=3D"center">
+      <div style=3D"margin-left: 0;margin-right: 0;Margin-top: 10px;Margin-=
+bottom: 10px;">
+        <div class=3D"email-footer__additional-info" style=3D"font-size: 12=
+px;line-height: 19px;margin-bottom: 18px;margin-top: 0px;">
+          <div bind-to=3D"address"><p class=3D"email-flexible-footer__addit=
+ionalinfo--center" style=3D"Margin-top: 0;Margin-bottom: 0;">NYU Graduate S=
+chool of Arts and Science</p></div>
+        </div>
+       =20
+       =20
+        <div class=3D"email-footer__additional-info" style=3D"font-size: 12=
+px;line-height: 19px;margin-bottom: 15px;Margin-top: 18px;">
+          <a style=3D"text-decoration: underline;transition: opacity 0.1s e=
+ase-in;color: #fff;" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dh=
+ttps-3A__nyugsasstudentaffairs.cmail20.com_t_d-2Du-2Dgjrjkhl-2Dhlwthulju-2D=
+yu_&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8If=
+j-gIg&amp;m=3D-YwNRcTANBY9CLFOuWw-4_Bm-KJlHbqa2m44Ed7Z2HQwMQGlgT3uuIgvT5k2u=
+PRk&amp;s=3D4SIkBUKfCAWNX-iY10b2rPxnzZuKi8jjmJKlhc2vjW0&amp;e=3D" lang=3D"e=
+n">Unsubscribe</a>
+        </div>
+        <!--[if mso]>&nbsp;<![endif]-->
+      </div>
+    </div></td></tr></tbody></table>
+        <!--[if mso]></tr></table><![endif]-->
+      </div>
+    </div><div style=3D"line-height:0px;font-size:0px;" id=3D"footer-bottom=
+-spacing">&nbsp;</div></div>
+     =20
+    </td></tr></tbody></table>
+  <style type=3D"text/css">
+@media (max-width:619px){.email-flexible-footer .left-aligned-footer .colum=
+n,.email-flexible-footer .center-aligned-footer,.email-flexible-footer .rig=
+ht-aligned-footer .column{max-width:100% !important;text-align:center !impo=
+rtant;width:100% !important}.flexible-footer-logo{margin-left:0px !importan=
+t;margin-right:0px !important}.email-flexible-footer .left-aligned-footer .=
+flexible-footer__share-button__container,.email-flexible-footer .center-ali=
+gned-footer .flexible-footer__share-button__container,.email-flexible-foote=
+r .right-aligned-footer .flexible-footer__share-button__container{display:i=
+nline-block;margin-left:5px !important;margin-right:5px !important}.email-f=
+lexible-footer__additionalinfo--center{text-align:center !important}.email-=
+flexible-footer .left-aligned-footer table,.email-flexible-footer .center-a=
+ligned-footer table,.email-flexible-footer .right-aligned-footer=20
+table{display:table !important;width:100% !important}.email-flexible-footer=
+ .footer__share-button,.email-flexible-footer .email-footer__additional-inf=
+o{margin-left:20px;margin-right:20px}}
+</style><img style=3D"visibility: hidden !important; display: block !import=
+ant; height:1px !important; width:1px !important; border: 0 !important; mar=
+gin: 0 !important; padding: 0 !important" src=3D"https://nyugsasstudentaffa=
+irs.cmail20.com/t/d-o-gjrjkhl-hlwthulju/o.gif" width=3D"1" height=3D"1" bor=
+der=3D"0" alt=3D"">
+</body></html>
+
+
+
+--_bf2512a3-6c29-4f16-bf77-8444949a91ae_--

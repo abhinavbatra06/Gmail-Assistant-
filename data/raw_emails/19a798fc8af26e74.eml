@@ -1,0 +1,711 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:3d90:b0:50b:93c5:eed5 with SMTP id hh16csp452375gdb;
+        Wed, 12 Nov 2025 11:34:17 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH8YZG0fBAQvF5CKoqXGF9R1wQHNdj1ErsoBMggXc44eBqby1dur8V/UKfhswFxbXCjdtEZ
+X-Received: by 2002:a05:620a:190f:b0:8b2:200f:ddc9 with SMTP id af79cd13be357-8b29b76cb0cmr452631985a.9.1762976057406;
+        Wed, 12 Nov 2025 11:34:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762976057; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Vh2Txmpv02dLJrAYJlMhXpKcSzFXhyjLwJFuZbGn49qnfGorOILz+AqBcrnzmp/9Zu
+         lXAjFKCBTBqspTPexDNDcYFGYZKSCB/i/iDXWvUc8VFcT2KM9AmRHHRrXbLowvpwHOR1
+         tn3HxK4SPEbJOjENpzZKUR2BoJe2ZCqA75eqfmHK/l+HF9wnfXUdWtbkNn/CSi1r1kOn
+         GQvHDceafQYKW4Lo701gAT8g1BrPJZMQVchBkPS5u/0FzAwuliTVrZH6TDiOcvPRoK5l
+         3ZIbg96DBdQw6UjDDD8Wy2M9d7NJ0RbiwVLC4Iu2onw82lC7BvaPKck6gWIbWltQLan6
+         iFXw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=feedback-id:precedence:reply-to:message-id:date:to:from:subject
+         :mime-version:dkim-signature:dkim-signature;
+        bh=ipkGcsKI7ynSprDs4JyDLDWB+TKQ5VqxCo9Q4vQYBy8=;
+        fh=uBZigrcT4/eimFWNXbc+e9UoRXYu5p0qUsSILAaGf1U=;
+        b=fLnO3fFSG39GhMCwun0DdoxGHNgAMLxcSfNgSBXiRqI6yFzqZE0w+CUVlWpVrXsuGL
+         bfx+2OJFjEanCuOdCwrRYUMTFpYC/CpaZ6kNz8krioDxxibDugFTtvIgLQA3RS0fQXZT
+         8buAT2t0zDdZ21S2oIF4fQtUp9al3ksSbRMp7ATuJsa6ih6qNfZAj0vx67R04noUmTJi
+         X7EYfzotDSeofqwzVmdUPdd2Zy/ZhOoIyVEZ1sUXl9RgGBzpWKjqmsl7mhcTBilmjeQu
+         nHwHFqD3Fsu8+K/01VU7/x4l0goNRqyBdBqs+AWbx2DBfD28qbUhkgh0RdPdt0IqduvL
+         ZiMA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@nyu.edu header.s=e2ma-k2 header.b="p/PNjLR+";
+       dkim=pass header.i=@e2ma.net header.s=e2ma header.b=GPloOCVJ;
+       spf=pass (google.com: domain of 1071808901.1918341.177663054213@e2ma.net designates 139.60.0.213 as permitted sender) smtp.mailfrom=1071808901.1918341.177663054213@e2ma.net
+Return-Path: <1071808901.1918341.177663054213@e2ma.net>
+Received: from pco01la-2007s.nyu.edu (pco01la-2007s.cfs.its.nyu.edu. [216.165.75.15])
+        by mx.google.com with ESMTPS id af79cd13be357-8b29aa54d4csi136445085a.1864.2025.11.12.11.34.17
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 12 Nov 2025 11:34:17 -0800 (PST)
+Received-SPF: pass (google.com: domain of 1071808901.1918341.177663054213@e2ma.net designates 139.60.0.213 as permitted sender) client-ip=139.60.0.213;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@nyu.edu header.s=e2ma-k2 header.b="p/PNjLR+";
+       dkim=pass header.i=@e2ma.net header.s=e2ma header.b=GPloOCVJ;
+       spf=pass (google.com: domain of 1071808901.1918341.177663054213@e2ma.net designates 139.60.0.213 as permitted sender) smtp.mailfrom=1071808901.1918341.177663054213@e2ma.net
+Received: from mx0b-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-2007s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5ACJYGU51367692
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Wed, 12 Nov 2025 14:34:16 -0500
+Received: from pps.filterd (m0094546.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5ACJObOG2288414
+	for <at6651@nyu.edu>; Wed, 12 Nov 2025 14:34:16 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=1071808901.1918341.177663054213@e2ma.net;
+	dkim=pass header.d=nyu.edu header.s=e2ma-k2;
+	dkim=pass header.d=e2ma.net header.s=e2ma;
+	dmarc=pass header.from=jhefb.e2ma.net
+Received: from mail213-2z9c.e2ma.net (mail213-2z9c.e2ma.net [139.60.0.213])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4acyf6s89q-5
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Wed, 12 Nov 2025 14:34:15 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=e2ma-k2; d=nyu.edu;
+ h=Content-Type:MIME-Version:Subject:From:To:Date:Message-ID:Reply-To:
+ Feedback-ID:from:to:subject:cc;
+ bh=ipkGcsKI7ynSprDs4JyDLDWB+TKQ5VqxCo9Q4vQYBy8=;
+ b=p/PNjLR+GJMW1PdSyXd2MuVD8LdZmiSJbgmeUPsIuNb8nMW33Fzkl2QbUcYRe/1nAfdCtOjIrZwy
+   AtvNZTNL7Q25bu4glFsyGrfFUxvR4pYz6P/3Ye5tbjgFLj+wSCWG7PQ0YK4LvXV/uzLwxnV5So8c
+   +igpzquU3A+aKTPBM77UByu/SfGa0eFtVuOx+LUAa1petirk1dCUPgVRXOZP82WzjESx1xXphYVC
+   BwZca6klr/BQE+Q03uuV8v6YN7skZZXfOGST0b7sVtcH86qoEhLhKIq/ygcvNti5Cgp98XeS/FYY
+   +twRdg/DnrMUyRvR5X9PJzuLh8kyVwCBC/gbXw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=e2ma; d=e2ma.net;
+ h=Content-Type:MIME-Version:Subject:From:To:Date:Message-ID:Reply-To:
+ Feedback-ID; i=@mail213-2z9c.e2ma.net;
+ bh=ipkGcsKI7ynSprDs4JyDLDWB+TKQ5VqxCo9Q4vQYBy8=;
+ b=GPloOCVJrG8yio3lllpMnDEOnDi4YaPc124txscphvm5rqAdmOwe0bfy57O8yP6x1Nusrk4VwgAJ
+   H3vN1I1xi3OxkUlnYQuo1/1Tj6pxo83c980lSxFvOIoyoGW5Vjc5HQB1zSggYqVB1D5BuaQ94glX
+   bUB7IJDKmIR+/nAaPe4=
+Received: by mail213-2z9c.e2ma.net id h2jgje3791st for <at6651@nyu.edu>; Wed, 12 Nov 2025 13:34:09 -0600 (envelope-from <1071808901.1918341.177663054213@e2ma.net>)
+Content-Type: multipart/alternative;
+ boundary="==176297604912693=="
+MIME-Version: 1.0
+Subject: Courant T-Shirt & Hoodie Sale
+From: "NYU Graduate Computer Science" <graduate.cs.nyu.edu@jhefb.e2ma.net>
+To: at6651@nyu.edu
+Date: Wed, 12 Nov 2025 19:34:09 -0000
+Message-ID: <jhefb.rbve0r.j939hwjc@e2ma.net>
+Reply-To: graduate@cs.nyu.edu
+Precedence: bulk
+X-Test-Mailing: no
+Feedback-ID: 1918341:1071808901:1907182_NYU:EMMAFBL
+X-Proofpoint-ORIG-GUID: tUIlC1PA2k8JjV1wa9D2C1BcZvbx1pI0
+X-CLX-Shades: Deliver
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTEyMDE1NyBTYWx0ZWRfX5jJrb0HoUhvI
+ p+qMeYTK/fO+OZdRGtHFWoCCN6NmcsxrKp154vL6ovDmigOBa8ya4bCNE7MzEz13vCN7hEPmuaS
+ Wykr6FJKilfg5OXS4gtxq5HnwILJuhq7R0Z5Q3LmcC40csFjLLVrLDMqgRWXXXIa3rDylCAlgts
+ iBNw9YcdYdm56/wcXDsAipeA/mPYbL3rCbx+LqgMvVNICSjJkvYSbyAd3VIgSp+1N6J+hoG+pMB
+ mZPSaAHxOex8op1J9HuXSObZMvQ/Sb8cLyZiPVFOXL5SEJI6pSu4B8ly3nJItJJuhO/6oswAHJW
+ HtONB645XZIN3MElEJYXD6eKFs2jH5Tzu3707tGFiHHitIHe4wa5332ZMIvXT9e/QyPBVE2IJO4
+ 4U/gwqKWfcNdy2RIKO7afVkbnUBU1A==
+X-Proofpoint-GUID: tUIlC1PA2k8JjV1wa9D2C1BcZvbx1pI0
+X-Authority-Analysis: v=2.4 cv=Fdc6BZ+6 c=1 sm=1 tr=0 ts=6914e137 b=1 cx=c_pps
+ a=EZzyLmfaJYH5PZbs0B61Bw==:117 a=EZzyLmfaJYH5PZbs0B61Bw==:17
+ a=6UeiqGixMTsA:10 a=oNLrAji_rE0A:10 a=S0S_EcBMpFAA:10 a=gS6w1ljqwLwA:10
+ a=Kan8h273Bse8B8Jy5C1n:22 a=5SPPdPmxAAAA:8 a=b60hdlnQCxiUcNTBhV8A:9
+ a=QEXdDO2ut3YA:10 a=6ja5D2yyAAAA:8 a=gB9rhKxzAAAA:8 a=SSmOFEACAAAA:8
+ a=Y2nklWwA6vGl3EhMNmwA:9 a=DBvxoCVHTYf6PVIT:21 a=gKO2Hq4RSVkA:10
+ a=frz4AuCg-hUA:10 a=_W_S_7VecoQA:10 a=Jz3iUO4KJTDyYpqPwFvP:22
+ a=fC04jLmHP2t9t3NKfhzO:22 a=sXmgbADxH74HsudMHiup:22
+X-CLX-Response: 1TFkXGxsaGREKTHoXGhEKWUQXbXhBfHNvG1xhU1wRClhYF2FgRGscWWdsUml
+ eEQp4ThdnfHh6RlNiRGBnExEKeEsXYWBEaxxZZ2xSaV4RCnlMF2NMHAUFU3lZGkQeEQpDSBcHGx
+ IdEQpDWRcHGxkZEQpDSRcaBBoaGhEKWU0Xbk9GQ1xPWBEKX1kXEhoaEQpfTRduT0ZDXE9YEQpZS
+ RcacRoQGncGGBsbcRsYExAadwYYGgYaEQpZXhdsbHkRCklGF0RPXVNFWEFfdUJFWV5PThEKSUcX
+ eE9NEQpDThdef2NGaRt6axhBEmBAfBtdSxNuGGkbaElwXEhSG1pjGhEKWFwXHwQaBB4bGgUbGgQ
+ bGxoEGxkeBBkeEBseGh8aEQpeWRdNeUVyeREKTVwXHR0YEQpMWhdpa21dTV0RCkxGF29ra0Vrax
+ EKQk8XYmdLR2dnQ3t8a2URCkNaFxsZEwQcGgQaBBgbGREKQl4XGxEKWUUXGREKRUkXGxEKRWYXG
+ xEKQkYXbllTRVwfS0dOe28RCkJHF20eTn57H2F7Rm9FEQpCXBcbEQpCSxdibkZFZ35fe0xMGBEK
+ QkkXbElMaB1ca21ifR4RCkJFF2x7QhlbGH16bh0ZEQpCThdsSUxoHVxrbWJ9HhEKQkwXaR5me1x
+ tQn5DX1sRCkJsF2lre0RpZ2MSQ1lnEQpCQBdpYktQbxMBGWRTZBEKQlgXbkJBcFJIQGdCHHwRCl
+ pYFxsZEQp5QxdjY1BcTwVTWntkQBEKWUsXEhweGREKWksXGx4YEhoRCnBnF295fwFjbksdQUVjE
+ BkaEQpwaBd6exkbW2h6e2cfQhAbGxoRCnBoF2YdSFBPWnNSUmVcEBsSEhEKcGgXbQV9HWlCb2JG
+ YE0QEx8RCnBoF2UFa2VheB4fYRtSEBsSGREKcGgXZlNAfhpdfGVzQ2MQGRoRCnBoF28cf1JTGGR
+ oWgVHEBoRCnBoF20YW35fYENcZRlnEBseEhEKcGgXYBhjfBlvfHkFYlwQEh8RCnB9F2FZRHpZaW
+ NhE01bEBoRCnBnF2JzT0NBQBIcAUZeEBsfGBEKcH0Xa2hkcBNBbnpscGQQGhEKcH0XZGRefU17T
+ WRGe18QGhEKcH0XbnhNEkNjGx5Fb2cQGRoRCnB9F2JlEmJnfnJCfnIFEB0SEQpwfRdrQl9nWFpE
+ cx9lBRAZGhEKcH0XaGlBHU1TUBNdWEQQGxscEQpwfRdvcgFITURhYXJ5eBAdGhEKcH8XZRt+GB9
+ FX2UcH2kQExwRCnBfF2J8Q05sSGhGTk4cEBoRCnBfF2dDWUJDSW5FRFwfEBMeEQpwXxdraUF6TR
+ NnbGl+bhAaEQpwfxdkBUtrEhp8eWJYaxAdGxEKcF8XYFBkTk5IXnsSTX4QHR0RCnB/F2dLWh5aR
+ x1wThhdEBwYEQpwXxdlWGRkZV1pWh5NZxAZGhEKcF8XaVteXmhCRU9TElsQGxsYEQpwfxdlQk1e
+ YUJpT0ESWxASHhEKcF8XY0RAY3t+BUB9SH0QExoRCnBsF2hCAVNjYkhoUGV/EBkaEQptfhcaEQp
+ YTRdLESA=
+X-Orig-IP: 139.60.0.213
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-12_06,2025-11-12_01,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Reason: orgsafe
+
+--==176297604912693==
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+To view this email online, paste this link into your browser:
+https://t.e2ma.net/message/rbve0r/j939hwjc
+
+
+
+
+
+Dear Students,
+
+The annual CSO=C2=A0T-shirt=C2=A0and hoodie=C2=A0sale=C2=A0is back! We'll h=
+ave the classic TeXed Courant logo on=C2=A0T-shirts=C2=A0and sweatshirts as=
+ seen in the flyer below.=C2=A0
+
+New this year, we have grey T shirts and XXL sizes for all items!! A portio=
+n of the proceeds from pink T-shirts will be donated to SPECTRA: The Associ=
+ation for LGBTQ+ Mathematicians, in honor of Professor Aleks Donev.
+
+The=C2=A0sale=C2=A0will be=C2=A0Friday, November 21st, 9am-4pm, 13th floor =
+of Warren Weaver Hall. The=C2=A0T-shirts=C2=A0are $20 and the hoodies are $=
+40, everything in black, navy, and green, plus T-shirts in purple, pink, an=
+d grey.=C2=A0The sale is CASH ONLY so be sure=C2=A0to=C2=A0bring some.
+
+Get a=C2=A0shirt=C2=A0for yourself and another as a last-minute Thanksgivin=
+g present for your family and friends! It only happens once a year.=C2=A0
+
+Best,
+
+Department of Computer Science
+
+
+
+
+
+251 Mercer Street | New York, NY 10012 US
+
+This email was sent to at6651@nyu.edu.
+To ensure that you continue receiving our emails,
+please add us to your address book or safe list.
+
+manage your preferences (https://app.e2ma.net/app2/audience/signup/1924486/=
+1918341/1071808901/177663054213/?s=3DbZIxCAz_txZtXNx5k2ugNxJCXi_G9DGODPYOHE=
+DK2Hw)
+opt out (https://t.e2ma.net/optout/rbve0r/j939hwjc?s=3DOexfoAQRP2pQnMvTwXeb=
+iE882RmDrU4ftFbtuhLF_E8) using TrueRemove(r).
+
+Got this as a forward? Sign up (https://app.e2ma.net/app2/audience/signup/1=
+924486/1918341.1071808901/) to receive our future emails.
+--==176297604912693==
+Content-Type: text/html; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html lang=3D"en" xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:o=3D"urn:sch=
+emas-microsoft-com:office:office" xmlns:v=3D"urn:schemas-microsoft-com:vml"=
+><head>
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+   <o:AllowPNG/>
+   <o:PixelsPerInch>96</o:PixelsPerInch>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+
+<!-- Template created from Blank template with editable header -->
+
+<!-- Blank Slate - Editable Header -->
+
+<style type=3D"text/css">
+@media screen and (max-width: 480px) {
+    #block_sqcuhnui .e2ma-holder.e2ma-follow-holder table {
+        width: auto !important;
+        margin: 0 auto
+        }
+    #block_sqcuhnui .e2ma-holder.e2ma-follow-holder table td {
+        display: table-cell !important;
+        float: none !important;
+        width: auto !important;
+        padding-left: 2px !important;
+        padding-right: 2px !important
+        }
+    .e2ma-template html {
+        -webkit-text-size-adjust: none
+        }
+    .e2ma-template .e2ma-combo-content li, .e2ma-template .e2ma-content-blo=
+ck div.e2ma-p-div, .e2ma-template .e2ma-combo-block li, .e2ma-template .e2m=
+a-content-block li, .e2ma-template .e2ma-combo-block div.e2ma-p-div, .e2ma-=
+template .e2ma-combo-content div.e2ma-p-div {
+        font-size: 15px !important
+        }
+    .e2ma-template .e2ma-holder table, .e2ma-template .e2ma-holder table td=
+ {
+        display: table !important;
+        float: none !important;
+        width: 100% !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important
+        }
+    .e2ma-template table.c-collapsed-table {
+        width: calc(100% - 70px) !important
+        }
+    .e2ma-template .e2ma-single-column-layout table {
+        float: none !important;
+        margin: 0 auto
+        }
+    .e2ma-template .e2ma-unsubscribe span, .e2ma-template .business_rsvp {
+        font-size: 12px !important
+        }
+    .e2ma-template .social-sharing {
+        text-align: center !important;
+        padding-bottom: 10px
+        }
+    .e2ma-template .e2ma-layout-column-sidebar-2 img, .e2ma-template .e2ma-=
+layout-column-content img, .e2ma-template .e2ma-single-column-layout img, .=
+e2ma-template .e2ma-layout-column-sidebar-3 img, .e2ma-template .e2ma-layou=
+t-column-sidebar img {
+        /*max-*/
+        width: 100%;
+        height: auto;
+        margin: 0 auto
+        }
+    .e2ma-template img[src*=3D"spacer.gif"] {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        margin: 0 auto
+        }
+    .e2ma-template .footer-social img {
+        width: 44px !important;
+        height: 43px !important;
+        margin: 0 auto
+        }
+    .e2ma-template .share-block {
+        text-align: center !important;
+        margin: 0 auto !important
+        }
+    .e2ma-template .footer-text {
+        text-align: center !important
+        }
+    .e2ma-template .mobile-width {
+        width: 100% !important;
+        padding-left: 10px;
+        padding-right: 10px
+        }
+    .e2ma-template .mobile-width-nopad {
+        width: 100% !important
+        }
+    .e2ma-template .stack, .e2ma-template .e2ma-layout-column-sidebar-3, .e=
+2ma-template .e2ma-layout-column-content, .e2ma-template .e2ma-layout-colum=
+n-sidebar, .e2ma-template .e2ma-layout-column-sidebar-2 {
+        display: block !important;
+        width: 100% !important
+        }
+    .e2ma-template .hide {
+        display: none !important
+        }
+    .e2ma-template .center img, .e2ma-template .center {
+        text-align: center !important;
+        margin: 0 auto
+        }
+    .e2ma-template .scale img, .e2ma-template .editable_image img {
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto
+        }
+    .e2ma-template .addpad {
+        padding: 10px !important
+        }
+    .e2ma-template .addpad-top {
+        padding-top: 10px !important
+        }
+    .e2ma-template .sanpad {
+        padding: 0 !important
+        }
+    .e2ma-template .sanborder {
+        border: none !important
+        }
+    .e2ma-template .emailWrapper {
+        padding: 0 0 !important
+        }
+    }
+.e2ma-template h1, .e2ma-template h2, .e2ma-template h3, .e2ma-template h4,=
+ .e2ma-template h5, .e2ma-template h6 {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline
+    }
+.e2ma-template h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+    line-height: 120%;
+    padding-bottom: 8px
+    }
+.e2ma-template h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    line-height: 125%;
+    padding-bottom: 6px
+    }
+.e2ma-template h3 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    padding-bottom: 2px
+    }
+.e2ma-template h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: italic;
+    color: #333
+    }
+.e2ma-template .e2ma-content-block div.e2ma-p-div, .e2ma-template .e2ma-com=
+bo-block div.e2ma-p-div, .e2ma-template .e2ma-combo-content div.e2ma-p-div,=
+ .e2ma-template .e2ma-content-block li, .e2ma-template .e2ma-combo-block li=
+, .e2ma-template .e2ma-combo-content li {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 150%;
+    color: #333
+    }
+.e2ma-template .e2ma-content-block div.e2ma-p-div, .e2ma-template .e2ma-com=
+bo-block div.e2ma-p-div, .e2ma-template .e2ma-combo-content div.e2ma-p-div,=
+ .e2ma-template .e2ma-content-block table.e2ma-ul-table, .e2ma-template .e2=
+ma-combo-block table.e2ma-ul-table, .e2ma-template .e2ma-combo-content tabl=
+e.e2ma-ul-table, .e2ma-template .e2ma-content-block table.e2ma-ol-table, .e=
+2ma-template .e2ma-combo-block table.e2ma-ol-table, .e2ma-template .e2ma-co=
+mbo-content table.e2ma-ol-table {
+    margin-bottom: 20px;
+    /*padding-bottom: 10px;*/
+    }
+.e2ma-template .e2ma-content-block li, .e2ma-template .e2ma-combo-block li,=
+ .e2ma-template .e2ma-combo-content li {
+    margin-bottom: 6px
+    }
+.e2ma-template #template_container a, .e2ma-template .link {
+    color: #57068c;
+    text-decoration: underline
+    }
+.e2ma-template blockquote {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+    font-style: italic
+    }
+.e2ma-template blockquote div.e2ma-p-div {
+    margin-bottom: 0
+    }
+.e2ma-template .editable_image img {
+    display: block;
+    border: 0
+    }
+.e2ma-template .e2ma-unsubscribe {
+    padding-bottom: 10px
+    }
+.e2ma-template .business_rsvp {
+    font-family: Helvetica, Arial, sans-serif;
+    padding: 10px;
+    color: #666;
+    font-size: 10px
+    }
+.e2ma-template .button-block-border-radius, .e2ma-template .c-collapsed-tab=
+le td {
+    background: #fff !important;
+    border: 1px solid #57068c !important;
+    border-radius: 0.5px !important
+    }
+.e2ma-template .button-block-border-radius a, .e2ma-template .c-collapsed-t=
+able td a {
+    background: #fff !important;
+    border: none !important;
+    border-radius: 0.5px !important;
+    color: #57068c !important;
+    font-weight: bold !important
+    }
+.e2ma-template .e2ma-button {
+    background: #fff
+    }
+.e2ma-template div.e2ma-p-div.inner-button-cell {
+    margin: 0;
+    color: #57068c !important;
+    font-weight: bold !important
+    }
+.e2ma-template .emailWrapper {
+    padding: 0 10px
+    }
+.e2ma-template .social {
+    display: inline-block;
+    margin: auto 10px
+    }
+.e2ma-template .footer-text td {
+    padding-bottom: 20px
+    }
+.e2ma-template .footer-text a {
+    color: #333;
+    text-decoration: underline
+    }
+.e2ma-template .footer-text a:hover {
+    color: #333;
+    text-decoration: none !important
+    }
+</style><meta content=3D"telephone=3Dno" name=3D"format-detection"></head><=
+body class=3D"e2ma-template" style=3D"-moz-osx-font-smoothing: grayscale; -=
+webkit-font-smoothing: antialiased; margin:0; padding:0; width:100% !import=
+ant; background-color: #ffffff">
+=09
+   =20
+   =20
+   =20
+   =20
+   =20
+   =20
+<div style=3D"margin:0; padding:0; width:100% !important; -moz-osx-font-smo=
+othing: grayscale; -webkit-font-smoothing: antialiased; background-color: #=
+ffffff">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" data-e2ma-color=3D"=
+#282828, #f5f5f5" role=3D"presentation" style=3D"font-family: Arial, Helvet=
+ica, sans-serif;font-size: 12px;-moz-osx-font-smoothing: grayscale; -webkit=
+-font-smoothing: antialiased" width=3D"100%">
+<tbody><tr>
+<td align=3D"center" class=3D"sanpad" style=3D"padding:15px 0px">
+<!--Purple Header -->
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mobile-wid=
+th-nopad" role=3D"presentation" style=3D"font-family: Arial, Helvetica, san=
+s-serif;font-size: 12px;background: #57068c; margin-bottom: 10px" width=3D"=
+100%">
+<tbody><tr>
+<td width=3D"100%">
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mobile-width-nopad emailWrapper" role=3D"presentation" style=3D"font=
+-family: Arial, Helvetica, sans-serif;font-size: 12px;padding: 0 10px;paddi=
+ng: 0 10px;width: 660px">
+<tbody><tr>
+<td align=3D"left" class=3D"e2ma-holder" style=3D"padding: 20px 40px; width=
+: 100%; ">
+<img alt=3D"NYU Courant" height=3D"34" src=3D"https://emma-assets.s3.amazon=
+aws.com/kv5eb/cc46885ede045fbade8036e08e6b031b/Courant_Short_Logo_white.png=
+" style=3D"height: 34px; color: #fff; text-align: left">
+</td>
+</tr></tbody>
+</table>
+</td>
+</tr></tbody>
+</table>
+<!-- end Purple Header -->
+<table align=3D"center" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mobile-width-nopad" role=3D"presentation" style=3D"font-family: Aria=
+l, Helvetica, sans-serif;font-size: 12px;width: 660px">
+<tbody><tr>
+<td valign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mobile-wid=
+th-nopad" id=3D"template_container" role=3D"presentation" style=3D"font-fam=
+ily: Arial, Helvetica, sans-serif;font-size: 12px;width: 640px">
+<tbody><tr>
+<td class=3D"emailWrapper" style=3D"padding: 0 10px;padding: 0 10px;padding=
+-bottom:10px" valign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"e2ma-row-r=
+egion-content e2ma-section" style=3D"font-family: Arial, Helvetica, sans-se=
+rif;font-size: 12px" width=3D"100%"><tbody><tr><td class=3D"e2ma-layout-col=
+umn-content">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"e2ma-block=
+-outer" id=3D"block_bqgboapo" style=3D"font-family: Arial, Helvetica, sans-=
+serif;font-size: 12px" width=3D"100%"> <tbody><tr> <td class=3D"e2ma-wrappe=
+r e2ma-image-td" style=3D"padding-right: 0;padding-bottom: 0;padding-left: =
+0;font-size: 12px;line-height: 1.5" valign=3D"top"> <table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"font-family: Arial, Helvetica, sa=
+ns-serif;font-size: 12px" width=3D"100%"> <tbody><tr> <td class=3D"e2ma-hol=
+der" style=3D"padding: 20px 40px 20px 40px;background-color: transparent" v=
+align=3D"top"> <div class=3D"e2ma-content-block"> <div class=3D"e2ma-p-div"=
+ style=3D"display: block;margin-bottom: 10px;font-size: 12px;font-weight: n=
+ormal;line-height: 1.5;font-family: Arial, Helvetica, sans-serif;font-size:=
+ 15px;line-height: 150%;color: #333;margin-bottom: 20px;/*padding-bottom: 1=
+0px*/;font-family: Arial, Helvetica, sans-serif;font-size: 15px;line-height=
+: 150%;color: #333;margin-bottom: 20px;/*padding-bottom: 10px*/;text-align:=
+ left"><span class=3D"e2ma-style" data-darkreader-inline-color=3D"" style=
+=3D"color: rgb(51, 51, 51); --darkreader-inline-color: var(--darkreader-tex=
+t-333333, #c8c3bc)">Dear Students,<br><br></span>The annual CSO&nbsp;T-shir=
+t&nbsp;and hoodie&nbsp;sale&nbsp;is back! We'll have the classic TeXed Cour=
+ant logo on&nbsp;T-shirts&nbsp;and sweatshirts as seen in the flyer below.&=
+nbsp;<br></div>
+</div>
+</td> </tr> </tbody></table> </td> </tr> </tbody></table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"e2ma-block=
+-outer" id=3D"block_sqcuhnui" style=3D"font-family: Arial, Helvetica, sans-=
+serif;font-size: 12px" width=3D"100%"> <tbody><tr> <td style=3D"padding-bot=
+tom:5px"></td> </tr> <tr> <td class=3D"e2ma-wrapper" style=3D"padding-right=
+: 5px;padding-bottom: 5px;padding-left: 5px" valign=3D"top"> <table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"font-family: Arial, Hel=
+vetica, sans-serif;font-size: 12px" width=3D"100%"> <tbody><tr> <td class=
+=3D"e2ma-holder" style=3D"padding: 0 0 0 0;background-color: transparent" v=
+align=3D"top"> <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" styl=
+e=3D"font-family: Arial, Helvetica, sans-serif;font-size: 12px"> <tbody><tr=
+><td valign=3D"top"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0"=
+ style=3D"font-family: Arial, Helvetica, sans-serif;font-size: 12px"><tbody=
+><tr> <td class=3D"e2ma-image-td" style=3D"text-align: center; padding: 0px=
+ 88px 0px 88px; " valign=3D"top"> <img alt=3D"" border=3D"0" height=3D"606"=
+ src=3D"https://d31hzlhk6di2h5.cloudfront.net/20251112/f3/cf/fa/ac/293a6107=
+38565b7551ae373a_908x1212.png" style=3D"display: block" width=3D"454"> </td=
+> </tr></tbody></table></td></tr> </tbody></table> </td> </tr> </tbody></ta=
+ble> </td> </tr> </tbody></table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"e2ma-block=
+-outer" id=3D"block_wpfdqtao" style=3D"font-family: Arial, Helvetica, sans-=
+serif;font-size: 12px" width=3D"100%"> <tbody><tr> <td class=3D"e2ma-wrappe=
+r e2ma-image-td" style=3D"padding-right: 0;padding-bottom: 0;padding-left: =
+0;font-size: 12px;line-height: 1.5" valign=3D"top"> <table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"font-family: Arial, Helvetica, sa=
+ns-serif;font-size: 12px" width=3D"100%"> <tbody><tr> <td class=3D"e2ma-hol=
+der" style=3D"padding: 20px 40px 20px 40px;background-color: transparent" v=
+align=3D"top"> <div class=3D"e2ma-content-block">
+<div class=3D"e2ma-p-div" style=3D"display: block;margin-bottom: 10px;font-=
+size: 12px;font-weight: normal;line-height: 1.5;font-family: Arial, Helveti=
+ca, sans-serif;font-size: 15px;line-height: 150%;color: #333;margin-bottom:=
+ 20px;/*padding-bottom: 10px*/;font-family: Arial, Helvetica, sans-serif;fo=
+nt-size: 15px;line-height: 150%;color: #333;margin-bottom: 20px;/*padding-b=
+ottom: 10px*/">New this year, we have grey T shirts and XXL sizes for all i=
+tems!! A portion of the proceeds from pink T-shirts will be donated to SPEC=
+TRA: The Association for LGBTQ+ Mathematicians, in honor of Professor Aleks=
+ Donev.<br>
+<br>
+The&nbsp;sale&nbsp;will be&nbsp;<strong>Friday, November 21st, 9am-4pm, 13t=
+h floor of Warren Weaver Hall</strong>. The&nbsp;T-shirts&nbsp;are $20 and =
+the hoodies are $40, everything in black, navy, and green, plus T-shirts in=
+ purple, pink, and grey.&nbsp;<strong>The sale is CASH ONLY so be sure&nbsp=
+;to&nbsp;bring some.</strong><br>
+<br>
+Get a&nbsp;shirt&nbsp;for yourself and another as a last-minute Thanksgivin=
+g present for your family and friends! It only happens once a year.&nbsp;</=
+div>
+</div>
+</td> </tr> </tbody></table> </td> </tr> </tbody></table>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"e2ma-block=
+-outer" id=3D"block_jldxquqy" style=3D"font-family: Arial, Helvetica, sans-=
+serif;font-size: 12px" width=3D"100%">
+<tbody><tr>
+<td class=3D"e2ma-wrapper" style=3D"padding-right: 0;padding-bottom: 0;padd=
+ing-left: 0" valign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"font-famil=
+y: Arial, Helvetica, sans-serif;font-size: 12px" width=3D"100%">
+<tbody><tr>
+<td class=3D"e2ma-holder" style=3D"padding: 20px 40px 20px 40px;background-=
+color: transparent">
+<div style=3D"border-bottom: #cbbad0 solid 1px">
+<img border=3D"0" height=3D"1" src=3D"https://images.e2ma.net/images/spacer=
+.gif" style=3D"display:block" width=3D"1">
+</div>
+</td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+</td></tr></tbody></table> <div class=3D"e2ma-single-column-layout e2ma-sec=
+tion"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"font=
+-family: Arial, Helvetica, sans-serif;font-size: 12px" width=3D"100%"><tbod=
+y><tr><td class=3D"e2ma-design-option-template" data-e2ma-styles=3D"backgro=
+und, border-left, border-right" style=3D"background-color: transparent">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"e2ma-block=
+-outer" id=3D"block_stewzkel" style=3D"font-family: Arial, Helvetica, sans-=
+serif;font-size: 12px" width=3D"100%"> <tbody><tr> <td class=3D"e2ma-wrappe=
+r e2ma-image-td" style=3D"padding-right: 0;padding-bottom: 0;padding-left: =
+0;font-size: 12px;line-height: 1.5" valign=3D"top"> <table border=3D"0" cel=
+lpadding=3D"0" cellspacing=3D"0" style=3D"font-family: Arial, Helvetica, sa=
+ns-serif;font-size: 12px" width=3D"100%"> <tbody><tr> <td class=3D"e2ma-hol=
+der" style=3D"padding: 20px 40px 20px 40px;background-color: transparent" v=
+align=3D"top"> <div class=3D"e2ma-content-block">
+<div class=3D"e2ma-p-div" style=3D"display: block;margin-bottom: 10px;font-=
+size: 12px;font-weight: normal;line-height: 1.5;font-family: Arial, Helveti=
+ca, sans-serif;font-size: 15px;line-height: 150%;color: #333;margin-bottom:=
+ 20px;/*padding-bottom: 10px*/;font-family: Arial, Helvetica, sans-serif;fo=
+nt-size: 15px;line-height: 150%;color: #333;margin-bottom: 20px;/*padding-b=
+ottom: 10px*/"><span style=3D"line-height: 1.5"><span class=3D"e2ma-style" =
+data-darkreader-inline-color=3D"" style=3D"color: rgb(51, 51, 51); --darkre=
+ader-inline-color: var(--darkreader-text-333333, #c8c3bc)">Best,</span></sp=
+an></div>
+<div class=3D"e2ma-p-div" style=3D"display: block;margin-bottom: 10px;font-=
+size: 12px;font-weight: normal;line-height: 1.5;font-family: Arial, Helveti=
+ca, sans-serif;font-size: 15px;line-height: 150%;color: #333;margin-bottom:=
+ 20px;/*padding-bottom: 10px*/;font-family: Arial, Helvetica, sans-serif;fo=
+nt-size: 15px;line-height: 150%;color: #333;margin-bottom: 20px;/*padding-b=
+ottom: 10px*/"><span style=3D"line-height: 1.5"><span class=3D"e2ma-style" =
+data-darkreader-inline-color=3D"" style=3D"color: rgb(51, 51, 51); --darkre=
+ader-inline-color: var(--darkreader-text-333333, #c8c3bc)">Department of Co=
+mputer Science</span></span></div>
+</div>
+</td> </tr> </tbody></table> </td> </tr> </tbody></table>
+</td></tr></tbody></table></div>
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"e2ma-row-r=
+egion-content e2ma-section" style=3D"font-family: Arial, Helvetica, sans-se=
+rif;font-size: 12px" width=3D"100%"><tbody><tr><td class=3D"e2ma-layout-col=
+umn-content"></td></tr></tbody></table>
+</td>
+</tr></tbody>
+</table>
+</td>
+</tr></tbody>
+</table>
+</td>
+</tr>
+<tr>
+<!-- Footer start -->
+<td align=3D"center" bgcolor=3D"#ebebeb" class=3D"footer e2ma-unsubscribe" =
+style=3D"padding-bottom: 10px;padding-bottom: 10px;padding:30px 0px" valign=
+=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mobile-wid=
+th" role=3D"presentation" style=3D"font-family: Arial, Helvetica, sans-seri=
+f;font-size: 12px;width: 640px">
+<tbody><tr>
+<td align=3D"left" valign=3D"top">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"font-family: Arial, Helvetica, sans-serif;font-size: 12px;paddi=
+ng: 0 40px" width=3D"100%">
+<tbody><tr>
+<td align=3D"left" valign=3D"top" width=3D"100%">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"font-family: Arial, Helvetica, sans-serif;font-size: 12px" widt=
+h=3D"100%">
+<tbody><tr>
+<td align=3D"center" class=3D"footer-text e2ma-holder" style=3D"padding-bot=
+tom: 20px" valign=3D"top">
+<div class=3D"e2ma-tag-outer">
+<div class=3D"e2ma-p-div" style=3D"font-size: inherit"><br>
+</div>
+</div>
+</td>
+</tr>
+<tr>
+<td align=3D"center" class=3D"footer-text e2ma-holder" valign=3D"top">
+<div class=3D"e2ma-tag-outer">
+</div>
+</td>
+</tr></tbody>
+</table>
+</td>
+<td align=3D"center" class=3D"stack" style=3D"width: 146px" valign=3D"botto=
+m">
+<table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentatio=
+n" style=3D"font-family: Arial, Helvetica, sans-serif;font-size: 12px" widt=
+h=3D"100%">
+<tbody><tr>
+<td align=3D"center" style=3D"padding-top:20px" valign=3D"bottom">
+<div></div>
+</td>
+</tr></tbody>
+</table>
+</td>
+</tr></tbody>
+</table>
+</td>
+</tr>
+<tr>
+<td align=3D"left" style=3D"line-height:0px; font-size:0px" valign=3D"top">
+<div style=3D"line-height:0px; font-size:0px"><img src=3D"https://t.e2ma.ne=
+t/track/rbve0r/j939hwjc" width=3D"1" height=3D"1">https://t.e2ma.net/optout=
+/rbve0r/j939hwjc?s=3DOexfoAQRP2pQnMvTwXebiE882RmDrU4ftFbtuhLF_E8</div>
+</td>
+</tr></tbody>
+</table>
+</td>
+<!-- end Footer -->
+</tr></tbody>
+</table>
+</div>
+</body></html>
+--==176297604912693==--

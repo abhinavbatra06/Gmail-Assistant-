@@ -1,0 +1,39 @@
+{
+  "message_id": "19aefa2002eb83a7",
+  "chunked_at": "2025-12-08T14:33:58.989933",
+  "total_chunks": 2,
+  "chunks": [
+    {
+      "chunk_id": "19aefa2002eb83a7_email_0_9a407ba3",
+      "text": "Demo recording You have been invited by Abhinav Batra to attend an event named Demo recording on Saturday Dec 6, 2025 ⋅ 11:30am – 1pm (Eastern Time - New York). When Saturday Dec 6, 2025 ⋅ 11:30am – 1pm (Eastern Time - New York) Guests Abhinav Batra - organizer Ankita Tripathi View all guest info Reply for at6651@nyu.edu Yes No Maybe More options Invitation from Google Calendar You are receiving this email because you are subscribed to calendar notifications. To stop receiving these emails, go to Calendar settings , select this calendar, and change \"Other notifications\". Forwarding this invitation could allow any recipient to send a response to the organizer, be added to the guest list, invite others regardless of their own invitation status, or modify your RSVP. Learn more",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19aefa2002eb83a7",
+        "from": "Abhinav Batra <ab12615@nyu.edu>",
+        "to": [],
+        "subject": "Invitation: Demo recording @ Sat Dec 6, 2025 11:30am - 1pm (EST) (Ankita Tripathi)",
+        "date": "Fri, 05 Dec 2025 17:49:19 +0000",
+        "timestamp": 1764956959,
+        "token_count": 196
+      }
+    },
+    {
+      "chunk_id": "19aefa2002eb83a7_att_invite_ics_0_4ce7346c",
+      "text": "[VCALENDAR]\n\n[VTIMEZONE]\n\n[DAYLIGHT]\nDTSTART: 19700308T020000\n\n[STANDARD]\nDTSTART: 19701101T020000\n\n[VEVENT]\nDESCRIPTION: \nLOCATION: \nSUMMARY: Demo recording",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "attachment",
+        "message_id": "19aefa2002eb83a7",
+        "from": "Abhinav Batra <ab12615@nyu.edu>",
+        "to": [],
+        "subject": "Invitation: Demo recording @ Sat Dec 6, 2025 11:30am - 1pm (EST) (Ankita Tripathi)",
+        "date": "Fri, 05 Dec 2025 17:49:19 +0000",
+        "timestamp": 1764956959,
+        "token_count": 39,
+        "attachment_name": "invite.ics",
+        "attachment_type": "ics"
+      }
+    }
+  ]
+}

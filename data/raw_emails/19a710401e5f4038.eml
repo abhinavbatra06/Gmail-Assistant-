@@ -1,0 +1,866 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:7c25:b0:50b:93c5:eed5 with SMTP id az37csp1123689gdb;
+        Mon, 10 Nov 2025 19:44:39 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEdWaauvR/DqPwWRJq/jlKNinpYpITec/475c7tykw85WbJi5+Ro23jCQMxGxeF+zdMnq1b
+X-Received: by 2002:a05:6214:1242:b0:882:33b5:e02a with SMTP id 6a1803df08f44-882386d0961mr144700366d6.43.1762832679050;
+        Mon, 10 Nov 2025 19:44:39 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762832679; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ULI5+vDqT7a2nNROxZKKiNM1u92SuRhJ5oo4xKIVWf072s1qhAWS3QEKT3oJE8KD1h
+         SOTOsUY6yX7wC2P/o7Qus6nQpz0lJSV8R5q/S770BBckJpy4BrkeVzAYuOVNslqRBkWk
+         4/MzMc7cXUZ9QAXKfC0QTKtx619z/nh1hNp7Embc1mukkjj5LIaBDoxtEJlyqoCSkMlU
+         kKKrLD62uRsQpEpbTAId+fCb3r2766QjUMVs02BBURYmeB/5T9cEyQ2Dx60Gpjxo/eCI
+         QnqF6Bb5wTIJcqvl4dVG1QP+JItFRPB4OxnLw1ZZcWBPy9CrpmlEZ5ktozCU84nnvhBS
+         EtaA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:message-id:reply-to:to:from:subject:date
+         :list-unsubscribe:list-unsubscribe-post:dkim-signature;
+        bh=xFctl7ey5g+U3Pu5aac3gDcsFxSgV24yCSjNb/OasQ4=;
+        fh=uBZigrcT4/eimFWNXbc+e9UoRXYu5p0qUsSILAaGf1U=;
+        b=Ht9k+hENsVitAC8eRHtffwuYtbEw1CC2+/F3WOGJZN5Hbq1v+3JN5EakmUOYf6te5G
+         cgMsxYPB5AdX5hvWdh8LGs61GSwDIyP8akqUVidy4ci8+eeDW9rft1ZWKRPjGNrMKHZy
+         kQDvcQmtpCSVmLvecPxZspg6a6XAGwVG+CunP6o/3URvXEqSuVskYgDbyjX5U/MiahpS
+         KGuRpjRcn6Vgk2rYX1Y7++EVvJICAIeZncgl25YjkiCaqf+JHqb/8pYhCi8DtCNOMfkX
+         5hQgyAoQ1EuhgNVKY5LTjcxaaTwZEdo7FNMEbJPt2xBES9SNxPA37cwgmXaH2VQgfw2R
+         hcJg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@notifications.joinhandshake.com header.s=pic header.b="b/Y9DSnp";
+       spf=pass (google.com: domain of handshake@notifications.joinhandshake.com designates 69.72.46.73 as permitted sender) smtp.mailfrom=handshake@notifications.joinhandshake.com
+Return-Path: <handshake@notifications.joinhandshake.com>
+Received: from pco01la-1773s.nyu.edu (pco01la-1773s.cfs.its.nyu.edu. [216.165.75.9])
+        by mx.google.com with ESMTPS id 6a1803df08f44-88238b85441si28074946d6.656.2025.11.10.19.44.38
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 10 Nov 2025 19:44:39 -0800 (PST)
+Received-SPF: pass (google.com: domain of handshake@notifications.joinhandshake.com designates 69.72.46.73 as permitted sender) client-ip=69.72.46.73;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@notifications.joinhandshake.com header.s=pic header.b="b/Y9DSnp";
+       spf=pass (google.com: domain of handshake@notifications.joinhandshake.com designates 69.72.46.73 as permitted sender) smtp.mailfrom=handshake@notifications.joinhandshake.com
+Received: from mx0a-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-1773s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5AB3ib2G983197
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Mon, 10 Nov 2025 22:44:38 -0500
+Received: from pps.filterd (m0355794.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5AAMbfth627355
+	for <at6651@nyu.edu>; Mon, 10 Nov 2025 22:44:37 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=handshake@notifications.joinhandshake.com;
+	dkim=pass header.s=pic header.d=notifications.joinhandshake.com;
+	dmarc=pass header.from=notifications.joinhandshake.com
+Received: from m46-73.mailgun.net (m46-73.mailgun.net [69.72.46.73])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4abqg8mept-2
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <at6651@nyu.edu>; Mon, 10 Nov 2025 22:44:37 -0500 (EST)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=notifications.joinhandshake.com; q=dns/txt; s=pic; t=1762832676; x=1762839876;
+ h=Message-Id: Reply-To: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: List-Unsubscribe: List-Unsubscribe-Post: Sender;
+ bh=aJ6EDSOZUBEubO2yvhSrktrmv2iaTvohlKEGR1JyEHo=;
+ b=b/Y9DSnp9iKLmIoNOdqMsEGzldXQJ53wkiQCPe0ivMrK8l390gdZdWJfTX1KPmRedKEFByugawi20lOSk1oisMt7y8SsyBbqy5un320Ryp7bT6WBJBklQO4G+pixueoqDfACHHErkAaBmvtBIbhNj2NqUfxuLOmax4u/QTSR8p0=
+X-Mailgun-Sid: WyI1NWNjZCIsImF0NjY1MUBueXUuZWR1IiwiMmQ5NjciXQ==
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe: <mailto:u+mq6tezbzgy3smzdfnruxmzlspfpw2zlunbxwix3pob2gs33oomstkqten5wwc2loeu2uiplon52gsztjmnqxi2lpnzzs42tpnfxgqylomrzwqyllmuxgg33nezsw2yljnrpw433unftgsy3boruw63s7nfsd2mbzmnrgkzjwgmwtmyrwgqwtinbzgawtqzjrgywtkmrymyyteyjygmywmnbgna6tknzzhfstem3cgy4gkyzwme4ggmtcheztqzbsmm4gmzdcgu3deyjgne6tembsguytcmjrgaztinbtgyxdqobvgbtdgojxhftgczdcmu4dgjjugbxg65djmzuwgylunfxw44zonjxws3timfxgi43imfvwkltdn5wsm2tpmjpwszb5geydinzzgy2tejton52gsztjmnqxi2lpnzpwszb5gyzgmmlfmjqweljqmeydiljumyygmljzguzdcljxg44tayzsmnqteojthatha4tpmr2wg5c7mj2wg23foq6uu33comtheplboq3dmnjreu2da3tzouxgkzdvez2d2jjsiethk43fojpwszb5gu4tcmbwhaytajtwhuza@notifications.joinhandshake.com>,
+ <https://email.notifications.joinhandshake.com/u/eJyEzj1u7CAUxfHVmA4LLnANBcV7SpVNWHxcZGbGZmTjkWb3kVNFaVKfo79-2UN2OLFMj_qi_T2v1JeW5_bstW3HYP7ntoa6DebDb63XUlP4XsZbq9sStnws4U5jaiujNdTH_PM11-yFS5EIFceImmvtBLckkRuwRUKwShbNFm8m5whUREsJg00QnbIZki05GoTAqgcBRkophdJa4WitEUW5yZWQI1k1aPGX8NbiRZJCTw4NsN9WhCIphshFEJrrIgp3BiSfJicSpABOWfbcWz5Tn-OZ7tT9Z4sH233oiEZehvc5Uj5Z9wP8Y-dB-1U2Tgq0UrCXh68AAAD__8e3dic>
+Received: by 397580042c3cb86a17c9b9e651e3b2e045d213b206b76ffdd1193738732ce605 with HTTP
+ id 6912b1242d5af12618e63796; Tue, 11 Nov 2025 03:44:36 GMT
+X-Mailgun-Sending-Ip: 69.72.46.73
+Date: Tue, 11 Nov 2025 03:44:36 +0000
+Content-Type: multipart/alternative;
+ boundary="157cac96c0a047f367f6c1c3fb4604e8d17aae9e9b42a300e5c9484e8e9d"
+Subject: =?UTF-8?q?Adobe_Systems_just_posted_a_role_=F0=9F=8C=9F?=
+From: Handshake <handshake@notifications.joinhandshake.com>
+To: at6651@nyu.edu
+X-Mailgun-Tag: approve_job_posting
+X-Mailgun-Track-Clicks: true
+X-Mailgun-Track-Opens: true
+X-Mailgun-Require-Tls: false
+Reply-To: handshake@notifications.joinhandshake.com
+X-Mailgun-Native-Send: true
+X-Mailgun-Variables: {"delivery_method_options[domain]": "notifications.joinhandshake.com",
+ "email_notification_id": "09cbee63-6b64-4490-8e16-528f12a831f4", "job_id":
+ "10479652", "notification_id": "62f1ebab-0a04-4f0f-9521-7790c2ca2938",
+ "product_bucket": "Jobs", "user_id": "59106810"}
+Message-Id: <20251111034436.8850f3979fadbe83@notifications.joinhandshake.com>
+X-Proofpoint-GUID: UysbO7EuvcreEDQF24_OREUtrqK4Zvv5
+X-Proofpoint-ORIG-GUID: UysbO7EuvcreEDQF24_OREUtrqK4Zvv5
+X-CLX-Shades: MLX
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTExMDAyNiBTYWx0ZWRfX2idUlErZD2Qt
+ sGIabUzI7hm0ODV4MjFjgY5lrn/wdhCiVx+MTUFs56WFUN++N8v93wI526f0D4JgegoqPSCXuSZ
+ 8Gq1LSj9Skzatxgjh0lKaxPLPlpTEhCHVhknAvPI8j8eZKgboCCK4oPcEqDGFyg+BxG24rROutW
+ wk/f+sJDIGjRod83HKqAYBixhvQWEOsb+n6ivtYjuThb/8pqNqicw5AGLQEUiqtgt72K0Uo70bA
+ uAXtXcyI78RbTVkIP1RMyAiibCMaCX2PpTdrOJZtweCIubWYQqpoo31BMXUjmKLjUKRdljx49f4
+ f3JUC3uxYFHtL4G0/lsjGHvrUbhP3Ejo7fabm0bT+DGPf6hGax9/GFS6O+tVkXGJHSxO7WgZSKD
+ C15OaVB5EwA4+n0JMgf/nkPH2VoK7bhqUBI0GfG8OGp2fmpnSRbP+iVxqYJfpvpcR9HYWBd3w70
+ NY6cCtHhC53q2k3ubfQ==
+X-Authority-Analysis: v=2.4 cv=aJf9aL9m c=1 sm=1 tr=0 ts=6912b125 b=1 cx=c_pps
+ a=hMQioztq7yRG7oXFUvJr+w==:117 a=hMQioztq7yRG7oXFUvJr+w==:17
+ a=6UeiqGixMTsA:10 a=5KLPUuaC_9wA:10 a=5GSex5Wv4MoA:10
+ a=Kan8h273Bse8B8Jy5C1n:22 a=SvdDSBcuIi2iyFajaV4A:9 a=QEXdDO2ut3YA:10
+ a=8nBmmgpqAAAA:8 a=R0yzqheZAAAA:8 a=SSmOFEACAAAA:8
+ a=oGnqSolUdC5HdH5uRy+gvz+jT24=:19 a=rgkrDogRAQThA-pd:21 a=_W_S_7VecoQA:10
+ a=bfyjJSFVJUzR-EyeF7E_:22 a=0_3WeU1hcJl4OZDjC8hb:22 cc=ntf
+X-CLX-Response: 1TFkXHhgeEQpMehceGh0RCllEF2JZemB4HB9Pbn1QEQpYWBdrUmsaAWR+cll
+ JBREKeE4Xb2ZOc059fHBIXGQRCnhLF2tSaxoBZH5yWUkFEQpDSBcHGBkRCkNZFwcZGBIRCkNJFx
+ oEGhoaEQpZTRdnZnIRCllJFx4ScRsQGncGGBkdcRIYGRIZEBkfGXcGGBoGGxgaEQpZXhdsbHkRC
+ klGF0RPXVNFWEFfdUJFWV5PThEKSUcXeE9NEQpDThd/U1lIZR1vX1xJWE9vbntsGB51ZXhvf15Y
+ W2EecFxcHxEKWFwXHwQaBB4bGgUbGgQbGxoEGxkeBBkeEBseGh8aEQpeWRdNeWxyaxEKTVwXHBM
+ fEQpMWhdoaU1NXREKTEYXb2tra2trEQpCTxdkYXl5Uk9/QRMTWREKQ1oXHBMEHRgEHhwEHRkRCk
+ JeFxsRCllFFxMRCkVJFxsRCkVmFx4RCkJGF2dlTgFDWxhIchtbEQpCRxdvE35lSXlaTH1BaxEKQ
+ lwXGxEKQksXZ0lOaEhrBUMZT0sRCkJJF29mTnNOfXxwSFxkEQpCRRdpRmdaTlAZX2hveBEKQk4X
+ b2ZOc059fHBIXGQRCkJMF2tSaxoBZH5yWUkFEQpCbBduT2UYekRvRGNZYxEKQkAXY2JkR2llQ29
+ mQmkRCkJYF25CQXBSSEBnQhx8EQpaWBcZEQp5QxdgTAFiRRJfQ2d+ZREKWUsXHhgSHBEKWksXHh
+ gSHBEKcGgXY1pYfEZMARpOUl4QGx8TEQpwaBdgWGVufEV8G0tmcxAaEQpwaBdiS2x/fHAccn1mb
+ xAaEQpwaBdmRH1FbUgaZml6HRAbGhoRCnBoF2xlWBNeWUUFS19OEBoRCnBoF2hNUh9QTEhBW3xa
+ EBoRCnBoF2xGSHBQGhxjfRhzEBkaEQpwaBdpZXAFR3ptWxwaGhAbHBkRCnB9F2JAZwF/GXMZHVl
+ vEBoRCnB9F2F8HB8ZXmMeQG15EBseHBEKcH0XbUtQSRpccHBHRxIQGhEKcH0Xb0ZJZFABYGtFbm
+ EQGhEKcH0XY1lwThNAEnJuYRMQBx0aEQpwfRdpQERtYxoZWEBnQhAaEQpwfRd6Yx9lGVlnRR9PY
+ xAbHBgRCnB9F295cxtjcnB7AWJTEBsZEhEKcH0Xa2NmWVlBWWZMaV4QGxkSEQpwfRdoGRhgWUJo
+ YkNcRRAaEQpwfRdhQEdveklZSEh6HhAaEQpwfRdlHFAdEkQZGhhYeBAbGxkRCnB9F2QcflAcHF9
+ MBW9pEBoRCnB9F2VYQVl8aXwTHGReEBsbGhEKcH0XY0JQSUt6XFBDbGcQGhEKcH0XZEFbSXxbcl
+ B8W00QGxsaEQpwfRdrb31efEFSWEBfHxAaEQpwfRdma05ffWN5bE5paBAbGBIRCnB9F2ZNfhobA
+ RscHkRBEBsYHBEKcH0XZEttWUFiU0Vab3IQGhEKcH8XZFNvAVNCa2BAHXgQExgRCnBfF2JsZ3xJ
+ WVlHc14YEBsYHBEKcF8XYGdpbHBYbklmZEYQGx4cEQpwfxdjQWtHRnBDGG5bTRAdHxEKcF8XZR1
+ sfRtFeGdgGV4QGxkaEQpwXxdvaFATBUhHTVtTUxAbHhMRCnBfF2R/BRN+aVJ7cnsZEBsbGREKcG
+ wXZWcaE15MGH1ucGEQGxMaEQptfhcaEQpYTRdLESA=
+MIME-Version: 1.0
+X-Orig-IP: 69.72.46.73
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-11_01,2025-11-10_02,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ lowpriorityscore=0 impostorscore=0 bulkscore=0 priorityscore=407 spamscore=0
+ adultscore=0 phishscore=0 malwarescore=0 clxscore=424 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc=notification route=inbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511110026 domainage_hfrom=4286 domainage_replyto=4286
+
+--157cac96c0a047f367f6c1c3fb4604e8d17aae9e9b42a300e5c9484e8e9d
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+
+Apply early to stand out
+
+
+You might be a match for this new job from Adobe Systems, based on your pre=
+ferences. Check it out!
+
+
+Applications are due
+
+Friday, December 05 at  2 AM EST.
+
+
+
+
+
+
+
+
+
+
+
+
+Adobe Systems
+
+
+Internet & Software
+
+
+
+
+
+Software Engineer
+
+
+
+
+
+
+$50=E2=80=9360/hr
+
+
+
+Hybrid
+
+
+
+Job
+
+
+
+
+San Jose, CA
+
+
+
+
+
+
+
+View job
+
+
+
+
+
+
+
+Want better job recommendations?
+Update your preferences.
+--157cac96c0a047f367f6c1c3fb4604e8d17aae9e9b42a300e5c9484e8e9d
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" style=3D"min-height:100%;backg=
+round:#f5f5f5;background-color:transparent">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type">
+<meta content=3D"width=3Ddevice-width" name=3D"viewport">
+<title>Handshake</title>
+
+
+
+
+
+<style>@media only screen and (max-width: 664px) {
+.small-float-center{margin:0 auto !important;float:none !important;text-ali=
+gn:center !important}
+.small-text-center{text-align:center !important}
+.small-text-left{text-align:left !important}
+.small-text-right{text-align:right !important}
+.hide-for-large{display:block !important;width:auto !important;overflow:vis=
+ible !important;max-height:none !important;font-size:inherit !important;lin=
+e-height:inherit !important}
+table.body table.container .hide-for-large{display:table !important;width:1=
+00% !important}
+table.body table.container .row.hide-for-large{display:table !important;wid=
+th:100% !important}
+table.body table.container .callout-inner.hide-for-large{display:table-cell=
+ !important;width:100% !important}
+table.body table.container .show-for-large{display:none !important;width:0;=
+mso-hide:all;overflow:hidden}
+table.body img{width:auto;height:auto}
+table.body center{min-width:0 !important}
+table.body .container{width:95% !important}
+table.body .columns{height:auto !important;-moz-box-sizing:border-box;-webk=
+it-box-sizing:border-box;box-sizing:border-box;padding-left:64px !important=
+;padding-right:64px !important}
+table.body .column{height:auto !important;-moz-box-sizing:border-box;-webki=
+t-box-sizing:border-box;box-sizing:border-box;padding-left:64px !important;=
+padding-right:64px !important}
+table.body .columns .column{padding-left:0 !important;padding-right:0 !impo=
+rtant}
+table.body .columns .columns{padding-left:0 !important;padding-right:0 !imp=
+ortant}
+table.body .column .column{padding-left:0 !important;padding-right:0 !impor=
+tant}
+table.body .column .columns{padding-left:0 !important;padding-right:0 !impo=
+rtant}
+table.body .collapse .columns{padding-left:0 !important;padding-right:0 !im=
+portant}
+table.body .collapse .column{padding-left:0 !important;padding-right:0 !imp=
+ortant}
+td.small-1{display:inline-block !important;width:8.33333% !important}
+th.small-1{display:inline-block !important;width:8.33333% !important}
+td.small-2{display:inline-block !important;width:16.66667% !important}
+th.small-2{display:inline-block !important;width:16.66667% !important}
+td.small-3{display:inline-block !important;width:25% !important}
+th.small-3{display:inline-block !important;width:25% !important}
+td.small-4{display:inline-block !important;width:33.33333% !important}
+th.small-4{display:inline-block !important;width:33.33333% !important}
+td.small-5{display:inline-block !important;width:41.66667% !important}
+th.small-5{display:inline-block !important;width:41.66667% !important}
+td.small-6{display:inline-block !important;width:50% !important}
+th.small-6{display:inline-block !important;width:50% !important}
+td.small-7{display:inline-block !important;width:58.33333% !important}
+th.small-7{display:inline-block !important;width:58.33333% !important}
+td.small-8{display:inline-block !important;width:66.66667% !important}
+th.small-8{display:inline-block !important;width:66.66667% !important}
+td.small-9{display:inline-block !important;width:75% !important}
+th.small-9{display:inline-block !important;width:75% !important}
+td.small-10{display:inline-block !important;width:83.33333% !important}
+th.small-10{display:inline-block !important;width:83.33333% !important}
+td.small-11{display:inline-block !important;width:91.66667% !important}
+th.small-11{display:inline-block !important;width:91.66667% !important}
+td.small-12{display:inline-block !important;width:100% !important}
+th.small-12{display:inline-block !important;width:100% !important}
+.columns td.small-12{display:block !important;width:100% !important}
+.column td.small-12{display:block !important;width:100% !important}
+.columns th.small-12{display:block !important;width:100% !important}
+.column th.small-12{display:block !important;width:100% !important}
+table.body td.small-offset-1{margin-left:8.33333% !important}
+table.body th.small-offset-1{margin-left:8.33333% !important}
+table.body td.small-offset-2{margin-left:16.66667% !important}
+table.body th.small-offset-2{margin-left:16.66667% !important}
+table.body td.small-offset-3{margin-left:25% !important}
+table.body th.small-offset-3{margin-left:25% !important}
+table.body td.small-offset-4{margin-left:33.33333% !important}
+table.body th.small-offset-4{margin-left:33.33333% !important}
+table.body td.small-offset-5{margin-left:41.66667% !important}
+table.body th.small-offset-5{margin-left:41.66667% !important}
+table.body td.small-offset-6{margin-left:50% !important}
+table.body th.small-offset-6{margin-left:50% !important}
+table.body td.small-offset-7{margin-left:58.33333% !important}
+table.body th.small-offset-7{margin-left:58.33333% !important}
+table.body td.small-offset-8{margin-left:66.66667% !important}
+table.body th.small-offset-8{margin-left:66.66667% !important}
+table.body td.small-offset-9{margin-left:75% !important}
+table.body th.small-offset-9{margin-left:75% !important}
+table.body td.small-offset-10{margin-left:83.33333% !important}
+table.body th.small-offset-10{margin-left:83.33333% !important}
+table.body td.small-offset-11{margin-left:91.66667% !important}
+table.body th.small-offset-11{margin-left:91.66667% !important}
+table.body table.columns td.expander{display:none !important}
+table.body table.columns th.expander{display:none !important}
+table.body .right-text-pad{padding-left:10px !important}
+table.body .text-pad-right{padding-left:10px !important}
+table.body .left-text-pad{padding-right:10px !important}
+table.body .text-pad-left{padding-right:10px !important}
+table.menu{width:100% !important}
+table.menu td{width:auto !important;display:inline-block !important}
+table.menu th{width:auto !important;display:inline-block !important}
+table.menu.vertical td{display:block !important}
+table.menu.vertical th{display:block !important}
+table.menu.small-vertical td{display:block !important}
+table.menu.small-vertical th{display:block !important}
+table.menu[align=3D"center"]{width:auto !important}
+table.button.small-expand{width:100% !important}
+table.button.small-expanded{width:100% !important}
+table.button.small-expand table{width:100%}
+table.button.small-expanded table{width:100%}
+table.button.small-expand table a{text-align:center !important;width:100% !=
+important;padding-left:0 !important;padding-right:0 !important}
+table.button.small-expanded table a{text-align:center !important;width:100%=
+ !important;padding-left:0 !important;padding-right:0 !important}
+table.button.small-expand center{min-width:0}
+table.button.small-expanded center{min-width:0}
+th.columns.first.small-12{padding-left:16px !important}
+th.columns.last.small-12{padding-right:16px !important}
+table.body img.icon-20{width:20px;height:20px}
+}
+table.button:hover table tr td a{color:#ffffff}
+table.button:active table tr td a{color:#ffffff}
+table.button table tr td a:visited{color:#ffffff}
+table.button.tiny:hover table tr td a{color:#ffffff}
+table.button.tiny:active table tr td a{color:#ffffff}
+table.button.tiny table tr td a:visited{color:#ffffff}
+table.button.small:hover table tr td a{color:#ffffff}
+table.button.small:active table tr td a{color:#ffffff}
+table.button.small table tr td a:visited{color:#ffffff}
+table.button.large:hover table tr td a{color:#ffffff}
+table.button.large:active table tr td a{color:#ffffff}
+table.button.large table tr td a:visited{color:#ffffff}
+table.button:hover table td{background:#04191b;color:#ffffff}
+table.button:visited table td{background:#04191b;color:#ffffff}
+table.button:active table td{background:#04191b;color:#ffffff}
+table.button:hover table a{border:0 solid #04191b}
+table.button:visited table a{border:0 solid #04191b}
+table.button:active table a{border:0 solid #04191b}
+table.button.secondary:hover table td{background:#919191;color:#ffffff}
+table.button.secondary:hover table a{border:0 solid #919191}
+table.button.secondary:hover table td a{color:#ffffff}
+table.button.secondary:active table td a{color:#ffffff}
+table.button.secondary table td a:visited{color:#ffffff}
+table.button.success:hover table td{background:#004d33}
+table.button.success:hover table a{border:0 solid #004d33}
+table.button.alert:hover table td{background:#99000d}
+table.button.alert:hover table a{border:0 solid #99000d}
+table.button.warning:hover table td{background:#cc8800}
+table.button.warning:hover table a{border:0px solid #cc8800}
+.thumbnail:hover{box-shadow:0 0 6px 1px rgba(0,85,204,0.5)}
+.thumbnail:focus{box-shadow:0 0 6px 1px rgba(0,85,204,0.5)}
+table.button.secondary:hover table td{background:#dcdcdc;border-color:#dcdc=
+dc;color:rgba(8,8,8,0.79)}
+table.button.secondary table tr td a:visited{color:rgba(8,8,8,0.79)}
+table.button.secondary:hover table tr td a{color:rgba(8,8,8,0.79)}
+table.button.secondary:hover table tr td a:visited{color:rgba(8,8,8,0.79)}
+a:hover{color:#254fa5}
+a:active{color:#183684}
+a.plain:hover{color:#2e2a2b}
+a.plain:active{color:#1c1819}
+.primary-button a:hover{color:inherit}
+.outline-button a:hover{color:inherit}
+.button a:hover{color:inherit}
+.primary-button a:active{color:inherit}
+.outline-button a:active{color:inherit}
+.button a:active{color:inherit}
+.primary-button:hover{color:#fff;background-color:#062e32;border-color:1px =
+solid #062e32}
+.primary-button:active{color:#fff;background-color:#073d42;border-color:1px=
+ solid #062e32}
+.outline-button:hover{color:#062e32;border-color:#062e32}
+.outline-button:active{color:#073d42;border-color:#073d42}
+table.lined a:hover{text-decoration:none}
+@media (max-width: 767px) {
+.avatar--mobile-md{max-width:56px}
+}
+@media screen and (max-width: 767px) {
+.padding-content{padding:0 16px !important}
+table.student-footer-v3{padding:0 16px}
+table.student-footer-v3 td.socials img{padding:0 12% 0 0 !important}
+table.student-footer-v3 td.app-store img{padding:0 0 0 4% !important}
+table.rebrand-cta{width:100% !important}
+table.rebrand-cta{width:100% !important}
+}
+@media (min-width: 768px) {
+td.email-footer .hiring-team-footer .media-links-container{display:flex;jus=
+tify-content:space-between;margin-bottom:32px}
+td.email-footer .employer-hosted-meetings-footer .media-links-container{dis=
+play:flex;justify-content:space-between;margin-bottom:32px}
+table.email-footer .hiring-team-footer .media-links-container{display:flex;=
+justify-content:space-between;margin-bottom:32px}
+table.email-footer .employer-hosted-meetings-footer .media-links-container{=
+display:flex;justify-content:space-between;margin-bottom:32px}
+td.email-footer .hiring-team-footer .media-links-container{display:flex;jus=
+tify-content:space-between;margin-bottom:32px}
+td.email-footer .employer-hosted-meetings-footer .media-links-container{dis=
+play:flex;justify-content:space-between;margin-bottom:32px}
+table.email-footer .hiring-team-footer .media-links-container{display:flex;=
+justify-content:space-between;margin-bottom:32px}
+table.email-footer .employer-hosted-meetings-footer .media-links-container{=
+display:flex;justify-content:space-between;margin-bottom:32px}
+}
+@media screen and (max-width: 240px) {
+.event-card-container table.event-attendees .logo-group .event-detail .even=
+t-tags{white-space:nowrap}
+.event-card-container table.event-attendees .logo-group .event-detail .even=
+t-tags{white-space:nowrap}
+}</style></head>
+<body class=3D"rebrand" style=3D"min-width:100%;-webkit-text-size-adjust:10=
+0%;-ms-text-size-adjust:100%;margin:0;padding:0;-moz-box-sizing:border-box;=
+-webkit-box-sizing:border-box;box-sizing:border-box;font-family:&quot;Suiss=
+e Int'l&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Rob=
+oto, &quot;Helvetica Neue&quot;, sans-serif;color:#231f20;font-size:16px;li=
+ne-height:20px;background-color:#f3f4fa;width:100% !important">
+<table class=3D"body email-layout rebrand" data-made-with-foundation=3D"" s=
+tyle=3D"border-spacing:0;vertical-align:top;text-align:left;background:#f5f=
+5f5;height:100%;background-color:transparent;max-width:728px;table-layout:f=
+ixed;border:0;border-collapse:collapse;width:100%;text-align:inherit;margin=
+:auto;padding:0;background-color:white">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td class=3D"email-header" style=3D"font-family:&quot;Suisse Int'l&quot;, -=
+apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helve=
+tica Neue&quot;, sans-serif;padding:0;vertical-align:top;text-align:left">
+<div class=3D"padding-content" style=3D"padding:0 40px">
+<table style=3D"border-spacing:0;border-collapse:collapse;padding:0;vertica=
+l-align:top;text-align:left;width: 100%">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left">
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkMuu2yAQhp8Gdo4YboYFi1ZRFn0Ji8twwjkxWDZE=
+yttXjrqo2krd8vPPfPMlx5PVM034KE-5FcX8uK-5Fd7S0rZeWj2I-2Dp7a6ksl6upq6yWX6N-5F=
+J5bOVevc1HXf-5FhZfYVooOZs2N4HrWFFdfHsvvlaUkx2wMiFpMOmg5SWnZZBD0pLjJwL0RkCW9=
+O8GYBZWFTJBkDNlDjBIDDyYDCjXT4jjjCgCACSmFvhijWBZ2ttmngEYQyf6H-2D9nCiQRMzlYrT=
+h-5Fu3vt2EPGN8Bvht-5Foaf7fOSNxGX5ejjT0iEVe-5FbXt74nLO29rRS-5F1YzuNxJ1yfP1dM=
+ZaxEXN9Ofj1Gv26-2DfFQirkcfCWtf3jH9U5nmGTD4MDHP5CQzy5NVHKZ5tizy6LkVhm57SyP2J=
+Yz4hd39aOGgu-5FNdawWnite4YBq0u3-5FA0nHgfm5SFpg2wOjT8Z8BAAD-5F-5F6cCsXM&amp;=
+d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&am=
+p;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6R1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;=
+s=3DeMGPfTY5JqOToV6JszBYY-svc_eoRCfzwbNqpazSk2c&amp;e=3D" style=3D"color:#2=
+54fa5;font-weight:inherit;color: inherit; text-decoration: none;">
+<img alt=3D"Handshake" class=3D"handshake-logo lime" height=3D"36" src=3D"h=
+ttps://handshake-production-cdn.joinhandshake.com/static_assets/hs-icon-lim=
+e-round.png" title=3D"Handshake" width=3D"36" style=3D"outline:none;text-de=
+coration:none;-ms-interpolation-mode:bicubic;width:auto;max-width:100%;clea=
+r:both;display:block;border:none;margin-top:24px;margin-bottom:16px;width:3=
+6px;height:36px;margin:24px 0">
+</a>
+</td>
+</tr>
+</table>
+
+</div>
+</td>
+</tr>
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td class=3D"email-content" style=3D"font-family:&quot;Suisse Int'l&quot;, =
+-apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helv=
+etica Neue&quot;, sans-serif;padding:0;vertical-align:top;text-align:left;p=
+adding-bottom:40px">
+<div class=3D"padding-content" style=3D"padding:0 40px">
+<h2 class=3D"email-header" style=3D"word-break:break-word;font-size:39px;li=
+ne-height:44px;font-size:32px;font-weight:700;line-height:38px;margin:0 0 2=
+4px">
+Apply early to stand out
+</h2>
+<p class=3D"body-text" style=3D"line-height:28px;font-size:18px">
+You might be a match for <a href=3D"https://urldefense.proofpoint.com/v2/ur=
+l?u=3Dhttps-3A__email.notifications.joinhandshake.com_c_eJyEkE2u2yAUhVcDM0d=
+w-2DTEMGLSKMugmLAzXz-2DTFYBmIlN1Xjlqpaiu9Kecc7qcvOohWjzTiIz3xeE0btrXEqewtlV=
+yJ-2Dh7L5lMm6upyaWlJwb-2DTy72kvPoc6-2Do-5F8RLKRtHxUYMRoEdNcfPpMf05mVJ0zIYZU=
+YtBz1oOUlo2GOR6UGAWDt4Ivki6OgQVlPWGIRiQMQhruVqEHTUqLhakyQEDxTnnTEgp9MUYxc6C=
+XXyc0Qgi2Ve49zKfSJzJ0WoF9OHW1vZKxDcCNwK3-5FOr-5Frgjc7mWuBG6-5Fd0TcetumWvoRk=
+Iir3-5FejPHE6v99LbSl-5FTKcLPAjos7lhTH0j4vpW9Osx-2DG336SMTca2tR8xtesf0b4MaFo=
+6znwfmmRzkwpbBKuDDOFoWIHiwwtD9KLGHNs09fGJzP8pc6eF801rx08yrXzB22tx-5FYGmveJy=
+XlOVMG87o08HPAAAA-5F-5F8mFLTE&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ=
+&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6=
+R1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;s=3Dq0cLhm_7TL8xdF3RLrzfm2tbN_76cFNFPk82c=
+ebyWnM&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:#2e6aff;t=
+ext-decoration:none">this new job</a> from Adobe Systems, based on your pre=
+ferences. Check it out!
+</p>
+<p class=3D"body-text" style=3D"line-height:28px;font-size:18px">
+Applications are due
+<b>
+Friday, December 05 at  2 AM EST.
+</b>
+</p>
+<div class=3D"job-card-container" style=3D"border:1px solid #d4d6ec;border-=
+radius:16px;padding:20px;margin:16px 0;font-size:14px;overflow:hidden;backg=
+round-color:white;margin-bottom:0">
+<table class=3D"employer-info" style=3D"border-spacing:0;border-collapse:co=
+llapse;padding:0;vertical-align:top;text-align:left;margin-bottom:12px">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left;vertical-align:middle">
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkE2K3DAQRk8j7dxIpf-2DFFgmNF7mE0U95rJm2ZW=
+ypoW8fPGQRkoFZ1yu-2Dx8sestOGZnyUJx6vacW21DzVvZW6nUT9zHUNZSPq7rfaylxS-2DLzc3=
+mvZlrDlcwkfeEt1pei50WAFaKMprqE8pr9fppI9cykiajHoqOUgpWODRa4HBXbmEKzgs6SL58Y6=
+I0EkLUTiygThggmOYeY5hhhp8cBAcc45E1IKfbNWsVk44-2DaQI1pBJPtO973GS4kzaZxWQB9-2=
+DaW0-5FifhBYCQwbq-5F-2D-5FxeB8WydwIjr-5FqgvPE4CI1dKSSLG3tYphXUP5W0j4h72-5Fa=
+hPnK6hvZ6tbG8E9AWdtR8Jv0amKxwef8gVc-2DkrEffPnvTfnhpmjjHEgQUmBzmzeXAK-2DGCMY=
+wlSACcs3Y-2Dae2pT7OkDm-5F9V40kPH5rWil-2DdXv2GudPmv7Ch-5FcTjWlKOM205o08PvwMA=
+AP-5F-5Fs3e7JA&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1=
+KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6R1m4CkcgPWgI8l-=
+NBB7Z21B1Mkf2V&amp;s=3DVZ1SIZaVqMV4D_7_50o_TOKS91L6sPLfXDfRKaGa6X0&amp;e=3D=
+" style=3D"color:#254fa5;font-weight:inherit">
+<img alt=3D"Adobe Systems logo" class=3D"employer-logo exists" height=3D"40=
+" src=3D"https://joinhandshake-production.imgix.net/app/public/assets/insti=
+tutions/15554/original/hs-emp-logo-data.?ixlib=3Drb-4.1.1&amp;w=3D150&amp;h=
+=3D150&amp;fit=3Dcrop&amp;s=3D21630a3c77d56975b1cd6f3b5ef303ab" width=3D"40=
+" style=3D"outline:none;text-decoration:none;-ms-interpolation-mode:bicubic=
+;width:auto;max-width:100%;clear:both;display:block;border:none;border-radi=
+us:8px;min-width:40px;max-width:40px;border:1px solid #d4d6ec">
+</a>
+</td>
+<td class=3D"employer-details" style=3D"font-family:&quot;Suisse Int'l&quot=
+;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;H=
+elvetica Neue&quot;, sans-serif;padding:0;vertical-align:top;text-align:lef=
+t;vertical-align:middle;padding-left:12px">
+<a class=3D"employer-name" href=3D"https://urldefense.proofpoint.com/v2/url=
+?u=3Dhttps-3A__email.notifications.joinhandshake.com_c_eJyEkE2K3DAQRk8j7dxI=
+pf-2DFFgmNF7mE0U95rJm2ZWypoW8fPGQRkoFZ1yu-2Dx8sestOGZnyUJx6vacW21DzVvZW6nUT=
+9zHUNZSPq7rfaylxS-2DLzc3mvZlrDlcwkfeEt1pei50WAFaKMprqE8pr9fppI9cykiajHoqOUg=
+pWODRa4HBXbmEKzgs6SL58Y6I0EkLUTiygThggmOYeY5hhhp8cBAcc45E1IKfbNWsVk44-2DaQI=
+1pBJPtO973GS4kzaZxWQB9-2DaW0-5FifhBYCQwbq-5F-2D-5FxeB8WydwIjr-5FqgvPE4CI1dK=
+SSLG3tYphXUP5W0j4h72-5FahPnK6hvZ6tbG8E9AWdtR8Jv0amKxwef8gVc-2DkrEffPnvTfnhp=
+mjjHEgQUmBzmzeXAK-2DGCMYwlSACcs3Y-2Dae2pT7OkDm-5F9V40kPH5rWil-2DdXv2GudPmv7=
+Ch-5FcTjWlKOM205o08PvwMAAP-5F-5Fs3e7JA&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gB=
+JbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM=
+1IkhUMgD6R1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;s=3DVZ1SIZaVqMV4D_7_50o_TOKS91L6=
+sPLfXDfRKaGa6X0&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:=
+black;text-decoration:none;font-size:16px;font-weight:700">
+Adobe Systems
+</a>
+<div>
+Internet &amp; Software
+</div>
+</td>
+</tr>
+</table>
+<a class=3D"job-name" href=3D"https://urldefense.proofpoint.com/v2/url?u=3D=
+https-3A__email.notifications.joinhandshake.com_c_eJyEkE2K3DAQRk8j7dxIpf-2D=
+FFgmDF7mEkaXSWD1ty9hSQ98-2DeEggJANZ1-5Feox0sektOGJnyUJx6vacW21DTVvZW6nUR9T3=
+UNZSPqzW-2D1lVxi-2DLzc7rVsS9jSuYQPvMW6UvTcaLACtNEU11Ae05-5FIVJJnLs6IWgx61nK=
+Q0rHBIteDAps5BCt4lnTxAhQTxiUAJR2P2posrDWZRYeRGUWLBwaKc86ZkFLom7WKZeGMyyHNaA=
+WR7H-2D69zpfSpxJ47QC-2DvBLa-5FtJxDcCI4Fxe-5FV-5FKQLjvc4ngfE3R8TY2zrFsO6hvG9=
+EvIV9P-2DoTp-2DvBXs9WtncC-2DhqdtR8Rv55MVzA8fi1XTKWvRLx9dqR-5Fd9SQOc5hHlhgcp=
+CZ5cEp4IMxjkWIAZywdD9q6rFNc48f2PyPOp-5F08KFprfjV59VvmDpt-5Fgsb2k88rk-5FKcaY=
+tZ-5FTp4WcAAAD-5F-5F-2DVNtsE&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&=
+amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6R=
+1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;s=3DTeDWq6p-Spv12PuJfwSpp5whcnGoqdLCHwpPaU=
+j7D0U&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:black;text=
+-decoration:none;font-size:22px;font-weight:700;margin-bottom:8px">
+Software Engineer
+</a>
+<table class=3D"job-details" style=3D"border-spacing:0;border-collapse:coll=
+apse;padding:0;vertical-align:top;text-align:left;margin:10px 0">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left;vertical-align:middle">
+<span class=3D"job-detail" style=3D"display:inline-block;white-space:nowrap=
+;padding-right:12px;padding-bottom:4px">
+<img height=3D"24" src=3D"https://handshake-production-cdn.joinhandshake.co=
+m/static_assets/email_assets/icons/currency-icon.png" width=3D"24" style=3D=
+"outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;width:aut=
+o;max-width:100%;clear:both;display:block;width:24px;height:24px;padding-ri=
+ght:2px;display:inline-block;vertical-align:middle">
+<span style=3D"vertical-align:text-top">$50=E2=80=9360/hr</span>
+</span>
+<span class=3D"job-detail" style=3D"display:inline-block;white-space:nowrap=
+;padding-right:12px;padding-bottom:4px">
+<img height=3D"24" src=3D"https://handshake-production-cdn.joinhandshake.co=
+m/static_assets/email_assets/icons/map-pin-icon.png" width=3D"24" style=3D"=
+outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;width:auto=
+;max-width:100%;clear:both;display:block;width:24px;height:24px;padding-rig=
+ht:2px;display:inline-block;vertical-align:middle">
+<span style=3D"vertical-align:text-top">Hybrid</span>
+</span>
+<span class=3D"job-detail" style=3D"display:inline-block;white-space:nowrap=
+;padding-right:12px;padding-bottom:4px">
+<img height=3D"24" src=3D"https://handshake-production-cdn.joinhandshake.co=
+m/static_assets/email_assets/icons/portfolio-icon.png" width=3D"24" style=
+=3D"outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;width:=
+auto;max-width:100%;clear:both;display:block;width:24px;height:24px;padding=
+-right:2px;display:inline-block;vertical-align:middle">
+<span style=3D"vertical-align:text-top">Job</span>
+</span>
+</td>
+</tr>
+</table>
+<div class=3D"job-locations" style=3D"color:#606384">San Jose, CA</div>
+</div>
+
+<table class=3D"rebrand-cta" style=3D"border-spacing:0;border-collapse:coll=
+apse;padding:0;vertical-align:top;text-align:left;color:white;background-co=
+lor:black;font-size:16px;border-radius:4px;height:40px;margin-top:24px">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left;padding:8px 16px;text-ali=
+gn:center;vertical-align:middle">
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkE2u2yAUhVcDM0dw-2DTEMGLSKMugmLAzXz-2DTF=
+YBmIlN1Xjlqpaiu9Kecc7qcvOohWjzTiIz3xeE0btrXEqewtlVyJ-2Dh7L5lMm6upyaWlJwb-2D=
+Ty72kvPoc6-2Do-5F8RLKRtHxUYMRoEdNcfPpMf05mVJ0zIYZUYtBz1oOUlo2GOR6UGAWDt4Ivk=
+i6OgQVlPWGIRiQMQhruVqEHTUqLhakyQEDxTnnTEgp9MUYxc6CXXyc0Qgi2Ve49zKfSJzJ0WoF9=
+OHW1vZKxDcCNwK3-5FOr-5Frgjc7mWuBG6-5Fd0TcetumWvoRkIir3-5FejPHE6v99LbSl-5FTK=
+cLPAjos7lhTH0j4vpW9Osx-2DG336SMTca2tR8xtesf0b4MaFo6znwfmmRzkwpbBKuDDOFoWIHi=
+wwtD9KLGHNs09fGJzP8pc6eF801rx08yrXzB22tx-5FYGmveJyXlOVMG87o08HPAAAA-5F-5F8m=
+FLTE&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8I=
+fj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6R1m4CkcgPWgI8l-NBB7Z21B1M=
+kf2V&amp;s=3Dq0cLhm_7TL8xdF3RLrzfm2tbN_76cFNFPk82cebyWnM&amp;e=3D" style=3D=
+"color:#254fa5;font-weight:inherit;text-decoration:none;color:white">
+<span style=3D"color: white;">
+View job
+</span>
+</a>
+</td>
+</tr>
+</table>
+
+<p class=3D"body-text" style=3D"line-height:28px;font-size:18px;margin-bott=
+om:24px">
+Want better job recommendations?
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkMuq3DwQhJ9G2nmQWpYsLbT4fwYv8hJGl-5Faxzh=
+lbRpeBefvgIYGQBLLt6qKqvmghGjXRiI-5F0xPJadmxbjks-2DW8pHJfL-5FmHeXDiLv9sgtrSm=
+4t3L7zOnY3BHr5r7wFvJO0fJJgRagJkVxd-2Dmx-5FGpZUrTMBI-2DoxKC8GodxNGzQyNUgQa8c=
+nBZ8HelmNTrvvfbMeSelNkY7hV5NhoFQJiBNFhhIzjlnYhyFumkt2SrMZFYXPWpBRvavup-5FZX=
+5U4GyejJNCH3Vo7KxH-5FEZgJzMer-5F-2DkiMPeKpRKYpeFMac4IzMEVxLKko2HB2ioRc2-5F7=
+UnMvAYm4u-5FMs-2DYnLFXnm2tLxsVx8sBBQ1-2DeOMfWdiPsb249jcPvp0sdBxL22HvFoy1umv=
+1NVsHL0zg-5FMsXEYV7YORgIfpsmwAMGBEZqeJcce2uJ7-2DMJmv2VfabGuKSX5RevVbxg7bfYv=
+Zem1-2DUr6uZk-2DLXwPAAD-5F-5F4qbvUw&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbe=
+O0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1Ik=
+hUMgD6R1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;s=3D90W46tUMaHVgY-MM_QC9DvcuPON4exv=
+Eb0n348UCQa8&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:#2e=
+6aff;text-decoration:none">Update your preferences.</a>
+</p>
+
+</div>
+</td>
+</tr>
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left">
+<div class=3D"rebrand-footer-background" style=3D"background-color:#f3f4fa;=
+padding:40px 0;width:100%">
+<div class=3D"padding-content" style=3D"padding:0 40px">
+<table class=3D"rebrand-links" style=3D"border-spacing:0;border-collapse:co=
+llapse;padding:0;vertical-align:top;text-align:left;width:100%">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td class=3D"rebrand-socials" style=3D"font-family:&quot;Suisse Int'l&quot;=
+, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;He=
+lvetica Neue&quot;, sans-serif;padding:0;vertical-align:top;text-align:left=
+">
+<table style=3D"border-spacing:0;border-collapse:collapse;padding:0;vertica=
+l-align:top;text-align:left">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left">
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkE2u2yAUhVcDM0f8GwYMWkUZdBPWBS4x78XGsiHR=
+233lqIO2qtQph3Pupy95kZwZacJHeeL-2DNS3Y5pqmurVS14Po76kuUFair36treQS4Z1cPmpZZ=
+1jTMcMnXmJdKHo-2DGmGlMKOhuEB5TL9XppI8czEgGjmYYNSglGODRW4GLWzmAqzkWdHZW54ioj=
+ApWHQ8ugwcpdGYwwigGKfFCyY055wzqZQ0F2s1y9KNLkMKaCVR7H-2D4HzWcSJyp0Rkt6MPPrW0=
+Hkd-2DIuBFxe71el7IeDe47LGeDiNsfK0Teelumo-5FY9IpFX2La9PnE6h7d6tLLep9MC7kSY8-=
+2DeCqfSFyOtbzq-5FHCMsG5b4SeT1aT7i26R3Tv90ZkTkGCAMDpgaVWR6cFnwYR8eiiCCctHTba=
+-2DqxTaHHT2z-2DRw0H3T00YzQ-5FnXz1C6ZOm-5F8HLO0H7ucl7TgzljP69OJnAAAA-5F-5F9C=
+L7Wy&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8I=
+fj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6R1m4CkcgPWgI8l-NBB7Z21B1M=
+kf2V&amp;s=3DIAwzh4H9KDkLhVShF06KniMhwhy6Z_jyB2j89Yis8Bo&amp;e=3D" style=3D=
+"color:#254fa5;font-weight:inherit">
+<img alt=3D"Instagram" height=3D"24" src=3D"https://handshake-production-cd=
+n.joinhandshake.com/static_assets/email_assets/student_footer_v3_icons/inst=
+agram-lavender.png" style=3D"outline:none;text-decoration:none;-ms-interpol=
+ation-mode:bicubic;width:auto;max-width:100%;clear:both;display:block;borde=
+r:none;width:24px;height:24px;padding:0 18px 0 0;width: 24px; height: 24px"=
+ width=3D"24">
+</a>
+</td>
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left">
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkM2O3CAQhJ8Gbh5BA204cEg0mkNewuKnvcPu2Fg2=
+jLJvH3mUQxJF2mtXVXf1lz1khyPP9ChP2j-2Dnhdq95qlurdT1YOZ7rksoKzNXv9ZW5pLCS7m81=
+7Lew5qPe-5FigS6oLJy9HBKsAR-2DS0hPKY-5FoxMJXvhUiRCNWBEPWjtxGBJ4mDAzhKCVXLW-5=
+FO7BaWfMiCghClBax2h1VClKm7Q0yIsHAUZKKYXSWuHFWiNm5UY3hxzJKqbFV3XfazwrSaFHhwb=
+4w99b2w6mvjG4Mbj9PF0Mbn8lmbr1tkxH7Xsipq5h2-5Fb6pOlcttWjlfVtOj-2DnnQGezoVy6Q=
+tT1xeQ38MUli2Ut5Wp69F6prVNL5n-5FywthlhRDHEQQetCzmAdnQA7j6ESCFMApy7e95p7aFHv=
+6oOZ-5F1Hjw3YeGaOTJ4bNfKHfe-5FH-5FK8n7Qfl4yTgq0UvCnh18BAAD-5F-5F7EPrx0&amp;=
+d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&am=
+p;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6R1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;=
+s=3DpZTgnVkO6sEIFOn1JEeCqq3v01CxWDVniKkO79HP0QQ&amp;e=3D" style=3D"color:#2=
+54fa5;font-weight:inherit">
+<img alt=3D"X" height=3D"24" src=3D"https://handshake-production-cdn.joinha=
+ndshake.com/static_assets/email_assets/student_footer_v3_icons/x-lavender.p=
+ng" style=3D"outline:none;text-decoration:none;-ms-interpolation-mode:bicub=
+ic;width:auto;max-width:100%;clear:both;display:block;border:none;width:24p=
+x;height:24px;padding:0 18px 0 0;width: 24px; height: 24px" width=3D"24">
+</a>
+</td>
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left">
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkD2u2zAQhE9DdjKW-5F2LBIoHhIpcQ-2DLN84rMl=
+ChJp490-2DkJEiCQKknZmdHXzJ8WS1oQkf5Yn717Rgm2ua6tZKXQ-2Divqe6-2DLISdXVrbSWX6=
+N-5FO5bOWdfZrOmZ-5Fx0usC0XHjOaj4Npoiosvj-2Dn3k6kkBzYGRC0GHbQcpLQwjMj0oPiYGf=
+ejYFnS2SllACIDFrNRKRljAibEoAygzgC0OA5cMcYYCCmFvoyjgiyssdmngKMgEv4397OGcxIDa=
+axWnD7c3Np2EPGN8Bvht9frdWnl3ur9jJ-2DahD9aiLj1tkxH7XtEIq5-2D2-5Fb6xOks3urRyv=
+oxnRRwJ1yfyQVT6QsR1zecX2L0y-2DbLx0rE9Wg94dqmt03-5FZqd5Zhh8GMCDHGSGPFjF2WCMh=
+cij51aMdNtr6rFNocc7NvejhoPuzjetFTuZfPULpk6b-2D8dY2g-5Fcz0-5FKMtAjA-5Fp0-5FG=
+cAAAD-5F-5F7tUtHY&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d=
+5O1KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6R1m4CkcgPWgI=
+8l-NBB7Z21B1Mkf2V&amp;s=3Dx_98kDJoFX9V1hXzXrsn1zpNqSAx8jXHnFbnG5mkrDo&amp;e=
+=3D" style=3D"color:#254fa5;font-weight:inherit">
+<img alt=3D"TikTok" height=3D"24" src=3D"https://handshake-production-cdn.j=
+oinhandshake.com/static_assets/email_assets/student_footer_v3_icons/tiktok-=
+lavender.png" style=3D"outline:none;text-decoration:none;-ms-interpolation-=
+mode:bicubic;width:auto;max-width:100%;clear:both;display:block;border:none=
+;width:24px;height:24px;padding:0 18px 0 0;width: 24px; height: 24px" width=
+=3D"24">
+</a>
+</td>
+</tr>
+</table>
+</td>
+<td class=3D"rebrand-app-store" style=3D"font-family:&quot;Suisse Int'l&quo=
+t;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;=
+Helvetica Neue&quot;, sans-serif;padding:0;vertical-align:top;text-align:le=
+ft">
+<table style=3D"border-spacing:0;border-collapse:collapse;padding:0;vertica=
+l-align:top;text-align:left;margin-right:0;margin-left:auto">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left">
+<a style=3D"color:#254fa5;font-weight:inherit;color: inherit; text-decorati=
+on: none;" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__e=
+mail.notifications.joinhandshake.com_c_eJyEkLuu3CAURb8GOo94PwqKRKMp8hMIw-5F=
+E199pgGRhp-5Fj7yKEWUREp79tnaSys5lqzSOMGWn3C-2D-5FA59rcnXo-2DdaGpLfU91DLkjeX=
+ak9LzmGd3L7rLmsoaS2hi-2D4xbpjcFQrZjhTWmHYQ9787xWfkyM2zgCKT2pWYhLCkskAVZNkZq=
+EsGE4XgVcXtCIhKVDBSK01MXEhihlBQWjBCcHZMcIkpZQSLgRXN2MkWbjVdglpBsORIP-5FD-5F=
+azzhUSJ0FZJhje39n40xL8h9kDsUV7j7xZij1zmOkryWy5fDbFHOA6fS-2Dth2xB-5FjL77VscZ=
+AfF7OI6zPsFfU0dtPZcPf3mBEzF1fe6Q8tgRv791-5FTrGsB8hfxTE762PBKX7d4z-5FtKnYQmE=
+O80QCEZNYyDJZyeiktSWRxcAsN-5Fg4axqx-2D3nEL-2DjuR50bPl3oSkl6WXqNG6SBu-5FsHLB=
+4NzmtJWkqUoQQ-5FHfsZAAD-5F-5F4Gzuwk&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbe=
+O0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1Ik=
+hUMgD6R1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;s=3DXvrDVEY5r2FPh_mgBBZLbVPgqsGcLIl=
+qHErsshlAhpo&amp;e=3D"><img alt=3D"Apple App Store" height=3D"26" src=3D"ht=
+tps://handshake-production-cdn.joinhandshake.com/static_assets/email_assets=
+/student_footer_v3_icons/apple-app-store.png" style=3D"outline:none;text-de=
+coration:none;-ms-interpolation-mode:bicubic;width:auto;max-width:100%;clea=
+r:both;display:block;border:none;height:26px;padding:0 0 0 16px">
+</a>
+</td>
+<td style=3D"font-family:&quot;Suisse Int'l&quot;, -apple-system, BlinkMacS=
+ystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, sans-s=
+erif;padding:0;vertical-align:top;text-align:left">
+<a style=3D"color:#254fa5;font-weight:inherit;color: inherit; text-decorati=
+on: none;" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__e=
+mail.notifications.joinhandshake.com_c_eJyEkLuu3CAURb8GOo94PwqKRKMp8hMIw-5F=
+E199pgGRhp-5Fj7yKEWUREp79tnaSys5lqzSOMGWn3C-2D-5FA59rcnXo-2DdaGpLfU91DLkjeX=
+ak9LzmGd3L7rLmsoaS2hi-2D4xbpjcFQrZjhTWmHYQ9787xWfkyM2zgCKT2pWYhLCkskAVZNkZq=
+EsGE4XgVcXtCIhKVDBSK01MXEhihlBQWjBCcHZMcIkpZQSLgRXN2MkWbjVdglpBsORIP-5FD-5F=
+azzhUSJ0FZJhje39n40xL8h9kDsUV7j7xZij1zmOkryWy5fDbFHOA6fS-2Dth2xB-5FjL77VscZ=
+AfF7OI6zPsFfU0dtPZcPf3mBEzF1fe6Q8tgRv791-5FTrGsB8hfxTE762PBKX7d4z-5FtKnYQmE=
+O80QCEZNYyDJZyeiktSWRxcAsN-5Fg4axqx-2D3nEL-2DjuR50bPl3oSkl6WXqNG6SBu-5FsHLB=
+4NzmtJWkqUoQQ-5FHfsZAAD-5F-5F4Gzuwk&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbe=
+O0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1Ik=
+hUMgD6R1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;s=3DXvrDVEY5r2FPh_mgBBZLbVPgqsGcLIl=
+qHErsshlAhpo&amp;e=3D"><img alt=3D"Google Play Store" height=3D"26" src=3D"=
+https://handshake-production-cdn.joinhandshake.com/static_assets/email_asse=
+ts/student_footer_v3_icons/google-play-store.png" style=3D"outline:none;tex=
+t-decoration:none;-ms-interpolation-mode:bicubic;width:auto;max-width:100%;=
+clear:both;display:block;border:none;height:26px;padding:0 0 0 16px">
+</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class=3D"rebrand-footer-container" style=3D"margin-top:14px">
+<p class=3D"rebrand-footer-text" style=3D"font-size:18px;line-height:28px;c=
+olor:#878aae;font-size:14px;line-height:125%;margin:0 0 20px">
+You received this email because Handshake partners with your school to help=
+ you grow your career.
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkM2O3CAQhJ8Gbh5Bg-5Fk5cEg0mkNewsLQ7LC7Bs=
+vASPP2kUeJtEoi5dpdpar6ooNolaYRP-5FMDj-2DeyYb-5FXuNS951oamb-5FHuvlcyHx1pfacc=
+vCvz-2DW95nL3Jba7-5F8BLqBtFx7UCI0BpRXHz-2DXP5allydMyGFVGJSa1KTlJaNhnkaprBJA=
+7eCJ4kvTsdrV3FnDQDicCVAOBGas1k8srISLMDBjPnnDMhpVAXY2aWhNU2-2DbiiEUSy-5F9V9r=
+-2DtZiTOprZqBfrp773sj4huBG4FbeY6-5FXQRuo-2DHRCNxmy5kynJ3SrzP3AxMeWAI2Im6jb0=
+ur4whIxNXv-2D1EfuJzRe209l7fl5IQHAXUqN4x5bERcX-5Fh-2DHYPfdp-5FfChHX1kfE0pfXm=
+-5F5JV0HiuPp1Yp7JSSaWJjsDn7S2LEDwYIWh-2D1HjCH1ZR-5FjA7n7UtdHD-2Da7UzE9qz3HB=
+OGh3-5FyhLz-2D1n0u-5Ft9OHgZwAAAP-5F-5Fy-2DG-5FPw&amp;d=3DDwMFaQ&amp;c=3Dslr=
+rB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__=
+hm4TXbirUM1IkhUMgD6R1m4CkcgPWgI8l-NBB7Z21B1Mkf2V&amp;s=3DURrGdS40OdwEEoUK8U=
+pLHRMIlr_WiYIa7n4F00ZCmPU&amp;e=3D" style=3D"color:#254fa5;font-weight:inhe=
+rit;color:inherit">Manage email preferences</a> or <a href=3D"https://urlde=
+fense.proofpoint.com/v2/url?u=3Dhttps-3A__email.notifications.joinhandshake=
+.com_u_eJyEzj2u3CAUxfHVDB0Wl28KmihVNmFd4BLzZmwsG480u4-2DcKkrz6nOk-5F69EWYJ1=
+rNCrven4zCuNpZe576P17XyYH6Wv2LaH-2DRm3PlptGf8u01dv24JbORd80pT7ymjF9pr-5Ffc2=
+tRBFyIrKK22Q11zoI7gksN9JXkOgVVM2WaKtDVFVqLYtUWWWniwBwVdUCCRJrUQppAACE0lrZyX=
+sjqgouVCyJvHpo8Z3wq6ebBEK7YI1k-5F1utrEAJExcoNNdVVB6MBO5cEFlmlEF5th-2D9XHnM6=
+cpPGvFXTyc7Ig5rDdyGzzVRudiIuO9Hf9N8V-5Fd-2Djrb9ZtdJx10yAYT1INg7yj8BAAD-5F-5=
+F4nXfWE&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZt=
+S8Ifj-gIg&amp;m=3DvaSwIbRdJ4PK59__hm4TXbirUM1IkhUMgD6R1m4CkcgPWgI8l-NBB7Z21=
+B1Mkf2V&amp;s=3DORNdNDQEPtU5hbSMGozk3NthbQ9AQVYCxqKLvorNAu0&amp;e=3D" style=
+=3D"color:#254fa5;font-weight:inherit;color:inherit">unsubscribe</a>.
+</p>
+<p class=3D"rebrand-footer-text address" style=3D"font-size:18px;line-heigh=
+t:28px;color:#878aae;margin:0 0 20px;font-size:14px;line-height:125%;font-w=
+eight:bold">P.O. Box 40770, San Francisco, CA 94140</p>
+<img alt=3D"Handshake" class=3D"handshake-logo" height=3D"30" src=3D"https:=
+//handshake-production-cdn.joinhandshake.com/static_assets/handshake_logo_n=
+eutral.png" style=3D"outline:none;text-decoration:none;-ms-interpolation-mo=
+de:bicubic;width:auto;max-width:100%;clear:both;display:block;width: 150px;=
+ height: 30px" title=3D"Handshake" width=3D"150">
+</div>
+</div>
+</div>
+
+</td>
+</tr>
+</table>
+<img width=3D"1" height=3D"1" alt=3D"" src=3D"https://email.notifications.j=
+oinhandshake.com/o/eJyEzruu3CAUheGnGTosrptNQROlyktYXDYxZ8bGsvFI8_aRU0VpTr20=
+9H8lqOLBsUKv9qbjM680ll7mvo_Wt_Nhf5S-xrY97M-w9dFqy_HvMn31ti1xK-cSnzTlvjIK0oF=
+CrcABozW21_zvZW4lCJ8TEWgOCQw3xguOJIFbhVWqiFpWw5aQHWBFAl8zkqEKBo0zaKN1ilxyrA=
+UllJVSSqGN0TAhWlG1d77Gkgj1w4jvuF893SQpjPNgFfvfCqpKSjFxEYXhporKvVWSO-dFVjkqr=
+5HtRy9XHnO68pNG-NXTyY4QB4CVt-FzTVQuNkLc96O_ab6rez9H236z66TjLlkvBaAU7B3UnwAA=
+AP__cQSAHQ"></body>
+</html>
+
+--157cac96c0a047f367f6c1c3fb4604e8d17aae9e9b42a300e5c9484e8e9d--

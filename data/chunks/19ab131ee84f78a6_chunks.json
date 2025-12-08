@@ -1,0 +1,22 @@
+{
+  "message_id": "19ab131ee84f78a6",
+  "chunked_at": "2025-12-08T14:31:54.292922",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19ab131ee84f78a6_email_0_2c3ff15a",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from JPMorganChase, based on your preferences. Check it out! Applications are due Friday, November 20 at 11 PM EST. JPMorganChase Financial Services 2026 Asset Wealth Management Machine Learning Engineer-Summer Associate Onsite Job Jersey City, NJ View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19ab131ee84f78a6",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "JPMorganChase just posted a role 🌟",
+        "date": "Sun, 23 Nov 2025 14:50:28 +0000",
+        "timestamp": 1763909428,
+        "token_count": 141
+      }
+    }
+  ]
+}

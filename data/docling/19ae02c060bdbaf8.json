@@ -1,0 +1,50 @@
+{
+  "text": "PFA",
+  "tables": [],
+  "metadata": {
+    "id": "19ae02c060bdbaf8",
+    "from": "Ankita Tripathi <ankitatripathi95@gmail.com>",
+    "subject": "Event flyers",
+    "date": "Tue, 2 Dec 2025 12:45:32 -0500",
+    "eml_path": "data/raw_emails/19ae02c060bdbaf8.eml",
+    "attachments": [
+      {
+        "filename": "THREEJS_TV.png",
+        "path": "data/attachments/19ae02c060bdbaf8_THREEJS_TV.png"
+      },
+      {
+        "filename": "THREEJS_TV.png",
+        "path": "data/attachments/19ae02c060bdbaf8_THREEJS_TV.png"
+      }
+    ],
+    "attachment_count": 2
+  },
+  "attachments_processed": [
+    {
+      "filename": "THREEJS_TV.png",
+      "path": "data/attachments/19ae02c060bdbaf8_THREEJS_TV.png",
+      "text": "MakerSpace\nDesign Lab\nINTRO TO THREE.JS\nThis workshop will demonstrate how to build a landing page with 3D elements and scroll interactions. The website will be bundled using Vite, stored in a Git repository and deployed on Netlify.\nMonday, Dec 1st 12:00pm to 2:00 PM bit.ly/DLMSLuma",
+      "tables": [],
+      "metadata": {
+        "email_id": "19ae02c060bdbaf8",
+        "attachment_type": ".png",
+        "original_filename": "THREEJS_TV.png",
+        "content_type": "image",
+        "image_format": ".png"
+      }
+    },
+    {
+      "filename": "THREEJS_TV.png",
+      "path": "data/attachments/19ae02c060bdbaf8_THREEJS_TV.png",
+      "text": "MakerSpace\nDesign Lab\nINTRO TO THREE.JS\nThis workshop will demonstrate how to build a landing page with 3D elements and scroll interactions. The website will be bundled using Vite, stored in a Git repository and deployed on Netlify.\nMonday, Dec 1st 12:00pm to 2:00 PM bit.ly/DLMSLuma",
+      "tables": [],
+      "metadata": {
+        "email_id": "19ae02c060bdbaf8",
+        "attachment_type": ".png",
+        "original_filename": "THREEJS_TV.png",
+        "content_type": "image",
+        "image_format": ".png"
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "id": "19aadaf0f535cdc9",
+  "from": "Abhinav Batra <ab12615@nyu.edu>",
+  "subject": "Test email wih different attachments",
+  "date": "Sat, 22 Nov 2025 17:28:07 -0500",
+  "eml_path": "data/raw_emails/19aadaf0f535cdc9.eml",
+  "attachments": [
+    {
+      "filename": "Lecture-1-nyu.pdf",
+      "path": "data/attachments/19aadaf0f535cdc9_Lecture-1-nyu.pdf"
+    },
+    {
+      "filename": "19a2beedbec581a4_2026 BME-CAIR Research Project Descriptions.pdf",
+      "path": "data/attachments/19aadaf0f535cdc9_19a2beedbec581a4_2026 BME-CAIR Research Project Descriptions.pdf"
+    },
+    {
+      "filename": "199c9706b9e3f785_Genhack-Challenge.jpg",
+      "path": "data/attachments/19aadaf0f535cdc9_199c9706b9e3f785_Genhack-Challenge.jpg"
+    }
+  ],
+  "body_text": "PFA samples\r\n Ace the Data Science Interview x NYU CDS 2025.zip\r\n<https://drive.google.com/file/d/1Y76SCOPjBKy4VOX8o-mhqYMCPtNWHun8/view?usp=drive_web>",
+  "body_html": "<div dir=\"ltr\">PFA samples <div><div class=\"gmail_chip gmail_drive_chip\" style=\"width:386px;height:20px;max-height:20px;background-color:rgb(245,245,245);margin:6px 0px;padding:10px;font-variant-numeric:normal;font-variant-east-asian:normal;font-variant-alternates:normal;font-size-adjust:none;font-kerning:auto;font-feature-settings:normal;font-weight:400;font-stretch:normal;font-size:14px;line-height:20px;font-family:&quot;Google Sans&quot;,sans-serif;border:1px solid rgb(221,221,221)\"><a href=\"https://drive.google.com/file/d/1Y76SCOPjBKy4VOX8o-mhqYMCPtNWHun8/view?usp=drive_web\" target=\"_blank\" style=\"color:rgb(32,33,36);display:inline-block;max-width:356px;overflow:hidden;text-overflow:ellipsis;text-decoration-line:none;border:none\" aria-label=\"Ace the Data Science Interview x NYU CDS 2025.zip\"><img style=\"vertical-align: text-bottom; border: none; padding-right: 10px; height: 20px;\" alt=\"\" src=\"https://ssl.gstatic.com/docs/doclist/images/icon_10_generic_list.png\"> <span dir=\"ltr\" style=\"vertical-align:bottom;text-decoration:none\">Ace the Data Science Interview x NYU CDS 2025.zip</span></a></div><div></div></div></div>"
+}

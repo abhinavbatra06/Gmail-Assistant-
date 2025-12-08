@@ -1,0 +1,902 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:4985:b0:50b:93c5:eed5 with SMTP id hb5csp329532gdb;
+        Fri, 5 Dec 2025 09:49:23 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IF5Wv1vmmccY8XCSLR6JigKGRFJJfu0sXrPnSnAygyrDQAmteNtYebvmBBoD9lI6S/0I+XO
+X-Received: by 2002:a05:620a:1707:b0:8b2:80d:bc2e with SMTP id af79cd13be357-8b6181bd57bmr1040278085a.44.1764956963346;
+        Fri, 05 Dec 2025 09:49:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764956963; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ByBRY+2tQZKdklofCvuCB8366ZKPX5UvflPv16bEEZacg2UWf94XtpV/oGjpqesypS
+         9XMZ9NcSJz+vwTvhJ17BF+UOJ35q9CcnG1s3ryTF66TC0LhqiB7hxcMtp8kuy7j6zwb2
+         gfWuXR+K3CJn63BL59S5bM+XHKopN0VrfHPOcJn9g3CtjkSMhcotbVakQ573J2MkCF3e
+         sh/McdAQYSXUyO2GA6EItZ0NQssc1sqGxBusTxzqVG5cvspRFzTBE0VGl55O8lhZBnGn
+         2u3VX7s/Rtm7abKm8EZ8AqVZ8gdZqTg9qejDPPFQaIi1F3C+qpBknGz90+SoQ2b0F0Xi
+         7V5w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:from:subject:date:message-id:sender:reply-to:mime-version
+         :dkim-signature:dkim-signature;
+        bh=x39TNyuJlZYiq0evz1nBziUFOUV2vMoMT++hpMfJuhg=;
+        fh=Ve8bNZxNIKc3i80BLW5OfcA/t7ACAF3NISRO6zbrfXo=;
+        b=Db3aN5KovD4a26l5dL9j2fgnKkRhjACsE4hVpmdJMOntKqFlKwRCuZOAgPfLzcUNBK
+         RiM+rP5rhe9BpqUsgVdVskrAE5KtUXe85HdHVBUbswaGusz018psaUpPD0EO39Hyro42
+         pddVBfBVnl6AVNJiQMZLyxRSva97+FcotZ4PKPCt3codjwJnMWYUdqGgCsPqLj16aLXZ
+         NU78n7xg9sAmeKLHExXGcsL2SNkha98Q8zsIJdELWl4xgMLwcf0A0jTV+4UnW30/vw77
+         0XfBs8ZO9r+ByKhrUCK9CN61dCuX8i76quLHd344iLLkD43Ilt97Sm/AfOPW8z8uEQxi
+         P9qA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=NjSrMMW9;
+       dkim=pass header.i=@nyu.edu header.s=nyu-googleapps1 header.b="Sw/eKGGZ";
+       spf=pass (google.com: domain of ab12615@nyu.edu designates 209.85.222.73 as permitted sender) smtp.mailfrom=ab12615@nyu.edu;
+       dara=neutral header.i=@nyu.edu
+Return-Path: <ab12615@nyu.edu>
+Received: from pco01la-1770s.nyu.edu (pco01la-1770s.cfs.its.nyu.edu. [216.165.75.6])
+        by mx.google.com with ESMTPS id af79cd13be357-8b62529980esi279381285a.65.2025.12.05.09.49.23
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 05 Dec 2025 09:49:23 -0800 (PST)
+Received-SPF: pass (google.com: domain of ab12615@nyu.edu designates 209.85.222.73 as permitted sender) client-ip=209.85.222.73;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@google.com header.s=20230601 header.b=NjSrMMW9;
+       dkim=pass header.i=@nyu.edu header.s=nyu-googleapps1 header.b="Sw/eKGGZ";
+       spf=pass (google.com: domain of ab12615@nyu.edu designates 209.85.222.73 as permitted sender) smtp.mailfrom=ab12615@nyu.edu;
+       dara=neutral header.i=@nyu.edu
+Received: from mx0b-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-1770s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5B5HnMnQ826878
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Fri, 5 Dec 2025 12:49:22 -0500
+Received: from pps.filterd (m0142701.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5B5Gfu7k2672199
+	for <at6651@nyu.edu>; Fri, 5 Dec 2025 12:49:22 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=ab12615@nyu.edu;
+	dkim=pass header.s=20230601 header.d=google.com;
+	dkim=pass header.s=nyu-googleapps1 header.d=nyu.edu;
+	dmarc=pass header.from=nyu.edu
+Received: from mail-ua1-f73.google.com (mail-ua1-f73.google.com [209.85.222.73])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4av3549cvc-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <at6651@nyu.edu>; Fri, 05 Dec 2025 12:49:20 -0500 (EST)
+Received: by mail-ua1-f73.google.com with SMTP id a1e0cc1a2514c-93ceb095d13so306164241.1
+        for <at6651@nyu.edu>; Fri, 05 Dec 2025 09:49:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20230601; t=1764956959; x=1765561759; darn=nyu.edu;
+        h=to:from:subject:date:message-id:sender:reply-to:mime-version:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=x39TNyuJlZYiq0evz1nBziUFOUV2vMoMT++hpMfJuhg=;
+        b=NjSrMMW9sEOJgszh3fSosESLy0rFHIyRNvS9ahfMXLZ59JbYMfSw4xM3GAq6BOBPBM
+         VQKYnTuWCdapyx5iWt+v85og+wr34Mhier80PhdyBWF+taGIjrBrMc7//UjgkntcQN4l
+         59lVLjp+WKJjozatMgw+A8iKpnHzQqKzUUc6Z2Syxfab5sQyOGG9cRKCiD3eeVwbS4CW
+         EGkISpaEKNxjFj57rdmx80UlewUWsqWT56M+I3OgKw/jl3weJ5LLFa1kFyvadRV2QXF7
+         rxfpy1iFKcu8K0QDZY3TtCZyjdIYU/xYXsapBfwljIesDOjB4hnX0q/turiseLvKv6xk
+         q8wA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=nyu.edu; s=nyu-googleapps1; t=1764956959; x=1765561759; darn=nyu.edu;
+        h=to:from:subject:date:message-id:sender:reply-to:mime-version:from
+         :to:cc:subject:date:message-id:reply-to;
+        bh=x39TNyuJlZYiq0evz1nBziUFOUV2vMoMT++hpMfJuhg=;
+        b=Sw/eKGGZEzx/mD/TjiTmWx46kjH2C9DiAUONFvEZvNE7gMTUymxU1kvh8InTxHQIEB
+         SVlDNC074uxkgqtgO37rn8d6GytfG57hGSW6VEvV/bn9/BbCDYYZ/rWkzX7aUp6+4LyQ
+         2vsfBiNN0CSAvGdkO90zE4ZUxS/LpsJuw+8tJYV+M/NxyOm8/Hb7wPwAqavmI3aQyx8R
+         /EHlWKWzrb6LebyTAf4g7JsWBb4FYXzC+GdsJ0INJFDPtI6cEdo0owmGm8nACdXlBF5S
+         L2HYI288saP203kXu/ZGVrut7FYbj4VDTCc3j9lioV1q2oDrmfIb8o7HpIX5zn3b+s7L
+         vloA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1764956959; x=1765561759;
+        h=to:from:subject:date:message-id:sender:reply-to:mime-version
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=x39TNyuJlZYiq0evz1nBziUFOUV2vMoMT++hpMfJuhg=;
+        b=YLk3ZsA4wJWtT6Vvb15jEu3nuKXAwR9JosorfL/9t/vhzboLyYvLHjbFRQYEqrYWCZ
+         AWQEi4dHud7BTX4i5OBU92fh2bLr7kPAEFBLhvvJi3+Yk4xahvi5hcke9YgTIdiLo2XX
+         JbWuHxzDMOY2uASB+WpfBhqjm09BQ1nE0VQgb7Dz3ZpiIvwMHSqfYYyNiByB2U9RyH9M
+         RNSI5LC8qhFLDiATzpAGJ5I+c1RVx/B3XnksqYdivT6ULFX48PvPsge06AQq2xI4dtVC
+         +1xF+PvKJ7MHk+PUyttvQpIOd4wffYZqRiXqpyLz4l7k67R+Q3cJ9mLdwnJs5sXDm/82
+         IEaw==
+X-Gm-Message-State: AOJu0Yw6Dyusy1aZeRjOyXnQ5kFn6R+6Cy7cT4fZMMfukBf0pz6xrTRN
+	F1uo5gUoo2/aql6Q5pEWDBXYJ8NkQ9Ta/IatqDSYH6OmqwPbR/pxW0Sck6w7CFcFGQTVdcdTwRm
+	2YTEsj+ktDN9FoOt3dAuRrxJXj41oHBrV5HZDR2mK8e46ELQOiCpFFuy0aBMtNu0kriZZ4yY945
+	ZjNVlJj6I7UQgtiOrAK0zwcU2DRls=
+MIME-Version: 1.0
+X-Received: by 2002:a05:6122:4fa6:b0:559:c342:b246 with SMTP id
+ 71dfb90a1353d-55e84685852mr4096e0c.2.1764956959647; Fri, 05 Dec 2025 09:49:19
+ -0800 (PST)
+Reply-To: Abhinav Batra <ab12615@nyu.edu>
+Sender: Google Calendar <calendar-notification@google.com>
+Message-ID: <calendar-ea1e5c7d-b8b3-4abf-a3ea-6d912daee933@google.com>
+Date: Fri, 05 Dec 2025 17:49:19 +0000
+Subject: Invitation: Demo recording @ Sat Dec 6, 2025 11:30am - 1pm (EST)
+ (Ankita Tripathi)
+From: Abhinav Batra <ab12615@nyu.edu>
+To: Ankita Tripathi <at6651@nyu.edu>
+Content-Type: multipart/mixed; boundary="0000000000009fbc3406453810a9"
+X-mailroute: internal
+X-Proofpoint-id: 7dee7a77-7d0d-4761-9dfa-638768572a6e
+X-Authority-Analysis: v=2.4 cv=ZsDg6t7G c=1 sm=1 tr=0 ts=69331b21 cx=c_pps
+ a=5AHxNnSkuIqbodoI5DgKOA==:117 a=wP3pNCr1ah4A:10 a=x7bEGLp0ZPQA:10
+ a=3vObA125-ToA:10 a=S0S_EcBMpFAA:10 a=JyWEw40TUO5AK6tc77iI:22
+ a=1XWaLZrsAAAA:8 a=elN8p0EZqihaOrOf2jMA:9 a=QEXdDO2ut3YA:10 a=TeuQqM9sAAAA:8
+ a=SSmOFEACAAAA:8 a=IoeQSOh0AAAA:8 a=AoteEaGtJkZ8Zlp8pdoA:9
+ a=NtGHnZNqmZaaYXY8:21 a=gKO2Hq4RSVkA:10 a=_W_S_7VecoQA:10 a=lqcHg5cX4UMA:10
+ a=oKmnSOut9zRshflxFq0A:9 a=pt9G7I5XmLUTiVRDx3fboKQV4P0=:19 a=Ww3EAYOm5v4A:10
+ a=Zq7r0XqNILgA:10 a=OfCYZqLUrUpZuunnw_-s:22 a=zHLE2jnfhNzAW3bdPdKa:22
+ a=0erTJ1SXpGMo8wCR34FZ:22
+X-Proofpoint-GUID: foD71PkWCicFNoVxch5AD_kWTDL6ewdc
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMjA1MDEzMSBTYWx0ZWRfXw6SHZgIz8Zfo
+ iJuvwAhVmxrs385kTS/MFd29fl8IgDYOoQlsh4wZYY0kSY4e4e2CfzY0mapDG45CNAFf0H1ZQuq
+ 7aNWNUDDAEk04WU05TQK7aGQ+3eXOpEWDFQhuPpVMsHw37J4AVmkF8PM18EgwFT+X7O7OB3lvix
+ zdxUYn3piLKwxRSx8uwGN5nw0vzG7fU9GeBPIQQQErzC9nNSWb/GzQAuA6jtc+bTAXIJslqFHyE
+ 00gwvZYguip2eFBUc0HudzjcQ8KylPndMwDaZ5ctPoMRxFe0sn6Yb9UdLLDsQ+TgBEST0UzVCXj
+ I2iqRcndqjTss8eOAPznFjh/pMmYZJhVq7gu3bnykVindc7zl09iYs/Os7bk/CZmT607DNhBSKd
+ flV+kZ762gfSKnaIpvD0GtsdxPfhafwP90s2plL3WFxLxN31Pnpz8DVGa6i8zAftGajUbVl7mcp
+ CjT7FFbQ4p9KkQIBzYQ==
+X-CLX-Shades: MLX
+X-CLX-Response: 1TFkXGxwSEQpMehcYGxIRCllEF2UeZ0ZJe0BObnl8EQpYWBdhSWBYHUJzU35
+ JThEKeE4Xb2sFRn1BRlBmfE4RCnhLF2FJYFgdQnNTfklOEQp4TBdkc1ISX0UYYRsfYBEKeUwXZH
+ NSEl9FGGEbH2ARCkNIFwcbGh0RCkNZFwceGhkRCkNJFxoEGhoaEQpZTRdnZnIRCllJFxpxGhAad
+ wYbHhJxGBMQGncGGBoGGhEKWV4XbGx5EQpJRhdET11TRVhBX3VCRVleT04RCklHF3hPTREKQ04X
+ TEVuHRt6QX1pQ0lsZEV8UklCH2tudUF9fm5mHE9dTkkRClhcFx8EGgQeGxoFGxoEGxsaBBsZHgQ
+ ZHxAbHhofGhEKXlkXTUtmARIRCk1cFx4cGREKTFoXbGlrTWsRCkxGF29rY2traxEKQk8XYGRrH2
+ dEGHBmGFoRCkNaFxgaEwQSHwQYGBgEHRkRCkJeFxsRCkJcFxsRCl5OFxsRCkJLF29rBUZ9QUZQZ
+ nxOEQpCSRdvawVGfUFGUGZ8ThEKQkUXYmUaYxJTQXphblgRCkJOF29rBUZ9QUZQZnxOEQpCTBdh
+ SWBYHUJzU35JThEKQmwXaBlyaxJAaFsTUlsRCkJAF3oSGWIST2hjbUcFEQpCWBduQkFwUkhAZ0I
+ cfBEKWlgXGx0RCnlDF2JLUxpoTH5mek1rEQpZSxcbHhkaGREKWksXGx4ZGhkRCnBnF2JzT0NBQB
+ IcAUZeEBsdEhEKcGgXY0UcZ3l8Umsdc0UQEh4RCnBoF2lZS1N7eBliQBJsEBoRCnBoF25bYgFCQ
+ R9BSE5+EBsdEQpwaBdpWHxoRxwZZmltHRAbGB4RCnBoF2RDEkFQaGdHAVpuEBoRCnBoF2lBQ1xs
+ fRpLb35hEBoRCnBoF2hGXGASS3NLTHIaEBoRCnBoF21HG01DGnp6QklcEBsZGBEKcH0XY0AfSHx
+ bcFhwBWEQGhEKcH0XbHBhbntPRXhLW3MQGx4bEQpwfRd6Rlp9QVlvQlJeaxAbHR0RCnB9F2x/a0
+ 14U0drclB6EBseGxEKcGsXZG5lEk19W1IfYAEQGhEKcEsXYxgYZX5LfkJyfQUQExwRCnBrF25FU
+ h1fQ30fYl58EBoRCnBrF2xfWFJ+GkZuXAEbEBoRCnBLF2R5YnkdZG56TW5tEBsbHBEKcH8Xb0Rh
+ UBITfxscEn4QExwRCnBfF2FMSWFvQHBcQFhYEBsZHBEKcF8XZAV4HAUScgFuW2sQGx4bEQpwXxd
+ iXnMBXEVaUkRZSRAbHRsRCnBfF2NacHNmY0BYHl9MEBseGxEKcGwXZRwfWG4dZQUbG2EQGhEKcE
+ wXZ3MYGAUaeHBpSRwQGhEKbX4XGhEKWE0XSxEg
+X-Proofpoint-ORIG-GUID: foD71PkWCicFNoVxch5AD_kWTDL6ewdc
+X-Orig-IP: 209.85.222.73
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-12-05_06,2025-12-04_04,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Reason: safe
+
+--0000000000009fbc3406453810a9
+Content-Type: multipart/alternative; boundary="0000000000009fbc3306453810a7"
+
+--0000000000009fbc3306453810a7
+Content-Type: text/plain; charset="UTF-8"; format=flowed; delsp=yes
+Content-Transfer-Encoding: base64
+
+RGVtbyByZWNvcmRpbmcNClNhdHVyZGF5IERlYyA2LCAyMDI1IOKLhSAxMTozMGFtIOKAkyAxcG0N
+CkVhc3Rlcm4gVGltZSAtIE5ldyBZb3JrDQoNCg0KDQpPcmdhbml6ZXINCkFiaGluYXYgQmF0cmEN
+CmFiMTI2MTVAbnl1LmVkdQ0KDQpHdWVzdHMNCkFiaGluYXYgQmF0cmEgLSBvcmdhbml6ZXINCkFu
+a2l0YSBUcmlwYXRoaQ0KVmlldyBhbGwgZ3Vlc3QgaW5mbyAgDQpodHRwczovL2NhbGVuZGFyLmdv
+b2dsZS5jb20vY2FsZW5kYXIvZXZlbnQ/YWN0aW9uPVZJRVcmZWlkPU0ySmhOV3czWTIweFpHYzVi
+VE01TURjNGRUaHdkWE15YldJZ1lYUTJOalV4UUc1NWRTNWxaSFUmdG9rPU1UVWpZV0l4TWpZeE5V
+QnVlWFV1WldSMU9UQXdNbVEyWm1OaFlUSTBPR00wWWprd056Y3dPRGN4WW1Jek16QXlaR1E0TURj
+Mk9XRXdZZyZjdHo9QW1lcmljYSUyRk5ld19Zb3JrJmhsPWVuJmVzPTENCg0KUmVwbHkgZm9yIGF0
+NjY1MUBueXUuZWR1IGFuZCB2aWV3IG1vcmUgZGV0YWlscyAgDQpodHRwczovL2NhbGVuZGFyLmdv
+b2dsZS5jb20vY2FsZW5kYXIvZXZlbnQ/YWN0aW9uPVZJRVcmZWlkPU0ySmhOV3czWTIweFpHYzVi
+VE01TURjNGRUaHdkWE15YldJZ1lYUTJOalV4UUc1NWRTNWxaSFUmdG9rPU1UVWpZV0l4TWpZeE5V
+QnVlWFV1WldSMU9UQXdNbVEyWm1OaFlUSTBPR00wWWprd056Y3dPRGN4WW1Jek16QXlaR1E0TURj
+Mk9XRXdZZyZjdHo9QW1lcmljYSUyRk5ld19Zb3JrJmhsPWVuJmVzPTENCllvdXIgYXR0ZW5kYW5j
+ZSBpcyBvcHRpb25hbC4NCg0Kfn4vL35+DQpJbnZpdGF0aW9uIGZyb20gR29vZ2xlIENhbGVuZGFy
+OiBodHRwczovL2NhbGVuZGFyLmdvb2dsZS5jb20vY2FsZW5kYXIvDQoNCllvdSBhcmUgcmVjZWl2
+aW5nIHRoaXMgZW1haWwgYmVjYXVzZSB5b3UgYXJlIHN1YnNjcmliZWQgdG8gY2FsZW5kYXIgIA0K
+bm90aWZpY2F0aW9ucy4gVG8gc3RvcCByZWNlaXZpbmcgdGhlc2UgZW1haWxzLCBnbyB0byAgDQpo
+dHRwczovL2NhbGVuZGFyLmdvb2dsZS5jb20vY2FsZW5kYXIvci9zZXR0aW5ncywgc2VsZWN0IHRo
+aXMgY2FsZW5kYXIsIGFuZCAgDQpjaGFuZ2UgIk90aGVyIG5vdGlmaWNhdGlvbnMiLg0KDQpGb3J3
+YXJkaW5nIHRoaXMgaW52aXRhdGlvbiBjb3VsZCBhbGxvdyBhbnkgcmVjaXBpZW50IHRvIHNlbmQg
+YSByZXNwb25zZSB0byAgDQp0aGUgb3JnYW5pemVyLCBiZSBhZGRlZCB0byB0aGUgZ3Vlc3QgbGlz
+dCwgaW52aXRlIG90aGVycyByZWdhcmRsZXNzIG9mICANCnRoZWlyIG93biBpbnZpdGF0aW9uIHN0
+YXR1cywgb3IgbW9kaWZ5IHlvdXIgUlNWUC4NCg0KTGVhcm4gbW9yZSBodHRwczovL3N1cHBvcnQu
+Z29vZ2xlLmNvbS9jYWxlbmRhci9hbnN3ZXIvMzcxMzUjZm9yd2FyZGluZw0K
+--0000000000009fbc3306453810a7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce"><head><title></title><!--[if !mso]><meta http-equiv=3D"X-UA-Compatible"=
+ content=3D"IE=3Dedge"><![endif]--><meta http-equiv=3D"Content-Type" conten=
+t=3D"text/html; charset=3DUTF-8"><meta name=3D"viewport" content=3D"width=
+=3Ddevice-width,initial-scale=3D1"><meta name=3D"color-scheme" content=3D"l=
+ight dark"><meta name=3D"supported-color-schemes" content=3D"light dark">
+    <style>
+      body, html {
+        font-family: Roboto, Helvetica, Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+
+      #outlook a {
+        padding: 0;
+      }
+
+      .ReadMsgBody {
+        width: 100%;
+      }
+
+      .ExternalClass {
+        width: 100%;
+      }
+
+      .ExternalClass * {
+        line-height: 100%;
+      }
+
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+      }
+
+      p {
+        display: block;
+        margin: 13px 0;
+      }
+    </style>
+    <!--[if !mso]><!-->
+    <style>
+      @media only screen and (max-width:580px) {
+        @-ms-viewport {
+          width: 320px;
+        }
+
+        @viewport {
+          width: 320px;
+        }
+      }
+    </style>
+    <!--<![endif]-->
+    <!--[if mso]>
+          <xml>
+          <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+          </o:OfficeDocumentSettings>
+          </xml>
+          <![endif]-->
+    <!--[if lte mso 11]>
+          <style>
+            .outlook-group-fix { width:100% !important; }
+          </style>
+    <![endif]-->
+
+    <!--[if !mso]><!-- -->
+  <style>body, html {font-family:Roboto,Helvetica,Arial,sans-serif;}@font-f=
+ace {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu4mxP.ttf) forma=
+t('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmEU9fBBc9.ttf) f=
+ormat('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/roboto/v18/KFOlCnqEu92Fr1MmWUlfBBc9.ttf) f=
+ormat('truetype');
+}
+@font-face {
+  font-family: 'Material Icons Extended';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/materialiconsextended/v154/kJEjBvgX7BgnkSr=
+UwT8UnLVc38YydejYY-oE_LvM.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Google Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlematerialicons/v144/Gw6kwdfw6UnXLJCcm=
+afZyFRXb3BL9rvi0QZG3g.otf) format('opentype');
+}
+
+.google-material-icons {
+  font-family: 'Google Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+}
+@font-face {
+  font-family: 'Google Material Icons Filled';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlematerialiconsfilled/v118/WWXFlimHYg6=
+HKI3TavMkbKdhBmDvgach8TVpeGsuueSZJH4.otf) format('opentype');
+}
+
+.google-material-icons-filled {
+  font-family: 'Google Material Icons Filled';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/s/googlesans/v14/4UaGrENHsxJlGDuGo1OIlL3Owps=
+.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: url(//fonts.gstatic.com/s/googlesans/v14/4UabrENHsxJlGDuGo1OIlLU94Yt=
+zCwM.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Google Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: url(//fonts.gstatic.com/s/googlesans/v14/4UabrENHsxJlGDuGo1OIlLV154t=
+zCwM.ttf) format('truetype');
+}
+</style><!--<![endif]-->
+      <style>
+        .body-container {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+      </style>
+ =20
+      <style>
+        u+.body .body-container,
+        body[data-outlook-cycle] .body-container,
+        #MessageViewBody .body-container {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      </style>
+ =20
+    <style>
+      @media only screen and (min-width:580px) {
+        .column-per-37 {
+          width: 37% !important;
+          max-width: 37%;
+        }
+
+        .column-per-63 {
+          width: 63% !important;
+          max-width: 63%;
+        }
+      }
+    </style>
+ =20
+    <style>
+      .appointment-buttons th {
+        display: block;
+        clear: both;
+        float: left;
+        margin-top: 12px;
+      }
+
+      .appointment-buttons th a {
+        float: left;
+      }
+
+      #MessageViewBody .appointment-buttons th {
+       margin-top: 24px;
+      }
+    </style>
+ =20
+    <style>
+      @media only screen and (max-width:580px) {
+        table.full-width-mobile {
+          width: 100% !important;
+        }
+
+        td.full-width-mobile {
+          width: auto !important;
+        }
+      }
+    </style>
+    <style>
+      .main-container-inner,
+      .info-bar-inner {
+        padding: 12px 16px !important;
+      }
+
+      .main-column-table-ltr {
+        padding-right: 0 !important;
+      }
+
+      .main-column-table-rtl {
+        padding-left: 0 !important;
+      }
+
+      @media only screen and (min-width:580px) {
+        .main-container-inner {
+          padding: 24px 32px !important;
+        }
+
+        .info-bar-inner {
+          padding: 12px 32px !important;
+        }
+
+        .main-column-table-ltr {
+          padding-right: 32px !important;
+        }
+
+        .main-column-table-rtl {
+          padding-left: 32px !important;
+        }
+
+        .appointment-buttons th {
+          display: table-cell;
+          clear: none;
+        }
+      }
+
+      .primary-text {
+        color: #3c4043 !important;
+      }
+
+      .secondary-text,
+      .phone-number a {
+        color: #70757a !important;
+      }
+
+      .accent-text {
+        color: #1a73e8 !important;
+      }
+
+      .accent-text-dark {
+        color: #185abc !important;
+      }
+
+      .grey-button-text,
+      .attachment-chip a {
+        color: #5f6368 !important;
+      }
+
+      .primary-button {
+        background-color: #1a73e8 !important;
+      }
+
+      .primary-button-text {
+        color: #fff !important;
+      }
+
+      .underline-on-hover:hover {
+        text-decoration: underline !important;
+      }
+
+      .grey-infobar-text {
+        color: #202124 !important;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .primary-text:not([class^=3D"x_"]) {
+          color: #e8eaed !important;
+        }
+
+        .secondary-text:not([class^=3D"x_"]),
+        .phone-number:not([class^=3D"x_"]) a {
+          color: #9aa0a6 !important;
+        }
+
+        .grey-button-text:not([class^=3D"x_"]),
+        .attachment-chip:not([class^=3D"x_"]) a {
+          color: #bdc1c6 !important;
+        }
+
+        .accent-text:not([class^=3D"x_"]),
+        .hairline-button-text:not([class^=3D"x_"]) {
+          color: #8ab4f8 !important;
+        }
+
+        .primary-button:not([class^=3D"x_"]) {
+          background-color: #8ab4f8 !important;
+        }
+
+        .primary-button-text:not([class^=3D"x_"]) {
+          color: #202124 !important;
+        }
+      }
+    </style>
+    <style>
+      @media (prefers-color-scheme: dark) {
+        .cse-banner:not([class^=3D"x_"]) {
+          background-color: #3c4043 !important; /* Google Grey 800 */
+        }
+
+        .encryption-icon:not([class^=3D"x_"]) {
+          /* WARNING: This causes the whole style tag to get stripped in Gm=
+ail. */
+          background-image: url('https://fonts.gstatic.com/s/i/googlemateri=
+aliconsfilled/encrypted/v3/gm_grey200-24dp/2x/gm_filled_encrypted_gm_grey20=
+0_24dp.png') !important;
+        }
+      }
+    </style>
+    <!--[if !mso]><!-->
+    <style>
+      .prevent-link a {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-family: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
+      }
+    </style>
+    <!--<![endif]-->
+
+    <!--[if mso | IE]>
+      <style>
+        .main-container-inner {
+          padding: 24px 32px !important;
+        }
+
+        .info-bar-inner {
+          padding: 12px 32px !important;
+        }
+
+        .cse-banner .encryption-icon {
+          /* We use the IE workaround instead. */
+          background-image: none !important;
+        }
+
+        .cse-banner .encryption-icon .ms-fallback {
+          display: block !important;
+        }
+
+        /* NB: Some MS clients ignore dark-scheme styling and apply their o=
+wn, so there's nothing we can do to help there. */
+        @media (prefers-color-scheme: dark) {
+          .cse-banner:not([class^=3D"x_"]) .encryption-icon .ms-fallback {
+            display: none !important;
+          }
+
+          .cse-banner:not([class^=3D"x_"]) .encryption-icon .ms-fallback-da=
+rk {
+            display: block !important;
+          }
+        }
+      </style>
+    <![endif]-->
+  </head><body class=3D"body"><span itemscope itemtype=3D"http://schema.org=
+/InformAction"><span style=3D"display:none" itemprop=3D"about" itemscope it=
+emtype=3D"http://schema.org/Person"><meta itemprop=3D"description" content=
+=3D"Invitation from Abhinav Batra"/></span><span itemprop=3D"object" itemsc=
+ope itemtype=3D"http://schema.org/Event"><meta itemprop=3D"eventStatus" con=
+tent=3D"http://schema.org/EventScheduled"/><span itemprop=3D"publisher" ite=
+mscope itemtype=3D"http://schema.org/Organization"><meta itemprop=3D"name" =
+content=3D"Google Calendar"/></span><meta itemprop=3D"eventId/googleCalenda=
+r" content=3D"3ba5l7cm1dg9m39078u8pus2mb"/><span style=3D"display: none; fo=
+nt-size: 1px; color: #fff; line-height: 1px; height: 0; max-height: 0; widt=
+h: 0; max-width: 0; opacity: 0; overflow: hidden;" itemprop=3D"name">Demo r=
+ecording</span><meta itemprop=3D"url" content=3D"https://calendar.google.co=
+m/calendar/event?action=3DVIEW&amp;eid=3DM2JhNWw3Y20xZGc5bTM5MDc4dThwdXMybW=
+IgYXQ2NjUxQG55dS5lZHU&amp;tok=3DMTUjYWIxMjYxNUBueXUuZWR1OTAwMmQ2ZmNhYTI0OGM=
+0YjkwNzcwODcxYmIzMzAyZGQ4MDc2OWEwYg&amp;ctz=3DAmerica%2FNew_York&amp;hl=3De=
+n&amp;es=3D1"/><span aria-hidden=3D"true"><time itemprop=3D"startDate" date=
+time=3D"20251206T163000Z"></time><time itemprop=3D"endDate" datetime=3D"202=
+51206T180000Z"></time></span><div style=3D"display: none; font-size: 1px; c=
+olor: #fff; line-height: 1px; height: 0; max-height: 0; width: 0; max-width=
+: 0; opacity: 0; overflow: hidden;">You have been invited by Abhinav Batra =
+to attend an event named Demo recording on Saturday Dec 6, 2025 =E2=8B=85 1=
+1:30am =E2=80=93 1pm (Eastern Time - New York).</div><table border=3D"0" ce=
+llpadding=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center" st=
+yle=3D"width:100%;" class=3D"body-container"><tbody><tr><td style=3D"" clas=
+s=3D"" align=3D"left"><!--[if mso | IE]><table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation"><tr><td height=3D"16" style=3D"h=
+eight:16px;"><![endif]--><div style=3D"height:16px;" aria-hidden=3D"true"> =
+&nbsp; </div><!--[if mso | IE]></td></tr></table><![endif]--><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"c=
+enter" style=3D"width:100%;" class=3D""><tbody><tr><td style=3D"border: sol=
+id 1px #dadce0; border-radius: 8px; direction: rtl; font-size: 0; padding: =
+24px 32px; text-align: left; vertical-align: top;" class=3D"main-container-=
+inner"><!--[if mso | IE]><table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" role=3D"presentation"><tr><![endif]--><div class=3D"" style=3D"font-=
+size: 13px; text-align: left; direction: ltr; display: inline-block; vertic=
+al-align: top; width: 100%;overflow: hidden; word-wrap: break-word;"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" wid=
+th=3D"100%" class=3D"main-column-table-ltr" style=3D"padding-right: 32px; p=
+adding-left: 0;;table-layout: fixed;"><tbody><tr><td class=3D"main-column-t=
+d" style=3D"padding:0; vertical-align:top;"><table border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" role=3D"presentation" width=3D"100%" style=3D"tabl=
+e-layout: fixed;"><tr><td style=3D"font-size: 0; padding: 0; text-align: le=
+ft; word-break: break-word;;padding-bottom:24px;"><div style=3D"font-family=
+: Roboto, sans-serif;font-style: normal; font-weight: 400; font-size: 14px;=
+ line-height: 20px; letter-spacing: 0.2px;color: #3c4043; text-decoration: =
+none;" class=3D"primary-text" role=3D"presentation"><span aria-hidden=3D"tr=
+ue"><time itemprop=3D"startDate" datetime=3D"20251206T163000Z"></time><time=
+ itemprop=3D"endDate" datetime=3D"20251206T180000Z"></time></span><table bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" style=
+=3D"padding-bottom: 4px;"><tr><td><h2 class=3D"primary-text" style=3D"font-=
+size: 14px;color: #3c4043; text-decoration: none;font-weight: 700;-webkit-f=
+ont-smoothing: antialiased;margin: 0; padding: 0;">When</h2></td></tr></tab=
+le><span>Saturday Dec 6, 2025 =E2=8B=85 11:30am =E2=80=93 1pm (Eastern Time=
+ - New York)</span></div></td></tr><tr><td style=3D"font-size: 0; padding: =
+0; text-align: left; word-break: break-word;;padding-bottom:24px;"><div sty=
+le=3D"font-family: Roboto, sans-serif;font-style: normal; font-weight: 400;=
+ font-size: 14px; line-height: 20px; letter-spacing: 0.2px;color: #3c4043; =
+text-decoration: none;" class=3D"primary-text" role=3D"presentation"><table=
+ border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation" sty=
+le=3D"padding-bottom: 4px;"><tr><td><h2 class=3D"primary-text" style=3D"fon=
+t-size: 14px;color: #3c4043; text-decoration: none;font-weight: 700;-webkit=
+-font-smoothing: antialiased;margin: 0; padding: 0;">Guests</h2></td></tr><=
+/table><div style=3D"padding-bottom: 4px; text-align: left;;color: #3c4042;=
+"><div><span itemprop=3D"attendee" itemscope itemtype=3D"http://schema.org/=
+Person"><span itemprop=3D"name" class=3D"notranslate"><a class=3D"primary-t=
+ext underline-on-hover" style=3D"display: inline-block;;color: #3c4043; tex=
+t-decoration: none;" href=3D"mailto:ab12615@nyu.edu">Abhinav Batra</a></spa=
+n><meta itemprop=3D"email" content=3D"ab12615@nyu.edu"/></span><span itempr=
+op=3D"organizer" itemscope itemtype=3D"http://schema.org/Person"><meta item=
+prop=3D"name" content=3D"Abhinav Batra"/><meta itemprop=3D"email" content=
+=3D"ab12615@nyu.edu"/></span><span class=3D"secondary-text" style=3D"color:=
+ #70757a; text-decoration: none;"> - organizer</span></div><div><span itemp=
+rop=3D"attendee" itemscope itemtype=3D"http://schema.org/Person"><span item=
+prop=3D"name" class=3D"notranslate"><a class=3D"primary-text underline-on-h=
+over" style=3D"display: inline-block;;color: #3c4043; text-decoration: none=
+;" href=3D"mailto:at6651@nyu.edu">Ankita Tripathi</a></span><meta itemprop=
+=3D"email" content=3D"at6651@nyu.edu"/></span><span class=3D"secondary-text=
+" style=3D"color: #70757a; text-decoration: none;"></span></div></div><a hr=
+ef=3D"https://calendar.google.com/calendar/event?action=3DVIEW&amp;eid=3DM2=
+JhNWw3Y20xZGc5bTM5MDc4dThwdXMybWIgYXQ2NjUxQG55dS5lZHU&amp;tok=3DMTUjYWIxMjY=
+xNUBueXUuZWR1OTAwMmQ2ZmNhYTI0OGM0YjkwNzcwODcxYmIzMzAyZGQ4MDc2OWEwYg&amp;ctz=
+=3DAmerica%2FNew_York&amp;hl=3Den&amp;es=3D1" style=3D"display: inline-bloc=
+k;;color: #1a73e8; text-decoration: none;font-weight: 700;" target=3D"_blan=
+k" class=3D"accent-text underline-on-hover">View all guest info</a></div></=
+td></tr><tr><td style=3D"font-size: 0; padding: 0; text-align: left; word-b=
+reak: break-word;;padding-bottom:0px;"><div style=3D"color: #3c4043; text-d=
+ecoration: none;;font-family: Roboto, sans-serif;font-size: 14px; line-heig=
+ht: 20px; mso-line-height-rule: exactly; text-align: left;" class=3D"primar=
+y-text"><div><span style=3D"font-weight: 700;-webkit-font-smoothing: antial=
+iased;">Reply</span><span class=3D"secondary-text" style=3D"color: #70757a;=
+ text-decoration: none;"> for <a class=3D"secondary-text underline-on-hover=
+" style=3D"display: inline-block;;color: #70757a; text-decoration: none;" h=
+ref=3D"mailto:at6651@nyu.edu">at6651@nyu.edu</a></span></div></div></td></t=
+r><tr><td style=3D"font-size: 0; padding: 0; text-align: left; word-break: =
+break-word;;padding-bottom:16px;"><div style=3D"font-family: Roboto, sans-s=
+erif;font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; tex=
+t-align: left;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" rol=
+e=3D"presentation" style=3D"border-collapse: separate;"><tr><td style=3D"pa=
+dding-top: 8px; padding-left: 0; padding-right: 12px;"><!-- RSVP buttons --=
+><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentati=
+on" style=3D"border: solid 1px #dadce0; border-radius: 16px; border-collaps=
+e: separate;font-family: &#39;Google Sans&#39;, Roboto, sans-serif;;display=
+: inline-block;;margin-right: 12px; margin-left: 0;"><tr><td align=3D"cente=
+r" vertical-align=3D"middle" role=3D"presentation"><span itemprop=3D"potent=
+ialaction" itemscope itemtype=3D"http://schema.org/RsvpAction"><meta itempr=
+op=3D"attendance" content=3D"http://schema.org/RsvpAttendance/Yes"/><span i=
+temprop=3D"handler" itemscope itemtype=3D"http://schema.org/HttpActionHandl=
+er"><link itemprop=3D"method" href=3D"http://schema.org/HttpRequestMethod/G=
+ET"/><span style=3D"color: #5f6367;"><a href=3D"https://calendar.google.com=
+/calendar/event?action=3DRESPOND&amp;eid=3DM2JhNWw3Y20xZGc5bTM5MDc4dThwdXMy=
+bWIgYXQ2NjUxQG55dS5lZHU&amp;rst=3D1&amp;tok=3DMTUjYWIxMjYxNUBueXUuZWR1OTAwM=
+mQ2ZmNhYTI0OGM0YjkwNzcwODcxYmIzMzAyZGQ4MDc2OWEwYg&amp;ctz=3DAmerica%2FNew_Y=
+ork&amp;hl=3Den&amp;es=3D1" style=3D"font-weight: 400;font-family: &#39;Goo=
+gle Sans&#39;, Roboto, sans-serif;color: #5f6368; font-size: 14px; line-hei=
+ght: 120%; mso-line-height-rule: exactly; margin: 0; text-decoration: none;=
+ text-transform: none;" class=3D"grey-button-text" itemprop=3D"url" target=
+=3D"_blank"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D=
+"presentation"><tr><td align=3D"center" role=3D"presentation" valign=3D"mid=
+dle" style=3D"padding: 6px 0; padding-left: 16px; padding-right: 12px; whit=
+e-space: nowrap;"><!--[if mso]><a href=3D"https://calendar.google.com/calen=
+dar/event?action=3DRESPOND&amp;eid=3DM2JhNWw3Y20xZGc5bTM5MDc4dThwdXMybWIgYX=
+Q2NjUxQG55dS5lZHU&amp;rst=3D1&amp;tok=3DMTUjYWIxMjYxNUBueXUuZWR1OTAwMmQ2ZmN=
+hYTI0OGM0YjkwNzcwODcxYmIzMzAyZGQ4MDc2OWEwYg&amp;ctz=3DAmerica%2FNew_York&am=
+p;hl=3Den&amp;es=3D1" class=3D"grey-button-text" itemprop=3D"url" target=3D=
+"_blank"><![endif]--><span class=3D"grey-button-text" style=3D"font-weight:=
+ 400;font-family: &#39;Google Sans&#39;, Roboto, sans-serif;color: #5f6368;=
+ font-size: 14px; line-height: 120%; mso-line-height-rule: exactly; margin:=
+ 0; text-decoration: none; text-transform: none;">Yes</span><!--[if mso]></=
+a><![endif]--></td></tr></table></a></span></span></span></td><td align=3D"=
+center" vertical-align=3D"middle" role=3D"presentation" style=3D"border-lef=
+t: solid 1px #dadce0; border-right: solid 1px #dadce0;"><span itemprop=3D"p=
+otentialaction" itemscope itemtype=3D"http://schema.org/RsvpAction"><meta i=
+temprop=3D"attendance" content=3D"http://schema.org/RsvpAttendance/No"/><sp=
+an itemprop=3D"handler" itemscope itemtype=3D"http://schema.org/HttpActionH=
+andler"><link itemprop=3D"method" href=3D"http://schema.org/HttpRequestMeth=
+od/GET"/><span style=3D"color: #5f6367;"><a href=3D"https://calendar.google=
+.com/calendar/event?action=3DRESPOND&amp;eid=3DM2JhNWw3Y20xZGc5bTM5MDc4dThw=
+dXMybWIgYXQ2NjUxQG55dS5lZHU&amp;rst=3D2&amp;tok=3DMTUjYWIxMjYxNUBueXUuZWR1O=
+TAwMmQ2ZmNhYTI0OGM0YjkwNzcwODcxYmIzMzAyZGQ4MDc2OWEwYg&amp;ctz=3DAmerica%2FN=
+ew_York&amp;hl=3Den&amp;es=3D1" style=3D"font-weight: 400;font-family: &#39=
+;Google Sans&#39;, Roboto, sans-serif;color: #5f6368; font-size: 14px; line=
+-height: 120%; mso-line-height-rule: exactly; margin: 0; text-decoration: n=
+one; text-transform: none;" class=3D"grey-button-text" itemprop=3D"url" tar=
+get=3D"_blank"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=
+=3D"presentation"><tr><td align=3D"center" role=3D"presentation" valign=3D"=
+middle" style=3D"padding: 6px 12px; white-space: nowrap;"><!--[if mso]><a h=
+ref=3D"https://calendar.google.com/calendar/event?action=3DRESPOND&amp;eid=
+=3DM2JhNWw3Y20xZGc5bTM5MDc4dThwdXMybWIgYXQ2NjUxQG55dS5lZHU&amp;rst=3D2&amp;=
+tok=3DMTUjYWIxMjYxNUBueXUuZWR1OTAwMmQ2ZmNhYTI0OGM0YjkwNzcwODcxYmIzMzAyZGQ4M=
+Dc2OWEwYg&amp;ctz=3DAmerica%2FNew_York&amp;hl=3Den&amp;es=3D1" class=3D"gre=
+y-button-text" itemprop=3D"url" target=3D"_blank"><![endif]--><span class=
+=3D"grey-button-text" style=3D"font-weight: 400;font-family: &#39;Google Sa=
+ns&#39;, Roboto, sans-serif;color: #5f6368; font-size: 14px; line-height: 1=
+20%; mso-line-height-rule: exactly; margin: 0; text-decoration: none; text-=
+transform: none;">No</span><!--[if mso]></a><![endif]--></td></tr></table><=
+/a></span></span></span></td><td align=3D"center" vertical-align=3D"middle"=
+ role=3D"presentation"><span itemprop=3D"potentialaction" itemscope itemtyp=
+e=3D"http://schema.org/RsvpAction"><meta itemprop=3D"attendance" content=3D=
+"http://schema.org/RsvpAttendance/Maybe"/><span itemprop=3D"handler" itemsc=
+ope itemtype=3D"http://schema.org/HttpActionHandler"><link itemprop=3D"meth=
+od" href=3D"http://schema.org/HttpRequestMethod/GET"/><span style=3D"color:=
+ #5f6367;"><a href=3D"https://calendar.google.com/calendar/event?action=3DR=
+ESPOND&amp;eid=3DM2JhNWw3Y20xZGc5bTM5MDc4dThwdXMybWIgYXQ2NjUxQG55dS5lZHU&am=
+p;rst=3D3&amp;tok=3DMTUjYWIxMjYxNUBueXUuZWR1OTAwMmQ2ZmNhYTI0OGM0YjkwNzcwODc=
+xYmIzMzAyZGQ4MDc2OWEwYg&amp;ctz=3DAmerica%2FNew_York&amp;hl=3Den&amp;es=3D1=
+" style=3D"font-weight: 400;font-family: &#39;Google Sans&#39;, Roboto, san=
+s-serif;color: #5f6368; font-size: 14px; line-height: 120%; mso-line-height=
+-rule: exactly; margin: 0; text-decoration: none; text-transform: none;" cl=
+ass=3D"grey-button-text" itemprop=3D"url" target=3D"_blank"><table border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" role=3D"presentation"><tr><td al=
+ign=3D"center" role=3D"presentation" valign=3D"middle" style=3D"padding: 6p=
+x 0; padding-left: 12px; padding-right: 16px; white-space: nowrap;"><!--[if=
+ mso]><a href=3D"https://calendar.google.com/calendar/event?action=3DRESPON=
+D&amp;eid=3DM2JhNWw3Y20xZGc5bTM5MDc4dThwdXMybWIgYXQ2NjUxQG55dS5lZHU&amp;rst=
+=3D3&amp;tok=3DMTUjYWIxMjYxNUBueXUuZWR1OTAwMmQ2ZmNhYTI0OGM0YjkwNzcwODcxYmIz=
+MzAyZGQ4MDc2OWEwYg&amp;ctz=3DAmerica%2FNew_York&amp;hl=3Den&amp;es=3D1" cla=
+ss=3D"grey-button-text" itemprop=3D"url" target=3D"_blank"><![endif]--><spa=
+n class=3D"grey-button-text" style=3D"font-weight: 400;font-family: &#39;Go=
+ogle Sans&#39;, Roboto, sans-serif;color: #5f6368; font-size: 14px; line-he=
+ight: 120%; mso-line-height-rule: exactly; margin: 0; text-decoration: none=
+; text-transform: none;">Maybe</span><!--[if mso]></a><![endif]--></td></tr=
+></table></a></span></span></span></td></tr></table><!-- More options --><a=
+ href=3D"https://calendar.google.com/calendar/event?action=3DVIEW&amp;eid=
+=3DM2JhNWw3Y20xZGc5bTM5MDc4dThwdXMybWIgYXQ2NjUxQG55dS5lZHU&amp;tok=3DMTUjYW=
+IxMjYxNUBueXUuZWR1OTAwMmQ2ZmNhYTI0OGM0YjkwNzcwODcxYmIzMzAyZGQ4MDc2OWEwYg&am=
+p;ctz=3DAmerica%2FNew_York&amp;hl=3Den&amp;es=3D1" style=3D"display: inline=
+-block;;font-weight: 400;font-family: &#39;Google Sans&#39;, Roboto, sans-s=
+erif;color: #5f6368; font-size: 14px; line-height: 120%; mso-line-height-ru=
+le: exactly; margin: 0; text-decoration: none; text-transform: none;" class=
+=3D"grey-button-text" target=3D"_blank"><table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" role=3D"presentation" style=3D"border: solid 1px #dadc=
+e0; border-radius: 16px; border-collapse: separate;font-family: &#39;Google=
+ Sans&#39;, Roboto, sans-serif;"><tr><td align=3D"center" vertical-align=3D=
+"middle" role=3D"presentation" style=3D"padding: 6px 0; padding-left: 16px;=
+ padding-right: 12px; white-space: nowrap;;color: #5f6367;"><!--[if mso]><a=
+ href=3D"https://calendar.google.com/calendar/event?action=3DVIEW&amp;eid=
+=3DM2JhNWw3Y20xZGc5bTM5MDc4dThwdXMybWIgYXQ2NjUxQG55dS5lZHU&amp;tok=3DMTUjYW=
+IxMjYxNUBueXUuZWR1OTAwMmQ2ZmNhYTI0OGM0YjkwNzcwODcxYmIzMzAyZGQ4MDc2OWEwYg&am=
+p;ctz=3DAmerica%2FNew_York&amp;hl=3Den&amp;es=3D1" class=3D"grey-button-tex=
+t" target=3D"_blank"><![endif]--><span class=3D"grey-button-text" style=3D"=
+font-weight: 400;font-family: &#39;Google Sans&#39;, Roboto, sans-serif;col=
+or: #5f6368; font-size: 14px; line-height: 120%; mso-line-height-rule: exac=
+tly; margin: 0; text-decoration: none; text-transform: none;">More options<=
+/span><!--[if mso]></a><![endif]--></td></tr></table></a></td></tr></table>=
+</div></td></tr></table></td></tr></tbody></table></div><!--[if mso | IE]><=
+/tr></table><![endif]--></td></tr></tbody></table><table border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" role=3D"presentation" align=3D"center" style=
+=3D"width:100%;" class=3D""><tbody><tr><td style=3D"font-size: 0; padding: =
+0; text-align: left; word-break: break-word;;padding:4px 12px;" class=3D"" =
+align=3D"left"><div class=3D"secondary-text" style=3D"color: #70757a; text-=
+decoration: none;font-family: Roboto, sans-serif;font-size: 12px; line-heig=
+ht: 16px; mso-line-height-rule: exactly; text-align: left;"><p>Invitation f=
+rom <a href=3D"https://calendar.google.com/calendar/" class=3D"accent-text =
+underline-on-hover" style=3D"font-family: Roboto, sans-serif;font-size: 12p=
+x; line-height: 16px; mso-line-height-rule: exactly;;color: #1a73e8; text-d=
+ecoration: none;" target=3D"_blank">Google Calendar</a></p><p>You are recei=
+ving this email because you are subscribed to calendar notifications. To st=
+op receiving these emails, go to <a href=3D"https://calendar.google.com/cal=
+endar/r/settings" class=3D"accent-text underline-on-hover" style=3D"font-fa=
+mily: Roboto, sans-serif;font-size: 12px; line-height: 16px; mso-line-heigh=
+t-rule: exactly;;color: #1a73e8; text-decoration: none;" target=3D"_blank">=
+Calendar settings</a>, select this calendar, and change "Other notification=
+s".</p><p>Forwarding this invitation could allow any recipient to send a re=
+sponse to the organizer, be added to the guest list, invite others regardle=
+ss of their own invitation status, or modify your RSVP. <a class=3D"accent-=
+text underline-on-hover" style=3D"font-family: Roboto, sans-serif;font-size=
+: 12px; line-height: 16px; mso-line-height-rule: exactly;;color: #1a73e8; t=
+ext-decoration: none;" href=3D"https://support.google.com/calendar/answer/3=
+7135#forwarding">Learn more</a></p></div></td></tr></tbody></table></td></t=
+r></tbody></table></span></span></body></html>
+--0000000000009fbc3306453810a7
+Content-Type: text/calendar; charset="UTF-8"; method=REQUEST
+Content-Transfer-Encoding: 7bit
+
+BEGIN:VCALENDAR
+PRODID:-//Google Inc//Google Calendar 70.9054//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VTIMEZONE
+TZID:America/New_York
+X-LIC-LOCATION:America/New_York
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0500
+TZOFFSETTO:-0400
+TZNAME:EDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0400
+TZOFFSETTO:-0500
+TZNAME:EST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+DTSTART;TZID=America/New_York:20251206T113000
+DTEND;TZID=America/New_York:20251206T130000
+DTSTAMP:20251205T174919Z
+ORGANIZER;CN=Abhinav Batra:mailto:ab12615@nyu.edu
+UID:3ba5l7cm1dg9m39078u8pus2mb@google.com
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=ACCEPTED;RSVP=TRUE
+ ;CN=Abhinav Batra;X-NUM-GUESTS=0:mailto:ab12615@nyu.edu
+ATTENDEE;CUTYPE=INDIVIDUAL;ROLE=REQ-PARTICIPANT;PARTSTAT=NEEDS-ACTION;RSVP=
+ TRUE;CN=Ankita Tripathi;X-NUM-GUESTS=0:mailto:at6651@nyu.edu
+X-MICROSOFT-CDO-OWNERAPPTID:1893562780
+CREATED:20251205T174915Z
+DESCRIPTION:
+LAST-MODIFIED:20251205T174917Z
+LOCATION:
+SEQUENCE:0
+STATUS:CONFIRMED
+SUMMARY:Demo recording
+TRANSP:OPAQUE
+END:VEVENT
+END:VCALENDAR
+
+--0000000000009fbc3306453810a7--
+--0000000000009fbc3406453810a9
+Content-Type: application/ics; name="invite.ics"
+Content-Disposition: attachment; filename="invite.ics"
+Content-Transfer-Encoding: base64
+
+QkVHSU46VkNBTEVOREFSDQpQUk9ESUQ6LS8vR29vZ2xlIEluYy8vR29vZ2xlIENhbGVuZGFyIDcw
+LjkwNTQvL0VODQpWRVJTSU9OOjIuMA0KQ0FMU0NBTEU6R1JFR09SSUFODQpNRVRIT0Q6UkVRVUVT
+VA0KQkVHSU46VlRJTUVaT05FDQpUWklEOkFtZXJpY2EvTmV3X1lvcmsNClgtTElDLUxPQ0FUSU9O
+OkFtZXJpY2EvTmV3X1lvcmsNCkJFR0lOOkRBWUxJR0hUDQpUWk9GRlNFVEZST006LTA1MDANClRa
+T0ZGU0VUVE86LTA0MDANClRaTkFNRTpFRFQNCkRUU1RBUlQ6MTk3MDAzMDhUMDIwMDAwDQpSUlVM
+RTpGUkVRPVlFQVJMWTtCWU1PTlRIPTM7QllEQVk9MlNVDQpFTkQ6REFZTElHSFQNCkJFR0lOOlNU
+QU5EQVJEDQpUWk9GRlNFVEZST006LTA0MDANClRaT0ZGU0VUVE86LTA1MDANClRaTkFNRTpFU1QN
+CkRUU1RBUlQ6MTk3MDExMDFUMDIwMDAwDQpSUlVMRTpGUkVRPVlFQVJMWTtCWU1PTlRIPTExO0JZ
+REFZPTFTVQ0KRU5EOlNUQU5EQVJEDQpFTkQ6VlRJTUVaT05FDQpCRUdJTjpWRVZFTlQNCkRUU1RB
+UlQ7VFpJRD1BbWVyaWNhL05ld19Zb3JrOjIwMjUxMjA2VDExMzAwMA0KRFRFTkQ7VFpJRD1BbWVy
+aWNhL05ld19Zb3JrOjIwMjUxMjA2VDEzMDAwMA0KRFRTVEFNUDoyMDI1MTIwNVQxNzQ5MTlaDQpP
+UkdBTklaRVI7Q049QWJoaW5hdiBCYXRyYTptYWlsdG86YWIxMjYxNUBueXUuZWR1DQpVSUQ6M2Jh
+NWw3Y20xZGc5bTM5MDc4dThwdXMybWJAZ29vZ2xlLmNvbQ0KQVRURU5ERUU7Q1VUWVBFPUlORElW
+SURVQUw7Uk9MRT1SRVEtUEFSVElDSVBBTlQ7UEFSVFNUQVQ9QUNDRVBURUQ7UlNWUD1UUlVFDQog
+O0NOPUFiaGluYXYgQmF0cmE7WC1OVU0tR1VFU1RTPTA6bWFpbHRvOmFiMTI2MTVAbnl1LmVkdQ0K
+QVRURU5ERUU7Q1VUWVBFPUlORElWSURVQUw7Uk9MRT1SRVEtUEFSVElDSVBBTlQ7UEFSVFNUQVQ9
+TkVFRFMtQUNUSU9OO1JTVlA9DQogVFJVRTtDTj1BbmtpdGEgVHJpcGF0aGk7WC1OVU0tR1VFU1RT
+PTA6bWFpbHRvOmF0NjY1MUBueXUuZWR1DQpYLU1JQ1JPU09GVC1DRE8tT1dORVJBUFBUSUQ6MTg5
+MzU2Mjc4MA0KQ1JFQVRFRDoyMDI1MTIwNVQxNzQ5MTVaDQpERVNDUklQVElPTjoNCkxBU1QtTU9E
+SUZJRUQ6MjAyNTEyMDVUMTc0OTE3Wg0KTE9DQVRJT046DQpTRVFVRU5DRTowDQpTVEFUVVM6Q09O
+RklSTUVEDQpTVU1NQVJZOkRlbW8gcmVjb3JkaW5nDQpUUkFOU1A6T1BBUVVFDQpFTkQ6VkVWRU5U
+DQpFTkQ6VkNBTEVOREFSDQo=
+--0000000000009fbc3406453810a9--

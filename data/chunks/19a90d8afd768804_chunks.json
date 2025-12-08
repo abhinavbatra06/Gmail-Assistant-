@@ -1,0 +1,22 @@
+{
+  "message_id": "19a90d8afd768804",
+  "chunked_at": "2025-12-08T14:31:00.829260",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a90d8afd768804_email_0_6e441eff",
+      "text": "Handshake Dr. Catrenia just messaged you about an event Dr. Catrenia McLendon Academic Liaison/Project and Content Manager · \r\nIBM SkillsBuild Quick reminder — the live virtual session with IBM SkillsBuild and Muhammad Farooq is this week on November 19th. You’ll learn how to build and improve RAG systems using your own content — a great ... View message IBM SkillsBuild Virtual Event Building Smarter RAG Systems with Muhammad Farooq Wed, Nov 19 ⋅ 5 pm–6 pm EST Virtual View message Mute You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a90d8afd768804",
+        "from": "\"Dr. Catrenia McLendon via Handshake\" <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Don’t miss today’s RAG Systems session on 11/19",
+        "date": "Mon, 17 Nov 2025 08:05:09 +0000",
+        "timestamp": 1763366709,
+        "token_count": 167
+      }
+    }
+  ]
+}

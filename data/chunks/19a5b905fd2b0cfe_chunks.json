@@ -1,0 +1,22 @@
+{
+  "message_id": "19a5b905fd2b0cfe",
+  "chunked_at": "2025-12-08T14:29:12.907827",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a5b905fd2b0cfe_email_0_829a9e97",
+      "text": "Handshake 2 unread messages since last Thursday 2 employers: Microsoft, Cognex Corporation 1 job in: Technology 1 event Alexandra Abreu Cognex Corporation · Campus Recruiter Software Engineering Internship Hybrid Internship Navi Singh Microsoft Hi Ankita! Join us for over 50+ days of live learning, hands-on challenges and certification opportunities designed to help you: ✔ Build real-world skills ✔ Stand out in today’s competitive job ... Catch up on messages Want daily digests? Update your preferences . If you'd no longer like to receive emails like this you can sign in to manage your notification preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a5b905fd2b0cfe",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Weekly digest: 2 unread messages are waiting for you 👀",
+        "date": "Thu, 06 Nov 2025 23:46:16 +0000",
+        "timestamp": 1762472776,
+        "token_count": 168
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "message_id": "19aec7d2bf9be8a9",
+  "chunked_at": "2025-12-08T14:33:30.224604",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19aec7d2bf9be8a9_email_0_5ec36da8",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from New York University On Campus, based on your preferences. Check it out! Applications are due Thursday, January 01 at 11 PM EST. New York University On Campus Higher Education Advising Student Leader $16.5–18/hr Onsite On Campus Student Employment New York, NY View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19aec7d2bf9be8a9",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "New York University On Campus just posted a role 🌟",
+        "date": "Fri, 05 Dec 2025 03:10:16 +0000",
+        "timestamp": 1764904216,
+        "token_count": 146
+      }
+    }
+  ]
+}

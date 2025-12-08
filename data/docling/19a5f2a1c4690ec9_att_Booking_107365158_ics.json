@@ -1,0 +1,12 @@
+{
+  "filename": "Booking_107365158.ics",
+  "path": "data/attachments/19a5f2a1c4690ec9_Booking_107365158.ics",
+  "text": "\n[VCALENDAR]\n\n[VEVENT]\nDTSTART: 20251107T190000Z\nDTEND: 20251107T201500Z\nSUMMARY: Booking: Floor 9 Individual Study Room 939 - Ankita Tripathi (at6651@nyu.edu)\nDESCRIPTION: Booking: Floor 9 Individual Study Room 939\n\nTo cancel this\nLOCATION: Floor 9 Individual Study Room 939\n\n[VALARM]\nDESCRIPTION: Reminder",
+  "tables": [],
+  "metadata": {
+    "email_id": "19a5f2a1c4690ec9",
+    "attachment_type": ".ics",
+    "original_filename": "Booking_107365158.ics",
+    "content_type": "calendar"
+  }
+}

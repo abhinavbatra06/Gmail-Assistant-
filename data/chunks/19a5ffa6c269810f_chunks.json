@@ -1,0 +1,22 @@
+{
+  "message_id": "19a5ffa6c269810f",
+  "chunked_at": "2025-12-08T14:29:41.237132",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a5ffa6c269810f_email_0_f8c83f71",
+      "text": "Hi Ankita, The following bookings have been cancelled: Space Information Location: Bobst Library I need a space for: Silent Study Space: Floor 4 Graduate Individual Study Room 443 Date: Friday, November 7, 2025 Time: 4:00pm - 7:00pm We are sorry for the inconvenience. Powered by Springshare. Read our privacy policy .",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a5ffa6c269810f",
+        "from": "LibCal <alerts@mail.libcal.com>",
+        "to": [],
+        "subject": "Booking Cancelled: Bobst Library 4:00pm - 7:00pm Friday, November 7, 2025",
+        "date": "Fri, 07 Nov 2025 20:20:35 +0000",
+        "timestamp": 1762546835,
+        "token_count": 79
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "text": "Spec Top Computer SCI:, Section 091 - Announcements: Homework 2 Grades Posted Spec Top Computer SCI:, Section 091 - Announcements: Homework 2 Grades Posted Posted Friday, October 31, 2025 6:29 PM EDT Grades for Homework 2 are now posted. If you have any concerns, please submit a regrade request on Gradescope within the next 4 days . Requests after the deadline won’t be considered. Spec Top Computer SCI:, Section 091 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+  "tables": [
+    {
+      "rows": 0,
+      "content": "self_ref='#/tables/0' parent=RefItem(cref='#/texts/1') children=[RefItem(cref='#/groups/1'), RefItem(cref='#/groups/2')] content_layer=<ContentLayer.BODY: 'body'> meta=None label=<DocItemLabel.TABLE: 'table'> prov=[] captions=[] references=[] footnotes=[] image=None data=TableData(table_cells=[RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=0, end_col_offset_idx=1, text='Spec Top Computer SCI:, Section 091', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/1')), RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=1, end_col_offset_idx=2, text='Go to Announcements >>', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/2'))], num_rows=1, num_cols=2, grid=[[RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=0, end_col_offset_idx=1, text='Spec Top Computer SCI:, Section 091', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/1')), RichTableCell(bbox=None, row_span=1, col_span=1, start_row_offset_idx=0, end_row_offset_idx=1, start_col_offset_idx=1, end_col_offset_idx=2, text='Go to Announcements >>', column_header=False, row_header=False, row_section=False, fillable=False, ref=RefItem(cref='#/groups/2'))]]) annotations=[]"
+    }
+  ],
+  "metadata": {
+    "id": "19a3c6518b8e1f69",
+    "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+    "subject": "Spec Top Computer SCI:, Section 091 - Announcements: Homework 2 Grades Posted",
+    "date": "Fri, 31 Oct 2025 22:30:48 +0000",
+    "eml_path": "data/raw_emails/19a3c6518b8e1f69.eml",
+    "attachments": [],
+    "attachment_count": 0
+  },
+  "attachments_processed": []
+}

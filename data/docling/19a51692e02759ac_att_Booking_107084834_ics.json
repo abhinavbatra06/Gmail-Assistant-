@@ -1,0 +1,12 @@
+{
+  "filename": "Booking_107084834.ics",
+  "path": "data/attachments/19a51692e02759ac_Booking_107084834.ics",
+  "text": "\n[VCALENDAR]\n\n[VEVENT]\nDTSTART: 20251105T201500Z\nDTEND: 20251105T220000Z\nSUMMARY: Booking: Floor 4 Graduate Individual Study Room 419 - Ankita Tripathi (at6651@nyu.edu)\nDESCRIPTION: Booking: Floor 4 Graduate Individual Study Room 419\n\nTo\nLOCATION: Floor 4 Graduate Individual Study Room 419\n\n[VALARM]\nDESCRIPTION: Reminder",
+  "tables": [],
+  "metadata": {
+    "email_id": "19a51692e02759ac",
+    "attachment_type": ".ics",
+    "original_filename": "Booking_107084834.ics",
+    "content_type": "calendar"
+  }
+}

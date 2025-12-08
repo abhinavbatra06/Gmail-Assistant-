@@ -1,0 +1,22 @@
+{
+  "message_id": "19aa6f70df03ac69",
+  "chunked_at": "2025-12-08T14:31:42.722237",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19aa6f70df03ac69_email_0_0d8173e3",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from Clear Street, based on your preferences. Check it out! Applications are due Sunday, May 31 at 11 PM EDT. Clear Street Financial Services Quantitative Analyst Intern - Risk $110K/yr Onsite Internship New York, NY View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19aa6f70df03ac69",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "Clear Street just posted a role 🌟",
+        "date": "Fri, 21 Nov 2025 15:09:57 +0000",
+        "timestamp": 1763737797,
+        "token_count": 134
+      }
+    }
+  ]
+}

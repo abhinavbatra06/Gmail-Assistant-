@@ -1,0 +1,850 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:4985:b0:50b:93c5:eed5 with SMTP id hb5csp3075612gdb;
+        Tue, 25 Nov 2025 16:46:51 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHyH4t2o4oEdRYN4jTZ9kVDFOEf3NkNhL+3No0HbmCD0Bh4FBehZPZsNPrT5AZTfPQKUGbl
+X-Received: by 2002:a05:6000:290f:b0:42b:5521:31c6 with SMTP id ffacd0b85a97d-42cc1d198fcmr18688535f8f.54.1764118011180;
+        Tue, 25 Nov 2025 16:46:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1764118011; cv=none;
+        d=google.com; s=arc-20240605;
+        b=KOGtWGRgEfzHnXvmqj0F65MbZfS7RtjrmgY51rkwjKLR3QjXJCr1CYZHkdwK6uy3nv
+         VY2EUaq/SOcWulub/7OwsQdhbUrOIwb/tNJ01LI6vNci6R9Rm6W7amMmTHUw2XdePs5t
+         YMU4dPBd73RN+FZ1ArQZh8DZQZeNQZdz/y1fsVtTrw233B6nB8+eCmqDetMsgLzDOZyE
+         7kPX8daWHTob4cpUITBA1Jxql6euZPvQk1s/eEJNEHsQjv00wohuyHhM0RKN7MFDHja2
+         ATUeWt6F3j+A2Ohe4eG3lsLnU2hqa+MMYcnPdG0rt5tW5jjdUi4HNG+DkdSHy0JGbvC7
+         Wrfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:message-id:reply-to:to:from:subject:date
+         :list-unsubscribe:list-unsubscribe-post:dkim-signature;
+        bh=A2383QADK3EPVgvimngEnLJVKS5o7Gp50o1/SR5F6PA=;
+        fh=uBZigrcT4/eimFWNXbc+e9UoRXYu5p0qUsSILAaGf1U=;
+        b=NRT5Gxl95oGsjmRttk0rZD3onscLJo3klDkDvSAoaIK1Qh3kSMHnotaqEsG0KtlcSN
+         Z5m+b+H47ja6gzWZz/1kl1TB3eQfxW/DQu6j4/7UxDILa3AuPITff6z1Omt84UMaGT3K
+         vULMOkrbBduczjfXNkSDEuA+pB0DqIQWSTyqXxoQa3odRY4Vzm1iuaaseHMhX02cfyzP
+         YTOE3VJ7k4DIKKneWmgxOSZseJ85kLCYT1/jMgjZuQZ//Ajw28eon4UAZpX8YZud6juH
+         0Osppbq7Wp74KYSW2twYz5yD3gUGZfQIF28/JtJpAO/Cdj8pJ4e98OjENDjE+tVcjFUM
+         qSiw==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@notifications.joinhandshake.com header.s=pic header.b=V5kcaubL;
+       spf=pass (google.com: domain of handshake@notifications.joinhandshake.com designates 69.72.46.73 as permitted sender) smtp.mailfrom=handshake@notifications.joinhandshake.com
+Return-Path: <handshake@notifications.joinhandshake.com>
+Received: from psy01la-2021s.nyu.edu (psy01la-2021s.cfs.its.nyu.edu. [216.165.86.106])
+        by mx.google.com with ESMTPS id ffacd0b85a97d-42cb868ee0esi7838971f8f.1752.2025.11.25.16.46.50
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 25 Nov 2025 16:46:51 -0800 (PST)
+Received-SPF: pass (google.com: domain of handshake@notifications.joinhandshake.com designates 69.72.46.73 as permitted sender) client-ip=69.72.46.73;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@notifications.joinhandshake.com header.s=pic header.b=V5kcaubL;
+       spf=pass (google.com: domain of handshake@notifications.joinhandshake.com designates 69.72.46.73 as permitted sender) smtp.mailfrom=handshake@notifications.joinhandshake.com
+Received: from mx0b-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by psy01la-2021s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5AQ0kmWx940424
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Tue, 25 Nov 2025 19:46:49 -0500
+Received: from pps.filterd (m0142701.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5APLM0sA360359
+	for <at6651@nyu.edu>; Tue, 25 Nov 2025 19:46:48 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=handshake@notifications.joinhandshake.com;
+	dkim=pass header.d=notifications.joinhandshake.com header.s=pic;
+	dmarc=pass header.from=notifications.joinhandshake.com
+Received: from m46-73.mailgun.net (m46-73.mailgun.net [69.72.46.73])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4anmad2p7x-9
+	(version=TLSv1.2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128 verify=NOT)
+	for <at6651@nyu.edu>; Tue, 25 Nov 2025 19:46:47 -0500 (EST)
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=notifications.joinhandshake.com; q=dns/txt; s=pic; t=1764118007; x=1764125207;
+ h=Message-Id: Reply-To: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: List-Unsubscribe: List-Unsubscribe-Post: Sender;
+ bh=e+Ls3eFnkw98Ts5NIMywPvSUXwb0EREjlaRVyCHRdqw=;
+ b=V5kcaubLLrXWxBvJ2K/Yaml+2fOdNEYudUTcht1wD3jeQXb6OvVqnJRLRKMb63hsbwWvQWDS80LGxD5DomFEjrJajYFJ+pTqrXRGuivvJMa7iA/DtwswV+ojfJadOMlqPM6A1XaAcpSm8/fBj+xFf16x/jIQ9OeSUMMUX2S9wRQ=
+X-Mailgun-Sid: WyI1NWNjZCIsImF0NjY1MUBueXUuZWR1IiwiMmQ5NjciXQ==
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+List-Unsubscribe: <mailto:u+mq6tezbzgy3smzdfnruxmzlspfpw2zlunbxwix3pob2gs33oomstkqten5wwc2loeu2uiplon52gsztjmnqxi2lpnzzs42tpnfxgqylomrzwqyllmuxgg33nezsw2yljnrpw433unftgsy3boruw63s7nfsd2mlgge4dmnjyhawtmolfgewtizrwmuwtsmjxmewwgylgmi3dgzrsgu4tmobgna6tiyrvg5swmmtchfqwinlggeztaztemrqwkmbzgyyweztgmiydqnjgne6tembsguytcmrwgaydinrug4xdozlbmy2wknjtgqydkzbyha4dkjjugbxg65djmzuwgylunfxw44zonjxws3timfxgi43imfvwkltdn5wsm2tpmjpwszb5geydkmrshazdqjton52gsztjmnqxi2lpnzpwszb5gztgmnzygq3diljvmftdqljuga3gillcmmytkljsmjstmzlcgbstqmjwmutha4tpmr2wg5c7mj2wg23foq6uu33comtheplboq3dmnjreu2da3tzouxgkzdvez2d2jjsiethk43fojpwszb5gu4tcmbwhaytajtwhuza@notifications.joinhandshake.com>,
+ <https://email.notifications.joinhandshake.com/u/eJyEzrGO4yAQxvGnMR0WEGaMC4o7XXUvYYFnRiaJTWTjSHn7VVKtttn6-_TXj6KjEQdFfC9P3l_Tym2pNNVHK3U7OvhLdU1l6-Bf3GorUub0WfprLduSNjqWdON-rqviNZX79P01FYpWbEAIQePIVntB1qMdkp6TZLyIgxGDWqLPMLC4PCYCsRcjRInNiDaLZBNAleiMA2sdGuPRD_3ASYDh4g1QCAE6b34TXmv-kAw4F1xQP60oMgSPXkOSoL1B0nm2oF1m5Gw4WGT12Cudc5vyOd-4xf81H2qPqSGCfRteZ890qhY790edB-_vMozWYLBGPaP7CgAA__91pXcs>
+Received: by 45a7f0773263a71b56b51cc6292b1a492dd650720f199cbeab407df94c1941ef with HTTP
+ id 69264df7062496c62b703769; Wed, 26 Nov 2025 00:46:47 GMT
+X-Mailgun-Sending-Ip: 69.72.46.73
+Date: Wed, 26 Nov 2025 00:46:47 +0000
+Content-Type: multipart/alternative;
+ boundary="e0fc07c2f16b80794cdc4e951f2bf7a7d7c644f4f78d8eef0e93859ac42a"
+Subject: =?UTF-8?q?Visa,_Inc._just_posted_a_role_=F0=9F=8C=9F?=
+From: Handshake <handshake@notifications.joinhandshake.com>
+To: at6651@nyu.edu
+X-Mailgun-Tag: approve_job_posting
+X-Mailgun-Require-Tls: false
+X-Mailgun-Track-Clicks: true
+X-Mailgun-Track-Opens: true
+Reply-To: handshake@notifications.joinhandshake.com
+X-Mailgun-Native-Send: true
+X-Mailgun-Variables: {"delivery_method_options[domain]": "notifications.joinhandshake.com",
+ "email_notification_id": "1f186588-69e1-4f6e-917a-cafb63f25968", "job_id":
+ "10522828", "notification_id": "6ff78464-5af8-406d-bc15-2be6eb0e816e",
+ "product_bucket": "Jobs", "user_id": "59106810"}
+Message-Id: <20251126004647.7eaf5e53405d8885@notifications.joinhandshake.com>
+X-CLX-Shades: MLX
+X-Authority-Analysis: v=2.4 cv=OqFCCi/t c=1 sm=1 tr=0 ts=69264df8 b=1 cx=c_pps
+ a=hMQioztq7yRG7oXFUvJr+w==:117 a=hMQioztq7yRG7oXFUvJr+w==:17
+ a=6UeiqGixMTsA:10 a=5KLPUuaC_9wA:10 a=5GSex5Wv4MoA:10
+ a=Kan8h273Bse8B8Jy5C1n:22 a=hk4f5JjnUm7c5cN8RboA:9 a=QEXdDO2ut3YA:10
+ a=8nBmmgpqAAAA:8 a=R0yzqheZAAAA:8 a=SSmOFEACAAAA:8
+ a=oGnqSolUdC5HdH5uRy+gvz+jT24=:19 a=rgkrDogRAQThA-pd:21 a=_W_S_7VecoQA:10
+ a=bfyjJSFVJUzR-EyeF7E_:22 a=0_3WeU1hcJl4OZDjC8hb:22 cc=ntf
+X-CLX-Response: 1TFkXHhgaEQpMehceHh8RCllEF2JZemB4HB9Pbn1QEQpYWBdrUmsaAWR+cll
+ JBREKeE4Xb2ZOc059fHBIXGQRCnhLF2tSaxoBZH5yWUkFEQpDSBcHHhwRCkNZFwcYGBwRCkNJFx
+ oEGhoaEQpZTRdnZnIRCllJFx4ScRsQGncGGBkYcRsYGRMeEhAfExl3BhgaBhsYGhEKWV4XbGx5E
+ QpJRhdET11TRVhBX3VCRVleT04RCklHF3hPTREKQ04XY31TfH8fZ0BZfkJyZXx5fWBEZHoeYBte
+ UBx9Zx1sfUkRClhcFx8EGgQeGxoFGxoEGxoaBBsZHgQZGRAbHhofGhEKXlkXTX0FYX4RCk1cFx8
+ eGhEKTFoXaWhpTU1dEQpMRhdva2tra2sRCkJPF2RheXlST39BExNZEQpDWhccEwQdGAQeHAQdGR
+ EKQl4XGxEKWUUXExEKRUkXGxEKRWYXHhEKQkYXYmtQUhhfR0YYUHgRCkJHF2QdBXIaE2JpRB5rE
+ QpCXBcbEQpCSxdnSU5oSGsFQxlPSxEKQkkXb2ZOc059fHBIXGQRCkJFF2lGZ1pOUBlfaG94EQpC
+ ThdvZk5zTn18cEhcZBEKQkwXa1JrGgFkfnJZSQURCkJsF25PZRh6RG9EY1ljEQpCQBdjTE1TY3s
+ FQlthZxEKQlgXbkJBcFJIQGdCHHwRClpYFxkRCnlDF25TbRJ6SQFEekZdEQpZSxceGRobEQpaSx
+ ceGRobEQpwaBdpG29LG1BSe1JQexAaEQpwaBdpExxaTFJMSU5efxAbHhoRCnBoF3p+GF99XUxSG
+ GRoEBseGxEKcGgXbx9vGRsdWF8dbEgQGhEKcGgXZkR9RW1IGmZpeh0QHhIRCnBoF2BOfhhCckNC
+ XFNOEAcYGBEKcGgXaGZ7WERAW0VcaxoQGhEKcGgXY2QaHnhITh4FZhIQGhEKcH0XbktuEm1BfBx
+ iTkUQGhEKcH0XYXwcHxleYx5AbXkQExMRCnB9F2xiehJ7Z2RbEmtiEBoRCnB9F2IcUhkbQ05dGU
+ J9EBoRCnB9F2BcHAFZTl9JRGxiEBoRCnB9F2t5XUtYb3lTaFwbEBoRCnB9F3pjH2UZWWdFH09jE
+ BseEhEKcH0Xb3lzG2NycHsBYlMQEx8RCnB9F2tjZllZQVlmTGleEBMfEQpwfRdnBWdEWGQYcEBA
+ YxAaEQpwfRdpWENQfmZPXR97XhAaEQpwfRdlHFAdEkQZGhhYeBAdGBEKcH0XelJOGEMFf15Pb2I
+ QGhEKcH0XZVhBWXxpfBMcZF4QHRoRCnB9F2wfXGRZS1xkH0F6EBoRCnB9F2RBW0l8W3JQfFtNEB
+ wSEQpwfRdpeU17HmlOUGJMWRAaEQpwfRdma05ffWN5bE5paBAcGREKcH0XZk1+GhsBGxweREEQH
+ x4RCnB9F3pJWWcab09mAUEeEBoRCnB9F3pETVtAEmkaZ2FsEBoRCnB9F2BZfmtpT3NCGE5yEB4a
+ EQpwfxdkU28BU0JrYEAdeBATGhEKcF8XYmxnfElZWUdzXhgQExoRCnBfF2BnaWxwWG5JZmRGEBM
+ TEQpwfxdjQWtHRnBDGG5bTRASExEKcF8XZR1sfRtFeGdgGV4QGxocEQpwXxdvaFATBUhHTVtTUx
+ AbGhwRCnBfF2R/BRN+aVJ7cnsZEB0YEQpwXxdvQh18eX5rY1gFBRAeEhEKcF8Xeh14TU9SWF8fS
+ E4QHhoRCnBsF2VnGhNeTBh9bnBhEBsSGxEKbX4XGhEKWE0XSxEg
+X-Proofpoint-ORIG-GUID: IWyVU5MjsThXOVSWJnNP4J1tz6WM7FWc
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTI2MDAwMyBTYWx0ZWRfXwGLxG+4yMS5c
+ psuJZbb8plbwcF9YTVnPG3UZawWThMlggqpKd8hWLuQ43yXGzDoIreyXfb5wILIzlTyB6cIogew
+ icDyZXF7GNtmptpirpA7weqkVcav5n11FTolvTzwJz4GzLK0e5tSUAtong+ZL+mFG/v5qnu/u4O
+ 4nWE6HcB2aF6d7HWl7yOU5Nb8103MzRJmBc/LsdHQefAkt9/KCX38SSD5CJcTmyoA/485uOjk2d
+ du8FHQ4iiIp38F31bQdj/PotO2cnjISqCzf76xc8D81bBeccZZpsIDU48Ogx7knuqqS7Vl4B41R
+ YC1IXobUIK9vg74tlKg7+aFq2dUso8to4L1ZfrWEG8LSkLmpDSc0STr57NcedDBAi/gT3us7Av3
+ Wr+4gg5SKxFHAauDmjZcxBAtLv7qjQdDtd3AvoY2U5HDGk3gSGQ1VvRntRmsTUXoVU6JgoLevHp
+ 4onKR1FJWNX1+jFJtMg==
+X-Proofpoint-GUID: IWyVU5MjsThXOVSWJnNP4J1tz6WM7FWc
+MIME-Version: 1.0
+X-Orig-IP: 69.72.46.73
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-25_02,2025-11-25_01,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ lowpriorityscore=0 malwarescore=0 adultscore=0 priorityscore=445 spamscore=0
+ suspectscore=0 phishscore=0 clxscore=420 bulkscore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc=notification route=inbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511260003 domainage_hfrom=4301 domainage_replyto=4301
+
+--e0fc07c2f16b80794cdc4e951f2bf7a7d7c644f4f78d8eef0e93859ac42a
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+
+Apply early to stand out
+
+
+You might be a match for this new job from Visa, Inc., based on your prefer=
+ences. Check it out!
+
+
+Applications are due
+
+Monday, December 22 at  2 AM EST.
+
+
+
+
+
+
+
+
+
+
+
+
+Visa, Inc.
+
+
+Financial Services
+
+
+
+
+
+Software Engineer, Intern
+
+
+
+
+
+
+$35=E2=80=9340/hr
+
+
+
+Hybrid
+
+
+
+Internship
+
+
+
+
+Ashburn, VA
+
+
+
+
+
+
+
+View job
+
+
+
+
+
+
+
+Want better job recommendations?
+Update your preferences.
+--e0fc07c2f16b80794cdc4e951f2bf7a7d7c644f4f78d8eef0e93859ac42a
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" style=3D"min-height:100%;backg=
+round:#f5f5f5;background-color:transparent">
+<head>
+<meta content=3D"text/html; charset=3Dutf-8" http-equiv=3D"Content-Type">
+<meta content=3D"width=3Ddevice-width" name=3D"viewport">
+<title>Handshake</title>
+
+
+
+
+
+<style>@media only screen and (max-width: 664px) {
+.small-float-center{margin:0 auto !important;float:none !important;text-ali=
+gn:center !important}
+.small-text-center{text-align:center !important}
+.small-text-left{text-align:left !important}
+.small-text-right{text-align:right !important}
+.hide-for-large{display:block !important;width:auto !important;overflow:vis=
+ible !important;max-height:none !important;font-size:inherit !important;lin=
+e-height:inherit !important}
+table.body table.container .hide-for-large{display:table !important;width:1=
+00% !important}
+table.body table.container .row.hide-for-large{display:table !important;wid=
+th:100% !important}
+table.body table.container .callout-inner.hide-for-large{display:table-cell=
+ !important;width:100% !important}
+table.body table.container .show-for-large{display:none !important;width:0;=
+mso-hide:all;overflow:hidden}
+table.body img{width:auto;height:auto}
+table.body center{min-width:0 !important}
+table.body .container{width:95% !important}
+table.body .columns{height:auto !important;-moz-box-sizing:border-box;-webk=
+it-box-sizing:border-box;box-sizing:border-box;padding-left:64px !important=
+;padding-right:64px !important}
+table.body .column{height:auto !important;-moz-box-sizing:border-box;-webki=
+t-box-sizing:border-box;box-sizing:border-box;padding-left:64px !important;=
+padding-right:64px !important}
+table.body .columns .column{padding-left:0 !important;padding-right:0 !impo=
+rtant}
+table.body .columns .columns{padding-left:0 !important;padding-right:0 !imp=
+ortant}
+table.body .column .column{padding-left:0 !important;padding-right:0 !impor=
+tant}
+table.body .column .columns{padding-left:0 !important;padding-right:0 !impo=
+rtant}
+table.body .collapse .columns{padding-left:0 !important;padding-right:0 !im=
+portant}
+table.body .collapse .column{padding-left:0 !important;padding-right:0 !imp=
+ortant}
+td.small-1{display:inline-block !important;width:8.33333% !important}
+th.small-1{display:inline-block !important;width:8.33333% !important}
+td.small-2{display:inline-block !important;width:16.66667% !important}
+th.small-2{display:inline-block !important;width:16.66667% !important}
+td.small-3{display:inline-block !important;width:25% !important}
+th.small-3{display:inline-block !important;width:25% !important}
+td.small-4{display:inline-block !important;width:33.33333% !important}
+th.small-4{display:inline-block !important;width:33.33333% !important}
+td.small-5{display:inline-block !important;width:41.66667% !important}
+th.small-5{display:inline-block !important;width:41.66667% !important}
+td.small-6{display:inline-block !important;width:50% !important}
+th.small-6{display:inline-block !important;width:50% !important}
+td.small-7{display:inline-block !important;width:58.33333% !important}
+th.small-7{display:inline-block !important;width:58.33333% !important}
+td.small-8{display:inline-block !important;width:66.66667% !important}
+th.small-8{display:inline-block !important;width:66.66667% !important}
+td.small-9{display:inline-block !important;width:75% !important}
+th.small-9{display:inline-block !important;width:75% !important}
+td.small-10{display:inline-block !important;width:83.33333% !important}
+th.small-10{display:inline-block !important;width:83.33333% !important}
+td.small-11{display:inline-block !important;width:91.66667% !important}
+th.small-11{display:inline-block !important;width:91.66667% !important}
+td.small-12{display:inline-block !important;width:100% !important}
+th.small-12{display:inline-block !important;width:100% !important}
+.columns td.small-12{display:block !important;width:100% !important}
+.column td.small-12{display:block !important;width:100% !important}
+.columns th.small-12{display:block !important;width:100% !important}
+.column th.small-12{display:block !important;width:100% !important}
+table.body td.small-offset-1{margin-left:8.33333% !important}
+table.body th.small-offset-1{margin-left:8.33333% !important}
+table.body td.small-offset-2{margin-left:16.66667% !important}
+table.body th.small-offset-2{margin-left:16.66667% !important}
+table.body td.small-offset-3{margin-left:25% !important}
+table.body th.small-offset-3{margin-left:25% !important}
+table.body td.small-offset-4{margin-left:33.33333% !important}
+table.body th.small-offset-4{margin-left:33.33333% !important}
+table.body td.small-offset-5{margin-left:41.66667% !important}
+table.body th.small-offset-5{margin-left:41.66667% !important}
+table.body td.small-offset-6{margin-left:50% !important}
+table.body th.small-offset-6{margin-left:50% !important}
+table.body td.small-offset-7{margin-left:58.33333% !important}
+table.body th.small-offset-7{margin-left:58.33333% !important}
+table.body td.small-offset-8{margin-left:66.66667% !important}
+table.body th.small-offset-8{margin-left:66.66667% !important}
+table.body td.small-offset-9{margin-left:75% !important}
+table.body th.small-offset-9{margin-left:75% !important}
+table.body td.small-offset-10{margin-left:83.33333% !important}
+table.body th.small-offset-10{margin-left:83.33333% !important}
+table.body td.small-offset-11{margin-left:91.66667% !important}
+table.body th.small-offset-11{margin-left:91.66667% !important}
+table.body table.columns td.expander{display:none !important}
+table.body table.columns th.expander{display:none !important}
+table.body .right-text-pad{padding-left:10px !important}
+table.body .text-pad-right{padding-left:10px !important}
+table.body .left-text-pad{padding-right:10px !important}
+table.body .text-pad-left{padding-right:10px !important}
+table.menu{width:100% !important}
+table.menu td{width:auto !important;display:inline-block !important}
+table.menu th{width:auto !important;display:inline-block !important}
+table.menu.vertical td{display:block !important}
+table.menu.vertical th{display:block !important}
+table.menu.small-vertical td{display:block !important}
+table.menu.small-vertical th{display:block !important}
+table.menu[align=3D"center"]{width:auto !important}
+table.button.small-expand{width:100% !important}
+table.button.small-expanded{width:100% !important}
+table.button.small-expand table{width:100%}
+table.button.small-expanded table{width:100%}
+table.button.small-expand table a{text-align:center !important;width:100% !=
+important;padding-left:0 !important;padding-right:0 !important}
+table.button.small-expanded table a{text-align:center !important;width:100%=
+ !important;padding-left:0 !important;padding-right:0 !important}
+table.button.small-expand center{min-width:0}
+table.button.small-expanded center{min-width:0}
+th.columns.first.small-12{padding-left:16px !important}
+th.columns.last.small-12{padding-right:16px !important}
+table.body img.icon-20{width:20px;height:20px}
+}
+table.button:hover table tr td a{color:#ffffff}
+table.button:active table tr td a{color:#ffffff}
+table.button table tr td a:visited{color:#ffffff}
+table.button.tiny:hover table tr td a{color:#ffffff}
+table.button.tiny:active table tr td a{color:#ffffff}
+table.button.tiny table tr td a:visited{color:#ffffff}
+table.button.small:hover table tr td a{color:#ffffff}
+table.button.small:active table tr td a{color:#ffffff}
+table.button.small table tr td a:visited{color:#ffffff}
+table.button.large:hover table tr td a{color:#ffffff}
+table.button.large:active table tr td a{color:#ffffff}
+table.button.large table tr td a:visited{color:#ffffff}
+table.button:hover table td{background:#04191b;color:#ffffff}
+table.button:visited table td{background:#04191b;color:#ffffff}
+table.button:active table td{background:#04191b;color:#ffffff}
+table.button:hover table a{border:0 solid #04191b}
+table.button:visited table a{border:0 solid #04191b}
+table.button:active table a{border:0 solid #04191b}
+table.button.secondary:hover table td{background:#919191;color:#ffffff}
+table.button.secondary:hover table a{border:0 solid #919191}
+table.button.secondary:hover table td a{color:#ffffff}
+table.button.secondary:active table td a{color:#ffffff}
+table.button.secondary table td a:visited{color:#ffffff}
+table.button.success:hover table td{background:#004d33}
+table.button.success:hover table a{border:0 solid #004d33}
+table.button.alert:hover table td{background:#99000d}
+table.button.alert:hover table a{border:0 solid #99000d}
+table.button.warning:hover table td{background:#cc8800}
+table.button.warning:hover table a{border:0px solid #cc8800}
+.thumbnail:hover{box-shadow:0 0 6px 1px rgba(0,85,204,0.5)}
+.thumbnail:focus{box-shadow:0 0 6px 1px rgba(0,85,204,0.5)}
+table.button.secondary:hover table td{background:#dcdcdc;border-color:#dcdc=
+dc;color:rgba(8,8,8,0.79)}
+table.button.secondary table tr td a:visited{color:rgba(8,8,8,0.79)}
+table.button.secondary:hover table tr td a{color:rgba(8,8,8,0.79)}
+table.button.secondary:hover table tr td a:visited{color:rgba(8,8,8,0.79)}
+a:hover{color:#254fa5}
+a:active{color:#183684}
+a.plain:hover{color:#2e2a2b}
+a.plain:active{color:#1c1819}
+.primary-button a:hover{color:inherit}
+.outline-button a:hover{color:inherit}
+.button a:hover{color:inherit}
+.primary-button a:active{color:inherit}
+.outline-button a:active{color:inherit}
+.button a:active{color:inherit}
+.primary-button:hover{color:#fff;background-color:#062e32;border-color:1px =
+solid #062e32}
+.primary-button:active{color:#fff;background-color:#073d42;border-color:1px=
+ solid #062e32}
+.outline-button:hover{color:#062e32;border-color:#062e32}
+.outline-button:active{color:#073d42;border-color:#073d42}
+table.lined a:hover{text-decoration:none}
+@media (max-width: 767px) {
+.avatar--mobile-md{max-width:56px}
+}
+@media screen and (max-width: 767px) {
+.padding-content{padding:0 16px !important}
+table.student-footer-v3{padding:0 16px}
+table.student-footer-v3 td.socials img{padding:0 12% 0 0 !important}
+table.student-footer-v3 td.app-store img{padding:0 0 0 4% !important}
+table.rebrand-cta{width:100% !important}
+table.rebrand-cta{width:100% !important}
+}
+@media (min-width: 768px) {
+td.email-footer .hiring-team-footer .media-links-container{display:flex;jus=
+tify-content:space-between;margin-bottom:32px}
+td.email-footer .employer-hosted-meetings-footer .media-links-container{dis=
+play:flex;justify-content:space-between;margin-bottom:32px}
+table.email-footer .hiring-team-footer .media-links-container{display:flex;=
+justify-content:space-between;margin-bottom:32px}
+table.email-footer .employer-hosted-meetings-footer .media-links-container{=
+display:flex;justify-content:space-between;margin-bottom:32px}
+td.email-footer .hiring-team-footer .media-links-container{display:flex;jus=
+tify-content:space-between;margin-bottom:32px}
+td.email-footer .employer-hosted-meetings-footer .media-links-container{dis=
+play:flex;justify-content:space-between;margin-bottom:32px}
+table.email-footer .hiring-team-footer .media-links-container{display:flex;=
+justify-content:space-between;margin-bottom:32px}
+table.email-footer .employer-hosted-meetings-footer .media-links-container{=
+display:flex;justify-content:space-between;margin-bottom:32px}
+}
+@media screen and (max-width: 240px) {
+.event-card-container table.event-attendees .logo-group .event-detail .even=
+t-tags{white-space:nowrap}
+.event-card-container table.event-attendees .logo-group .event-detail .even=
+t-tags{white-space:nowrap}
+}</style></head>
+<body class=3D"rebrand" style=3D'min-width:100%;-webkit-text-size-adjust:10=
+0%;-ms-text-size-adjust:100%;margin:0;padding:0;-moz-box-sizing:border-box;=
+-webkit-box-sizing:border-box;box-sizing:border-box;font-family:"Noi Grotes=
+k", system-ui, sans-serif;color:#231f20;font-size:16px;line-height:20px;bac=
+kground-color:#f3f4fa;width:100% !important'>
+<table class=3D"body email-layout rebrand" data-made-with-foundation=3D"" s=
+tyle=3D"border-spacing:0;vertical-align:top;text-align:left;background:#f5f=
+5f5;height:100%;background-color:transparent;max-width:728px;table-layout:f=
+ixed;border:0;border-collapse:collapse;width:100%;text-align:inherit;margin=
+:auto;padding:0;background-color:white">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td class=3D"email-header" style=3D'font-family:"Noi Grotesk", system-ui, s=
+ans-serif;padding:0;vertical-align:top;text-align:left'>
+<div class=3D"padding-content" style=3D"padding:0 40px">
+<table style=3D"border-spacing:0;border-collapse:collapse;padding:0;vertica=
+l-align:top;text-align:left;width: 100%">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left'>
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkMGu2yAQRb8Gdo4Aw5gsWLSKsuhPWAMMz7wXg2VD=
+pPx95aiLqq3ULZc7c-2DZEp-2DIVJh7pkZ-2D0v-2DaV2lLjXLeWazmY-2DR7rirkwc3Oltpxyw=
+Hdy-2Day5LFjiseAXXUJdOTk5gZbSCjFxWjE-5F5t8rc45OJmnBWDvAleSgE9BwlRMOAZOHMSlz=
+BcsXZxRhDMGClUTCYEo44gjJTxqMx4lnp4QyUioQQoOeLhNhMmRGLUy01hqmxf9wP6t-5FIwmjl=
+FWWP9zS2naw8RtTd6bu5dX-5Fbp3ReO9tnY-5Fa90BsvOG27fVJ8zlvq0fL5WM-2Dj6edKTh-5F=
+rhRzX9l4ezv59Rhw3TB-5FFDbejtYjlTa-5FY-5F6nMkhpshr0YDDZQQuIgw-5FSDMoTkBdkJRD=
+f9hp7aLPv4Yua-2D1H9wXeHDcDIU8WrXyh23tw-5FYHk-5FaD83masUYKXgT6d-2DBgAA-5F-5F=
+-2DL-2DLJg&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqH=
+tZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz6IQYxYHh3FK3gd=
+DEc07-AzTp&amp;s=3DYZDIy2WZLbOTw38Yimz-_q57N8dtBlRK1adMp5mUc3E&amp;e=3D" st=
+yle=3D"color:#254fa5;font-weight:inherit;color: inherit; text-decoration: n=
+one;">
+<img alt=3D"Handshake" class=3D"handshake-logo lime" height=3D"36" src=3D"h=
+ttps://handshake-production-cdn.joinhandshake.com/static_assets/hs-icon-lim=
+e-round.png" title=3D"Handshake" width=3D"36" style=3D"outline:none;text-de=
+coration:none;-ms-interpolation-mode:bicubic;width:auto;max-width:100%;clea=
+r:both;display:block;border:none;margin-top:24px;margin-bottom:16px;width:3=
+6px;height:36px;margin:24px 0">
+</a>
+</td>
+</tr>
+</table>
+
+</div>
+</td>
+</tr>
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td class=3D"email-content" style=3D'font-family:"Noi Grotesk", system-ui, =
+sans-serif;padding:0;vertical-align:top;text-align:left;padding-bottom:40px=
+'>
+<div class=3D"padding-content" style=3D"padding:0 40px">
+<h2 class=3D"email-header" style=3D"word-break:break-word;font-size:39px;li=
+ne-height:44px;font-size:32px;font-weight:700;line-height:38px;margin:0 0 2=
+4px">
+Apply early to stand out
+</h2>
+<p class=3D"body-text" style=3D"line-height:28px;font-size:18px">
+You might be a match for <a href=3D"https://urldefense.proofpoint.com/v2/ur=
+l?u=3Dhttps-3A__email.notifications.joinhandshake.com_c_eJyEkMGu2yAQRb8Gdo5=
+gDGNYsGgVZdGfsLAZnsmLjWUgUv6-2DctRKVVvpbefOnTk6wUGwOPBAj-5FSk4zWuVJccxrzXlL=
+fC9PeQV582pq9uyzXFNPt3crnntC1-2DC2Xxn3SZ88rJyQGVlEaIgdPq02P8szKm4GSUBrUxHVq=
+SnYpInZWD72YfJ-2DwjaIuGL663QuEgJAgv5RQgDjNZo6yWgGS15cmBAC0loBAK1XAZyEdNuldC=
+B2OMZkp8hXvP0xtJaAADhj-5FcUuteWP-2DNwY3BbXu1f1sMbvc8FQa33z3W31pdx5LbMRPrr37=
+fj-5Fyk8Ty-5F51LT9jGeLuhggOfmSiG1lfXXt6Jfw9mvu08fG-2DuvpbZAWx3fMf-5FbIMY4GI=
+Wq0z6aTgkM3TRL3cFESJMgI5H4fuTQ5jpObf6k6n7kqfDD-2DYqo5Wnm1S4UGq-5FuP7C8FTrOT=
+9pKgUYK-5FnTwMwAA-5F-5F9ufLSf&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ=
+&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1k=
+eJbKz6IQYxYHh3FK3gdDEc07-AzTp&amp;s=3DOkcAdytiR7nEH43tv5-fR_wdr_-NWkJ3vW8Dv=
+46QDE8&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:#2e6aff;t=
+ext-decoration:none">this new job</a> from Visa, Inc., based on your prefer=
+ences. Check it out!
+</p>
+<p class=3D"body-text" style=3D"line-height:28px;font-size:18px">
+Applications are due
+<b>
+Monday, December 22 at  2 AM EST.
+</b>
+</p>
+<div class=3D"job-card-container" style=3D"border:1px solid #d4d6ec;border-=
+radius:16px;padding:20px;margin:16px 0;font-size:14px;overflow:hidden;backg=
+round-color:white;margin-bottom:0">
+<table class=3D"employer-info" style=3D"border-spacing:0;border-collapse:co=
+llapse;padding:0;vertical-align:top;text-align:left;margin-bottom:12px">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left;vertical-align:middle'>
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkMGq5CwQRp9Gd2m0oqVZuPh-5FmizmJYLR8sZ7Oz=
+Ek2tBvP6SZxTBzYdZ1iu9wooM4oOGRHvlJx2taqS4lTmWvuWwn0-5F-5FHsvq8MX13W6k55eDfl=
+9tnydvit3gu-5FotuoaycnDSopLRCGE6rz4-5Fp95cpRyeTtKit7XAg2amE1A3S-2DC74NGOfQA=
+9o-2DeKETskGAq9kSAMqQ5CEDqiFidb0gWcHArSUgEIoVOZmyCdNuldCR2utZkr8S-5FezzG8lo=
+QEsWP5wS637yfr-5FGIwMxu3V-5Fv5iMJ61MRhp3R-5FlRcfJYJRG9sj6sdV1Cn7dff7YWH-5F3=
+-2D36UJ03X0F7OmrcPBnhBZ2lHoO-2DR6QpHxy9ypZjbyvr7uyf-5FsyemZKxC1WmfbKcExm4OU=
+ncwE9IsyEokvh8ltlCnuYUvqu5HmU9-2DOF8Rtbw6vdqNYuPVfWPD20nHtaQHKdBKwZ8OfgYAAP=
+-5F-5FGxu7sA&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1Ke=
+qHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz6IQYxYHh3FK3=
+gdDEc07-AzTp&amp;s=3DYo8utjgobbfb1pB3dRyhJyiDu3RsSNFu_hhrgyGSMB8&amp;e=3D" =
+style=3D"color:#254fa5;font-weight:inherit">
+<img alt=3D"Visa, Inc. logo" class=3D"employer-logo exists" height=3D"40" s=
+rc=3D"https://joinhandshake-production.imgix.net/app/public/assets/institut=
+ions/17136/original/hs-emp-logo-data.?ixlib=3Drb-4.1.1&amp;w=3D150&amp;h=3D=
+150&amp;fit=3Dcrop&amp;s=3Df64da90621a2d800c153f7f2d49e1c81" width=3D"40" s=
+tyle=3D"outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;wi=
+dth:auto;max-width:100%;clear:both;display:block;border:none;border-radius:=
+8px;min-width:40px;max-width:40px;border:1px solid #d4d6ec">
+</a>
+</td>
+<td class=3D"employer-details" style=3D'font-family:"Noi Grotesk", system-u=
+i, sans-serif;padding:0;vertical-align:top;text-align:left;vertical-align:m=
+iddle;padding-left:12px'>
+<a class=3D"employer-name" href=3D"https://urldefense.proofpoint.com/v2/url=
+?u=3Dhttps-3A__email.notifications.joinhandshake.com_c_eJyEkMGq5CwQRp9Gd2m0=
+oqVZuPh-5FmizmJYLR8sZ7OzEk2tBvP6SZxTBzYdZ1iu9wooM4oOGRHvlJx2taqS4lTmWvuWwn0=
+-5F-5FHsvq8MX13W6k55eDfl9tnydvit3gu-5FotuoaycnDSopLRCGE6rz4-5Fp95cpRyeTtKit=
+7XAg2amE1A3S-2DC74NGOfQA9o-2DeKETskGAq9kSAMqQ5CEDqiFidb0gWcHArSUgEIoVOZmyCd=
+NuldCR2utZkr8S-5FezzG8loQEsWP5wS637yfr-5FGIwMxu3V-5Fv5iMJ61MRhp3R-5FlRcfJYJ=
+RG9sj6sdV1Cn7dff7YWH-5F3-2D36UJ03X0F7OmrcPBnhBZ2lHoO-2DR6QpHxy9ypZjbyvr7uyf=
+-5FsyemZKxC1WmfbKcExm4OUncwE9IsyEokvh8ltlCnuYUvqu5HmU9-2DOF8Rtbw6vdqNYuPVfW=
+PD20nHtaQHKdBKwZ8OfgYAAP-5F-5FGxu7sA&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJb=
+eO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_=
+XvK4V1keJbKz6IQYxYHh3FK3gdDEc07-AzTp&amp;s=3DYo8utjgobbfb1pB3dRyhJyiDu3RsSN=
+Fu_hhrgyGSMB8&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:bl=
+ack;text-decoration:none;font-size:16px;font-weight:700">
+Visa, Inc.
+</a>
+<div>
+Financial Services
+</div>
+</td>
+</tr>
+</table>
+<a class=3D"job-name" href=3D"https://urldefense.proofpoint.com/v2/url?u=3D=
+https-3A__email.notifications.joinhandshake.com_c_eJyEkMGu2yAQRb8Gdo4AwxgvW=
+LSKsuhPWAMMz-2DTFxrIhUv6-2DctRKVfukrucezdGJTsURBh7pkZ-2D0v6aF6lziVLaay3ow8z=
+2WBfPKzNWtpeaUA74vl3vJ64xrPGb8pEsoCycnB9BSWiEGTgvmx-5FQnMuXoZJIWjLUdjCQ7nYC=
+6UQ7YBUwe-2DqTMCJbPTvigBfoIY5-5FIjx4ApdCotI9CYQg8OyWUkVKBEBr0cBkIkyHTa2Gitd=
+YwLf6ney-5F-2DrSSMUlZZ-5FnBzrdvB-2Dm9M3Zi6ra-5F2L8XU7V78wdTtN8f6W6vLFHDZMH-=
+2DsrL-5Fitu3lSdP5YCtHzesHU3COjtL2QF9PpjMY7b-2DWC8XcFtZf3x353x0hpcFq0J3BZDst=
+IHY-2DSNMpT0BekJVAfNtLbKFOvoVPqu5H8QffHVYAI88-2Dr3ah2Hh1X9jwdtB-2DfjKjFGCl4=
+E-2DnfgYAAP-5F-5FaHS4tQ&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz6=
+IQYxYHh3FK3gdDEc07-AzTp&amp;s=3DXbK9N_RxSEB13SN1dFKz12VrWrB6Ygb3UWuNesXdqGg=
+&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:black;text-deco=
+ration:none;font-size:22px;font-weight:700;margin-bottom:8px">
+Software Engineer, Intern
+</a>
+<table class=3D"job-details" style=3D"border-spacing:0;border-collapse:coll=
+apse;padding:0;vertical-align:top;text-align:left;margin:10px 0">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left;vertical-align:middle'>
+<span class=3D"job-detail" style=3D"display:inline-block;white-space:nowrap=
+;padding-right:12px;padding-bottom:4px">
+<img height=3D"24" src=3D"https://handshake-production-cdn.joinhandshake.co=
+m/static_assets/email_assets/icons/currency-icon.png" width=3D"24" style=3D=
+"outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;width:aut=
+o;max-width:100%;clear:both;display:block;width:24px;height:24px;padding-ri=
+ght:2px;display:inline-block;vertical-align:middle">
+<span style=3D"vertical-align:text-top">$35=E2=80=9340/hr</span>
+</span>
+<span class=3D"job-detail" style=3D"display:inline-block;white-space:nowrap=
+;padding-right:12px;padding-bottom:4px">
+<img height=3D"24" src=3D"https://handshake-production-cdn.joinhandshake.co=
+m/static_assets/email_assets/icons/map-pin-icon.png" width=3D"24" style=3D"=
+outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;width:auto=
+;max-width:100%;clear:both;display:block;width:24px;height:24px;padding-rig=
+ht:2px;display:inline-block;vertical-align:middle">
+<span style=3D"vertical-align:text-top">Hybrid</span>
+</span>
+<span class=3D"job-detail" style=3D"display:inline-block;white-space:nowrap=
+;padding-right:12px;padding-bottom:4px">
+<img height=3D"24" src=3D"https://handshake-production-cdn.joinhandshake.co=
+m/static_assets/email_assets/icons/portfolio-icon.png" width=3D"24" style=
+=3D"outline:none;text-decoration:none;-ms-interpolation-mode:bicubic;width:=
+auto;max-width:100%;clear:both;display:block;width:24px;height:24px;padding=
+-right:2px;display:inline-block;vertical-align:middle">
+<span style=3D"vertical-align:text-top">Internship</span>
+</span>
+</td>
+</tr>
+</table>
+<div class=3D"job-locations" style=3D"color:#606384">Ashburn, VA</div>
+</div>
+
+<table class=3D"rebrand-cta" style=3D"border-spacing:0;border-collapse:coll=
+apse;padding:0;vertical-align:top;text-align:left;color:white;background-co=
+lor:black;font-size:16px;border-radius:4px;height:40px;margin-top:24px">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left;padding:8px 16px;text-align:center;vertical=
+-align:middle'>
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkMGu2yAQRb8Gdo5gDGNYsGgVZdGfsLAZnsmLjWUg=
+Uv6-2DctRKVVvpbefOnTk6wUGwOPBAj-5FSk4zWuVJccxrzXlLfC9PeQV582pq9uyzXFNPt3crn=
+ntC1-2DC2Xxn3SZ88rJyQGVlEaIgdPq02P8szKm4GSUBrUxHVqSnYpInZWD72YfJ-2DwjaIuGL6=
+63QuEgJAgv5RQgDjNZo6yWgGS15cmBAC0loBAK1XAZyEdNuldCB2OMZkp8hXvP0xtJaAADhj-5F=
+cUuteWP-2DNwY3BbXu1f1sMbvc8FQa33z3W31pdx5LbMRPrr37fj-5Fyk8Ty-5F51LT9jGeLuhg=
+gOfmSiG1lfXXt6Jfw9mvu08fG-2DuvpbZAWx3fMf-5FbIMY4GIWq0z6aTgkM3TRL3cFESJMgI5H=
+4fuTQ5jpObf6k6n7kqfDD-2DYqo5Wnm1S4UGq-5FuP7C8FTrOT9pKgUYK-5FnTwMwAA-5F-5F9u=
+fLSf&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8I=
+fj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz6IQYxYHh3FK3gdDEc07-=
+AzTp&amp;s=3DOkcAdytiR7nEH43tv5-fR_wdr_-NWkJ3vW8Dv46QDE8&amp;e=3D" style=3D=
+"color:#254fa5;font-weight:inherit;text-decoration:none;color:white">
+<span style=3D"color: white;">
+View job
+</span>
+</a>
+</td>
+</tr>
+</table>
+
+<p class=3D"body-text" style=3D"line-height:28px;font-size:18px;margin-bott=
+om:24px">
+Want better job recommendations?
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkM2u3CoQhJ8Gdh4BhjZesLhXIy-5FyEhaG5phzxm=
+DxM9K8feRRIkVJpGy7ulRVnzfCzzBRj4-5F4xPJaD2x79ms-2DW8ypEvW-5Fz4eNiai7SbnFEJ1=
+9K7fPHNNuk6-2D7-5FcKbywdFwyeQnGvGJoqHjY-5F1V8saveGBa1BaDzAjH2QAHGY-2D2cHZsM=
+EYhJpB090EF5iQmgcM1iJIAdyB5yi19hsXM41GMKE4F8CYBDndJrRBoRolU15rrYhk-5F6r7mbd=
+3JaaE0ELTh9lbOysZ-5FyNiIWJJr-5F6ni4ilVyyViEXNnIHmjIjF2YJY1pgaFqytknHp7Vhr7s=
+UhGe-5F2PEt-2D4npFnrm2mD7Wiw8WIuD6PNDHfpDx-5Fsb24-2Djscdr4kch4r617TG19y-5FR=
+3qhDCpCXIQdmgB8nAD5vjahAbAm4MNQekZ8m-2Du7Zu3X1hM9-5FyVmkxtgEoftF69Rv6Tpv5S1=
+l6bb6Sfm6mTyO-2DBwAA-5F-5F-2DzoL2-2D&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJb=
+eO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_=
+XvK4V1keJbKz6IQYxYHh3FK3gdDEc07-AzTp&amp;s=3DwUPSCiuLIMCCEsNM4k54gxox9ykpUK=
+9qFJ5_ajSPpFg&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:#2=
+e6aff;text-decoration:none">Update your preferences.</a>
+</p>
+
+</div>
+</td>
+</tr>
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left'>
+<div class=3D"rebrand-footer-background" style=3D"background-color:#f3f4fa;=
+padding:40px 0;width:100%">
+<div class=3D"padding-content" style=3D"padding:0 40px">
+<table class=3D"rebrand-links" style=3D"border-spacing:0;border-collapse:co=
+llapse;padding:0;vertical-align:top;text-align:left;width:100%">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td class=3D"rebrand-socials" style=3D'font-family:"Noi Grotesk", system-ui=
+, sans-serif;padding:0;vertical-align:top;text-align:left'>
+<table style=3D"border-spacing:0;border-collapse:collapse;padding:0;vertica=
+l-align:top;text-align:left">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left'>
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkE2u2yAUhVcDM0f8XuMBg1ZRBt2EheES814MloFE=
+b-5FeVow7aqlKnHM65n75gRZhgpAEf6YnH17xhW0uYy95SyZXo76FsLmWirzaXlmLy7p1cPkrKq=
+8uhru4TL75sFC0fQXFuGBspbi495t8rcwqWR25AGzPAhHxQEXCY-2DOgG7-2DICMgo9gaGrjVGB=
+V2JBHyblAkx8YRNoiBJk9ELSZAUTmnMBjClQ42VEFzVqqZgOxhhNFPsf7kdZ3khMC2GEoQ-2D7t=
+rZXIr8RcSPi9nq9LinX5u6H284GEbc-5FVoi89bbNtfTDI5FXt-2D9HeeJ8Du-2DltpTv82kBDy=
+Lg-5FLlhSH0j8vqW8-2DvRu2136Z6JvNbWA-2DY2v2P6tzuIcTQK1KBdNINiEIbFcz2IBQEXhoY=
+D0v0oofs2L91-5FYrM-5FylLpYV0D0Px08tUvGDpt9h-2DwtFc8zkt64gwMZ-5FRpxc8AAAD-5F=
+-5F7xOtao&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHt=
+ZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz6IQYxYHh3FK3gdD=
+Ec07-AzTp&amp;s=3DTXGYi5I6vqlebSagoQuQN3BMUXSS-xKkjEaG1d2TYH4&amp;e=3D" sty=
+le=3D"color:#254fa5;font-weight:inherit">
+<img alt=3D"Instagram" height=3D"24" src=3D"https://handshake-production-cd=
+n.joinhandshake.com/static_assets/email_assets/student_footer_v3_icons/inst=
+agram-lavender.png" style=3D"outline:none;text-decoration:none;-ms-interpol=
+ation-mode:bicubic;width:auto;max-width:100%;clear:both;display:block;borde=
+r:none;width:24px;height:24px;padding:0 18px 0 0;width: 24px; height: 24px"=
+ width=3D"24">
+</a>
+</td>
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left'>
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkM2O3CAQhJ8Gbh7x28YHDolGc8hLIH6aNbtjY9kw=
+yr59ZCuHJIq0166q7uovWZEmGGnCZ3nh-5FukWbHNNrm6t1PUg-2Dnuqiy8r0Xe71lZyif5Sbu-=
+2D1rLNf0zH7D7zFulC0fATFuWFspLj48nR-5FRlxJlmduQBszwIR8UBlwmPjoh-2DhzAJmFnsDQ=
+2eqkg4zCsJGZSQspJVNBGQSZQYAKtFjBhOZcAGMK1Hgb0WeNWiqmkzFGE8W-2Dqvtew1WJaSGMM=
+PRp59a2g8hvRDyIePw8XUQ8-5FkoS-2DehtcUfte0Qi737b9vpCdy7b6tHK-2DubOz3EnAk7ngq=
+n0hcj7BeT3MPpl8-2DVtJfJ-2DtJ5wbe6S6b-2D8IOfRKFCD9tkMikEaQuR6EAEBA0PDAem219R=
+jc6HHD2z2Rw0H3a1vAJqfHD77DVOnzf6nLO0H7uclPXEGhjP6suJXAAAA-5F-5F-5F6HK-2Dg&a=
+mp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg=
+&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz6IQYxYHh3FK3gdDEc07-AzTp&a=
+mp;s=3DMgBKrhZSzmamPfxYwzX-kUmyeCezUv05lFjTV5f0yMI&amp;e=3D" style=3D"color=
+:#254fa5;font-weight:inherit">
+<img alt=3D"X" height=3D"24" src=3D"https://handshake-production-cdn.joinha=
+ndshake.com/static_assets/email_assets/student_footer_v3_icons/x-lavender.p=
+ng" style=3D"outline:none;text-decoration:none;-ms-interpolation-mode:bicub=
+ic;width:auto;max-width:100%;clear:both;display:block;border:none;width:24p=
+x;height:24px;padding:0 18px 0 0;width: 24px; height: 24px" width=3D"24">
+</a>
+</td>
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left'>
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkMHO2yAQhJ8Gbo5gDWt84NAqyqEvgTAsv-5FkTG8=
+uGRP-5FbV456aKtKvc7Mzo6-2DaCGOOPBIj-5Fyk-5FcstVOcSXdlqLuvB9PdYFp9Xpq92LTWnH=
+PzbuXyWvM5-2Djcfs73QJZeFk5YBKSiPEwGnx-2DeF-2DP3E5WpmkQW1MhyPJTiWkbpSD74JPE-=
+5FYJ9IiGz9aAV8pMCkTwkgYF2scUB0gIhlQCni0I0FICCqFQDZeBfNKkeyV0NMZopsT-5F5n6W6=
+T1JaAADhj-5FsXOt2sP4bgxuD2-2Dv1utR8r-2DV-2Dxk9NiT9aWH9rdXFHaXsg1l-5F9tu3lSe=
+4s3spR8-5FrhTgq0M8AzuVDMbWH99Q3nlxj8svn8sbL-2DetQWaa3ubfO-5F2WFKg1GoOu2T6ZT=
+A2E1B6g4mQpoEGYnEt73EFqqbWrhTtT-5FKdPDd-2Doqo5cnkq10oNl7tP8bydtB-2DftKjFGik=
+4E8LPwMAAP-5F-5FtiK0xg&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=
+=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz6=
+IQYxYHh3FK3gdDEc07-AzTp&amp;s=3Dmo4EC9RHWq81uY0VzIYnY9d4y8ZYGGX2V2dazuGUeiM=
+&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit">
+<img alt=3D"TikTok" height=3D"24" src=3D"https://handshake-production-cdn.j=
+oinhandshake.com/static_assets/email_assets/student_footer_v3_icons/tiktok-=
+lavender.png" style=3D"outline:none;text-decoration:none;-ms-interpolation-=
+mode:bicubic;width:auto;max-width:100%;clear:both;display:block;border:none=
+;width:24px;height:24px;padding:0 18px 0 0;width: 24px; height: 24px" width=
+=3D"24">
+</a>
+</td>
+</tr>
+</table>
+</td>
+<td class=3D"rebrand-app-store" style=3D'font-family:"Noi Grotesk", system-=
+ui, sans-serif;padding:0;vertical-align:top;text-align:left'>
+<table style=3D"border-spacing:0;border-collapse:collapse;padding:0;vertica=
+l-align:top;text-align:left;margin-right:0;margin-left:auto">
+<tr style=3D"padding:0;vertical-align:top;text-align:left">
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left'>
+<a style=3D"color:#254fa5;font-weight:inherit;color: inherit; text-decorati=
+on: none;" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__e=
+mail.notifications.joinhandshake.com_c_eJyEkM2q2zAQhZ9G2jnodywvtGgJWfQlhH7G=
+N7rXlowlBfL2JaGL0ha6nTOH8-5FElK9ICM0245QeeT7djv9fk6tFzLY3o76nuPheir7bUntcc-=
+5FTu5fNZc7r6kdvdfeIl1p2j5DIpzw9hMcfd5c79XXE6Wr9yANmaCBfmkVsBp4bOfol8DyFXoBQ=
+y922CkN1FxuWBUwARnCEYyFaII0SSk2QomNOcCGFOg5suMftWopWI6GWM0Uex-5FuJ81vJGYFsI=
+IQzd77-5F1oRH4j4kbErTzH3y0ibrmEOkpyWy5fjYibPw6XS-2Dt-2D24i8jb67VscZkcirP46z=
+PtC9po7aei4f7uUFTyLg9bljymMn8vrW9esY-5FX74-5FFGIvLY-2DEpbu3jH90yas62wUqEn71=
+UyKQZpC5HoSAQEDQ8MB6XHWNGJ3YcQv7PZHDY2e1ncAzV-2DWnuOCadBu-5FwFLR8PztaQXzsBw=
+Rh9W-5FAwAAP-5F-5Fxzq8OQ&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;=
+r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz=
+6IQYxYHh3FK3gdDEc07-AzTp&amp;s=3DvDDZ5mrXA3cFhOxxBCOQP6b7T-2G60gpJpwSqV-h_U=
+4&amp;e=3D"><img alt=3D"Apple App Store" height=3D"26" src=3D"https://hands=
+hake-production-cdn.joinhandshake.com/static_assets/email_assets/student_fo=
+oter_v3_icons/apple-app-store.png" style=3D"outline:none;text-decoration:no=
+ne;-ms-interpolation-mode:bicubic;width:auto;max-width:100%;clear:both;disp=
+lay:block;border:none;height:26px;padding:0 0 0 16px">
+</a>
+</td>
+<td style=3D'font-family:"Noi Grotesk", system-ui, sans-serif;padding:0;ver=
+tical-align:top;text-align:left'>
+<a style=3D"color:#254fa5;font-weight:inherit;color: inherit; text-decorati=
+on: none;" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__e=
+mail.notifications.joinhandshake.com_c_eJyEkM2q2zAQhZ9G2jnodywvtGgJWfQlhH7G=
+N7rXlowlBfL2JaGL0ha6nTOH8-5FElK9ICM0245QeeT7djv9fk6tFzLY3o76nuPheir7bUntcc-=
+5FTu5fNZc7r6kdvdfeIl1p2j5DIpzw9hMcfd5c79XXE6Wr9yANmaCBfmkVsBp4bOfol8DyFXoBQ=
+y922CkN1FxuWBUwARnCEYyFaII0SSk2QomNOcCGFOg5suMftWopWI6GWM0Uex-5FuJ81vJGYFsI=
+IQzd77-5F1oRH4j4kbErTzH3y0ibrmEOkpyWy5fjYibPw6XS-2Dt-2D24i8jb67VscZkcirP46z=
+PtC9po7aei4f7uUFTyLg9bljymMn8vrW9esY-5FX74-5FFGIvLY-2DEpbu3jH90yas62wUqEn71=
+UyKQZpC5HoSAQEDQ8MB6XHWNGJ3YcQv7PZHDY2e1ncAzV-2DWnuOCadBu-5FwFLR8PztaQXzsBw=
+Rh9W-5FAwAAP-5F-5Fxzq8OQ&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;=
+r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz=
+6IQYxYHh3FK3gdDEc07-AzTp&amp;s=3DvDDZ5mrXA3cFhOxxBCOQP6b7T-2G60gpJpwSqV-h_U=
+4&amp;e=3D"><img alt=3D"Google Play Store" height=3D"26" src=3D"https://han=
+dshake-production-cdn.joinhandshake.com/static_assets/email_assets/student_=
+footer_v3_icons/google-play-store.png" style=3D"outline:none;text-decoratio=
+n:none;-ms-interpolation-mode:bicubic;width:auto;max-width:100%;clear:both;=
+display:block;border:none;height:26px;padding:0 0 0 16px">
+</a>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class=3D"rebrand-footer-container" style=3D"margin-top:14px">
+<p class=3D"rebrand-footer-text" style=3D"font-size:18px;line-height:28px;c=
+olor:#878aae;font-size:14px;line-height:125%;margin:0 0 20px">
+You received this email because Handshake partners with your school to help=
+ you grow your career.
+<a href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__email.not=
+ifications.joinhandshake.com_c_eJyEkMGO3CAQRL8Gbh5BG9rMgUOi0RzyExaGZs3uGiwD=
+I83fRx4l0iqJlGt3larqBQvhihMP9JkedDznjdpawlz2lkquTH8PZXMpM32zubQUk3evz-2DW9p=
+Ly6HOrqPujiy8bJygmVlEaIidPm0uf81TKnYGWUBrUxA15JDioiDVc5ucG7uOAYQV-5FR8NUuTs=
+HoNcoo-5FKRBB-2D9hQW-5FiSMEJCTxZEKClBBRCoZouE7moSY9K6GCM0UyJ-5F9V9L8urktAAB=
+gz-5FtGtre2XjNwZ3Bvf87H-2D7GNx7paMyuOurFGikOKVfZ-2D4HRTooe6psvPe2zbX0wxMbb2=
+7fj-5FKg-2DYzeS20pv80nJzoY4KncKKS-2DsfH2wvfr6N22u-5FSW2XirrQfKbX69-2DZ90Mcb=
+JKFSDdtEMSmAYFi-5F1AAshLYKMROL7UUL3bV66-5F6Bmf5Sl8sO6hqjlSe3ZLxQ6b-5FYfZfm5=
+-5FUz6vZ0-5FLPwMAAD-5F-5F-5FULwO4&amp;d=3DDwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0=
+g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK=
+4V1keJbKz6IQYxYHh3FK3gdDEc07-AzTp&amp;s=3DsRru9V6hD3QrN4QngnV9Op0OcgCsMR0gm=
+yrDGLjuvZU&amp;e=3D" style=3D"color:#254fa5;font-weight:inherit;color:inher=
+it">Manage email preferences</a> or <a href=3D"https://urldefense.proofpoin=
+t.com/v2/url?u=3Dhttps-3A__email.notifications.joinhandshake.com_u_eJyEzr2O=
+4yAUxfGnCR0WEO4FFzSrrfYlLD7uXZPExrJxpLz9KKlG00x9jvT-5FlWDKiE4UetQn7a9poT63M=
+rWt17YeF-5FhT2hLreoG-5FYW29cs3xswy3Vtc5ruWY452G3BZBS6yP6ftrqiVo1h7Be4kjaWkZ=
+SY7aRZkjJ7yygRG9mAOneIXkGJjzqLTi7LLVDFAUpOS8qMEoA1obVMqidYOjyEBwtQqK9x4uVv0=
+mvLX0ISkwxhsvflqR2XmLVkJkL63CIlPWIE0ipKTIaySx7a2cuU-5FpzHfq4V9Lh9hD7Iig34bX=
+OVA5RQ9x2-5Fb2pOld3drR6-5FpfnAft7xKMWqHXSjyD-2DQoAAP-5F-5FRSd-2DYQ&amp;d=3D=
+DwMFaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=
+=3DX-cXCT9TgzFcWctFoxfb8pKaG4n_XvK4V1keJbKz6IQYxYHh3FK3gdDEc07-AzTp&amp;s=
+=3DB5cI4UjD_Kqwd6jwFsKvFYSfhdZ0NH4iANyDHG_GlOE&amp;e=3D" style=3D"color:#25=
+4fa5;font-weight:inherit;color:inherit">unsubscribe</a>.
+</p>
+<p class=3D"rebrand-footer-text address" style=3D"font-size:18px;line-heigh=
+t:28px;color:#878aae;margin:0 0 20px;font-size:14px;line-height:125%;font-w=
+eight:bold">P.O. Box 40770, San Francisco, CA 94140</p>
+<img alt=3D"Handshake" class=3D"handshake-logo" height=3D"30" src=3D"https:=
+//handshake-production-cdn.joinhandshake.com/static_assets/handshake_logo_n=
+eutral.png" style=3D"outline:none;text-decoration:none;-ms-interpolation-mo=
+de:bicubic;width:auto;max-width:100%;clear:both;display:block;width: 150px;=
+ height: 30px" title=3D"Handshake" width=3D"150">
+</div>
+</div>
+</div>
+
+</td>
+</tr>
+</table>
+<img width=3D"1" height=3D"1" alt=3D"" src=3D"https://email.notifications.j=
+oinhandshake.com/o/eJyEzr2O4yAUxfGnCR3WvQQuuKBZbbUvYfFxWZPExrJxpLz9KKlG00x9=
+dPT_Za_ySFZkftQn769p4T63PLWt17YeF_MntyXU9WL--rX1WmoKn2W4tbrOYc3HHO48pLYI9mh=
+JIzoAK3gJ9TF9v0w1eyzoyDgnaWSUuhDLEW2QKZRI16LMSE7MPuV8TajGEqIGBALWOtqCaKkwxS=
+SqV6AMoiIATdoOlkMxbK4aTHbOmYuG37i3Fj8kMEo55cRPK5VinSYtTShOaqAsY0IjVWTiCOyQW=
+Gx7y2fqUzzTnbv_1-Ihdh86kcG34XUOnE_Rfdi2vT15ele3dvS6_hfnwfu7ZEYEcgji6dVXAAAA=
+___w_YDs"></body>
+</html>
+
+--e0fc07c2f16b80794cdc4e951f2bf7a7d7c644f4f78d8eef0e93859ac42a--

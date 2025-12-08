@@ -1,0 +1,22 @@
+{
+  "message_id": "19a54ea0e0287f38",
+  "chunked_at": "2025-12-08T14:28:33.586297",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a54ea0e0287f38_email_0_54541ae7",
+      "text": "MSCS Declaration Form for 36 credit option Dear Students, Students in the MS Computer Science degree at the Courant Institute of Mathematical Sciences starting in the Fall 2024 semester have the option to either stay in the standard 30 credit MS Computer Science degree or declare a 36 credit option with concentration in either Artifical intelligence or Systems/Security. Please see the requirement forms with the course lists on page 2: https://cs.nyu.edu/home/master/current_forms.html Requirements of the MSCS degrees: https://cs.nyu.edu/home/master/current_mscsreq.html Students should declare by the end of their 2nd semester in the program and not keep switching back and forth between options. Discuss any concerns or questions with your academic advisor. 36 Credit with Concentration Declaration Form Degree Option Comparison Please note, students must be logged into their NYU email account through NYUHome to access the documents. If you have any questions, please contact your advisor: Last Names A-M: Betty Tsang- betty.tsang@nyu.edu Last Names N-Z: Cristina Domingo- cdomingo@cs.nyu.edu https://t.e2ma.net/optout/bziszr/j939hwjc?s=HGiYl3VbuzE7nc-oW_4JR_R83TBQwgY2BbxnKrdgwl4",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a54ea0e0287f38",
+        "from": "NYU Graduate Computer Science <graduate.cs.nyu.edu@jhefb.e2ma.net>",
+        "to": [],
+        "subject": "MSCS Declaration Form for 36 credit option",
+        "date": "Wed, 05 Nov 2025 16:46:48 -0000",
+        "timestamp": 1762379208,
+        "token_count": 297
+      }
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "message_id": "19ae5cf2469c826c",
+  "chunked_at": "2025-12-08T14:33:22.943619",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19ae5cf2469c826c_email_0_f8fed6e2",
+      "text": "Computer Vision, Section 001 - Announcements: Zoom Class Tomorrow Computer Vision, Section 001 - Announcements: Zoom Class Tomorrow Posted Wednesday, December 3, 2025 2:58 PM EST Hi everyone, A quick note that tomorrow’s lecture will take place on Zoom. We will focus on 3D vision, so please plan to join online using the zoom information below. Next week we will hold in person presentations for the final project. I will send a separate email with the full details and expectations. Saining Xie is inviting you to a scheduled Zoom meeting. Join Zoom Meeting https://nyu.zoom.us/j/92787589493?pwd=DwVv1UpSTOZRRx6PnajS4xMyaTT9Zq.1 Meeting ID: 927 8758 9493 Passcode: 332772 See you tomorrow Computer Vision, Section 001 Go to Announcements >> You are receiving this message because you subscribed to receive instant notifications via email. Change Notification Settings",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19ae5cf2469c826c",
+        "from": "\"noreply@mail.brightspace.nyu.edu\" <noreply@mail.brightspace.nyu.edu>",
+        "to": [],
+        "subject": "Computer Vision, Section 001 - Announcements: Zoom Class Tomorrow",
+        "date": "Wed, 03 Dec 2025 20:02:25 +0000",
+        "timestamp": 1764792145,
+        "token_count": 217
+      }
+    }
+  ]
+}

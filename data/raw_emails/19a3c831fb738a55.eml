@@ -1,0 +1,219 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:9a05:b0:4ff:1ddc:eb54 with SMTP id fh5csp123993gdb;
+        Fri, 31 Oct 2025 16:03:37 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IErLDyOM15w65q0eCjoZzawkO5L4WA4IYiIcI7fUgEvuWHr6QfmbRuDQs2Y7ASG9og3gqkb
+X-Received: by 2002:ac8:5acd:0:b0:4ec:f153:3566 with SMTP id d75a77b69052e-4ed30e183e0mr65666271cf.29.1761951817379;
+        Fri, 31 Oct 2025 16:03:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1761951817; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ayBdS24tnVcrT3VFXivbgmjf6suRRiFLLAWre96P+DreI/00hUhRVUB95JfpX8Egi9
+         TMPa0WgophiDc5dMNMTUi3fUgnXk+/XIFcAgKs5joV2xHFkVLxWt4ZNWAtjzSI3McHJn
+         NizzQwkt++RIsl04aWeyfqTZYTyWC/i5h/NwcT/8Ruu0iJyd3mg9LcJxc670tdcMFAmr
+         DUlcZQEBKJFOwkaZjkIs2bhcqGwaGwZ0lv09grBflqSwLNiIGGl2FuFu7JxZUhLTdwCs
+         ip+80Dfb4BXtjC2iCQIzRblfk5moCgIyPaadADcAvDio1Qy9jVSPjX4mKj0kZfMQkb1g
+         J4xQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:content-transfer-encoding:content-id:to:message-id
+         :subject:date:from:dkim-signature;
+        bh=aLLyyS6YNqYbTdo3nGohSnyOUGjuimfiDbj86DQyynk=;
+        fh=x8EhVKTD3Pk05++7UWYZ7ByCGW6DqwZOrfdg3akiVZw=;
+        b=CfLNzV9qcYfPbuWiD1RP/rpeC019MK9pxcxk5ujO7w8tqEXXQFPRcuyuu6iPLMjCg6
+         0+eGoA6gOVXSo69F6GtOzJqsN0E+nC3tIJtGnUwElWSq9+kRg4Nm64057yJWjU+paLuS
+         dKQBJ9KzIqtgksrw/2lTRBTg6UtcJ1NbgoqZLC9xitZIiNiarKE3AA52640zdIFdI9fs
+         6+q4tFQT3Km9r1lHtz0TT3AJftJCRiVPnn2+nqRc1BXJ2bRiTYNjesbwwWZrIjuO+Iy2
+         BWo7v6BPBvnzkJQDdDWy8JxEd39VqQ0tq3Q00yKkU4eT3DDhB3ogey9qM5PRIsfp23md
+         eQrA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=AVdnPU5N;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 34.193.35.224 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Return-Path: <noreply@mail.brightspace.nyu.edu>
+Received: from pco01la-1772s.nyu.edu (pco01la-1772s.cfs.its.nyu.edu. [216.165.75.8])
+        by mx.google.com with ESMTPS id d75a77b69052e-4ed354303a4si10968571cf.1386.2025.10.31.16.03.37
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 31 Oct 2025 16:03:37 -0700 (PDT)
+Received-SPF: pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 34.193.35.224 as permitted sender) client-ip=34.193.35.224;
+Authentication-Results: mx.google.com;
+       dkim=neutral (body hash did not verify) header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=AVdnPU5N;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 34.193.35.224 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Received: from mx0b-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-1772s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 59VN3a1c235821
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Fri, 31 Oct 2025 19:03:36 -0400
+Received: from pps.filterd (m0094546.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 59VKQxo91374445
+	for <at6651@nyu.edu>; Fri, 31 Oct 2025 19:03:36 -0400
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=noreply@mail.brightspace.nyu.edu;
+	dkim=pass header.s=d2lmail1 header.d=mail.brightspace.nyu.edu;
+	dmarc=pass header.from=mail.brightspace.nyu.edu
+Received: from us04psmtp.brightspace.com (us04psmtpout.brightspace.com [34.193.35.224])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4a545h1jju-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Fri, 31 Oct 2025 19:03:35 -0400 (EDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/relaxed;
+	d=mail.brightspace.nyu.edu; s=d2lmail1; t=1761951815;
+	bh=t3jWiStSWQunQnuOpuZSOeDzIctACW1umD93ke08Zcs=;
+	h=From:Date:Subject:To:From;
+	b=AVdnPU5NCANw0dFcXBkOKPE/XIaJV+3cf18wHKwIDDcegFK3gApU166A+y4Te/O6J
+	 9vRL8n6IowTqyvDOa8t14aJ52XKv7wc/UwzdKseS6ylCFazlQhA+s4uVSsAdi23Gv8
+	 m759werC1c/xaf7bUVBwEfPUtDR+pwq3BvA3T9+PlBJC5Tia1CQ5dlTCJEYUsMZnaS
+	 ZT56drjBV9H7IyxdI4mcth/dw0wyU/bSVw5UynX3X3TQpRCQmwma61Xl6n41j1mHiy
+	 GPCX2WFYfbbxW9ip/zDKqF5xrvkOlXih63NrJdR9PNBN4cS4g0Y4+kxZhLGmQr5mwP
+	 vzND7X2aWKcZg==
+Received: from [172.27.23.70] (unknown [172.27.38.120])
+	by us04psmtpout003b.aue1.int.d2l (Postfix) with ESMTP id F2E1680E16
+	for <at6651@nyu.edu>; Fri, 31 Oct 2025 23:03:34 +0000 (UTC)
+From: "noreply@mail.brightspace.nyu.edu" <noreply@mail.brightspace.nyu.edu>
+Date: Fri, 31 Oct 2025 23:03:34 +0000
+Subject: Spec Top Computer SCI:, Section 091 - Announcements: Today's lecture
+ will still be online
+Message-Id: <HCRGBYLWLRU4.APX032BZW3MG1@IP-AC1B1746>
+To: "at6651@nyu.edu" <at6651@nyu.edu>
+X-CLX-Response: 1TFkXGBkSEQpMehcTHxEKWUQXbkBoGUgSWhtNGB0RClhYF2dSXGkeck5HaV9
+ hEQp4ThdkfmtOX3tYUBJaUBEKeUwXa2cSc19iAVppW00RCkNIFwceGBsRCkNZFwcYEh8RCkNJFx
+ oEGhoaEQpZTRdnZnIRCllJFxpxGhAadwYYGxJxGx8SGBgQGxoZdwYYGgYaEQpZXhdsbHkRCklGF
+ 0RPXVNFWEFfdUJFWV5PThEKSUcXeE9NEQpDThd7RV5JWnITTUsfcm56SGJfZEQTZ0xfXEdTGh9f
+ HmBuYREKWFwXHwQaBB4bGgUbGgQbGhoEGxkeBBkfEBseGh8aEQpeWRdNZV9+QxEKTVwXEh8dEQp
+ MWhdobU1NTREKTEYXb2tra2trEQpCTxdiZ3paWX5cWmRhEhEKQ1oXGR4EGxMZBBkfBBgYHhEKQl
+ 4XGxEKRF4XGBEKQlwXGxEKQksXb2sFRn1BRlBmfE4RCkJJF2R+a05fe1hQElpQEQpCRRduclJoZ
+ WlvW31teREKQk4XZH5rTl97WFASWlARCkJMF2dSXGkeck5HaV9hEQpCbBdnUlxpHnJOR2lfYREK
+ QkAXZnkBfBxlBXBPARIRCkJYF25CQXBSSEBnQhx8EQpaWBcbHxEKeUMXZmRhfhwFXloeTm0RCll
+ LFxseGBwSEQpwZxdtWF1DE3hFYkVTTRAbGxIRCnBoF2x4QFBMaHhYZFJLEBoRCnBoF29OY3pEYk
+ J/TXpiEBoRCnBoF29dRll7GQFdR2huEBsfGxEKcGgXa24eTG4TT2Rdf20QGx4SEQpwaBdtWk5eT
+ hMffn1GGhAbGRkRCnBoF2ZafX1velBAZ198EBoRCnBoF2dcZE9uZ2NkSRxGEBoRCnBoF2xiZFt5
+ XnhBa0NLEBoRCnB9F2lef1BeW3B8Yxl9EBoRCnB9F2hyGnhIWkJbWmMaEBoRCnB9F21hXW9GaX5
+ YHWZ/EBoRCnB9F294Hh5uSFpefUBGEBoRCnB9F2lOHEZSXlJMUlgcEBoRCnB9F2tlR0FQU2FHRh
+ 1FEBseGxEKcH8XYVtOWl0bEmVsWnkQGxoYEQpwXxdoG1BYWRlIfEVlXhAaEQpwXxdiXhNuXkEbT
+ F1LcBAYGhsRCnBfF2ZAGVptYn9zWXpBEBsTHREKcH8XaB4TfmkbbUVIXk4QGx0YEQpwXxdrZ2kZ
+ TF5MYmNjUBAbHhkRCnBfF2RTGmFMWGhzWhhmEBseGxEKcF8XaElmT0F7WEhPa2AQGx4bEQpwbBd
+ rbUkFaRtdHhJOUhAdGhEKbX4XGhEKWE0XSxEg
+X-Proofpoint-GUID: QotcpX9ga5XDPbHuNn9Mfuvmy05u4JDK
+X-CLX-Shades: MLX
+X-Authority-Analysis: v=2.4 cv=Bq6QAIX5 c=1 sm=1 tr=0 ts=69054047 b=1 cx=c_pps
+ a=aVfp3mt3+5CkBg735BrKSA==:117 a=aVfp3mt3+5CkBg735BrKSA==:17
+ a=IkcTkHD0fZMA:10 a=x6icFKpwvdMA:10 a=7j0FZ4iXMVMA:10 a=Hi4HPhAiYaEA:10
+ a=g8TUdU_LZmEA:10 a=Kan8h273Bse8B8Jy5C1n:22 a=Y2ETXh90AAAA:8 a=J-g6IGaxAAAA:8
+ a=j1ukNLx8AAAA:8 a=esaADMtTrvt4hvs2ZrMA:9 a=XdNKrEXAVaipCDiL:21
+ a=_W_S_7VecoQA:10 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=ml71KQOqUG5s7POxrUrI:22 cc=ntf awl=host:1176
+X-Proofpoint-ORIG-GUID: QotcpX9ga5XDPbHuNn9Mfuvmy05u4JDK
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMDMxMDIwNCBTYWx0ZWRfX7JwvpEQUwoe8
+ xky8DOeha+i1/IlAO7yaabDfk7UjkKNwfRUfWMLVFT3soD5vdO562v/bOtegMA/UG9HB38ud4rQ
+ itQJb3dNqyoda6xel2MAn3jvn7d+iLMq6Y8J+81fewELZHSpu1hjE7krqKwibA8kgr65Y4IOfJ2
+ bKGsSxuFfqRgVj5N7+7Y/dbsPpmh3O+cF74MqaKlluydWo0IwW2N0rhdm+U6l5ok1m3N/8h/ILL
+ xSPvb/u0bY7jWu79/r+V0F64uywVnHLYLx/ZPUiuh2OSvQ/5K9XUfZTLcLYXbIYG5mI08vFiqih
+ 1gWcuBSUGED2k1SO6rJsQ4cJSm0lszocdKfBRIuRwRm9zTMS0cjJIWHgNB6x5NccjuhLWWvbU/3
+ +mcENelzxpyzMlYGgnCxeSMcS1pbVFqLonaB2gFQruTaqnSsHPsAaDLx+WGFSfHx5qm8KYvmGU1
+ xJTdZ+ivZUBhApbMi6g==
+Content-Type: text/html; charset=utf-8
+Content-ID: <YWWGBYLWLRU4.F2JZXCBDOWVR2@IP-AC1B1746>
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Orig-IP: 34.193.35.224
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-10-31_08,2025-10-29_03,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ malwarescore=0 suspectscore=0 spamscore=0 lowpriorityscore=0 bulkscore=0
+ phishscore=0 clxscore=238 adultscore=0 priorityscore=95 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc=notification route=inbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2510310204 domainage_hfrom=14268
+
+<!doctype html>
+<html>
+	<head>
+		<title>Spec Top Computer SCI:, Section 091 - Announcements: Today&#39;s l=
+ecture will still be online</title>
+	</head>
+	<body style=3D"font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+		<div style=3D"width:100%;font-family:&#39;Lato&#39;, sans-serif; font-siz=
+e:18px;">
+			<div style=3D"border-bottom:1px dotted #000000;margin-bottom:15px;paddin=
+g-bottom:5px;">
+			<h1 style=3D"margin:0px;padding:0px;color:#000000;font-size:0.95rem;font=
+-weight:bold;">Spec Top Computer SCI:, Section 091 - Announcements: Today&#=
+39;s lecture will still be online<br /><span style=3D"color:#666666;font-si=
+ze:0.8rem;font-weight:normal;">Posted Friday, October 31, 2025 7:02 PM EDT<=
+/span></h1>
+		</div>
+		<div style=3D"padding:0px;margin:0px;">
+			<div><p>Hi, All:<br/><br/>&#160; &#160; &#160;Sorry, today&#39;s lecture=
+ will still be online:<br/><br/></p>
+<p>Chen Wang is inviting you to a scheduled Zoom meeting.</p>
+<p>Topic: Spec Top Computer SCI:, Section 091<br/>Time: Oct 31, 2025 07:00 =
+PM Eastern Time (US and Canada)<br/>&#160; &#160; &#160; &#160; Every week =
+on Fri, until Nov 7, 2025, 2 occurrence(s)<br/>Please download and import t=
+he following iCalendar (.ics) files to your calendar system.<br/>Weekly: <a=
+ rel=3D"noopener" href=3D"https://urldefense.proofpoint.com/v2/url?u=3Dhttp=
+s-3A__nyu.zoom.us_meeting_tJEsf-2DCopjsiH9JnfDtFqnnelVFtsTFjqHVa_ics-3FicsT=
+oken-3DDEl3CO2-2DHuN6B8-5FlPAAALAAAAGiWxff0jKflCFieVtegKYUYUX8-2DUoDHd8VoF9=
+m-2Dqw54wIeSt6Jx4-5Fxbz-2DL04eThFvqwfVGi0ANN-5FYQ3xjAwMDAwMQ&amp;d=3DDwMDaQ=
+&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3DxD6e=
+21mFVvULWvsnjwzzRvrlSIwKPhaiAPMaK1MMVxQ1lB4qyFVDyj0PiCvOBxx9&amp;s=3DlRh_0H=
+qQ6KRagado-FEuvCAhiCtQtHAxp74KXpiHPUI&amp;e=3D">https://nyu.zoom.us/meeting=
+/tJEsf-CopjsiH9JnfDtFqnnelVFtsTFjqHVa/ics?icsToken=3DDEl3CO2-HuN6B8_lPAAALA=
+AAAGiWxff0jKflCFieVtegKYUYUX8-UoDHd8VoF9m-qw54wIeSt6Jx4_xbz-L04eThFvqwfVGi0=
+ANN_YQ3xjAwMDAwMQ</a><br/>Join Zoom Meeting<br/><a rel=3D"noopener" href=3D=
+"https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__nyu.zoom.us_j_95189=
+080856&amp;d=3DDwMDaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS=
+8Ifj-gIg&amp;m=3DxD6e21mFVvULWvsnjwzzRvrlSIwKPhaiAPMaK1MMVxQ1lB4qyFVDyj0PiC=
+vOBxx9&amp;s=3DxnLgz1ziIL_f9hsitqVVaw_Z4tOAB5pBhtp7lGbsDa4&amp;e=3D">https:=
+//nyu.zoom.us/j/95189080856</a></p>
+<p>Meeting ID: 951 8908 0856</p>
+<p>---</p>
+<p>One tap mobile<br/>+13126266799,,95189080856# US (Chicago)<br/>+16465588=
+656,,95189080856# US (New York)</p>
+<p>---</p>
+<p>Join by SIP<br/>=E2=80=A2 95189080856@zoomcrc.com</p>
+<p>Join instructions<br/><a rel=3D"noopener" href=3D"https://urldefense.pro=
+ofpoint.com/v2/url?u=3Dhttps-3A__nyu.zoom.us_meetings_95189080856_invitatio=
+ns-3Fsignature-3DQOA9u4Le5OvjDGht3QrvldBnS4FnK2s9az-5FZ8-5F2TGYo&amp;d=3DDw=
+MDaQ&amp;c=3DslrrB7dE8n7gBJbeO0g-IQ&amp;r=3DW4d5O1KeqHtZtS8Ifj-gIg&amp;m=3D=
+xD6e21mFVvULWvsnjwzzRvrlSIwKPhaiAPMaK1MMVxQ1lB4qyFVDyj0PiCvOBxx9&amp;s=3D5z=
+P79ghp9UI4N2nOHNXU2ZcAaHS5T_iaFkcaLeVY3bc&amp;e=3D">https://nyu.zoom.us/mee=
+tings/95189080856/invitations?signature=3DQOA9u4Le5OvjDGht3QrvldBnS4FnK2s9a=
+z_Z8_2TGYo</a><br/><br/><br/>Best,</p>
+<p>Chen</p></div>
+			<div style=3D"padding:0px;margin:0px;margin-top:15px;">
+				<div style=3D"padding:0px;margin:0px;border-top:1px dotted #666666;marg=
+in-top:15px;padding-top:5px;">
+					<table style=3D"width:100%;border-collapse:collapse;border-spacing:0px=
+;padding:0px;margin:0px;font-family:&#39;Lato&#39;, sans-serif; font-size:1=
+8px;" cellspacing=3D"0" cellpadding=3D"0">
+						<tbody>
+							<tr>
+								<td style=3D"width:100%;margin:0px;padding:0px;white-space:nowrap !=
+important;vertical-align:top;text-align:left;" nowrap=3D"nowrap">
+									<a style=3D"color:#00617f;" href=3D"https://brightspace.nyu.edu/d2=
+l/p/home/504821">Spec Top Computer SCI:, Section 091</a>
+								</td>
+								<td style=3D"width:100%;margin:0px;padding:0px;white-space:nowrap !=
+important;vertical-align:top;text-align:right;" nowrap=3D"nowrap">
+									<a style=3D"color:#00617f;" href=3D"https://brightspace.nyu.edu/d2=
+l/p/le/news/504821">Go to Announcements &gt;&gt;</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style=3D"padding:0px;margin:0px;margin-top:15px;">
+				<div style=3D"padding:0px;margin:0px;text-align:center;">
+					<span style=3D"margin:0px;padding:0px;color:#666666;font-size:0.8rem;"=
+>You are receiving this message because you subscribed to receive instant n=
+otifications via email.</span>
+					<a style=3D"color:#00617f;font-size:0.8rem;" href=3D"https://brightspa=
+ce.nyu.edu/d2l/Notifications/Settings?ou=3D6606">Change Notification Settin=
+gs</a>
+					<br /><span style=3D"margin:0px;padding:0px;color:#666666;font-size:0.=
+8rem;"></span>
+				</div>
+			</div>
+		</div>
+</div>
+	</body>
+</html>

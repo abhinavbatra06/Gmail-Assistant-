@@ -1,0 +1,22 @@
+{
+  "message_id": "19a9cb08057c277e",
+  "chunked_at": "2025-12-08T14:31:14.090576",
+  "total_chunks": 1,
+  "chunks": [
+    {
+      "chunk_id": "19a9cb08057c277e_email_0_10af16ad",
+      "text": "Handshake Apply early to stand out You might be a match for this new job from KKR, based on your preferences. Check it out! Applications are due Sunday, November 30 at 11 PM EST. KKR Investment / Portfolio Management Engineer, AI, Data and Platform Technologies $100–110K/yr Onsite Job New York, NY View job Want better job recommendations? Update your preferences. You received this email because Handshake partners with your school to help you grow your career. Manage email preferences or unsubscribe . P.O. Box 40770, San Francisco, CA 94140",
+      "metadata": {
+        "chunk_index": 0,
+        "source_type": "email_body",
+        "message_id": "19a9cb08057c277e",
+        "from": "Handshake <handshake@notifications.joinhandshake.com>",
+        "to": [],
+        "subject": "KKR just posted a role 🌟",
+        "date": "Wed, 19 Nov 2025 15:16:41 +0000",
+        "timestamp": 1763565401,
+        "token_count": 136
+      }
+    }
+  ]
+}

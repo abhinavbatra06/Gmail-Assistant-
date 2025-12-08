@@ -1,0 +1,161 @@
+Delivered-To: at6651@nyu.edu
+Received: by 2002:a05:7108:5a94:b0:4ff:1ddc:eb54 with SMTP id ho20csp1454148gdb;
+        Thu, 6 Nov 2025 16:00:04 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHzBEgZhQx73PYr+7q5jF0wNy5pIIdvljiaU/QnzZstfZN2vAHn6F8FopsEkQ7+VOij23Zt
+X-Received: by 2002:ad4:5ba2:0:b0:7e3:cc6e:3c89 with SMTP id 6a1803df08f44-88176779d16mr21464986d6.56.1762473604655;
+        Thu, 06 Nov 2025 16:00:04 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1762473604; cv=none;
+        d=google.com; s=arc-20240605;
+        b=lXiA+w7deSd4ZmGkmL0hLBzmwKLARPyPPfVu5NanhzwOxOcCQ78vaDhUXWs+sbkfn8
+         J6ECaeyD00xVfoNUVbCjSAwuyViYIy04lOWO51pI0cifEONBc9bmWo3BGVCUkdVew+Oa
+         RUbztJ5sNwp7w0BRFu/sV0So5M81jib/zDPetLV7W2FTU38ZWcfJuuWiVgszrdyvIzOE
+         7dzSF/lnqJHX6uFNmF3xYfndFmsCz9M38V9nktc0zwx5AYDQ9ndo2hFm95CAyi5s7oeY
+         YnWb0WLhPbU7KvyUE9cLt4FUA2rsFMtWPXt5GPn4gOk+FmCpMjwTWHqX1tQmc8V2m2hs
+         Lr5Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=content-transfer-encoding:content-id:mime-version:to:message-id
+         :subject:date:from:dkim-signature;
+        bh=bRk5LW+cw1s2xTyAfC7erYB5LXwN84sTS44ISgCYkCE=;
+        fh=x8EhVKTD3Pk05++7UWYZ7ByCGW6DqwZOrfdg3akiVZw=;
+        b=C9S/+JuPqV4qxcSahKjzF8o2N2tb8t+iMRTNc9jkYB7i1SsEnZ878DMJ/UtOC8M8j8
+         u2Nuyy1F7uXWKMtFlbMCbZdSRRLmr6uhHwQwOke2ljXj/zZEswS3dwVwEbKRQR5G7wly
+         Jo+jkMBCul4orT2FtfVDuwTsJN7pga1vySv2mG/L28ShqnWtANK8Rbp0+EFR+AgPW+51
+         r6fpIZaBuYIBBk3vo0ZQDEozbfkIEbETVSEw3PlPjU9+SLWeMJMYn3sQ1/RPOjnKygpB
+         WMbucPRiGz5qH9ig3FQsoAIPADXJ3o6afLXxa6h9zspsw0SypDXGkgx+FktZMxhA4JN3
+         aNcg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=IfskTMEr;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Return-Path: <noreply@mail.brightspace.nyu.edu>
+Received: from pco01la-2005s.nyu.edu (pco01la-2005s.cfs.its.nyu.edu. [216.165.75.13])
+        by mx.google.com with ESMTPS id 6a1803df08f44-88082aa551asi12982436d6.48.2025.11.06.16.00.04
+        for <at6651@nyu.edu>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 06 Nov 2025 16:00:04 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) client-ip=3.213.96.58;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@mail.brightspace.nyu.edu header.s=d2lmail1 header.b=IfskTMEr;
+       spf=pass (google.com: domain of noreply@mail.brightspace.nyu.edu designates 3.213.96.58 as permitted sender) smtp.mailfrom=noreply@mail.brightspace.nyu.edu
+Received: from mx0a-00256a01.pphosted.com (mx0a-00256a01.pphosted.com [148.163.150.240])
+	by pco01la-2005s.nyu.edu (8.15.2/8.15.2) with ESMTPS id 5A70031E1693415
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK)
+	for <at6651@nyu.edu>; Thu, 6 Nov 2025 19:00:04 -0500
+Received: from pps.filterd (m0355795.ppops.net [127.0.0.1])
+	by mx0b-00256a01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 5A6NVvaE3150548
+	for <at6651@nyu.edu>; Thu, 6 Nov 2025 19:00:03 -0500
+Authentication-Results: ppops.net;
+	spf=pass smtp.mailfrom=noreply@mail.brightspace.nyu.edu;
+	dkim=pass header.s=d2lmail1 header.d=mail.brightspace.nyu.edu;
+	dmarc=pass header.from=mail.brightspace.nyu.edu
+Received: from us04psmtp.brightspace.com (us04psmtpout.brightspace.com [3.213.96.58])
+	by mx0b-00256a01.pphosted.com (PPS) with ESMTPS id 4a95e188rs-1
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT)
+	for <at6651@nyu.edu>; Thu, 06 Nov 2025 19:00:03 -0500 (EST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/relaxed;
+	d=mail.brightspace.nyu.edu; s=d2lmail1; t=1762473602;
+	bh=bRk5LW+cw1s2xTyAfC7erYB5LXwN84sTS44ISgCYkCE=;
+	h=From:Date:Subject:To:From;
+	b=IfskTMEr7xnGY8oHdLNc67frM9q0FvhaJHtaap7dg+PfminDCLKLC4qwyIgMTVbTs
+	 VQQHeaVp7tNYAJJ5AS1WVXYuxL1v0Eae5MsvsA2HH7B6it5sWFbvRZIBrLw74hyEmW
+	 oU/xMprRUF5khl1NNr0uKFurkh0eNPi8DHiO1jDog+g+TrjStPC+7b3qNt/V9XC0bl
+	 YFvjVd0hjjXC+QJiSXyaAnVzBdbZwGYA4/+aZsKtb94e93WZlyHESW4c5bdbm0bzOI
+	 pmRdosUoFNXn6K1O9SdeBGOR/aIYk5yCn0Jncm9J0rwUjUae9DhAUbrevp9IEU8MGM
+	 ty6tollJHQq7Q==
+Received: from [172.27.23.70] (unknown [172.27.36.101])
+	by us04psmtpout003i.aue1.int.d2l (Postfix) with ESMTP id 3F2F4801E4
+	for <at6651@nyu.edu>; Fri,  7 Nov 2025 00:00:02 +0000 (UTC)
+From: "noreply@mail.brightspace.nyu.edu" <noreply@mail.brightspace.nyu.edu>
+Date: Fri, 07 Nov 2025 00:00:02 +0000
+Subject: Computer Vision, Section 001 - Announcements: Assignment 3
+Message-Id: <MYAYD07RNRU4.T7YUN0RAO4NU2@IP-AC1B1746>
+To: "at6651@nyu.edu" <at6651@nyu.edu>
+MIME-Version: 1.0
+Content-Type: text/html; charset=utf-8
+Content-Id: <MYAYD07RNRU4.Y8HRZ4S0Q959@IP-AC1B1746>
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: JTWGYpEpBa7XmPUMF6OpgUK2HP4Mky_z
+X-CLX-Shades: MLX
+X-Authority-Analysis: v=2.4 cv=OJEqHCaB c=1 sm=1 tr=0 ts=690d3683 b=1 cx=c_pps
+ a=rlx/2BXBPJfMdtrSDlE4mQ==:117 a=rlx/2BXBPJfMdtrSDlE4mQ==:17
+ a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10 a=7j0FZ4iXMVMA:10 a=Hi4HPhAiYaEA:10
+ a=g8TUdU_LZmEA:10 a=Kan8h273Bse8B8Jy5C1n:22 a=J-g6IGaxAAAA:8
+ a=5i_a8sHW0Fbk6AQDqbIA:9 a=OHwBgHySanwWefpo:21 a=_W_S_7VecoQA:10
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 cc=ntf awl=host:51
+X-Proofpoint-GUID: JTWGYpEpBa7XmPUMF6OpgUK2HP4Mky_z
+X-CLX-Response: 1TFkXGRIYEQpMehcaEQpZRBduQGgZSBJaG00YHREKWFgXZ1JcaR5yTkdpX2E
+ RCnhOF2R+a05fe1hQElpQEQp5TBdrZxJzX2IBWmlbTREKQ0gXBxkfEhEKQ1kXBx4THxEKQ0kXGg
+ QaGhoRCllNF2dmchEKWUkXGnEaEBp3BhkcGHESHhgSEBt3BhgaBhoRClleF2xseREKSUYXRE9dU
+ 0VYQV91QkVZXk9OEQpJRxd4T00RCkNOF2B+fW1zWm9aaEsdckd6f2dsHGVaTX9hGGJ6HmdBU3VQ
+ EQpYXBcfBBoEHhsaBRsaBBsbGgQbGR4EGR8QGx4aHxoRCl5ZF017XllPEQpNXBcSHx0RCkxaF21
+ NTU0RCkxGF29ra2traxEKQk8XYmd6Wll+XFpkYRIRCkNaFxkEGBsZBBMcBB8SEQpCXhcbEQpEXh
+ cYEQpCXBcbEQpCSxdvawVGfUFGUGZ8ThEKQkkXZH5rTl97WFASWlARCkJFF25yUmhlaW9bfW15E
+ QpCThdkfmtOX3tYUBJaUBEKQkwXZ1JcaR5yTkdpX2ERCkJsF2dSXGkeck5HaV9hEQpCQBdmG1xj
+ GkRMQRxtfhEKQlgXbkJBcFJIQGdCHHwRClpYFxsYEQp5Qxdhe3B/enldQ0ZAQxEKWUsXGx4YHR8
+ RCnBoF3pDeR1MbRsBYERGEBkaEQpwaBdtf2xvY1N5ax18ARAZGhEKcGgXYFBYQ2ljXXIZa24QGR
+ oRCnBoF29dRll7GQFdR2huEBseGREKcGgXa24eTG4TT2Rdf20QGxkcEQpwaBdtWk5eThMffn1GG
+ hAbGxgRCnBoF2BeYFNOfmEZZ1JJEBkaEQpwaBdjUmxgYR1AY0tERxAZGhEKcH0XaUlBSH5EWnIc
+ Q28QGRoRCnB9F2FJQU9acl57e19YEBkaEQpwfRdrZUdBUFNhR0YdRRAbGxsRCnB/F2geE35pG21
+ FSF5OEBsdGBEKcF8Xa2dpGUxeTGJjY1AQGxsbEQpwXxdkUxphTFhoc1oYZhAbGxsRCnBfF2hJZk
+ 9Be1hIT2tgEBsbGxEKcGwXa21JBWkbXR4STlIQHBoRCm1+FxoRClhNF0sRIA==
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTA2MDE5NSBTYWx0ZWRfXwOttZYiIgSTM
+ a7yVsYvXna6wwPs4uBKXGpF3XhalVbpe/XsuUkuQ4/b/0DUjLCHJoYexPxYmwHrMCbMgJoMMbrJ
+ N0L8LXHwFiL70HkA2YZi8OaXvpSXdtR6eZjoPKl2zFYN8dbOAv/U837/XwaRToL8Nba6liLXRvQ
+ w7JULpNr9lfiTiTQbWVM7Xmx2bmki3y9eTIobWNNb6FiXctEKvE/VptrXrrMyAmhyL5RZ37zaMX
+ qKqwjw7RmWySkPJYtKZ8rw69nSH4BbFvvyxt/ApIk0FY/+AdmUXK3Jp6/V54Se00V7h411FajFi
+ xuajBKVjKlNmWNiLhBTOKym1kseTkebWS8mSfL5tz7vs5xjQW6Tba+qbtcYkmGMA7r9dbX28JUS
+ 43ar0ZzizJNvFR0xeTwIm+fuc5lnjkSrfO97YrzveNuYXXgqmAUFUem9DpTPdpUAGY2Ar4aXvtT
+ /gh8M+SqyKFPG89zZBg==
+X-Orig-IP: 3.213.96.58
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-06_05,2025-11-06_01,2025-10-01_01
+X-Proofpoint-DMARC: pass
+X-Proofpoint-Spam-Details: rule=inbound_nyu_notspam policy=inbound_nyu score=0
+ clxscore=382 priorityscore=0 suspectscore=0 impostorscore=0 phishscore=0
+ lowpriorityscore=0 bulkscore=0 malwarescore=0 adultscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc=notification route=inbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2510240001
+ definitions=main-2511060195 domainage_hfrom=14275
+
+<!doctype html>
+<html>
+	<head>
+		<title>Computer Vision, Section 001 - Announcements: Assignment 3</title>
+	</head>
+	<body style="font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+		<div style="width:100%;font-family:&#39;Lato&#39;, sans-serif; font-size:18px;">
+			<div style="border-bottom:1px dotted #000000;margin-bottom:15px;padding-bottom:5px;">
+			<h1 style="margin:0px;padding:0px;color:#000000;font-size:0.95rem;font-weight:bold;">Computer Vision, Section 001 - Announcements: Assignment 3<br /><span style="color:#666666;font-size:0.8rem;font-weight:normal;">Posted Thursday, November 6, 2025 6:59 PM EST</span></h1>
+		</div>
+		<div style="padding:0px;margin:0px;">
+			<div><p>Assignment 3 has been posted on Brightspace and is due by&#160;<strong>November 27th at 6 PM</strong>. Please download the pdf and zip files for parts A and B. Submissions will be made through Gradescope—make sure to follow the submission guidelines outlined in the PDF.</p>
+<p>Let us know if you have any questions!</p>
+<p>Best Regards,<br/><br/>Austin</p></div>
+			<div style="padding:0px;margin:0px;margin-top:15px;">
+				<div style="padding:0px;margin:0px;border-top:1px dotted #666666;margin-top:15px;padding-top:5px;">
+					<table style="width:100%;border-collapse:collapse;border-spacing:0px;padding:0px;margin:0px;font-family:&#39;Lato&#39;, sans-serif; font-size:18px;" cellspacing="0" cellpadding="0">
+						<tbody>
+							<tr>
+								<td style="width:100%;margin:0px;padding:0px;white-space:nowrap !important;vertical-align:top;text-align:left;" nowrap="nowrap">
+									<a style="color:#00617f;" href="https://brightspace.nyu.edu/d2l/p/home/505961">Computer Vision, Section 001</a>
+								</td>
+								<td style="width:100%;margin:0px;padding:0px;white-space:nowrap !important;vertical-align:top;text-align:right;" nowrap="nowrap">
+									<a style="color:#00617f;" href="https://brightspace.nyu.edu/d2l/p/le/news/505961">Go to Announcements &gt;&gt;</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style="padding:0px;margin:0px;margin-top:15px;">
+				<div style="padding:0px;margin:0px;text-align:center;">
+					<span style="margin:0px;padding:0px;color:#666666;font-size:0.8rem;">You are receiving this message because you subscribed to receive instant notifications via email.</span>
+					<a style="color:#00617f;font-size:0.8rem;" href="https://brightspace.nyu.edu/d2l/Notifications/Settings?ou=6606">Change Notification Settings</a>
+					<br /><span style="margin:0px;padding:0px;color:#666666;font-size:0.8rem;"></span>
+				</div>
+			</div>
+		</div>
+</div>
+	</body>
+</html>
