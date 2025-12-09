@@ -1,0 +1,77 @@
+gmail:
+  senders:
+  - noreply@mail.brightspace.nyu.edu
+  - alerts@mail.libcal.com
+  - handshake@notifications.joinhandshake.com
+  - gsas.profdev@nyu.edu
+  - courant-academicaffairs@nyu.edu
+  - opportunities@cs.nyu.edu
+  - ab12615@nyu.edu
+  - ankitatripathi95@gmail.com
+  - at6651@nyu.edu
+  - '*@cs.nyu.edu'
+  start_date: '2025-10-30'
+  end_date: '2025-12-09'
+  label: INBOX
+  target_total: 1000
+  per_sender_cap: 100
+  include_attachments: true
+  page_size: 50
+paths:
+  base_dir: data
+  raw_emails: data/raw_emails
+  attachments: data/attachments
+  metadata: data/metadata
+  docling: data/docling
+  chunks: data/chunks
+  db_path: db/emails.db
+  logs: logs
+creds:
+  gmail_client: creds/gmail_creds.json
+  gmail_token: creds/token.json
+docling:
+  convert_eml: true
+  include_layout: true
+  output_dir: data/docling
+  process_attachments: true
+  include_email_tables: false
+chunking:
+  chunk_size: 600
+  chunk_overlap: 100
+embedding:
+  model: text-embedding-3-small
+  batch_size: 100
+  openai_api_key_env: OPENAI_API_KEY
+vectorstore:
+  enable: true
+  type: chroma
+  persist_directory: data/vector_index
+  collection_name: email_chunks
+  distance_metric: cosine
+  embedding_model: text-embedding-3-small
+rag:
+  top_k: 5
+  context_window: 2000
+  response_model: gpt-4o-mini
+  query_optimization: rewrite
+  enable_query_expansion: true
+  enable_subquery_decomposition: true
+  enable_intent_routing: true
+  enable_routing: true
+  enable_predict: true
+  predict_db_path: db/events.db
+  enable_memory: true
+  memory_db_path: db/memory.db
+  enable_small2big: true
+  small2big_expansion_k: 3
+  enable_hybrid_retrieval: true
+  hybrid_alpha: 0.5
+  enable_iterative_retrieval: true
+  max_iterations: 3
+  enable_reranking: true
+  rerank_method: llm
+  rerank_top_k: 20
+summarizer:
+  enable: false
+  model: gpt-3.5-turbo
+  max_length: 500
