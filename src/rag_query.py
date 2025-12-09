@@ -1454,7 +1454,8 @@ Output ONLY the refined query, nothing else."""
               user_query: str,
               top_k: Optional[int] = None,
               filter_metadata: Optional[Dict] = None,
-              session_id: Optional[str] = None) -> Dict:
+              session_id: Optional[str] = None,
+              chat_history: Optional[List[Dict]] = None) -> Dict:
         """
         Perform a RAG query using modular architecture.
         
@@ -1463,6 +1464,7 @@ Output ONLY the refined query, nothing else."""
             top_k: Number of chunks to retrieve (overrides config)
             filter_metadata: Optional metadata filter (e.g., {"from": {"$contains": "nyu.edu"}})
             session_id: Optional session ID for memory/context
+            chat_history: Optional list of previous messages [{"role": "user", "content": "..."}, ...]
             
         Returns:
             Dict with answer, sources, and retrieved chunks
@@ -1868,12 +1870,42 @@ Email Chunks:
 Answer:"""
         
         try:
+        #     response = self.client.chat.completions.create(
+        #         model=self.response_model,
+        #         messages=[
+        #             {"role": "system", "content": system_prompt},
+        #             {"role": "user", "content": user_prompt}
+        #         ],
+        #         max_tokens=self.context_window,
+        #         temperature=0.7
+        #     )
+            
+        #     answer = response.choices[0].message.content
+            
+        # except Exception as e:
+        #     answer = f"Error generating answer: {str(e)}"
+        # Build messages list with conversation history
+            messages = [{"role": "system", "content": system_prompt}]
+            
+            # Add previous conversation for context (if provided)
+            if chat_history:
+                print(f"Including {len(chat_history)} previous messages for context")
+                for msg in chat_history:
+                    if msg["role"] in ["user", "assistant"]:
+                        messages.append({
+                            "role": msg["role"],
+                            "content": msg["content"]
+                        })
+                print(f"Total messages sent to LLM: {len(messages)} (system + {len(messages)-2} history + current)")
+            else:
+                print("No chat history provided - treating as new conversation")
+            
+            # Add current query
+            messages.append({"role": "user", "content": user_prompt})
+            
             response = self.client.chat.completions.create(
                 model=self.response_model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_prompt}
-                ],
+                messages=messages,
                 max_tokens=self.context_window,
                 temperature=0.7
             )
