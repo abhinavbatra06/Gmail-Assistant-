@@ -1,97 +1,51 @@
-# Email Retrieval-Augmented Generation (RAG) Assistant
+## Email RAG Assistant
 
-A lightweight **RAG prototype** that lets users query their email corpus and get contextual, LLM-generated answers — built using **FAISS**, **OpenAI embeddings**, and **Streamlit**.
+This project enables precise, GenAI-powered answers to natural language queries over your institutional email corpus, using customizable chunking, retrieval, and embedding workflows.
 
----
+Why this project?
+Institutional email is one of the richest sources of unstructured data. With the latest GenAI models, we can extract precise answers for natural language user queries—provided we have high-quality retrieval. This project gives full control over chunking, retrieval, and embeddings to optimize performance for academic email workflows.
 
-## Overview
-This project implements a retrieval-augmented generation (RAG) pipeline that:
-1. **Embeds email content** using `text-embedding-3-small`.
-2. **Indexes** vector representations in a **FAISS** store for fast similarity search.
-3. **Retrieves relevant snippets** based on semantic similarity to the query.
-4. **Generates answers** using `gpt-4o-mini`, grounded strictly in the retrieved email context.
+Most existing tools are closed, non-customizable systems with limited transparency into retrieval and chunking logic. They don’t allow experimentation with chunking, embeddings, ranking, etc.
 
-The Streamlit interface enables conversational interaction and retains full chat history.
+## Replication Steps
 
----
-
-## Architecture
-emails.json ──> build_index.py ──> FAISS index (emails.index)
-│
-▼
-User query ──> retrieve() ──> generate_answer() ──> LLM response
-
-
----
-
-## Tech Stack
-- **Python 3.10+**
-- **OpenAI API** (for embeddings + completion)
-- **FAISS** (vector similarity search)
-- **tiktoken** (token-based chunking)
-- **Streamlit** (UI for chat interface)
-- **dotenv** (for environment variables)
-
----
-
-##  Setup Instructions
-
-1. **Clone the repo**
-   ```bash
-   git clone https://github.com/<your-username>/email-rag-assistant.git
-   cd email-rag-assistant
-   ```
-   
-2. **Install dependencies**
-  ```bash
-    pip install -r requirements.txt
-  ```
-
-3. **Prepare .env file**
-  ```bash
-  OPENAI_API_KEY=your_api_key_here
-  ```
-
-4. **Add your email data**
 ```bash
-[
-  {
-    "id": "1",
-    "from": "example@email.com",
-    "subject": "Meeting Reminder",
-    "date": "2025-10-01",
-    "body": "This is the email body..."
-  }
-]
-```
-5. **Build FAISS Index** 
-```bash
-python build_index.py
-```
+# Replication Steps
 
-6. **Run the Streamlit app**
-```bash
+# 0. Clone the repository
+git clone https://github.com/abhinavbatra06/Gmail-Assistant-.git
+cd Gmail-Assistant-
+
+# 1. Create virtual environment & activate it
+python -m venv .venv
+source .venv/bin/activate   # On Windows use: .venv\Scripts\Activate.ps1
+
+# 2. Install requirements
+pip install -r requirements.txt
+
+# 3. Ensure .env file exists with your OpenAI API key
+# Example: OPENAI_API_KEY=your_key
+
+# 4. Check creds folder for gmail_creds.json
+# (Place your Gmail credentials in creds/gmail_creds.json)
+
+# 5. Delete any existing data, db, and __pycache__ folders
+rm -rf data/ db/ **/__pycache__
+# Optionally delete creds/token.json and reauthenticate when running gmail_ingest.py
+
+# 6. Make sure .gitignore contains .venv/, data/, db/ and other sensitive folders
+
+# 7. Edit config.yaml to set your senders and date range
+# (Change the list of senders and date range as needed for your workflow)
+
+# 8. Run the pipeline
+python -m src.gmail_ingest
+python -m src.docling_processor
+python scripts/chunk_all.py   # Or: python -m scripts.chunk_all
+python scripts/embed_and_index.py   # Or: python -m scripts.embed_and_index
+python -m src.rag_query --query "Your Query"
 streamlit run app.py
-```
+# After running, open http://localhost:8501 in your browser to use the app.
 
+# 9. Test with queries to check result quality
 
----
-# Features
-
-1. **Token-based text chunking with overlap for contextual coherence.**
-
-2. **Batched embeddings for faster indexing.**
-
-3. **Cosine-similarity retrieval using FAISS.**
-
-4. **Persistent chat memory across user sessions.**
-
-5. **Expandable sources for transparency.**
-
---- 
-# Future Improvements
-
-- **Hybrid retrieval (semantic + keyword)**
-- **Email ingestion from Gmail API**
-- **Temporal relevance weighting**
-- **SQLite-based metadata indexing**
