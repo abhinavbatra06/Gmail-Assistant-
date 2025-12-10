@@ -1,16 +1,18 @@
 gmail:
   senders:
-  - noreply@mail.brightspace.nyu.edu
-  - alerts@mail.libcal.com
-  - handshake@notifications.joinhandshake.com
-  - gsas.profdev@nyu.edu
-  - courant-academicaffairs@nyu.edu
-  - opportunities@cs.nyu.edu
-  - ab12615@nyu.edu
-  - ankitatripathi95@gmail.com
-  - at6651@nyu.edu
-  - '*@cs.nyu.edu'
-  start_date: '2025-10-30'
+  - "mhd7641@nyu.edu"
+  - "ssn9062@nyu.edu"
+  - "mohammad@trilemma.foundation"
+  - "zl2068@nyu.edu"
+  - "noreply@mail.brightspace.nyu.edu"
+  - "gradlife@nyu.edu"
+  - "fj6@nyu.edu"
+  - "cdswidseboard@nyu.edu"
+  - "cds-masters@nyu.edu"
+  - "gsas.masterscollege@nyu.edu"
+  - "nyu536@nyu.edu"
+  - "cds-communications@nyu.edu"
+  start_date: '2025-09-03'
   end_date: '2025-12-09'
   label: INBOX
   target_total: 1000
