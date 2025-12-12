@@ -403,6 +403,155 @@ Try these queries to test the system:
 
 ---
 
+## Running Experiments
+
+This section describes how to run the evaluation framework to assess system performance across different query types and scenarios.
+
+### Prerequisites
+
+Before running experiments, ensure:
+- The full pipeline has been completed (ingest → process → chunk → embed)
+- The system is ready to answer queries
+- You have sufficient API quota for OpenAI (experiments will make many API calls)
+
+### Step 1: Run Test Queries
+
+The evaluation framework includes a batch query runner that executes test queries organized by category:
+
+```bash
+# Make sure virtual environment is activated
+source venv/bin/activate  # macOS/Linux
+# OR
+venv\Scripts\activate  # Windows
+
+# Run all test queries
+python Eval/run_test_queries.py
+```
+
+**What happens**:
+- The script runs queries from 5 categories:
+  - **Vague/Ambiguous**: Queries with unclear intent or missing context
+  - **Typos/Casual**: Queries with spelling errors or informal language
+  - **Multi-intent/Complex**: Queries requiring multiple pieces of information
+  - **Implicit/Contextual**: Queries requiring inference or background knowledge
+  - **Negation/Edge cases**: Queries with negation or unusual patterns
+- Each query is executed through the RAG pipeline
+- Results are logged to the Memory module's database (`db/memory.db`)
+- Progress and results are displayed in the terminal
+
+**Expected output**:
+```
+============================================================
+BATCH TEST QUERY RUNNER
+============================================================
+
+============================================================
+CATEGORY: Vague/Ambiguous
+============================================================
+
+[1/70] Query: Tell me about the party
+--------------------------------------------------------------------------------
+
+Answer: [System response...]
+
+Time: 2.34s | Chunks: 5 | Intent: general
+--------------------------------------------------------------------------------
+...
+```
+
+**Note**: The total number of queries may vary. The script will show progress for each query and category.
+
+### Step 2: Export Results to CSV
+
+After running all test queries, export the results for analysis:
+
+```bash
+# Export evaluation logs to CSV
+python Eval/export_eval_logs_csv.py
+```
+
+**What happens**:
+- Queries and responses are extracted from `db/memory.db`
+- Results are formatted and exported to `Eval/eval_logs.csv`
+- The CSV includes:
+  - Query text and detected intent
+  - Generated answer
+  - Routing module used (Predict vs. retriever)
+  - Retrieval method
+  - Number of chunks retrieved
+  - Response latency
+  - Top chunk IDs and similarity scores
+  - Source email metadata
+
+**Expected output**:
+```
+✅ Exported 70 queries to Eval/eval_logs.csv
+📄 File size: 245.3 KB
+```
+
+### Step 3: Analyze Results
+
+The exported CSV can be analyzed using spreadsheet software or Python:
+
+1. **Open `Eval/eval_logs.csv`** in Excel, Google Sheets, or a data analysis tool
+2. **Manual Accuracy Scoring**: 
+   - Review each query-answer pair
+   - Score accuracy as 0 (incorrect) or 1 (correct)
+   - Add accuracy column to the spreadsheet
+3. **Create Analysis Spreadsheet**:
+   - Use `eval logs (Concluded).xlsx` as a template
+   - Create pivot tables by:
+     - Query category
+     - Intent type
+     - Routing module
+     - Accuracy scores
+4. **Calculate Metrics**:
+   - Overall accuracy rate
+   - Accuracy by category
+   - Average latency by query type
+   - Chunk retrieval statistics
+
+### Step 4: Interpret Results
+
+Key metrics to analyze:
+
+- **Accuracy by Category**: Which query types perform best/worst?
+- **Intent Classification**: How accurately are queries routed?
+- **Retrieval Quality**: Are relevant chunks being retrieved?
+- **Response Latency**: How long do queries take to process?
+- **Module Performance**: When does Predict module outperform RAG retrieval?
+
+### Example Analysis Workflow
+
+```bash
+# 1. Run experiments
+python Eval/run_test_queries.py
+
+# 2. Export results
+python Eval/export_eval_logs_csv.py
+
+# 3. Open CSV for analysis
+# - Open Eval/eval_logs.csv in Excel
+# - Add accuracy column (0/1)
+# - Create pivot tables
+# - Compare with eval logs (Concluded).xlsx template
+```
+
+### Troubleshooting Experiments
+
+**Issue**: Queries fail with API errors
+- **Solution**: Check OpenAI API quota and rate limits. The script makes many API calls.
+
+**Issue**: Results CSV is empty
+- **Solution**: Ensure `run_test_queries.py` completed successfully and check `db/memory.db` exists.
+
+**Issue**: Memory database not found
+- **Solution**: Ensure Memory module is enabled in `config.yaml` and the database was created during query execution.
+
+For detailed experimental results and analysis, see **[EXPERIMENTS.md](EXPERIMENTS.md)**.
+
+---
+
 ## Usage Examples
 
 ### Example 1: Complete Fresh Setup

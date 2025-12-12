@@ -33,7 +33,31 @@ For detailed installation and setup instructions, see **[TUTORIAL.md](TUTORIAL.m
 ## Documentation
 
 - **[TUTORIAL.md](TUTORIAL.md)**: Complete step-by-step setup and usage guide
+- **[EXPERIMENTS.md](EXPERIMENTS.md)**: Experimental setup, results, and analysis
 - **config.yaml**: Configuration file with all system parameters
+
+## Experiments & Evaluation
+
+The system includes a comprehensive evaluation framework to assess performance across different query types and scenarios.
+
+### Evaluation Approach
+
+- **Query Categories**: Tests cover vague/ambiguous queries, typos/casual language, multi-intent/complex queries, implicit/contextual queries, and negation/edge cases
+- **Automated Testing**: Batch query runner executes all test queries and logs results
+- **Results Export**: Evaluation logs are exported to CSV format for analysis
+- **Manual Accuracy Scoring**: Results are manually evaluated for accuracy (0/1) and analyzed using pivot tables
+
+### Quick Start for Experiments
+
+```bash
+# Run all test queries
+python Eval/run_test_queries.py
+
+# Export results to CSV
+python Eval/export_eval_logs_csv.py
+```
+
+Results are saved to `Eval/eval_logs.csv`. For detailed experimental setup and results, see **[EXPERIMENTS.md](EXPERIMENTS.md)** and **[TUTORIAL.md](TUTORIAL.md#running-experiments)**.
 
 ## Requirements
 
