@@ -1,3 +1,7 @@
+**GitHub Repository**: [https://github.com/abhinavbatra06/Gmail-Assistant-](https://github.com/abhinavbatra06/Gmail-Assistant-)
+
+---
+
 # Gmail Assistant
 
 Gmail RAG Assistant with intelligent query routing, hybrid retrieval, and evaluation logging.

@@ -1,3 +1,7 @@
+**GitHub Repository**: [https://github.com/abhinavbatra06/Gmail-Assistant-](https://github.com/abhinavbatra06/Gmail-Assistant-)
+
+---
+
 # Gmail Assistant RAG System - Step-by-Step Tutorial
 
 ## Table of Contents
