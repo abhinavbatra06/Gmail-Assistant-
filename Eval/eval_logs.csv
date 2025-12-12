@@ -1,0 +1,541 @@
+﻿query_id,query,intent,query_timestamp,answer,routing_module,retrieval_method,num_chunks_retrieved,latency_ms,top_chunk_ids,top_scores,sources,response_timestamp,comments 
+85,What's my schedule like and what job applications should I prioritize? events calendar,calendar,05-12-2025 22:14,"Your schedule includes the following key events:
+
+1. **Project Expo 2025** - December 5, 2025, from 1 PM to 5 PM at CDS Open Space. This is a student competition where participants showcase their Data Science projects.
+
+2. **Ask a Hiring Manager: What Employers Look for in Candidates** - November 11, 2025, from 1 PM to 2 PM at Wasserman USQ Pres Room A.
+
+3. **Networking Techniques for Introverts** - November 12, 2025, from 9:30 AM to 11 AM (Virtual).
+
+4. **Federal Jobs Workshop: Hiring Process & Resumes** - November 20, 2025, from 12 PM to 1 PM (Virtual).
+
+5. **CDS Networking Week** - November 14-21, 2025.
+
+As for job applications, prioritize those that align with your interests and skills, especially considering the advice from the Summer Internship Panel regarding the importance of balancing job applications with your interests. Focus on positions that you find most appealing, particularly those that may offer networking opportunities during the CDS Networking Week and related events.",predict,hybrid,4,10171,19915a3027789d0f_email_0 | 19a4f55ecfd618f7_email_0 | 1991b34ee901d81c_email_0 | 19a97b634b434ca4_email_0,0.517 | 0.506 | 0.488 | 0.482,,05-12-2025 22:14,I was hoping for more relevant task or atleast in order of due dates 
+84,Show me everything related to capstone projects and internships,information,05-12-2025 22:14,"The relevant information regarding capstone projects is as follows:
+
+1. **Capstone Project Overview**: Students form groups and bid on projects for their capstone course. Deadlines include:
+   - Group formation by September 9, 2025
+   - Project bids submission by September 12, 2025
+   - Project assignments will be announced on September 16, 2025.
+
+2. **Project Matching**: 
+   - The matching process was completed, with groups assigned to projects based on their bids. While many received their top choices, some had to accept alternative assignments or choose self-guided projects.
+
+3. **Finalized Project Assignments**: An email was sent on September 22, 2025, confirming the final assignments for the semester.
+
+4. **Biweekly Check-ins**: Students are expected to have biweekly check-ins with course staff for guidance on their projects.
+
+There are no specific details related to internships in the provided email chunks.",retriever,hybrid,5,16837,199186ab4b38723d_email_0 | 1994d5b15bdd760e_email_0 | 1997183b198f80ef_email_0 | 19979448f2782178_email_0 | 1992b0b2a96031eb_email_0,1.000 | 1.000 | 1.000 | 1.000 | 1.000,,05-12-2025 22:14,It missed the stuff related to presentation we had during mid-term
+83,Which jobs require NYU enrollment and which don't?,information,05-12-2025 22:14,"The jobs that require NYU enrollment are the section leader and grader positions for the Spring 2026 graduate-level courses at the Center for Data Science. Specifically, section leaders can be graduate students or non-students, but undergraduates cannot be hired. Graders are typically hired for graduate courses. 
+
+On the other hand, there are no specific enrollment requirements mentioned for the roles at external companies or events highlighted in the emails, such as those at the NYU Careers in STEM Fair or company information sessions, which appear to be open to various candidates, including undergraduates and graduates.",retriever,hybrid,5,15386,19a4b3d5ce2910b0_email_0 | 1994e8a75bbfefea_email_0 | 199ab4307170f85d_email_0 | 19996c7025a0e9f8_email_0 | 19981511d725054b_email_0,0.900 | 0.800 | 0.800 | 0.700 | 0.600,,05-12-2025 22:14,It Missed the job opportunity by Avra Janz
+82,What opportunities involve LLMs or machine learning?,information,05-12-2025 22:14,"The opportunities involving LLMs (large language models) or machine learning include:
+
+1. **Research on LLM Generation Diversity**: A project by Qihan Wang, Emily Black, and Tal Linzen focuses on improving the diversity of responses from large language models by asking questions in multiple languages.
+
+2. **Monitoring Decomposition Attacks in LLMs**: Research by Yueh-Han Chen and colleagues developed a lightweight monitoring framework that addresses vulnerabilities in LLMs, improving safety and cost-effectiveness.
+
+3. **Machine Learning for Neuroscience**: A research opportunity in the labs of Prof. Shuo Chen and Prof. Thomas Wisniewski involves using machine learning and deep learning for analyzing neural data and developing brain-computer interfaces.
+
+4. **NLP Project for Data Extraction**: An internship focuses on building advanced NLP models to extract data from unstructured text and organize it into structured databases, enhancing data analysis capabilities.",retriever,hybrid,5,15018,19ada9838b1d8694_email_0 | 19ada9b74db2b2bc_email_0 | 19935f8aa3c3a212_att_FL117_ML_Scientist_Foundation_Model_pdf_0 | 19a07853bc28e0f9_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0,0.900 | 0.900 | 0.900 | 0.900 | 0.900,,05-12-2025 22:14,Could have included job opporutnities but I guess its fine for now 
+81,Compare salaries across all the job postings,information,05-12-2025 22:13,"Here is a comparison of salaries across the job postings:
+
+1. **Research Assistant (English Language Autobiographies Dataset)**: $30 per hour for 8 hours per week.
+2. **Data Analytics / Data Science Intern (Rockstar Games)**: $34 per hour for a full-time commitment of 40 hours per week.
+3. **NLP Project Internship**: $25-$30 per hour, depending on experience and skill set.
+4. **Quantitative Analyst (Applied Academics)**: $150,000 annual salary (not hourly).
+
+In summary, the hourly wages for the research and internship positions range from $25 to $34, while the quantitative analyst position offers a substantial annual salary of $150,000.",retriever,hybrid,5,10510,19ac040a8b011126_att_2025_11_graduate_job_posting_pdf_0 | 19ac040a8b011126_email_0 | 19a2befc24d74561_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 1995ddab5fb6433d_att_2025 Quantitative Analyst JD_pdf_0,0.800 | 0.605 | 0.700 | 0.700 | 0.600,,05-12-2025 22:13,It Missed the job opportunity by Avra Janz
+80,What meetings and job opportunities do I have this week? events calendar,calendar,05-12-2025 22:13,"This week, you have the following meetings and job opportunities:
+
+1. **Cedar Weekly Sync-up** - Every Friday from 11:30 AM to 12:00 PM (EDT). The next meeting is on **December 5, 2025**. Join via Google Meet [here](https://meet.google.com/xpe-hwnc-qoa).
+
+2. **NYU ⚽️ (Cedar) Weekly Sync-up** - Also every Friday from 11:30 AM to 12:00 PM (EDT). The next meeting is on **December 5, 2025**. Join via Google Meet [here](https://meet.google.com/odn-nbzs-ypf).
+
+There are no specific job opportunities mentioned in the email chunks for this week.",predict,hybrid,10,10326,199ca5dffc1a6ea3_att_invite_ics_0 | 199e3b0914d9e58a_email_0 | 199cee7f08aca753_att_invite_ics_0 | 199cee7f08aca753_email_0 | 199ca5dffc1a6ea3_email_0,0.475 | 0.436 | 0.432 | 0.432 | 0.432,,05-12-2025 22:13,Got confused between 2 invites - one of which was cancelled 
+79,Show me all communications from Zoë Levin about jobs,sender,05-12-2025 22:13,"Zoë Levin has communicated about jobs in the following emails:
+
+1. **Campbell's Internship Opportunity** - She announced a People Analytics Intern position for Summer 2026 at Campbells and encouraged CDS candidates to apply.
+
+2. **Recruitment for Principal ML Engineer and Data Scientist** - She forwarded job opportunities at FL117 and requested them to be circulated among PhD and MSc students.
+
+3. **CDS Grad Career Fair** - She promoted the CDS Grad Career Fair, highlighting various employers hiring for data science-related roles and encouraging attendance.
+
+4. **Upcoming CDS Career Events** - She provided details about the CDS Grad Career Fair and other related events that focus on job opportunities.
+
+5. **CDS Career Events with Rockstar Games** - She invited students to a panel and a datathon related to careers at Rockstar Games, emphasizing the opportunity to learn about working in data science at the company.
+
+These communications contain information about job opportunities and career events relevant to students.",retriever,hybrid,5,12163,199774e83116373d_email_0 | 19935f8aa3c3a212_email_0 | 1996352caa4b6ba3_email_0 | 1994e8a75bbfefea_email_0 | 19996c7025a0e9f8_email_0,1.000 | 1.000 | 0.900 | 0.900 | 0.800,,05-12-2025 22:13,Missing all the opportunities 
+78,Which positions have the earliest application deadlines?,deadline,05-12-2025 22:13,"The positions with the earliest application deadlines are for the Spring 2026 undergraduate-level courses, which had a deadline of Monday, November 10, 2025. The other deadline mentioned was for the Spring 2026 graduate-level courses, which was Thursday, November 20, 2025.",retriever,hybrid,5,11415,19a841fd14f9bb38_email_0 | 199a58047f36bab6_email_0 | 19a4b3d41e6a9b6f_email_0 | 19a4b3d5ce2910b0_email_0 | 19a2befc24d74561_email_0,0.900 | 0.900 | 0.800 | 0.800 | 0.800,,05-12-2025 22:13,Since the question was vague too 
+77,What job opportunities match my data science background?,general,05-12-2025 22:13,"Based on your data science background, the following job opportunities match your qualifications:
+
+1. **Intern: Data Analytics / Data Science (Summer 2026) at Rockstar Games**
+   - Full-time, 40 hours/week
+   - Location: Onsite in New York, NY
+   - Term: June 2026 to mid-August 2026
+   - Compensation: $34/hr
+   - Application deadline: November 7, 2025
+
+2. **Fall 2025 Research Assistant Internship**
+   - Role involves designing and building an NLP database.
+   - Requires experience with Python or R, and familiarity with database technologies.
+   - Part-time, at least 10 hours/week, with a hybrid work model.
+   - Compensation: $25-$30 per hour.
+
+3. **ML Scientist Positions (Molecular Design Platform and Biomolecular Foundation Models) at FL117**
+   - Focus on generative AI for drug design.
+   - Requires an MSc or PhD in relevant fields and strong Python skills.
+   - Involves collaboration on molecular design software and handling large datasets.
+
+4. **Applied Researcher, Data Science, and AI Engineering positions at Capital One**
+   - Opportunities for PhD and MS graduates in AI Foundations, focusing on Large Language Models (LLMs) and AI systems.
+   - Emphasis on full lifecycle development of AI models for real-world problem-solving.
+
+These positions vary in terms of commitment, location, and compensation, allowing you to choose based on your preferences and qualifications.",retriever,hybrid,5,18848,19a2befc24d74561_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 19935f8aa3c3a212_att_FL117_ML_Scientist_Molecular_Design_Platform_pdf_0 | 19935f8aa3c3a212_att_FL117_ML_Scientist_Foundation_Model_pdf_0 | 19abb616ac612bbd_email_0,1.000 | 0.900 | 0.900 | 0.900 | 0.900,,05-12-2025 22:13,
+76,Compare the Lepercq internship with the Avra Janz RA position,information,05-12-2025 22:12,"The Lepercq internship and the Avra Janz RA position differ in several key areas:
+
+1. **Type of Work**: 
+   - The Lepercq internship focuses on building an NLP database from varied data sources, involving data ingestion, processing, and creating advanced NLP models. It emphasizes transforming unstructured text into structured databases.
+   - The Avra Janz RA position centers on constructing a dataset of English-language autobiographies, utilizing LLMs and data extraction techniques to analyze historical changes in self-representation.
+
+2. **Compensation**:
+   - The Lepercq internship pays between $25 to $30 per hour, depending on experience.
+   - The Avra Janz RA position offers a fixed rate of $30 per hour.
+
+3. **Work Hours**:
+   - The Lepercq internship requires a commitment of at least 10 hours per week, with a degree of flexibility and a hybrid work model.
+   - The Avra Janz RA position requires 8 hours per week, with flexible hours and the possibility of entirely remote work.
+
+4. **Eligibility**:
+   - The Lepercq internship is open to second-year MSDS students and recent alumni, requiring current work authorization for immediate starters.
+   - The Avra Janz RA position is specifically for current NYU graduate students in Data Science or related fields, with the condition that applicants must be enrolled at NYU in Spring 2026.
+
+5. **Project Duration**:
+   - The Lepercq internship is a part-time position expected to last through the academic semester, with potential for extended engagement.
+   - The Avra Janz RA position is intended for the Spring 2026 semester, with a possibility for summer extension.
+
+In summary, the Lepercq internship is more focused on NLP and data engineering, while the Avra Janz RA position is oriented towards social science research and dataset construction.",retriever,hybrid,5,15210,19ac040a8b011126_att_2025_11_graduate_job_posting_pdf_0 | 19ac040a8b011126_email_0 | 19a2c5068b85f23a_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 19a07853bc28e0f9_email_0,0.900 | 0.800 | 0.800 | 0.600 | 0.700,,05-12-2025 22:12,It was a direct question and it pulled everything 
+75,Show me all full-time vs internship positions,general,05-12-2025 22:12,"The available positions mentioned in the email chunks are as follows:
+
+**Full-Time Positions:**
+1. Data Analytics / Data Science Internship at Rockstar Games (Summer 2026)
+   - Commitment: Full-time, 40 hrs/week
+   - Location: In-person in New York, NY
+   - Term: June 2026 to mid-August 2026 (10 weeks)
+   - Compensation: $34/hr
+
+2. Quantitative Analyst role at Applied Academics LLC (specific details not provided in chunks).
+
+**Internship Positions:**
+1. Data Analytics / Data Science Internship at Rockstar Games (Summer 2026) - classified as an internship but with full-time commitment.
+2. NLP Project Research Assistant Internship - Part-time during the academic semester, at least 10 hours/week, with compensation of $25-$30 per hour.
+3. AI & Investment Technology Internship at Insight Partners Public Equities (IPPE) - Paid internship, flexible duration (5-10 weeks), hybrid in New York.
+
+In summary, the positions include both a full-time commitment classified as an internship and traditional part-time internships.",retriever,hybrid,5,13334,19a2befc24d74561_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 19a5fb375bdbbaac_email_0 | 19a5fb375bdbbaac_att_IPPE_AI_Investment_Tech_Internship_Job_Description v2_pdf_0 | 1995ddab5fb6433d_email_0,1.000 | 1.000 | 1.000 | 1.000 | 0.900,,05-12-2025 22:12,There is more information than this in my inbox
+74,What research assistant roles are available?,information,05-12-2025 22:12,"The available research assistant role is for a graduate Data Science Research Assistant to work on the English Language Autobiographies Dataset (ELAD). This position offers a pay rate of $30 per hour, requires 8 hours of work per week with flexible hours, and can be completed remotely. It is intended for the Spring 2026 semester with a possibility of summer extension. Candidates must be current NYU graduate students in Data Science or a related field, possess Python skills, and previous research experience is not required.",retriever,hybrid,5,10391,19ac040a8b011126_att_2025_11_graduate_job_posting_pdf_0 | 19a841fd14f9bb38_email_0 | 19abb616ac612bbd_email_0 | 1995ddab5fb6433d_att_2025 Quantitative Analyst JD (Intern)_pdf_0 | 19a2c5068b85f23a_email_0,1.000 | 0.900 | 0.900 | 0.800 | 0.800,,05-12-2025 22:12,
+73,Tell me about spring 2026 positions,information,05-12-2025 22:12,"The Center for Data Science (CDS) is offering several positions for Spring 2026, including section leaders and graders for graduate-level courses as well as an Admissions Ambassador role.
+
+1. **Section Leaders and Graders for Graduate Courses**:
+   - Positions are available for various courses, including DS-GA 1003 (Machine Learning), DS-GA 1015 (Text as Data), and DS-GA 3001 (Reinforcement Learning), among others.
+   - Section leaders are responsible for preparing labs, conducting sessions, and holding office hours. They can be graduate students or non-students, but undergraduates are not eligible. Compensation is around $3,111 per section for the semester, with a workload of approximately 5 hours per week.
+   - Graders will grade assignments and exams and are expected to work about 10 hours per week, with compensation around $4,900 for the semester. 
+
+2. **Admissions Ambassador for MS Program**:
+   - This position involves working closely with the academic and student affairs team to recruit admitted MS in Data Science students for the 2026-2027 academic year. Responsibilities include communication with admitted students and planning activities to encourage their enrollment.
+   - The position starts on January 20, 2026, and ends on May 13, 2026. Applicants must be current MS in Data Science students at NYU and apply by November 17, 2025.
+
+The deadline for applying for the section leader and grader positions was November 10, 2025.",retriever,hybrid,5,13664,19a841fd14f9bb38_email_0 | 19a50d0d69324bd1_email_0 | 19a4b3d5ce2910b0_email_0 | 19a4b3d41e6a9b6f_email_0 | 19981511d725054b_email_0,1.000 | 1.000 | 1.000 | 0.716 | 0.700,,05-12-2025 22:12,missed a couple of them 
+72,What opportunities have December deadlines?,deadline,05-12-2025 22:11,"The opportunities with December deadlines are:
+
+1. **Poster printing request form**: Submit by Wednesday, December 10, 11:59 PM.
+2. **Final paper submission**: Due on Tuesday, December 16, 11:59 PM.
+3. **Final poster presentation**: Scheduled for Thursday, December 18, from 4:00 PM to 5:50 PM.",retriever,hybrid,5,10715,19aa89967c5957c8_email_0 | 199e6733d88dc346_email_0 | 19a163aebf734ab4_email_0 | 199a62b7880be39d_email_0 | 199186ab4b38723d_email_0,0.800 | 0.648 | 0.634 | 0.586 | 0.580,,05-12-2025 22:11,Did not understand the question 
+71,Show me ML and AI related jobs,general,05-12-2025 22:11,"The following ML and AI-related jobs are available:
+
+1. **ML Scientist, Biomolecular Foundation Models** at FL117:
+   - Responsibilities include building architectures and training pipelines for generative models in biomolecular design, collaborating with teams, and implementing cheminformatics/bioinformatics pipelines.
+   - Qualifications: MSc or PhD in Computer Science, AI/ML, or related fields, experience with generative AI in chemistry, strong Python and PyTorch skills.
+
+2. **ML Scientist, Molecular Design Platform** at FL117:
+   - Responsibilities include collaborating on the development of next-gen models for drug design and conducting analyses to guide the development of a molecular design software stack.
+   - Qualifications: MSc or PhD in Computer Science, AI/ML, or related fields, experience with generative AI in chemistry, strong Python and PyTorch skills.
+
+3. **Applied Researcher, Data Science, and AI Engineering positions** at Capital One:
+   - Focus on advancing Large Language Models (LLMs) and Agentic AI, covering the full lifecycle of LLM development.
+   - Open to accomplished researchers and graduating PhD and MS students.
+
+If you're interested in any of these positions, consider reaching out directly or applying as specified in the job details.",retriever,hybrid,5,15585,19935f8aa3c3a212_att_FL117_ML_Scientist_Foundation_Model_pdf_0 | 19935f8aa3c3a212_att_FL117_ML_Scientist_Molecular_Design_Platform_pdf_0 | 19abb616ac612bbd_email_0 | 199774da4d3bc56b_email_0 | 199774e83116373d_email_0,1.000 | 1.000 | 1.000 | 0.900 | 0.900,,05-12-2025 22:11,
+70,What's the highest paying opportunity available?,general,05-12-2025 22:11,"The highest paying opportunity available is the Applied Researcher, Data Science, and AI Engineering positions at Capital One, which are aimed at accomplished researchers and outstanding graduating PhD and MS students. Specific salary details are not provided, but these positions are typically associated with higher compensation due to their advanced level and focus on cutting-edge AI and data science work.",retriever,hybrid,5,9451,19abb616ac612bbd_email_0 | 19a5fb375bdbbaac_att_IPPE_AI_Investment_Tech_Internship_Job_Description v2_pdf_0 | 19a2befc24d74561_email_0 | 19981511d725054b_email_0 | 19916aad0e9db73d_email_0,0.900 | 0.700 | 0.700 | 0.600 | 0.600,,05-12-2025 22:11,
+69,Are there any virtual/remote opportunities?,general,05-12-2025 22:11,"Yes, there are virtual/remote opportunities available. Specifically, there is a part-time remote Teaching Assistant position for an Online Data Science Class in the Spring 2026 semester. Additionally, the Genhack4 hackathon is 100% online, allowing international teams to participate remotely.",retriever,hybrid,5,15851,19abb8e5e09697af_att_DSC Teaching Assistant Announcement_pdf_0 | 19abb616ac612bbd_email_0 | 199c9706b9e3f785_email_0 | 199ab4307170f85d_email_0 | 19995c2b54f56843_email_0,1.000 | 1.000 | 0.900 | 0.800 | 0.800,,05-12-2025 22:11,
+68,What positions require work authorization?,information,05-12-2025 22:11,The positions that require work authorization are those for the internship role that can start right away. This requirement specifically applies to students who have work authorization currently.`,retriever,hybrid,5,8452,19a2c5068b85f23a_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 1995dcc1d4053950_email_0 | 19a2befc24d74561_email_0 | 19ac040a8b011126_email_0,0.900 | 0.483 | 0.500 | 0.489 | 0.463,,05-12-2025 22:11,Not a ideal resposne 
+67,Show me all job opportunities from Zoë Levin,sender,05-12-2025 22:10,"Zoë Levin has shared the following job opportunities:
+
+1. **Intern: Data Analytics / Data Science (Summer 2026) at Rockstar Games**
+   - Commitment: Full-time, 40 hrs/week
+   - Location: In-person, onsite in New York, NY
+   - Term: June 2026 to mid-August 2026 (10 weeks)
+   - Compensation: $34/hr
+   - Application Deadline: Friday, November 7, 2025
+   - Application Link: [Rockstar Games Internship](https://grnh.se/5pv46f703us)
+
+2. **Advanced Data Science Associate - Intern at ZS Associates**
+   - Targeted at Master’s degree students.
+  
+3. **Advanced Data Science Associate Consultant - Intern at ZS Associates**
+   - Targeted at Master’s degree students with 3-5 years of full-time work experience.
+
+4. **Quantitative Analyst Role at Applied Academics LLC**
+   - Full-time role targeted at ""new grads"" and May 2026 graduates.
+
+5. **People Analytics Intern - Summer 2026 at Campbell's**
+   - Application Link: [Campbell's Internship](https://careers.thecampbellscompany.com/us/en/job/Req-60729/People-Analytics-Intern-Summer-2026) 
+
+These positions are aimed at students and recent graduates in relevant fields.",retriever,hybrid,5,11514,19a2befc24d74561_email_0 | 1995dcc1d4053950_email_0 | 1995ddab5fb6433d_email_0 | 199774da4d3bc56b_email_0 | 199774e83116373d_email_0,1.000 | 0.900 | 0.900 | 0.800 | 0.800,,05-12-2025 22:10,
+66,What internships can start right away?,general,05-12-2025 22:10,"The internship that can start right away is the one being offered by Paul Sonkin, which is specifically looking for candidates who have work authorization currently.",retriever,hybrid,5,8495,19a2c5068b85f23a_email_0 | 19a5fb375bdbbaac_email_0 | 19a5fb375bdbbaac_att_IPPE_AI_Investment_Tech_Internship_Job_Description v2_pdf_0 | 1995dcc1d4053950_email_0 | 1995ddab5fb6433d_email_0,1.000 | 0.800 | 0.800 | 0.644 | 0.600,,05-12-2025 22:10,
+65,What's the meeting PIN for December meetings? events calendar,calendar,05-12-2025 22:10,The email chunks provided do not contain information about the meeting PIN for December meetings.,predict,hybrid,4,6268,19a163aebf734ab4_email_0 | 1999b93b476ae375_email_0 | 19a08b8af7d9a91e_email_0 | 199e3b0914d9e58a_email_0,0.507 | 0.408 | 0.333 | 0.333,,05-12-2025 22:10,
+64,Do I have any meetings with Smruti Nalawade? events calendar,calendar,05-12-2025 22:10,"Based on the provided email chunks, there are no meetings scheduled with Smruti Nalawade.",predict,hybrid,8,6299,19a6f781ae4552b7_email_0 | 199ca5dffc1a6ea3_email_0 | 19a737e4150d9764_email_0 | 1999b93b476ae375_email_0 | 199e966564da7584_email_0,0.525 | 0.465 | 0.443 | 0.408 | 0.383,,05-12-2025 22:10,
+63,How long is the November 19th meeting? events calendar,calendar,05-12-2025 22:10,"The email chunks provided do not contain information about a meeting on November 19th, so I cannot determine the duration of that meeting.",predict,hybrid,7,4416,199e966564da7584_email_0 | 19a840b1e8160abc_email_0 | 19a6f781ae4552b7_email_0 | 199edf38a05f9001_email_0 | 1999b93b476ae375_email_0,0.541 | 0.513 | 0.497 | 0.494 | 0.408,,05-12-2025 22:10,
+62,What's the Zoom link for capstone checkin meetings? events calendar,calendar,05-12-2025 22:10,"The email chunks do not provide a specific Zoom link for capstone check-in meetings. It mentions that you should email Max Drogin for the Zoom link, but does not include the actual link itself.",predict,hybrid,5,4487,19a08b8af7d9a91e_email_0 | 199e8def4df43d0a_email_0 | 199e3b0914d9e58a_email_0 | 19a74aa1bb9b32c3_email_0 | 19aa89967c5957c8_email_0,0.505 | 0.473 | 0.452 | 0.450 | 0.444,,05-12-2025 22:10,
+61,Who organized my upcoming meetings? events calendar this week upcoming,calendar,05-12-2025 22:10,The email does not specify who organized your upcoming meetings. It only mentions a check-in meeting and asks if it is necessary.,predict,hybrid,1,5869,19ae1326f416095a_email_0,0.164,,05-12-2025 22:10,
+60,Show me all capstone touchbase meetings events calendar,calendar,05-12-2025 22:10,"The upcoming capstone touchbase meetings are as follows:
+
+1. **Capstone check-in meeting (Hongjun)**: 
+   - **Date**: Wednesday, November 19, 2025
+   - **Time**: 1:15 PM - 1:30 PM (Eastern Time)
+
+2. **Capstone check-in meeting (Hongjun)**: 
+   - **Date**: Monday, October 20, 2025
+   - **Time**: 1:30 PM - 1:45 PM (Eastern Time) 
+
+Please note that the October meeting date has already passed.",predict,hybrid,4,6857,19a08b8af7d9a91e_email_0 | 199e3b0914d9e58a_email_0 | 19a8fbf72640a26d_email_0 | 199e8def4df43d0a_email_0,0.508 | 0.492 | 0.323 | 0.318,,05-12-2025 22:10,
+59,When's my next meeting with mohammad@trilemma.foundation? events calendar,calendar,05-12-2025 22:10,"Your next meeting with mohammad@trilemma.foundation is scheduled for Friday, December 12, 2025, at 11:30 AM ET.",predict,hybrid,10,5092,1995fda4f979e7ec_email_0 | 19972f441bc3c3aa_email_0 | 1995ff4be057b745_email_0 | 1995feb954f40e9f_email_0 | 1995d83b915df8c8_email_0,0.626 | 0.619 | 0.614 | 0.607 | 0.599,,05-12-2025 22:10,
+58,What's the phone number to join the November 24th meeting? events calendar,calendar,05-12-2025 22:09,The phone number to join the November 24th meeting is not mentioned in the provided email chunks.,predict,hybrid,6,4794,19a840b1e8160abc_email_0 | 19a6f781ae4552b7_email_0 | 1999b93b476ae375_email_0 | 1995feb954f40e9f_email_0 | 19a08b8af7d9a91e_email_0,0.522 | 0.497 | 0.408 | 0.336 | 0.333,,05-12-2025 22:09,
+57,What time is the capstone check in on Thursday? events calendar,calendar,05-12-2025 22:09,"The capstone check-in on Thursday, December 4, 2025, is scheduled from 11 AM to 12 PM (EST).",predict,hybrid,6,5829,199cee7f08aca753_email_0 | 19a6f781ae4552b7_email_0 | 199ca5dffc1a6ea3_email_0 | 1999b93b476ae375_email_0 | 19ae0e0e0ebada9b_email_0,0.537 | 0.497 | 0.465 | 0.408 | 0.380,,05-12-2025 22:09,
+56,Show me all meetings with Mark Freeman events calendar,calendar,05-12-2025 22:09,"The meetings with Mark Freeman in the events calendar are:
+
+1. **Regroup**
+   - Date: Tuesday, September 23, 2025
+   - Time: Not specified in the chunks, but it is stated that Max Drogin organized it.
+
+2. **Cedar Sync**
+   - Date: Sunday, November 16, 2025
+   - Time: 12:00 PM - 1:00 PM (EST)
+   - Organizer: Abhinav Batra
+
+3. **Capstone Filtering**
+   - Date: Monday, September 8, 2025
+   - Time: 5:00 PM - 5:45 PM (EDT)
+   - Organizer: Abhinav Batra
+
+No meetings with Mark Freeman are scheduled for ""this week"" or ""upcoming"" from today, December 5, 2025.",predict,hybrid,9,6800,1999751b7b4431c9_email_0 | 199e966564da7584_email_0 | 19a8fbf72640a26d_att_invite_ics_0 | 19a8fbf72640a26d_email_0 | 199edf38a05f9001_email_0,0.538 | 0.519 | 0.519 | 0.495 | 0.509,,05-12-2025 22:09,
+55,When's my meeting with Hongjun Liu? events calendar,calendar,05-12-2025 22:09,"Your meeting with Hongjun Liu is scheduled for Wednesday, November 19, 2025, from 1:15 PM to 1:30 PM (EST).",predict,hybrid,9,5229,19a9d5a5e5e52035_email_0 | 19a99187ded7bba1_email_0 | 199ee4f420cf7ece_email_0 | 1999785b1b61afc4_email_0 | 199edf38a05f9001_email_0,0.780 | 0.599 | 0.597 | 0.581 | 0.543,,05-12-2025 22:09,
+54,Who's attending the Matt + NYU Capstone Touchbase? events calendar,calendar,05-12-2025 22:09,"The attendees for the Matt + NYU Capstone Touchbase on November 24, 2025, include:
+
+- Max Drogin (organizer)
+- Mark Freeman
+- Abhinav Batra
+- Mohammad Ashkani
+- Smruti Nalawade (who later indicated she would not be able to attend)",predict,hybrid,5,5695,19aa9c0ba8bf7b65_email_0 | 19aa9c0ba8bf7b65_att_invite_ics_0 | 19ab70996ef5ab32_email_0 | 19aba26780ca7021_email_0 | 19a922e7bd62e480_email_0,0.705 | 0.494 | 0.655 | 0.647 | 0.367,,05-12-2025 22:09,
+53,What's the Google Meet link for the December 4th meeting? events calendar,calendar,05-12-2025 22:09,The Google Meet link for the December 4th meeting is not provided in the email chunks.,predict,hybrid,10,5350,199cee7f08aca753_email_0 | 19977da03cd4114d_email_0 | 199e8def4df43d0a_email_0 | 1999751b7b4431c9_email_0 | 199e966564da7584_email_0,0.537 | 0.523 | 0.505 | 0.505 | 0.505,,05-12-2025 22:09,
+52,What meetings are scheduled for November 24th? events calendar,calendar,05-12-2025 22:09,There are no meetings or events specifically scheduled for November 24th mentioned in the provided email chunks.,predict,hybrid,6,5059,19a6f781ae4552b7_email_0 | 19a840b1e8160abc_email_0 | 1999b93b476ae375_email_0 | 19a08b8af7d9a91e_email_0 | 199e3b0914d9e58a_email_0,0.497 | 0.490 | 0.408 | 0.333 | 0.333,,05-12-2025 22:09,
+51,When is my next capstone check-in? events calendar,calendar,05-12-2025 22:09,"Your next capstone check-in was on Thursday, December 4, 2025, from 11 AM to 12 PM.",predict,hybrid,6,4765,199cee7f08aca753_email_0 | 19a9d5a5e5e52035_email_0 | 19ae0e0e0ebada9b_email_0 | 199ca5dffc1a6ea3_email_0 | 19a120793cf97099_email_0,0.537 | 0.510 | 0.470 | 0.465 | 0.431,,05-12-2025 22:09,
+50,What are the NYU data science flyer opportunities?,information,05-12-2025 22:09,"The NYU data science flyer opportunities include:
+
+1. **Rockstar Games Summer 2026 Data Analytics / Data Science Internships** - Full-time, in-person internships available for NYU students with a compensation of $34/hour. The application deadline was November 7, 2025.
+
+2. **CDS Grad Career Fair** - An event for CDS graduate students to meet with employers hiring for data science roles. It took place on September 25, 2025.
+
+3. **Company sessions and workshops** - Events such as the SQL for Interviewing Workshop and Company Visits (e.g., with the Oklahoma City Thunder and Munich Re) provided networking and learning opportunities regarding career paths in data science.
+
+4. **Research opportunity with Drs. Shuo Chen and Thomas Wisniewski** - For master's students interested in neuroscience and computation, offering hands-on research experience.
+
+5. **Networking and panel events** - Various panels and networking receptions aimed at connecting students with industry professionals and alumni. 
+
+For more details on upcoming events or opportunities, students are encouraged to stay connected with the NYU Center for Data Science.`",retriever,hybrid,5,12901,19a2befc24d74561_email_0 | 1994e8a75bbfefea_email_0 | 19a07853bc28e0f9_email_0 | 1996352caa4b6ba3_email_0 | 199ab4307170f85d_email_0,0.900 | 0.900 | 0.800 | 0.800 | 0.800,,05-12-2025 22:09,
+49,Show me the RL humanoid soccer competition details,information,05-12-2025 22:08,"The RL humanoid soccer competition is called the Booster Soccer Showdown. It is a global reinforcement learning competition hosted on CompeteAI.com with a total prize pool of $10,000, sponsored by Booster Robotics. 
+
+The competition ran from October 6, 2025, to December 1, 2025. Participants were tasked with training humanoid soccer agents to perform three skills: scoring against goalkeepers, targeting shots through obstacles, and delivering precision passes. This event provided competitors with the opportunity to gain real project experience, showcase their skills, and potentially be scouted by Booster Robotics for future career opportunities.",retriever,hybrid,5,10453,19a0d784c5ba0788_att_Competition Overview - RL Humanoid Soccer Competition_pdf_0 | 19a0d784c5ba0788_email_0 | 19a0d784c5ba0788_att_NYU WiDS_png_0 | 1995fda4f979e7ec_email_0 | 19972f441bc3c3aa_email_0,1.000 | 1.000 | 1.000 | 0.500 | 0.500,,05-12-2025 22:08,
+48,What's in the NYC tech interview presentation?,information,05-12-2025 22:08,"The NYC tech interview presentation includes the following key components:
+
+- Discussion of resume red flags such as generic statements, irrelevant experiences, and missing job-specific language.
+- Strategies for effectively marketing oneself on LinkedIn and creating a professional brand.
+- Behavioral and technical interview preparation tips.
+- A live interview demonstration.
+- Breakout table rotations for live resume reviews, mock oral interviews, and technical drills.
+- Opportunities for potential alumni networking.
+
+This session aims to provide practical insights and guidance for students navigating the job market, regardless of whether they are actively job-hunting.",retriever,hybrid,5,12846,1994012a8a705653_email_0 | 199f3062fed3265a_att_NYC Tech Interview Squad_NYU Presentation - 10_3_2025_pdf_0 | 199f3062fed3265a_email_0 | 199ab8ac1eb04d35_email_0 | 1994e8a75bbfefea_email_0,1.000 | 1.000 | 0.800 | 0.900 | 0.581,,05-12-2025 22:08,
+47,Tell me about the DSC teaching assistant position,information,05-12-2025 22:08,"The DSC Teaching Assistant position is for the GSTEM Online Data Science Class offered by the Courant Institute in Spring 2026. It is a part-time, remote role aimed at mentoring high school students, particularly those who are historically underrepresented in STEM fields.
+
+Key responsibilities include:
+- Facilitating two weekly online recitation sessions (90 minutes each).
+- Holding one weekly virtual office hour to assist students.
+- Grading assignments and providing feedback.
+- Supporting student learning and collaborating with the course instructor.
+
+Required qualifications include:
+- Intermediate proficiency in Python and familiarity with data science libraries.
+- Experience in teaching, tutoring, or mentoring.
+- Strong communication skills and the ability to create an inclusive online learning environment.
+
+The position requires a commitment of approximately three hours per week and offers compensation of $147.44 per contact hour. The program runs from February 3 to May 5, 2026, with a few staff meetings planned throughout the course. 
+
+Applications were accepted until December 5, 2025.",retriever,hybrid,5,11961,19abb8e5e09697af_att_DSC Teaching Assistant Announcement_pdf_0 | 19abb8e5e09697af_email_0 | 19a4b3d5ce2910b0_email_0 | 19ac040a8b011126_att_2025_11_graduate_job_posting_pdf_0 | 19a841fd14f9bb38_email_0,0.900 | 0.800 | 0.700 | 0.700 | 0.600,,05-12-2025 22:08,
+46,What's the IPPE AI investment internship about?,information,05-12-2025 22:08,"The IPPE AI investment internship at Insight Partners is a paid internship program designed for students with technical skills and an analytical mindset, focusing on the intersection of artificial intelligence (AI), data, and public-market investing. Interns will collaborate with investment professionals and data scientists to develop and prototype AI-driven workflows that enhance investment research and portfolio management processes. Responsibilities include refining AI workflows, automating processes such as financial data extraction and investment thesis generation, and presenting findings to the investment team. The internship offers hands-on experience applying AI to real investment workflows and mentorship from seasoned professionals.",retriever,hybrid,5,11050,19a5fb375bdbbaac_att_IPPE_AI_Investment_Tech_Internship_Job_Description v2_pdf_0 | 19a5fb375bdbbaac_email_0 | 19a2c5068b85f23a_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 1995ddab5fb6433d_att_2025 Quantitative Analyst JD (Intern)_pdf_0,1.000 | 1.000 | 0.800 | 0.568 | 0.568,,05-12-2025 22:08,
+45,Show me the BME-CAIR summer program details,information,05-12-2025 22:08,"The email chunks do not provide any details regarding a BME-CAIR summer program. Therefore, I cannot provide the requested information.",retriever,hybrid,5,9025,19a07853bc28e0f9_att_nyu-ds-fly-2025_pdf_0 | 19a07853bc28e0f9_email_0 | 19a0d1d4d1b249fa_email_0 | 19a4a6d9e41df869_email_0 | 19a2befc24d74561_email_0,0.800 | 0.646 | 0.547 | 0.536 | 0.533,,05-12-2025 22:08,
+44,What's in the quantitative analyst job description?,information,05-12-2025 22:08,"The quantitative analyst job description includes the following key components:
+
+**Position Overview**: 
+- The role involves working with large datasets and applying the advanced statistical framework, Goose, to evaluate investment managers. Analysts will gain hands-on experience in data analysis, model development, and applying data-driven insights to improve portfolio outcomes.
+
+**Key Responsibilities**:
+1. **Drive Investment Decisions**: Collaborate with senior researchers and the CIO to support manager selection and portfolio construction, analyze large datasets for insights, and produce dashboards and reports.
+2. **Next-Gen Goose Research**: Research new datasets and methodologies to enhance the Goose framework, and develop models for data analysis and risk management using tools like Python or C++.
+3. **Data Integration & Automation**: Build and maintain a scalable data pipeline for data gathering, cleaning, and processing, and optimize data workflows for accurate analysis.
+
+**Qualifications and Characteristics**:
+- **Education**: Bachelor's, Master's, or PhD in fields such as Computer Science, Data Science, Finance, Economics, Mathematics, or Engineering.
+- **Skills & Experience**: Proficiency in Python, knowledge of data structures and database management, experience with data pipelines, and strong analytical skills.
+- **Statistical & Finance Skills**: Strong foundation in statistics and quantitative analysis, and knowledge of financial concepts.
+- **Soft Skills**: Attention to detail, problem-solving abilities, collaboration skills, and strong communication skills.
+
+**Compensation & Benefits**:
+- Salary of $150,000, with an annual discretionary bonus and benefits including health insurance, 401(k) matching, paid time off, and visa sponsorship for qualified employees.",retriever,hybrid,5,16771,1995ddab5fb6433d_email_0 | 1995ddab5fb6433d_att_2025 Quantitative Analyst JD_pdf_0 | 1995ddab5fb6433d_att_2025 Quantitative Analyst JD (Intern)_pdf_0 | 199c459790adcf3a_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0,1.000 | 0.800 | 0.700 | 0.600 | 0.500,,05-12-2025 22:08,
+43,Tell me about the molecular design platform job,information,05-12-2025 22:07,"The ML Scientist position for the Molecular Design Platform at FL117 involves developing methods, models, and data for a next-generation generative model focused on drug design. The role requires collaboration with a foundation modeling team and includes responsibilities such as implementing benchmarking protocols, conducting analyses of methods and models, and managing data from various sources to train and benchmark the molecular generation platform. Candidates must have an MSc or PhD in relevant fields, experience with generative AI in chemistry, strong Python and PyTorch skills, and prior experience with large public data. Preferred qualifications include contributions to open-source projects, a strong presence in the ML community, and familiarity with biological data formats and ML software development tools.",retriever,hybrid,5,13320,19935f8aa3c3a212_att_FL117_ML_Scientist_Molecular_Design_Platform_pdf_0 | 19935f8aa3c3a212_att_FL117_ML_Scientist_Foundation_Model_pdf_0 | 19abb616ac612bbd_email_0 | 19ada9838b1d8694_email_0 | 19ada9b74db2b2bc_email_0,1.000 | 0.900 | 0.501 | 0.474 | 0.474,,05-12-2025 22:07,
+42,What's the salary for the sociology research assistant role?,information,05-12-2025 22:07,The salary for the sociology research assistant role is $30 per hour.,retriever,hybrid,5,10818,19ac040a8b011126_att_2025_11_graduate_job_posting_pdf_0 | 19ac040a8b011126_email_0 | 199c459790adcf3a_email_0 | 19a4b3d41e6a9b6f_email_0 | 19a4b3d5ce2910b0_email_0,1.000 | 0.641 | 0.800 | 0.578 | 0.546,,05-12-2025 22:07,
+41,What ML scientist positions are available at FL117?,general,05-12-2025 22:07,"FL117 has two available ML Scientist positions:
+
+1. ML Scientist, Biomolecular Foundation Models: This role involves building architectures, training pipelines, and developing generative models for biomolecular design, focusing on AI-powered drug discovery.
+
+2. ML Scientist, Molecular Design Platform: This position focuses on developing methods, models, and data to create next-gen generative models for drug design, and involves collaborating with a foundation modeling team.",retriever,hybrid,5,10327,19935f8aa3c3a212_att_FL117_ML_Scientist_Foundation_Model_pdf_0 | 19935f8aa3c3a212_att_FL117_ML_Scientist_Molecular_Design_Platform_pdf_0 | 19935f8aa3c3a212_email_0 | 19a5fb375bdbbaac_att_IPPE_AI_Investment_Tech_Internship_Job_Description v2_pdf_0 | 19995c2b54f56843_att_NCDS_Flyer_2025_10_CareerPanel_Large Flyer_png_0,1.000 | 1.000 | 0.800 | 0.800 | 0.700,,05-12-2025 22:07,
+40,What are the requirements for the autobiography dataset project?,information,05-12-2025 22:07,"The requirements for the autobiography dataset project are as follows:
+
+1. The candidate must be a current NYU graduate student in Data Science or a related field; students who have already graduated are not eligible.
+2. Python skills are required.
+3. Previous research experience is not required.
+
+Additionally, the role involves tasks such as using LLMs to transform bibliographies into structured data and matching this data to a dataset of digitized autobiographies.",retriever,hybrid,5,11621,19ac040a8b011126_att_2025_11_graduate_job_posting_pdf_0 | 19ac040a8b011126_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 19a4b3d5ce2910b0_email_0 | 19a841fd14f9bb38_email_0,0.800 | 0.700 | 0.500 | 0.466 | 0.456,,05-12-2025 22:07,
+39,Show me details about the graduate research assistant job,information,05-12-2025 22:07,"The graduate research assistant job details are as follows:
+
+**Position**: Graduate Data Science Research Assistant  
+**Project**: English Language Autobiographies Dataset (ELAD)  
+**Pay Rate**: $30 per hour  
+**Hours**: 8 hours per week, flexible hours, completely remote  
+**Dates**: Spring 2026 semester (January - May), with a possibility of summer extension  
+**Eligibility**: Must be a current NYU graduate student in Data Science or a related field; recent graduates are not eligible  
+**Requirements**: Python skills are required; previous research experience is not necessary  
+**Role Description**: The assistant will use LLMs and other tools to identify autobiographies and extract data from them. Initial tasks include transforming bibliographies into structured data and matching this data to digitized scans of autobiographies.  
+**Motivation**: The project aims to analyze how personal traits and identity representations have changed over time through autobiographies sourced from over 35 university libraries.  
+
+**Application Process**: Interested candidates should email Avra Janz at abj8978@nyu.edu with their personal information, motivation statement, relevant experience, and resume/CV (as a PDF attachment).  
+
+**Application Deadline**: December 10, 2025.",retriever,hybrid,5,17602,19ac040a8b011126_att_2025_11_graduate_job_posting_pdf_0 | 19ac040a8b011126_email_0 | 199c459790adcf3a_email_0 | 19a4b3d5ce2910b0_email_0 | 19a4b3d41e6a9b6f_email_0,0.900 | 0.900 | 0.800 | 0.638 | 0.636,,05-12-2025 22:07,
+38,What's the deadline for the Paul Sonkin internship?,deadline,05-12-2025 22:06,"The deadline for the Paul Sonkin internship is the end of January or the beginning of February 2026, as candidates who can start at that time are being considered.",retriever,hybrid,5,11634,19a2c5068b85f23a_email_0 | 1991499a7dd34023_email_0 | 19abb8e5e09697af_email_0 | 1995dcc1d4053950_email_0 | 199ddefd38ae21a1_email_0,0.702 | 0.519 | 0.500 | 0.476 | 0.473,,05-12-2025 22:06,
+37,Tell me about the NLP project hiring from Zoë,sender,05-12-2025 22:06,"Zoë is hiring for a part-time graduate student internship for an NLP project at a privately held investment firm. The role involves designing and building an NLP database to handle structured and unstructured data, implementing processes for data integrity, and developing systems for data ingestion and processing. Key responsibilities include organizing financial documents, cleaning data, documenting methodologies, and assisting with automated data collection.
+
+The project aims to build advanced NLP models to extract data from various documents and to develop maintainable workflows for management. Candidates should have relevant academic backgrounds (preferably in Computer Science, Econometrics, Financial Engineering, or Statistics), experience with Python or R for data collection and NLP, and familiarity with OCR tools.
+
+The internship requires at least 10 hours per week, offers compensation between $25-$30 per hour, and is ideally hybrid, allowing for remote work with some in-office requirements. There are two candidate pools: those who can start immediately (with work authorization) and those who can start at the end of January or early February. Interested candidates should contact Paul Sonkin via email.",retriever,hybrid,5,16359,19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 19a2c5068b85f23a_email_0 | 19935f8aa3c3a212_email_0 | 1995dcc1d4053950_email_0 | 1995ddab5fb6433d_email_0,1.000 | 1.000 | 0.800 | 0.578 | 0.569,,05-12-2025 22:06,
+36,What's the Lepercq internship about?,information,05-12-2025 22:06,"The Lepercq internship is not explicitly mentioned in the provided email chunks. However, there is information about the Insight Partners AI & Investment Technology Internship, which involves working with the Public Equities (IPPE) team to develop AI-driven tools for investment research and portfolio workflows. Interns will collaborate with investment professionals and data scientists, focusing on the intersection of AI, data, and public-market investing. If you meant a specific internship with Lepercq, please provide more context or details.",retriever,hybrid,5,23822,19a5fb375bdbbaac_email_0 | 19a5fb375bdbbaac_att_IPPE_AI_Investment_Tech_Internship_Job_Description v2_pdf_0 | 19a2c5068b85f23a_email_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 1995ddab5fb6433d_att_2025 Quantitative Analyst JD (Intern)_pdf_0,0.900 | 0.800 | 0.800 | 0.700 | 0.600,,05-12-2025 22:06,
+35,When is quiz 5 due,deadline,05-12-2025 06:28,"Quiz 5 is due on December 6, 2025.",retriever,hybrid,5,11124,19ad039d79455793_email_0 | 19ad09cf23040860_email_0 | 19949af43737b5d4_email_0 | 19a41793c8627085_email_0 | 199a58047f36bab6_email_0,0.800 | 0.741 | 0.717 | 0.700 | 0.699,,05-12-2025 06:28,
+34,Are any grades released for my decision model class,deadline,05-12-2025 05:38,"No grades have been released for the Decision Model class as of now. The last announcement mentioned that the first two weeks of homework were graded, but there have been no updates regarding additional grades since then.",retriever,hybrid,5,11390,1996fd368e10c9a0_email_0 | 19a0e3e89020366a_email_0 | 1992addd45ecf681_email_0 | 19a3c651b755dd23_email_0 | 19a841fd14f9bb38_email_0,1.000 | 1.000 | 0.575 | 0.481 | 0.471,,05-12-2025 05:38,
+33,Tell me about the internship panel ?,information,05-12-2025 05:35,"The internship panel is the ""Last Summer Internship Panel,"" which took place on Monday, September 8, 2025, at 2:30 PM in the CDS Open Space. This panel featured second-year MS students who interned in various industries during the summer. The discussion included their processes for searching, applying to, and interviewing for internships, as well as sharing their experiences at companies like Amazon, Apple, and PayPal (Chunk 1).",retriever,hybrid,5,13479,199298d1ec9c6ef2_email_0 | 19996c22613154b6_email_0 | 19996c7025a0e9f8_email_0 | 19915a3027789d0f_email_0 | 199ab4307170f85d_email_0,1.000 | 0.900 | 0.900 | 0.800 | 0.700,,05-12-2025 05:35,
+32,Any otjher details I should know about Spring 2026 course registration,information,05-12-2025 05:33,"For Spring 2026 course registration, here are the key details you should know:
+
+1. **Registration Period**: Registration begins the week of Monday, November 17, 2025. You should check your assigned enrollment date and time in Albert (referenced in Chunk 1).
+
+2. **Course Information**: Spring 2026 courses are published at albert.nyu.edu. A new course, DS-GA 3001.015 Special Topics in Data Science: Information Theory and Cognition, has been added, and there are limited seats available (Chunk 2).
+
+3. **Reserved Seats**: Similar to previous semesters, there are seats reserved for PhD students in several classes (details are in the registration guide) (Chunk 1).
+
+4. **Updated Registration Guide**: The Spring 2026 registration guide can be accessed [here](https://docs.google.com/document/d/1Z3B8Y-FpY2yrU5vB7aPP7kXrEG-iSgPEq6aJ8ILVCBg/edit?usp=sharing). It includes registration instructions, course information, and cross-registration details (Chunk 1).
+
+5. **New Courses**: Additional courses such as ""Intro to Computer Vision"" and ""Data Engineering"" are also being offered, with specific prerequisites and limited seats reserved for PhD students (Chunk 3).
+
+Make sure to read through the entire registration guide for comprehensive details and updates as they become available. If you have any questions, you can reach out to cds-masters@nyu.edu for assistance.",retriever,hybrid,5,17647,19a17456f1ab88bb_email_0 | 19a303a51f3d80bb_email_0 | 19abbdeb6c58c5b2_email_0 | 19abb8e5e09697af_att_DSC Teaching Assistant Announcement_pdf_0 | 1991499a7dd34023_email_0,1.000 | 0.717 | 0.701 | 0.700 | 0.610,,05-12-2025 05:33,
+31,And any other details I should know about this,information,05-12-2025 05:32,"The email chunks primarily discuss the ""2025 NCDS Fall Career Panel,"" which took place on October 1, 2025. It featured data science professionals from companies like Google Cloud, SAS, Microsoft, and MetaMetrics, who provided insights into data science careers. The event aimed to help participants understand the skills needed to stand out to recruiters in the competitive field of data science. 
+
+Since the event has already occurred, there are no current or upcoming details related to it. However, you may want to check out the link provided for future events or more information: [NCDS Fall Career Panel 2025](https://bit.ly/NCDS_FallCareerPanel_2025) (Chunks 1, 2, 3). 
+
+If you are looking for additional events or opportunities, please specify, and I can provide information based on the email chunks.",retriever,hybrid,5,15039,19995c2b54f56843_att_NCDS_Flyer_2025_10_CareerPanel_Large Flyer_png_0 | 19995c2b54f56843_att_NCDS_Flyer_2025_10_CareerPanel_Small Flyer_png_0 | 19995c2b54f56843_email_0 | 1994e8a75bbfefea_email_0 | 199f3062fed3265a_email_0,0.784 | 0.779 | 0.744 | 0.585 | 0.571,,05-12-2025 05:32,
+30,When does spring 2026 course registration start ?,deadline,05-12-2025 05:31,"Spring 2026 course registration starts the week of Monday, November 17, 2025 (Chunk 1).",retriever,hybrid,5,20104,19a17456f1ab88bb_email_0 | 19abbdeb6c58c5b2_email_0 | 19a303a51f3d80bb_email_0 | 19a50388471d816e_email_0 | 199a62b7880be39d_email_0,1.000 | 0.800 | 0.800 | 0.640 | 0.584,,05-12-2025 05:31,
+29,What courses are NOT being offered in spring?,information,05-12-2025 00:14,The course that is NOT being offered in Spring 2026 is DS-GA 1020 Mathematical Statistics (Chunk 4).,retriever,hybrid,5,13987,19a17456f1ab88bb_email_0 | 19a50388471d816e_email_0 | 19a303a51f3d80bb_email_0 | 19abbdeb6c58c5b2_email_0 | 199a62b7880be39d_email_0,0.687 | 0.618 | 0.596 | 0.587 | 0.585,,05-12-2025 00:14,
+28,Anything from WiDS board lately?,sender,05-12-2025 00:14,"The most recent communication from the WiDS board was an invitation for the Alumni Fireside Chat scheduled for Tuesday, November 11, 2025. This event is designed for CDS alumni and current students to connect and share insights in data science. The WiDS E-Board also recently announced the launch of their official LinkedIn page on October 29, 2025. There have not been any updates or events mentioned from the WiDS board since the Alumni Fireside Chat invitation. 
+
+(Chunks 1, 2, 3, and 4)",retriever,hybrid,5,12896,19a59f9ee0031448_email_0 | 19a315f9206178f7_email_0 | 19a6f2eb593474c5_email_0 | 19a6f83340966d20_email_0 | 19980b53d1c3114d_email_0,1.000 | 0.900 | 0.900 | 0.900 | 0.800,,05-12-2025 00:14,Should have included the december holiday event 
+27,Tell me about Yann LeCun latest presentation,information,05-12-2025 00:14,"Yann LeCun's latest presentation focuses on the concept that AI should learn to ignore irrelevant details, akin to how infants develop intuitive physics by selectively attending to essential patterns while observing objects. He argues that this selective attention is a distinguishing feature of biological intelligence compared to current AI systems, which are often data-hungry. LeCun's team has introduced a new model called V-JEPA 2 that exemplifies this principle at an unprecedented scale (Chunk 1 and Chunk 3).",retriever,hybrid,5,9921,199a067ffe296bed_email_0 | 19a0d1d4d1b249fa_email_0 | 199a0654619a86ad_email_0 | 19aa411687f865af_email_0 | 19ada9838b1d8694_email_0,0.472 | 0.472 | 0.472 | 0.455 | 0.441,,05-12-2025 00:14,
+26,What's the deal with AI tools for assignments?,information,05-12-2025 00:14,"You are encouraged to use free or open-source AI tools for assignments and projects in your course. You are not required to pay for any AI services like OpenAI GPT or Google Gemini. Many free or open-source AI providers offer generous free tiers suitable for course tasks. Examples include:
+
+- Hugging Face Inference API
+- OpenRouter
+- Google AI Studio (Gemini API)
+- Groq API
+- Local deployments of open-source models (e.g., Ollama)
+
+Grading will focus on the quality of your implementation and analysis, not on the specific AI model or API you choose to use. (Chunk 1)",retriever,hybrid,5,13387,19ab751f9ff4d191_email_0 | 19a07853bc28e0f9_att_nyu-ds-fly-2025_pdf_0 | 19a2c5068b85f23a_att_251001 Lepercq internship_docx_0 | 19a5fb375bdbbaac_email_0 | 19abbdeb6c58c5b2_email_0,1.000 | 0.800 | 0.700 | 0.700 | 0.600,,05-12-2025 00:14,
+25,Any jobs or research positions I can apply to?,general,05-12-2025 00:13,"Currently, there are no open job or research positions available for application based on the provided email chunks. The deadlines for the positions mentioned (both for graduate and undergraduate courses) have already passed, with the last one being on November 20, 2025, for graduate positions, and November 10, 2025, for undergraduate positions (Chunks 1, 2, and 3). 
+
+The only upcoming opportunity mentioned is for a Summer 2026 Data Analytics / Data Science internship at Rockstar Games, which has a deadline of November 7, 2025 (Chunk 5). However, since today is December 4, 2025, this internship application period has also expired. 
+
+In summary, no current applications are available.",retriever,hybrid,5,20641,19a841fd14f9bb38_email_0 | 19a4b3d41e6a9b6f_email_0 | 19a4b3d5ce2910b0_email_0 | 1994e8a75bbfefea_email_0 | 19a2befc24d74561_email_0,1.000 | 1.000 | 1.000 | 0.900 | 0.900,,05-12-2025 00:13,Missed the context cmpletely 
+24,Who's been emailing me most about courses?,sender,05-12-2025 00:13,"Based on the email chunks, the person who has been emailing you most about courses seems to be Francheska Jimenez. Her email address (fj6@nyu.edu) is consistently mentioned in connection with important dates, reminders, and as an academic advisor/department contact in multiple chunks (especially in Chunks 1, 2, 3, 4, and 5). 
+
+If you need more specific information regarding the content of the emails or any other details, feel free to ask!",retriever,hybrid,5,12470,199e30c822f9d14a_email_0 | 19a2b550d2305d31_email_0 | 19a97b634b434ca4_email_0 | 19a737c26c239978_email_0 | 199bf363a9e6164e_email_0,0.800 | 0.800 | 0.800 | 0.800 | 0.800,,05-12-2025 00:13,
+23,What do I need to prepare for the end of semester?,deadline,05-12-2025 00:13,"To prepare for the end of the semester, you should focus on a few key activities:
+
+1. **Attend Upcoming Events**: Participate in the Lunchtime Research Conversations and the English Conversation and Culture holiday party, both happening on December 4, 2025. These events provide opportunities for engagement and connection with fellow students.
+
+2. **Utilize Study Hours**: Consider attending the study hours on December 9, 2025, from 4:00 PM to 6:00 PM at Kimmel 703, where you can work in a quiet space with complimentary coffee and snacks.
+
+3. **Take a Break with Bagels**: Join the Bagel Breakfast on December 10, 2025, from 10:00 AM to 12:00 PM at Kimmel 703 for a quick pick-me-up as finals approach.
+
+4. **Prepare for Finals**: Remember that the official final exam period is from December 15 to December 19, 2025. Make sure you are studying and organizing your time effectively in the days leading up to finals.
+
+5. **Submit Any Outstanding Requests**: If applicable, ensure you have submitted any requests related to pass/fail grading or other academic considerations before the appropriate deadlines (note that the pass/fail request deadline was November 19, 2025, so check if you have met that).
+
+6. **Consider Mental Health Resources**: If you're feeling stressed, remember that Counseling and Wellness Services are available to help with mental health concerns.
+
+These preparations will help you finish the semester strong and navigate finals successfully. (Used information from Chunk 1 and Chunk 5).",retriever,hybrid,5,17966,19adf64202b23e59_email_0 | 1993fcf84c78c0a0_email_0 | 19a4ff8578635a41_email_0 | 199a62b7880be39d_email_0 | 1991499a7dd34023_email_0,0.900 | 0.800 | 0.800 | 0.606 | 0.598,,05-12-2025 00:13,
+22,Show me everything about presentations - both capstone and course related,information,05-12-2025 00:13,"Here are the details about presentations related to both the capstone and course projects:
+
+### Capstone Presentations
+
+1. **Midterm Presentations**
+   - **Dates**: October 23 and October 30, 2025
+   - **Location**: Lecture hall, 6 Washington Pl (Meyer Hall)
+   - **Time**: Start at 4:55 PM, potentially extending into the lab session
+   - **Duration**: Each presentation lasts 4 minutes, followed by 1 minute for questions
+   - **Requirements**:
+     - A template is provided for structuring the presentation.
+     - Presentations should consist of no more than 5-6 slides.
+     - One student per group must fill out a form to upload a PDF of the midterm presentation by **October 21, 2025**.
+     - All group members are expected to attend. If there are conflicts, the course staff should be contacted by **October 19, 2025**.
+
+   (See Chunk 5 for details)
+
+2. **Final Poster Presentations**
+   - **Date**: December 18, 2025
+   - **Location**: Rosenthal Pavilion, 10th floor of Kimmel Center (60 Washington Sq S)
+   - **Time**: 4:00 PM - 5:50 PM
+   - **Note**: All groups will present on this date.
+
+   (See Chunk 4 for details)
+
+### Course Structure and Group Formation
+- Groups are formed and project bids were to be submitted by September 12, 2025.
+- Projects were assigned by September 22, 2025.
+- Students were encouraged to communicate with their project mentors after receiving their assignments.
+
+(See Chunks 1, 2, and 3 for details regarding group formation and project assignments) 
+
+If you have any more specific questions about these presentations or need further information, feel free to ask!",retriever,hybrid,5,20660,199186ab4b38723d_email_0 | 1994d5b15bdd760e_email_0 | 1997183b198f80ef_email_0 | 19a163aebf734ab4_email_0 | 199e6733d88dc346_email_0,1.000 | 1.000 | 1.000 | 1.000 | 1.000,,05-12-2025 00:13,
+21,What buildings or floors are closed and why?,information,05-12-2025 00:12,"The 7th floor of the NYU Center for Data Science (CDS) at 60 5th Avenue is closed from 4 PM to 8 PM on October 23, 2025, for a private event. During this time, the open space and study areas in the central and back hallways will not be available (Chunk 1). 
+
+As of December 4, 2025, there is no information regarding any current closures or events affecting the buildings or floors.",retriever,hybrid,5,13897,19a0d918eb435a79_email_0 | 199c54f4f7636450_email_0 | 1991064af463c6c4_email_0 | 19aa179a1d15a68e_email_0 | 1999b22abc2ce473_email_0,1.000 | 1.000 | 0.800 | 0.000 | 0.000,,05-12-2025 00:12,
+20,Compare the homework and quiz schedules for my courses,deadline,05-12-2025 00:12,"For the course ""Spec Top Computer SCI:, Section 091,"" the homework and quiz schedules are as follows:
+
+**Homework Schedule:**
+1. **Homework 1** - Due by 11:59 PM on October 15, 2025 (Chunk 4).
+2. **Homework 2** - Due by 11:59 PM on October 15, 2025 (Chunk 4).
+3. **Homework 3** - Due by 11:59 PM on November 1, 2025 (Chunk 3).
+4. **Homework 4** - Due by 11:59 PM on November 15, 2025 (Chunk 1).
+5. **Homework 5** - Due by 11:59 PM on December 12, 2025 (Chunk 2).
+
+**Quiz Schedule:**
+- Quiz 2 was mentioned to be released soon around the time of Homework 2 but no specific date for it is provided (Chunk 4).
+
+In summary, the most recent homework, Homework 5, is due next week on December 12, 2025, while the last quiz date is not specified.",retriever,hybrid,5,18097,19a41793c8627085_email_0 | 19ad09cf23040860_email_0 | 19a0478e80409c72_email_0 | 199a58047f36bab6_email_0 | 199a5c08930ddcf1_email_0,0.900 | 0.900 | 0.900 | 0.900 | 0.900,,05-12-2025 00:12,
+19,Did I miss any important deadlines this week and what's coming up?,deadline,05-12-2025 00:12,"This week, you missed the following important deadlines and events:
+
+1. **CILVR Seminar: Jordan Ash** - This seminar took place on December 3rd from 3:30-5 PM. (Chunk 1)
+2. **Lunchtime Research Conversations** - Two sessions were scheduled for today, December 4th: 
+   - ""Breaking Barriers: Advancing Accessibility and Awareness at NYU"" from 1-2 PM.
+   - ""Zombies, Pixels, and Plastic Bodies in Contemporary Korean Culture"" from 2-3 PM. (Chunk 2)
+3. **GSAS Ice Skating** - This event occurred on December 3rd from 4:30-9 PM. (Chunk 1)
+
+Upcoming events include:
+
+1. **Brooklyn Nets Night Out** - Tonight, December 4th, from 6-9:30 PM. (Chunk 2)
+2. **Final Lunchtime Research Conversation of the year** - This is happening today at 2 PM. (Chunk 2)
+3. **WiDS Holiday Chillout** - December 11th, 2-4 PM. (Chunk 1)
+4. **Last day of Fall 2025 classes** - December 11th. (Chunk 1)
+5. **Reading Day** - December 12th. (Chunk 1)
+6. **Final Exam Period** - December 15th to 19th. (Chunk 1)
+
+Make sure to catch the upcoming events and prepare for the final exam period!",retriever,hybrid,2,11621,19ae005bd8c73e97_email_0 | 19adf64202b23e59_email_0,0.326 | 0.281,,05-12-2025 00:12,
+18,any meetups or networking events?,calendar,05-12-2025 00:12,"Yes, there are several upcoming networking events:
+
+1. **CDS Networking Week** (November 14 to November 21, 2025) - This includes opportunities for 1:1 chats and a small group dinner aimed at practicing networking and career exploration. Students must apply for each opportunity they are interested in (Chunk 3).
+
+2. **First Generation Graduate Student Brunch** (November 7, 2025) - This event, in collaboration with the Wasserman Center, is designed to boost networking confidence for first-gen graduate students and includes practical tips for networking (Chunk 10).
+
+3. **Grad Student Social** (November 20, 2025) - A casual gathering at Liz's Book Bar for graduate students to unwind and connect (Chunk 2).
+
+4. **Lunchtime Research Conversation Series** - Ongoing series where graduate students can share their research and connect with peers (mentioned in several chunks, including Chunk 9).
+
+These events provide great opportunities for networking among students and faculty.",predict,hybrid,10,10793,19a2cb9b1363dd98_email_0 | 19a97b634b434ca4_email_0 | 19a6f781ae4552b7_email_0 | 19a737e4150d9764_email_0 | 199535dd76932883_email_0,0.515 | 0.507 | 0.465 | 0.419 | 0.408,,05-12-2025 00:12,
+17,gpu stuff for project?,general,05-12-2025 00:11,"For your project, you have access to GPU resources through the HPC Cloud Bursting service. Each student is assigned 300 GPU hours and can use various partitions such as ""g2-standard-12"" and ""c12m85-a100-1"" for GPU jobs. Accessing the GPUs involves logging into the Greene cluster and using specific commands to launch jobs with GPUs. You should avoid using Greene for course work, as it competes with researchers for GPU resources. Instead, use the Cloud Bursting Open On Demand server for your work. 
+
+More detailed steps and information can be found in the announcements regarding GPU access (Chunk 1).",retriever,hybrid,5,18790,19979448f2782178_email_0 | 199fa465e4e8f4ea_email_0 | 199f54cec45ce182_email_0 | 19ab751f9ff4d191_email_0 | 1993e6b594b6b24a_email_0,1.000 | 0.900 | 0.900 | 0.800 | 0.589,,05-12-2025 00:11,
+16,whos hosting the holiday thing in december events calendar,calendar,05-12-2025 00:11,"The holiday event in the December events calendar is hosted by Allen McFarlane, NYU’s Associate Dean of Students for Outreach and Engagement, in partnership with the Center for Student Life. This event is part of the English Conversation and Culture series and includes a festive Holiday party where attendees will explore holiday traditions, sing carols, and enjoy some holiday cheer. This information is found in Chunk 1.",predict,hybrid,10,6946,19adf64202b23e59_email_0 | 19a97b634b434ca4_email_0 | 199e3b0914d9e58a_email_0 | 19976fc2c0ae5f07_email_0 | 19a2cb9b1363dd98_email_0,0.537 | 0.514 | 0.506 | 0.502 | 0.483,,05-12-2025 00:11,
+15,quiz deadlines pls,deadline,05-12-2025 00:11,"The upcoming quiz deadlines are as follows:
+
+1. **Quiz 2**: Due on **Tuesday, December 14, 2025, at 11:59 PM** (referenced from Chunk 1).
+2. **Quiz 3**: Due on **Tuesday, November 4, 2025, at 11:59 PM** (referenced from Chunk 3).
+3. **Quiz 4**: Due on **Tuesday, November 18, 2025, at 11:59 PM** (referenced from Chunk 2).
+
+Please note that the deadlines for Quiz 3 and Quiz 4 have already passed as of today, December 4, 2025.",retriever,hybrid,5,12359,199d3e5907140ad3_email_0 | 19a8a6bc64480d23_email_0 | 19a3f8141c6f65a2_email_0 | 19a4ff8578635a41_email_0 | 19aa89967c5957c8_email_0,1.000 | 1.000 | 1.000 | 0.900 | 0.900,,05-12-2025 00:11,
+14,when is the capston thing due,deadline,05-12-2025 00:11,"The final paper for the capstone project is due on Tuesday, December 16, 2025, at 11:59 PM. The final poster presentation will take place on Thursday, December 18, 2025, from 4:00 PM to 5:50 PM (Chunk 1).",retriever,hybrid,5,12457,19aa89967c5957c8_email_0 | 19a163aebf734ab4_email_0 | 199def6e99c05e7f_email_0 | 199e6733d88dc346_email_0 | 19a120793cf97099_email_0,1.000 | 1.000 | 0.800 | 0.685 | 0.637,,05-12-2025 00:11,
+13,Anything about cedar project lately?,information,05-12-2025 00:10,"There is no recent information about the Cedar project in the email chunks provided. The latest communication regarding the Cedar project is from September 2025, where the team discussed setting up meetings and communication channels. There are no updates or activities mentioned that are relevant to the current date of December 04, 2025.",retriever,hybrid,5,10739,1994edc526e3ad17_email_0 | 19972f441bc3c3aa_email_0 | 1995feb954f40e9f_email_0 | 1995d83b915df8c8_email_0 | 19955896436cea8c_email_0,0.900 | 0.800 | 0.800 | 0.800 | 0.619,,05-12-2025 00:10,
+12,What did Mohammad send me?,sender,05-12-2025 00:10,Mohammad sent you a request to keep project communications on Discord and asked you to send a Google Meet link for your upcoming meeting (Chunk 1).,retriever,hybrid,5,9882,199937ed22a47806_email_0 | 19972f441bc3c3aa_email_0 | 19aa1fbfea1bb84b_email_0 | 1995ff4be057b745_email_0 | 1995fda4f979e7ec_email_0,1.000 | 1.000 | 1.000 | 1.000 | 1.000,,05-12-2025 00:10,
+11,Who do I need to talk to about registration?,information,05-12-2025 00:10,"You should talk to Francheska Jimenez for registration-related inquiries regarding MS students (fj6@nyu.edu), and Kathryn Angeles for PhD students (kangeles@nyu.edu) (Chunk 2, 3, 4, 5).",retriever,hybrid,5,14046,1991499a7dd34023_email_0 | 19a2b550d2305d31_email_0 | 19976fc2c0ae5f07_email_0 | 19a075362d5f6ab6_email_0 | 19a97b634b434ca4_email_0,0.900 | 0.800 | 0.800 | 0.800 | 0.800,,05-12-2025 00:10,
+10,Tell me about the party,general,05-12-2025 00:10,"The upcoming party is the CDS Grad Holiday Party, scheduled for December 12, 2025, from 4:30 to 6:30 PM at Amity Hall. Drinks and food will be provided, and it's open to CDS graduate students only. RSVPs are required via Eventbrite. This information is from Chunk 3.",retriever,hybrid,5,13714,19a038cc663367b2_email_0 | 19a038cc663367b2_att_WiDS Diwalloween Flyer 2025_jpeg_0 | 19ac1068efc65b25_email_0 | 1995ea76b4d9b782_email_0 | 19980b53d1c3114d_email_0,1.000 | 0.900 | 1.000 | 0.800 | 0.800,,05-12-2025 00:10,
+9,What's happening next week? events calendar,calendar,05-12-2025 00:10,"Next week, the following events are scheduled:
+
+1. **CILVR Seminar: Pavel Izmailov** - December 10, 2025, from 3:30 PM to 5 PM at CDS Open Space.
+2. **End of Semester Gathering** - December 10, 2025, from 5:30 PM to 7 PM at GCASL 491, featuring a mug painting contest and free food.
+3. **Winter Lights Walking Tour** - December 10, 2025, from 6 PM to 9 PM.
+4. **CDS Grad Holiday Party** - December 12, 2025, from 4:30 PM to 6:30 PM at CDS Open Space.
+5. **CDS De-Stress Before You Regress** - December 12, 2025, from 12 PM to 1:30 PM at CDS Open Space.
+6. **Snowfairy Snow-cial** - December 12, 2025, from 12 PM to 2 PM at Kimmel 602.
+
+Additionally, **Final Exam Period** starts on December 15 and lasts until December 19, 2025 (Chunk 1, 3).",predict,hybrid,6,14793,19abbd1cd2d98439_email_0 | 1992eff9f917c178_email_0 | 19ae005bd8c73e97_email_0 | 19a4bf1092c58832_email_0 | 19a97b634b434ca4_email_0,0.504 | 0.502 | 0.447 | 0.446 | 0.439,,05-12-2025 00:10,
+8,List all calendar invites (.ics files) I received in the last week events calendar,calendar,04-12-2025 23:56,"In the last week (from November 27 to December 4, 2025), you received the following calendar invites (.ics files):
+
+1. **Spec Top Computer SCI:, Section 091**
+   - Scheduled Zoom meeting for December 5, 2025, 7:00 PM (Eastern Time).
+   - iCalendar link: [Weekly Invite](https://nyu.zoom.us/meeting/tJYtdeyvqzwoHN2rydPJPkvheDCyrgXEn4kk/ics?icsToken=DHTR9uwFQJywyYv7KgAALAAAAEUQ5yswzGTnOmj11u-0W9pWQa8Q4RZ5gmXnYBsWZisUsYRopgLjBlRnO52Mis_dvc1I9ygoNo5VkYPbfTAwMDAwMQ) (Chunk 1).
+
+No other calendar invites were present in the chunks that fall within the specified timeframe.",predict,hybrid,7,12494,19a840b1e8160abc_email_0 | 199cee7f08aca753_email_0 | 19a6f781ae4552b7_email_0 | 19a3c831ac40f9b6_email_0 | 19a187c6ded9d2bd_email_0,0.506 | 0.505 | 0.496 | 0.430 | 0.428,,04-12-2025 23:56,
+7,Summarize top research initiatives by CDS in last few emails,summarization,04-12-2025 23:40,"The top research initiatives by the Center for Data Science (CDS) highlighted in recent emails include:
+
+1. **Selective Attention in AI**: Yann LeCun's team developed the V-JEPA 2 model, demonstrating how AI can learn to ignore irrelevant details and focus on essential patterns, akin to intuitive physics in humans (Chunk 1).
+
+2. **Next-Generation AI Assistant Research**: Tal Linzen and Grace Lindsay received funding from a $20 million NSF institute to research AI systems that can interpret individual behavioral needs and provide tailored feedback (Chunk 1).
+
+3. **Diversity in AI Responses**: Research by Qihan Wang and others found that asking AI questions in multiple languages can unlock a broader range of perspectives, addressing the bias towards Western viewpoints in large language models (Chunk 3).
+
+4. **Monitoring AI Safety**: A lightweight monitoring framework was developed to effectively catch decomposition attacks in AI systems, significantly improving safety at reduced costs (Chunk 3).
+
+5. **Probabilities of Natural Images**: Florentin Guth and collaborators discovered that teaching AI to estimate image probabilities using simpler models can outperform complex approaches by a vast margin (Chunk 3).
+
+6. **AI for Climate Change**: Grace Lindsay launched a YouTube channel, ""5 Minute Papers on AI for the Planet,"" which emphasizes the intersection of AI and environmental science (Chunk 5).
+
+7. **Cognitive Bias in AI**: Research by Anthony GX-Chen revealed that young children outperform advanced AI in assessing causal relationships, indicating that AI inherits human cognitive biases (Chunk 5).
+
+These initiatives reflect a commitment to improving AI's understanding and functionality while addressing ethical considerations and safety.",retriever,hybrid,5,20048,199a067ffe296bed_email_0 | 199a0654619a86ad_email_0 | 19ada9838b1d8694_email_0 | 19ada9b74db2b2bc_email_0 | 19a4a5aecf1291bd_email_0,0.900 | 0.900 | 0.900 | 0.900 | 0.800,,04-12-2025 23:40,
+6,Give me list  of courses being offered in the spring ?,information,04-12-2025 23:29,"The courses being offered in Spring 2026 are:
+
+1. **Intro to Computer Vision** (CS at Courant, cross-listed with CDS - DS-GA 3001.011/012)
+2. **Deep Learning** (CS at Courant, cross-listed with CDS - DS-GA 1008)
+3. **Data Engineering** (DS-GA 3001.005/006)
+4. **Large Language Models** (DS-GA 1012)
+5. **Special Topics in Data Science: Information Theory and Cognition** (DS-GA 3001.015, Psychology-sponsored)
+
+Please note that **DS-GA 1020 Mathematical Statistics** will not be offered in Spring 2026 (Chunk 1, 3, 4, 5).",retriever,hybrid,5,17135,19abbdeb6c58c5b2_email_0 | 19abb8e5e09697af_email_0 | 19a303a51f3d80bb_email_0 | 19a17456f1ab88bb_email_0 | 19a4b3d41e6a9b6f_email_0,1.000 | 0.800 | 0.732 | 0.654 | 0.633,,04-12-2025 23:29,
+5,Give me link to spring 2026 registration,information,04-12-2025 23:26,The link to the Spring 2026 registration guide is: [Spring 2026 CDS Student Registration Guide](https://docs.google.com/document/d/1Z3B8Y-FpY2yrU5vB7aPP7kXrEG-iSgPEq6aJ8ILVCBg/edit?usp=sharing) (see Chunk 1).,retriever,hybrid,5,15125,19a17456f1ab88bb_email_0 | 19a50d0d69324bd1_email_0 | 19a50388471d816e_email_0 | 19a303a51f3d80bb_email_0 | 199a62b7880be39d_email_0,1.000 | 0.800 | 0.638 | 0.613 | 0.592,,04-12-2025 23:26,
+4,Give me link to spring 2026 registration for cds,information,04-12-2025 22:25,"The email chunks provided do not contain a link for spring 2026 registration for CDS. Therefore, I am unable to provide that information.",retriever,hybrid,5,14430,1994e8a75bbfefea_email_0 | 19a2befc24d74561_email_0 | 19981511d725054b_email_0 | 19996c7025a0e9f8_email_0 | 1996352caa4b6ba3_email_0,0.800 | 0.666 | 0.637 | 0.603 | 0.572,,04-12-2025 22:25,
+3,Give me link to spring 2026 registration,information,04-12-2025 22:24,"The email chunks do not provide a specific link for spring 2026 registration. However, it mentions that applications to join a VIP team for the spring semester were opening on Monday, October 20, 2025, but does not include the exact registration link. For more information about VIP teams, you can visit the VIP Teams page mentioned in the emails.",retriever,hybrid,5,17636,199f26e6e9323133_email_0 | 19981511d725054b_email_0 | 19a2befc24d74561_email_0 | 199cee7f08aca753_email_0 | 19996c7025a0e9f8_email_0,0.549 | 0.532 | 0.527 | 0.503 | 0.502,,04-12-2025 22:24,
+2,What is deadline for the deep learniung course quiz,deadline,04-12-2025 21:31,"The deadline for the deep learning course quiz (Quiz 5) is Saturday, December 6, 2025, as it will be available from December 2 to December 6 (Chunk 4).",retriever,hybrid,5,11905,19a8a6bc64480d23_email_0 | 19a41793c8627085_email_0 | 19ad09cf23040860_email_0 | 19ad039d79455793_email_0 | 19ac1e1ffdae36d5_email_0,1.000 | 0.560 | 0.538 | 0.515 | 0.500,,04-12-2025 21:31,
+1,What is deadline for the deep learniung course,deadline,04-12-2025 21:30,"The email chunks provided do not contain information about a deadline for a deep learning course. Therefore, I cannot provide an answer to that question.",retriever,hybrid,5,18927,19981258f271aeca_email_0 | 19a2befc24d74561_email_0 | 1994e8a75bbfefea_email_0 | 19981511d725054b_email_0 | 19996c7025a0e9f8_email_0,0.800 | 0.542 | 0.533 | 0.521 | 0.506,,04-12-2025 21:30,
